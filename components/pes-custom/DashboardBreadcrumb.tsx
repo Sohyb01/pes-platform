@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import {
@@ -21,18 +20,14 @@ export function DashboadBreadcrumb() {
     <Breadcrumb className="py-1.5">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink>
-            <Link className="capitalize" href={`/${URLSegments[0]}`}>
-              {URLSegments[0]}
-            </Link>
+          <BreadcrumbLink className="capitalize" href={`/${URLSegments[0]}`}>
+            {URLSegments[0]}
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
-          <BreadcrumbLink>
-            <Link className="capitalize" href={`/${URLSegments[2]}`}>
-              {URLSegments[URLSegments.length - 1]}
-            </Link>
+          <BreadcrumbLink className="capitalize" href={`/${URLSegments[2]}`}>
+            {URLSegments[URLSegments.length - 1]}
           </BreadcrumbLink>
         </BreadcrumbItem>
       </BreadcrumbList>
