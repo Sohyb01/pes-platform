@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { ActivityLogIcon } from "@/components/pes-custom/icons/ActivityLogIcon";
 import { AssignmentIcon } from "@/components/pes-custom/icons/AssignmentIcon";

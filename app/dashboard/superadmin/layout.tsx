@@ -1,5 +1,4 @@
-"use client";
-
+import { DashboadBreadcrumb } from "@/components/pes-custom/DashboardBreadcrumb";
 import SuperadminNavbar from "@/components/pes-custom/SuperadminNavbar";
 import SuperadminSidebar from "@/components/pes-custom/SuperadminSidebar";
 
@@ -17,7 +16,8 @@ export default function RootLayout({
         <div className="flex w-full overflow-hidden dashboard-sizing">
           <SuperadminSidebar />
           {/* Main Content */}
-          <main className="w-full flex p-4 md:p-8 dashboard-sizing overflow-scroll">
+          <main className="w-full flex flex-col gap-8 p-4 md:p-8 dashboard-sizing overflow-scroll">
+            <DashboadBreadcrumb />
             {children}
           </main>
         </div>

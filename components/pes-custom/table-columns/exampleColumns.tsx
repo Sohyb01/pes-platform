@@ -96,10 +96,18 @@ export const exampleColumns: ColumnDef<exampleObject>[] = [
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem>Copy employee ID</DropdownMenuItem>
+              <DropdownMenuItem>Edit Properties</DropdownMenuItem>
+              <DropdownMenuItem>Copy URL</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>View customer</DropdownMenuItem>
-              <DropdownMenuItem>View employee details</DropdownMenuItem>
+              <DropdownMenuItem className="p-0">
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="justify-start w-full px-2 py-1.5 h-fit"
+                >
+                  Delete
+                </Button>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
