@@ -238,7 +238,7 @@ const page = async () => {
 
   return (
     <div className="flex w-full flex-col">
-      <h3 className="text-h3">Employees</h3>
+      <h3 className="text-h3">Students</h3>
       <DataTable columns={studentsColumns} data={data} />
     </div>
   );

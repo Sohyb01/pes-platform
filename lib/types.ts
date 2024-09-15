@@ -56,3 +56,11 @@ export type Parent = CoreUser & {
   monthly_income: string;
   children: Student[];
 };
+
+export type exampleObject = {
+  one: string;
+  two: string;
+  three: number;
+  four: string;
+  five: number;
+};
