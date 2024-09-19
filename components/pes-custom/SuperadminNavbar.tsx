@@ -44,7 +44,7 @@ import {
   Smile,
   User,
 } from "lucide-react";
-import { UserNav } from "./user-nav";
+import { UserNav } from "./UserNav";
 
 const SuperadminNavbar = () => {
   // Search functionality
