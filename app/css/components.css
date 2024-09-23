@@ -19,5 +19,5 @@
     @apply flex flex-col gap-2 border-l border-l-border px-4 w-full
 }
 .sidebar-button{
-    @apply gap-2
+    @apply gap-2 w-full justify-start
 }

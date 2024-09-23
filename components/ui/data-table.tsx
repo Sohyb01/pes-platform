@@ -76,7 +76,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex items-center py-4">
+      <div className="flex items-center pb-4">
         {table.getColumn("email") && (
           <Input
             placeholder="Filter emails..."
