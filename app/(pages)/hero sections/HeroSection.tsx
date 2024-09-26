@@ -82,7 +82,7 @@ const HeroSection = () => {
       {/* Logos */}
       <section>
         <div className="container section-px pb-[32px]">
-          <div className="flex flex-col md:flex-row items-center text-start gap-y-8 gap-x-4 border-solid border-t-[1px] border-neutral-200 pt-8">
+          <div className="flex flex-col md:flex-row items-center text-start gap-y-8 gap-x-4 border-solid border-t-[1px] border-border pt-8">
             <p className="text-subtle-medium text-muted-foreground text-center md:text-start w-full md:w-[160px]">
               Our partners and clients include
             </p>

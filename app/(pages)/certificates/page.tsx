@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { certificatesData } from "@/lib/certificates";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -38,22 +40,19 @@ const CertificatesPage = async ({
               action={onSubmit}
               className="flex flex-row gap-4 text-subtle items-end w-full"
             >
-              <div className="pes-input-and-label-container text-subtle">
+              <div className="text-subtle flex flex-col gap-1.5">
                 Certificate Number
-                <input
-                  className="bg-white px-3 py-2 border-[1px] border-solid border-border rounded-md w-[138px]"
+                <Input
+                  className="bg-background px-3 py-2 border-[1px] border-solid border-border rounded-md w-[138px]"
                   type="text"
                   name="certificateId"
                   id="certificateId"
                   defaultValue={searchParams.id ? searchParams.id : undefined}
                 />
               </div>
-              <button
-                className={`h-fit text-white text-center bg-primary px-4 py-2 rounded-md w-fit`}
-                type="submit"
-              >
+              <Button variant="default" type="submit">
                 View Certificate
-              </button>
+              </Button>
             </form>
           </div>
           {/* Certificate  Image Container */}
@@ -67,7 +66,7 @@ const CertificatesPage = async ({
               />
             )}
             {!certificateData && searchParams.id && (
-              <p className="text-detail text-destructive my-auto mx-auto">
+              <p className="text-detail text-red-600 my-auto mx-auto">
                 Oops! No certificate found with ID: {searchParams.id}
               </p>
             )}

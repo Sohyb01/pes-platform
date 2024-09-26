@@ -9,7 +9,9 @@ const WhatsappCTAButton = () => {
     <Link
       target="_blank"
       href={whatsappUrl}
-      className={buttonVariants({ variant: "outline" })}
+      className={`${buttonVariants({
+        variant: "ghost",
+      })} bg-whatsapp hover:bg-whatsapp`}
     >
       <WhatsappIcon />
       Talk to us

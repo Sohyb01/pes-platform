@@ -19,7 +19,8 @@ const Footer = () => {
             />
           </Link>
           {/* Links */}
-          <div className="grid grid-cols-1 gap-x-16 gap-y-6 text-detail">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-4 text-detail">
+            {/* Col 1 */}
             <Link
               className="text-muted-foreground hover:text-foreground"
               href="/about"
@@ -44,9 +45,7 @@ const Footer = () => {
             >
               Gallery
             </Link>
-          </div>
-          {/* Links */}
-          <div className="grid grid-cols-1 gap-x-16 gap-y-6 text-detail">
+            {/* Col 2 */}
             <Link
               className="text-muted-foreground hover:text-foreground"
               href="/careers"
@@ -67,13 +66,11 @@ const Footer = () => {
             </Link>
             <Link
               className="text-muted-foreground hover:text-foreground"
-              href="/locations"
+              href="/branches"
             >
-              Locations
+              Branches
             </Link>
-          </div>
-          {/* Links */}
-          <div className="grid grid-cols-1 gap-x-16 gap-y-6 text-detail">
+            {/* Col 3 */}
             <Link
               className="text-muted-foreground hover:text-foreground"
               href="/roadmaps"

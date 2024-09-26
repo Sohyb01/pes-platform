@@ -210,6 +210,7 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         shade: "hsl(var(--shade))",
+        whatsapp: "var(--whatsapp-green)",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
