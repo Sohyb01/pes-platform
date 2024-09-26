@@ -27,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${coolvetica.variable} antialiased`}>
+      <body
+        className={`${coolvetica.variable} ${inter.className} flex flex-col items-center`}
+      >
         {children}
         <Toaster />
       </body>

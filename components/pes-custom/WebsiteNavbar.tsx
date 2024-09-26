@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Button } from "../ui/button";
+import { buttonVariants } from "../ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -139,8 +139,18 @@ const WebsiteNavbar = () => {
         </NavigationMenu>
         {/* CTA and Menu Button */}
         <div className="hidden lg:flex items-center gap-2 w-fit">
-          <Button variant={"outline"}>Platform</Button>
-          <Button variant={"default"}>Free Session</Button>
+          <Link
+            href="/dashboard/student"
+            className={buttonVariants({ variant: "outline" })}
+          >
+            Platform
+          </Link>
+          <Link
+            href="/contact"
+            className={buttonVariants({ variant: "default" })}
+          >
+            Free Session
+          </Link>
         </div>
         {/* Sheet */}
         <Sheet>
@@ -149,7 +159,16 @@ const WebsiteNavbar = () => {
           </SheetTrigger>
           <SheetContent className="lg:hidden w-full">
             <NavigationMenu className="w-full max-w-[100%] items-start flex flex-col">
-              <NavigationMenuList className="flex-col items-start w-full">
+              <NavigationMenuList className="flex-col w-full gap-4">
+                <NavigationMenuItem className="w-full">
+                  <Link href="#" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      About Us
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
                 <NavigationMenuItem className="w-full">
                   <NavigationMenuTrigger>Locations</NavigationMenuTrigger>
                   <NavigationMenuContent className="w-full">
@@ -190,15 +209,6 @@ const WebsiteNavbar = () => {
                       ))}
                     </ul>
                   </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem className="max-w-[100%]">
-                  <Link href="#" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                    >
-                      About Us
-                    </NavigationMenuLink>
-                  </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>

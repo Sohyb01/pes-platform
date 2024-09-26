@@ -148,6 +148,11 @@
   }
 }
 
+/* Section horizontal padding */
+.section-px{
+  @apply px-4 md:px-8 lg:px-0
+}
+
 /* Icon SVG Fills & Colors */
 .pes-svg{
   stroke: inherit;

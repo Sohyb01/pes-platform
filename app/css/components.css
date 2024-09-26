@@ -21,3 +21,32 @@
 .sidebar-button{
     @apply gap-2 w-full justify-start
 }
+
+/* Old styles below */
+/* Buttons */
+.btn-primary{
+}
+.btn-secondary{
+}
+.btn-whatsapp{
+    /* background: #25D366;     */
+    /* @apply px-4 py-2 text-center rounded-md text-white flex flex-row  items-center gap-[10px] */
+}
+
+/* Other */
+.pes-feature{
+    @apply w-[220px] px-2 py-1.5 bg-muted text-foreground text-start flex items-center rounded-md gap-2
+}
+.pes-testimonial{
+    @apply flex justify-center items-center gap-4 w-full max-w-[332px] lg:max-w-[338px] p-4 text-start shadow-lg rounded-md bg-background border-border border-[1px]
+}
+.pes-value{
+    @apply flex justify-center items-center gap-4 w-full max-w-[332px] lg:max-w-none p-6 text-start shadow-lg rounded-md bg-muted
+
+}
+.pes-problem{
+    @apply bg-muted text-foreground px-4 py-3 border-solid border-[1px] border-destructive border-b-[0px] rounded-md
+}
+.pes-solution{
+    @apply bg-muted text-foreground px-4 py-3 border-solid border-[1px] border-primary rounded-md
+}
