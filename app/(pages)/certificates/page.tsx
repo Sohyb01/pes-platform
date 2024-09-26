@@ -67,7 +67,7 @@ const CertificatesPage = async ({
               />
             )}
             {!certificateData && searchParams.id && (
-              <p className="text-detail text-red-600 my-auto mx-auto">
+              <p className="text-detail text-destructive my-auto mx-auto">
                 Oops! No certificate found with ID: {searchParams.id}
               </p>
             )}

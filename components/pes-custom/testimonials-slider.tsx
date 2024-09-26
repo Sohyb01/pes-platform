@@ -1,10 +1,5 @@
 "use client";
 
-import Image from "next/image";
-import { imageLoader } from "@/lib/imageLoader";
-
-import Autoplay from "embla-carousel-autoplay";
-
 import {
   Carousel,
   CarouselContent,
@@ -30,11 +25,6 @@ export default function TestimonialSlider({
               loop: true,
               align: "start",
             }}
-            plugins={[
-              Autoplay({
-                delay: 4000,
-              }),
-            ]}
           >
             <CarouselContent>
               {testimonials.map((testimonial, index) => (

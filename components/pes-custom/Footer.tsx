@@ -34,18 +34,70 @@ const Footer = () => {
             </Link>
             <Link
               className="text-muted-foreground hover:text-foreground"
+              href="/reviews"
+            >
+              Reviews
+            </Link>
+            <Link
+              className="text-muted-foreground hover:text-foreground"
               href="/gallery"
             >
               Gallery
+            </Link>
+          </div>
+          {/* Links */}
+          <div className="grid grid-cols-1 gap-x-16 gap-y-6 text-detail">
+            <Link
+              className="text-muted-foreground hover:text-foreground"
+              href="/careers"
+            >
+              Careers
+            </Link>
+            <Link
+              className="text-muted-foreground hover:text-foreground"
+              href="/franchises"
+            >
+              Franchises
+            </Link>
+            <Link
+              className="text-muted-foreground hover:text-foreground"
+              href="/partnerships"
+            >
+              Partnerships
+            </Link>
+            <Link
+              className="text-muted-foreground hover:text-foreground"
+              href="/locations"
+            >
+              Locations
+            </Link>
+          </div>
+          {/* Links */}
+          <div className="grid grid-cols-1 gap-x-16 gap-y-6 text-detail">
+            <Link
+              className="text-muted-foreground hover:text-foreground"
+              href="/roadmaps"
+            >
+              Roadmaps
+            </Link>
+            <Link
+              className="text-muted-foreground hover:text-foreground"
+              href="/tracks"
+            >
+              Tracks
+            </Link>
+            <Link
+              className="text-muted-foreground hover:text-foreground"
+              href="/leaderboard"
+            >
+              Leaderboard
             </Link>
             <Link
               className="text-muted-foreground hover:text-foreground"
               href="/certificates"
             >
-              Verify Certificate
+              Certificate
             </Link>
-            {/* <Link href="/team">Our Team</Link> */}
-            {/* <Link href="/home">Home</Link> */}
           </div>
         </div>
         {/* Second Row - Legal & Socials */}

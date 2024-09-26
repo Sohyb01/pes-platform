@@ -1,5 +1,4 @@
 import SocialButtons from "@/components/pes-custom/SocialButtons";
-import WhatsappCTAButton from "@/components/pes-custom/WhatsappCTAButton";
 import Image from "next/image";
 import React from "react";
 
