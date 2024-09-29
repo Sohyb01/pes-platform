@@ -35,10 +35,10 @@
 
 /* Other */
 .pes-feature{
-    @apply w-[220px] px-2 py-1.5 bg-muted text-foreground text-start flex items-center rounded-md gap-2
+    @apply w-[220px] px-2 py-1.5 bg-card border-border border-[1px] text-foreground text-start flex items-center rounded-md gap-2
 }
 .pes-testimonial{
-    @apply flex justify-center items-center gap-4 w-full max-w-[332px] lg:max-w-[338px] p-4 text-start shadow-lg rounded-md bg-background border-border border-[1px]
+    @apply flex justify-center items-center gap-4 w-full max-w-[332px] lg:max-w-[338px] p-4 text-start shadow-lg rounded-md bg-card border-border border-[1px]
 }
 .pes-value{
     @apply flex justify-center items-center gap-4 w-full max-w-[332px] lg:max-w-none p-6 text-start shadow-lg rounded-md bg-muted

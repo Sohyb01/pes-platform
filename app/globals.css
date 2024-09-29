@@ -62,7 +62,7 @@
     --radius: 0.5rem;
   }
   .dark {
-    /* --background: 222.2 84% 4.9%;
+    /* --background: 224 71% 4%;
     --foreground: 210 40% 98%; */
     --shade: 222 47% 11%; /* Slate 900 */
     --card: 222.2 84% 4.9%;
@@ -94,7 +94,7 @@
 /* This is what actually applies styles to dark mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: 222.2 84% 4.9%;
+    --background: 224 71% 4%;
     --foreground: 210 40% 98%;
     --shade: 222 47% 11%; /* Slate 900 */
     --border: 215 25% 27%; /* Slate 700 */
