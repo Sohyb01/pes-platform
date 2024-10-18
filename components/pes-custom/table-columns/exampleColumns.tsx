@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { exampleObject } from "@/lib/types";
+import { exampleObject } from "@/lib/types-backend-data";
 
 export const exampleColumns: ColumnDef<exampleObject>[] = [
   {

@@ -1,5 +1,5 @@
-import MainCTALink from "@/components/pes-custom/MainCTALink";
-import StudentsGrid from "@/components/pes-custom/StudentsGrid";
+import MainCTALink from "@/components/pes-custom/website-components/MainCTALink";
+import StudentsGrid from "@/components/pes-custom/website-components/StudentsGrid";
 import Image from "next/image";
 import React from "react";
 

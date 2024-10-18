@@ -1,6 +1,6 @@
-import StudentNavbar from "@/components/pes-custom/StudentNavbar";
-import StudentSidebar from "@/components/pes-custom/StudentSidebar";
-import { SuperadminDashboadBreadcrumb } from "@/components/pes-custom/SuperadminDashboardBreadcrumb";
+import StudentNavbar from "@/components/pes-custom/platform-components/StudentNavbar";
+import StudentSidebar from "@/components/pes-custom/platform-components/StudentSidebar";
+import { SuperadminDashboadBreadcrumb } from "@/components/pes-custom/platform-components/SuperadminDashboardBreadcrumb";
 
 export default function RootLayout({
   children,

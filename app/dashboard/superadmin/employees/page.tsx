@@ -1,7 +1,7 @@
 import { employeesColumns } from "@/components/pes-custom/table-columns/employeesColumns";
 import { DataTable } from "@/components/ui/data-table";
 import { employees } from "@/lib/data";
-import { Employee } from "@/lib/types";
+import { Employee } from "@/lib/types-backend-data";
 
 async function getData(): Promise<Employee[]> {
   // Fetch data from your API here.

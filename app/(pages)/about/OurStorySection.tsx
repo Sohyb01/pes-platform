@@ -1,4 +1,4 @@
-import SocialButtons from "@/components/pes-custom/SocialButtons";
+import SocialButtons from "@/components/pes-custom/website-components/SocialButtons";
 import Image from "next/image";
 import React from "react";
 

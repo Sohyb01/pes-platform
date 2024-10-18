@@ -1,4 +1,4 @@
-import FranchisePageForm from "@/components/pes-custom/FranchisePageForm";
+import FranchisePageForm from "@/components/pes-custom/forms/FormPendingFranchise";
 import React from "react";
 
 const FranchisesPage = () => {

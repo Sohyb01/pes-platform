@@ -1,4 +1,4 @@
-import ContactPageForm from "@/components/pes-custom/ContactPageForm";
+import ContactPageForm from "@/components/pes-custom/forms/FormContactPage";
 import React from "react";
 
 const ContactPageHero = () => {

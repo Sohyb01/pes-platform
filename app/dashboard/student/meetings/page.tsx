@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { BadgeLink } from "@/components/pes-custom/BadgeLink";
+import { BadgeLink } from "@/components/pes-custom/platform-components/BadgeLink";
 import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
 import { Button } from "@/components/ui/button";
 import { TimeIcon } from "@/components/pes-custom/icons/TimeIcon";

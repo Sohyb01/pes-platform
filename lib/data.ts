@@ -37,7 +37,7 @@ import {
   Subscription,
   Track,
   UserRoleMapping,
-} from "./types";
+} from "./types-backend-data";
 
 export const exampleData: exampleObject[] = [
   {

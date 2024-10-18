@@ -1,7 +1,7 @@
 import { exampleColumns } from "@/components/pes-custom/table-columns/exampleColumns";
 import { DataTable } from "@/components/ui/data-table";
 import { exampleData } from "@/lib/data";
-import { exampleObject } from "@/lib/types";
+import { exampleObject } from "@/lib/types-backend-data";
 
 async function getData(): Promise<exampleObject[]> {
   // Fetch data from your API here.

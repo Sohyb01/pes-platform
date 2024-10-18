@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { Student } from "@/lib/types";
+import { Student } from "@/lib/types-backend-data";
 
 export const studentsColumns: ColumnDef<Student>[] = [
   {

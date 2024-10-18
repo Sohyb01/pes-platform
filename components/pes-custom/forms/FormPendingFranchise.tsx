@@ -14,18 +14,18 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useToast } from "@/hooks/use-toast";
-import { franchiseFormSchema, TFranchiseFormSchema } from "@/lib/common-types";
+import { useToast } from "@/components/hooks/use-toast";
+import { SchemaFranchiseForm, TSchemaFranchiseForm } from "@/lib/types-forms";
 
 const FranchisePageForm = () => {
   const { toast } = useToast();
 
   // 1. Define your form.
-  const form = useForm<TFranchiseFormSchema>({
-    resolver: zodResolver(franchiseFormSchema),
+  const form = useForm<TSchemaFranchiseForm>({
+    resolver: zodResolver(SchemaFranchiseForm),
   });
 
-  const onSubmit = async (data: TFranchiseFormSchema) => {
+  const onSubmit = async (data: TSchemaFranchiseForm) => {
     // handle form submission
     console.log(data);
 

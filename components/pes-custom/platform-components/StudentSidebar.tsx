@@ -12,8 +12,8 @@ import { StudentIcon } from "@/components/pes-custom/icons/StudentIcon";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ScheduleIcon } from "./icons/ScheduleIcon";
-import { LeaderboardIcon } from "./icons/LeaderboardIcon";
+import { ScheduleIcon } from "../icons/ScheduleIcon";
+import { LeaderboardIcon } from "../icons/LeaderboardIcon";
 
 const StudentSidebar = () => {
   // Get the current pathname

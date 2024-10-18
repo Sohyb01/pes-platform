@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { Employee } from "@/lib/types";
+import { Employee } from "@/lib/types-backend-data";
 import {
   AlertDialog,
   AlertDialogAction,

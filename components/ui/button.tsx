@@ -29,6 +29,7 @@ const buttonVariants = cva(
         lg: "h-11 rounded-md px-8 gap-2",
         icon: "h-10 w-10",
         sorting: "p-0",
+        link: "p-0 bg-transparent hover:bg-transparent border-transparent",
       },
     },
     defaultVariants: {

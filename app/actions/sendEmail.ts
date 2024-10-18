@@ -1,9 +1,9 @@
 "use server";
 
-import { TContactFormSchema } from "@/lib/common-types";
+import { TSchemaContactForm } from "@/lib/types-forms";
 import { Resend } from "resend";
 
-export const sendEmail = async (data: TContactFormSchema) => {
+export const sendEmail = async (data: TSchemaContactForm) => {
   const resend = new Resend(`${process.env.RESEND_API_KEY}`);
 
   console.log("data: ", data);

@@ -1,7 +1,7 @@
 import { studentsColumns } from "@/components/pes-custom/table-columns/studentsColumns";
 import { DataTable } from "@/components/ui/data-table";
 import { students } from "@/lib/data";
-import { Student } from "@/lib/types";
+import { Student } from "@/lib/types-backend-data";
 import React from "react";
 
 async function getData(): Promise<Student[]> {

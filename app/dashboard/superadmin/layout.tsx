@@ -1,6 +1,6 @@
-import { SuperadminDashboadBreadcrumb } from "@/components/pes-custom/SuperadminDashboardBreadcrumb";
-import SuperadminNavbar from "@/components/pes-custom/SuperadminNavbar";
-import SuperadminSidebar from "@/components/pes-custom/SuperadminSidebar";
+import { SuperadminDashboadBreadcrumb } from "@/components/pes-custom/platform-components/SuperadminDashboardBreadcrumb";
+import SuperadminNavbar from "@/components/pes-custom/platform-components/SuperadminNavbar";
+import SuperadminSidebar from "@/components/pes-custom/platform-components/SuperadminSidebar";
 
 export default function RootLayout({
   children,

@@ -1,5 +1,5 @@
-import MainCTALink from "@/components/pes-custom/MainCTALink";
-import WhatsappCTAButton from "@/components/pes-custom/WhatsappCTAButton";
+import MainCTALink from "@/components/pes-custom/website-components/MainCTALink";
+import WhatsappCTAButton from "@/components/pes-custom/website-components/WhatsappCTAButton";
 import Image from "next/image";
 import React from "react";
 

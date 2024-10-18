@@ -1,4 +1,4 @@
-import MainCTALink from "@/components/pes-custom/MainCTALink";
+import MainCTALink from "@/components/pes-custom/website-components/MainCTALink";
 import Image from "next/image";
 import React from "react";
 

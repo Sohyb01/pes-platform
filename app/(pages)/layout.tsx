@@ -1,4 +1,4 @@
-import Footer from "@/components/pes-custom/Footer";
+import Footer from "@/components/pes-custom/website-components/Footer";
 import WebsiteNavbar from "@/components/pes-custom/WebsiteNavbar";
 
 export default function RootLayout({

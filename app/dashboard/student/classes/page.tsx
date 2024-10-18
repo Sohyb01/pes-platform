@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 
 import { Badge } from "@/components/ui/badge";
-import { BadgeLink } from "@/components/pes-custom/BadgeLink";
+import { BadgeLink } from "@/components/pes-custom/platform-components/BadgeLink";
 import { TimeIcon } from "@/components/pes-custom/icons/TimeIcon";
 import { ProgramIcon } from "@/components/pes-custom/icons/ProgramIcon";
 import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";

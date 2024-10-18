@@ -8,15 +8,15 @@ import { AlignLeft, Search } from "lucide-react";
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import { CertificateIcon } from "./icons/CertificateIcon";
-import { ClassIcon } from "./icons/ClassIcon";
-import { MaterialIcon } from "./icons/MaterialIcon";
-import { MeetingIcon } from "./icons/MeetingIcon";
-import { QuizIcon } from "./icons/QuizIcon";
-import { StudentIcon } from "./icons/StudentIcon";
-import { AssignmentIcon } from "./icons/AssignmentIcon";
+import { CertificateIcon } from "../icons/CertificateIcon";
+import { ClassIcon } from "../icons/ClassIcon";
+import { MaterialIcon } from "../icons/MaterialIcon";
+import { MeetingIcon } from "../icons/MeetingIcon";
+import { QuizIcon } from "../icons/QuizIcon";
+import { StudentIcon } from "../icons/StudentIcon";
+import { AssignmentIcon } from "../icons/AssignmentIcon";
 import { usePathname } from "next/navigation";
-import { InfoCircleIcon } from "./icons/InfoCircleIcon";
+import { InfoCircleIcon } from "../icons/InfoCircleIcon";
 
 import {
   CommandDialog,
@@ -37,8 +37,8 @@ import {
   User,
 } from "lucide-react";
 import { UserNav } from "./UserNav";
-import { ScheduleIcon } from "./icons/ScheduleIcon";
-import { LeaderboardIcon } from "./icons/LeaderboardIcon";
+import { ScheduleIcon } from "../icons/ScheduleIcon";
+import { LeaderboardIcon } from "../icons/LeaderboardIcon";
 
 const StudentNavbar = () => {
   // Search functionality

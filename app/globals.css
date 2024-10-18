@@ -198,3 +198,13 @@
 .vertical-divider{
   @apply h-full w-[1px] bg-border
 }
+
+.file-upload{
+  @apply text-muted-foreground
+}
+.file-upload::-webkit-file-upload-button{
+  @apply bg-primary text-primary-foreground
+}
+.file-upload::-webkit-file-selector-button{
+  @apply bg-primary text-primary-foreground
+}

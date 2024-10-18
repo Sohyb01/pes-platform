@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { buttonVariants } from "../ui/button";
+import { buttonVariants } from "../../ui/button";
 
 const MainCTALink = () => {
   return (
