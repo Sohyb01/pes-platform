@@ -15,7 +15,10 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/components/hooks/use-toast";
-import { SchemaContactForm, TSchemaPendingInstructor } from "@/lib/types-forms";
+import {
+  FormSchemaPendingInstructor,
+  TFormSchemaPendingInstructor,
+} from "@/lib/types-forms";
 import {
   Select,
   SelectContent,
@@ -28,11 +31,11 @@ import { Textarea } from "@/components/ui/textarea";
 const FormPendingInstructor = () => {
   const { toast } = useToast();
   // 1. Define your form.
-  const form = useForm<TSchemaPendingInstructor>({
-    resolver: zodResolver(SchemaContactForm),
+  const form = useForm<TFormSchemaPendingInstructor>({
+    resolver: zodResolver(FormSchemaPendingInstructor),
   });
 
-  const onSubmit = async (data: TSchemaPendingInstructor) => {
+  const onSubmit = async (data: TFormSchemaPendingInstructor) => {
     // handle form submission
     console.log(data);
     toast({
@@ -57,7 +60,7 @@ const FormPendingInstructor = () => {
             </FormItem>
           )}
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 gap-y-8">
           <FormField
             control={form.control}
             name="pinstructor_age"
@@ -65,7 +68,7 @@ const FormPendingInstructor = () => {
               <FormItem>
                 <FormLabel>Age</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

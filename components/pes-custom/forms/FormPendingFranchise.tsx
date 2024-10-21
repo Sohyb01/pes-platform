@@ -15,17 +15,20 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/components/hooks/use-toast";
-import { SchemaFranchiseForm, TSchemaFranchiseForm } from "@/lib/types-forms";
+import {
+  FormSchemaFranchiseForm,
+  TFormSchemaFranchiseForm,
+} from "@/lib/types-forms";
 
 const FranchisePageForm = () => {
   const { toast } = useToast();
 
   // 1. Define your form.
-  const form = useForm<TSchemaFranchiseForm>({
-    resolver: zodResolver(SchemaFranchiseForm),
+  const form = useForm<TFormSchemaFranchiseForm>({
+    resolver: zodResolver(FormSchemaFranchiseForm),
   });
 
-  const onSubmit = async (data: TSchemaFranchiseForm) => {
+  const onSubmit = async (data: TFormSchemaFranchiseForm) => {
     // handle form submission
     console.log(data);
 

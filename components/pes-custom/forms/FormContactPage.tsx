@@ -16,17 +16,20 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { useToast } from "@/components/hooks/use-toast";
-import { SchemaContactForm, TSchemaContactForm } from "@/lib/types-forms";
+import {
+  FormSchemaContactForm,
+  TFormSchemaContactForm,
+} from "@/lib/types-forms";
 
 const ContactPageForm = () => {
   const { toast } = useToast();
 
   // 1. Define your form.
-  const form = useForm<TSchemaContactForm>({
-    resolver: zodResolver(SchemaContactForm),
+  const form = useForm<TFormSchemaContactForm>({
+    resolver: zodResolver(FormSchemaContactForm),
   });
 
-  const onSubmit = async (data: TSchemaContactForm) => {
+  const onSubmit = async (data: TFormSchemaContactForm) => {
     // handle form submission
     console.log(data);
 

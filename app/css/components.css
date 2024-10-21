@@ -54,3 +54,6 @@
 .pes-grid-form{
     @apply grid grid-cols-1 md:grid-cols-2 gap-8 w-full pt-8 lg:max-w-[60rem]
 }
+.dashboard-tab-wrapper{
+  @apply flex w-full flex-col gap-4
+}

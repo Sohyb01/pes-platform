@@ -164,9 +164,6 @@
   /* stroke: hsl(var(--primary)); */
   /* fill: var(--background); */
 }
-.dashboard-tab-wrapper{
-  @apply flex w-full flex-col gap-4
-}
 
 /* Headers */
 .text-h1-website{
@@ -207,4 +204,7 @@
 }
 .file-upload::-webkit-file-selector-button{
   @apply bg-primary text-primary-foreground
+}
+.rdp-vhidden {
+  @apply hidden;
 }

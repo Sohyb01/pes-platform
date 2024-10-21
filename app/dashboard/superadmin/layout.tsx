@@ -15,7 +15,7 @@ export default function RootLayout({
       <div className="flex w-full overflow-hidden dashboard-sizing">
         <SuperadminSidebar />
         {/* Main Content */}
-        <main className="w-full flex flex-col gap-8 p-4 md:p-8 dashboard-sizing overflow-scroll bg-shade">
+        <main className="w-full flex flex-col gap-8 p-4 md:p-8 lg:px-12 dashboard-sizing overflow-scroll bg-shade">
           <SuperadminDashboadBreadcrumb />
           {children}
         </main>
