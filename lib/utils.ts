@@ -61,26 +61,26 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // File Validation
-export const MAX_FILE_SIZE_5MB = 5 * 1024 * 1024;
+export const MAX_FILE_SIZE_5MB = 5242880;
 
-export function checkCVFileType(file: File) {
-  if (file?.name) {
-    const fileType = file.name.split(".").pop();
-    if (fileType === "docx" || fileType === "pdf") return true;
-  }
+export function checkCVFileType(filename: string | undefined) {
+  if (filename == undefined) return true; // The outside function will always return false if this value is undefined anyway
+
+  const fileType = filename.split(".").pop();
+  if (fileType === "docx" || fileType === "pdf") return true;
   return false;
 }
 
-export function checkImageFileType(file: File) {
-  if (file?.name) {
-    const fileType = file.name.split(".").pop();
-    if (
-      fileType === "webp" ||
-      fileType === "png" ||
-      fileType === "jpg" ||
-      fileType === "jpeg"
-    )
-      return true;
-  }
+export function checkImageFileType(filename: string, required: boolean) {
+  if (!required) return true;
+  if (filename == undefined) return false;
+  const fileType = filename.split(".").pop();
+  if (
+    fileType === "webp" ||
+    fileType === "png" ||
+    fileType === "jpg" ||
+    fileType === "jpeg"
+  )
+    return true;
   return false;
 }

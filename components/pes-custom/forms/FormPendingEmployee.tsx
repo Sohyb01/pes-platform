@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import {
   Form,
   FormControl,
@@ -14,10 +13,6 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  FormSchemaAddInstructor,
-  TFormSchemaAddInstructor,
-} from "@/lib/types-forms";
 import {
   Select,
   SelectContent,
@@ -34,44 +29,50 @@ import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
+import {
+  FormSchemaPendingEmployee,
+  TFormSchemaPendingEmployee,
+} from "@/lib/types-forms";
+import { Textarea } from "@/components/ui/textarea";
 
-const FormAddInstructor = () => {
+const FormPendingEmployee = () => {
   const { toast } = useToast();
 
   const defaultValues = {
-    employee_nid: "",
-    employee_name: "",
-    employee_dateofbirth: undefined,
-    employee_gender: "",
-    employee_dateofjoin: undefined,
-    employee_email: "",
-    employee_address: "",
-    employee_mobile: "",
-    employee_whatsapp: "",
-    employee_password: "",
-    employee_roleid: "Instructor",
-    employee_experience: null,
-    instructor_cv: null,
-    instructor_faculty: "",
-    instructor_major: "",
-    employee_img: null,
+    pemployee_nid: "",
+    pemployee_name: "",
+    pemployee_dateofbirth: undefined,
+    pemployee_gender: "",
+    pemployee_dateofjoin: new Date(),
+    pemployee_email: "",
+    pemployee_address: "",
+    pemployee_mobile: "",
+    pemployee_whatsapp: "",
+    pemployee_password: "",
+    pemployee_roleid: "Instructor",
+    pemployee_experience: null,
+    pemployee_cv: null,
+    pemployee_faculty: "",
+    pemployee_major: "",
+    pemployee_img: null,
+    pemployee_why_pes: "",
   };
-  // 1. Define your form.
 
-  const form = useForm<TFormSchemaAddInstructor>({
-    resolver: zodResolver(FormSchemaAddInstructor),
+  // 1. Define your form.
+  const form = useForm<TFormSchemaPendingEmployee>({
+    resolver: zodResolver(FormSchemaPendingEmployee),
     defaultValues,
   });
 
-  const cvRef = form.register("instructor_cv");
-  const imgRef = form.register("employee_img");
-  const experienceRef = form.register("employee_experience");
+  const cvRef = form.register("pemployee_cv");
+  const imgRef = form.register("pemployee_img");
 
-  const onSubmit = async (data: TFormSchemaAddInstructor) => {
+  const onSubmit = async (data: TFormSchemaPendingEmployee) => {
     // handle form submission
     console.log(data);
     toast({
-      title: "Employee added successfully!",
+      title: "Thank you for applying!",
+      description: "We will contact you soon.",
     });
     form.reset(defaultValues);
   };
@@ -81,7 +82,7 @@ const FormAddInstructor = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="pes-grid-form">
         <FormField
           control={form.control}
-          name="employee_nid"
+          name="pemployee_nid"
           render={({ field }) => (
             <FormItem>
               <FormLabel>National ID</FormLabel>
@@ -94,7 +95,7 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="employee_name"
+          name="pemployee_name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Full name</FormLabel>
@@ -108,7 +109,7 @@ const FormAddInstructor = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-4 h-full">
           <FormField
             control={form.control}
-            name="employee_dateofbirth"
+            name="pemployee_dateofbirth"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Date of birth</FormLabel>
@@ -154,7 +155,7 @@ const FormAddInstructor = () => {
           />
           <FormField
             control={form.control}
-            name="employee_gender"
+            name="pemployee_gender"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Gender</FormLabel>
@@ -177,62 +178,28 @@ const FormAddInstructor = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-4 h-full">
           <FormField
             control={form.control}
-            name="employee_dateofjoin"
-            render={({ field }) => (
+            name="pemployee_cv"
+            render={() => (
               <FormItem>
-                <FormLabel>Date of join</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={"outline"}
-                        size={"input"}
-                        className={cn(
-                          "pl-3 text-left font-normal w-full",
-                          !field.value && "text-muted-foreground"
-                        )}
-                      >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <div>Pick a date</div>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent
-                    side="bottom"
-                    className="w-auto p-0"
-                    align="start"
-                  >
-                    <Calendar
-                      mode="single"
-                      captionLayout="dropdown-buttons"
-                      fromYear={2020}
-                      toYear={new Date().getFullYear()}
-                      defaultMonth={new Date()}
-                      selected={field.value}
-                      disabled={(date) =>
-                        date > new Date() || date < new Date("2020-01-01")
-                      }
-                      onSelect={field.onChange}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
+                <FormLabel>Upload your CV</FormLabel>
+                <FormControl>
+                  <Input type="file" className="file-upload" {...cvRef} />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
           <FormField
             control={form.control}
-            name="instructor_cv"
+            name="pemployee_img"
             render={() => (
               <FormItem>
-                <FormLabel>CV</FormLabel>
+                <FormLabel>
+                  Picture of you{" "}
+                  <span className="text-muted-foreground">(Optional)</span>
+                </FormLabel>
                 <FormControl>
-                  <Input type="file" className="file-upload" {...cvRef} />
+                  <Input type="file" className="file-upload" {...imgRef} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -241,7 +208,7 @@ const FormAddInstructor = () => {
         </div>
         <FormField
           control={form.control}
-          name="employee_email"
+          name="pemployee_email"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
@@ -254,7 +221,7 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="employee_mobile"
+          name="pemployee_mobile"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Phone number</FormLabel>
@@ -267,7 +234,7 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="employee_whatsapp"
+          name="pemployee_whatsapp"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Whatsapp</FormLabel>
@@ -280,7 +247,7 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="instructor_faculty"
+          name="pemployee_faculty"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Faculty</FormLabel>
@@ -293,7 +260,7 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="instructor_major"
+          name="pemployee_major"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Major</FormLabel>
@@ -306,20 +273,7 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="employee_password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="employee_address"
+          name="pemployee_address"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Address</FormLabel>
@@ -330,47 +284,28 @@ const FormAddInstructor = () => {
             </FormItem>
           )}
         />
-        <div className="text-large col-span-1 md:col-span-2">
-          Optional fields
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-4">
-          <FormField
-            control={form.control}
-            name="employee_experience"
-            render={() => (
-              <FormItem>
-                <FormLabel>Experience</FormLabel>
-                <FormControl>
-                  <Input
-                    type="file"
-                    className="file-upload"
-                    {...experienceRef}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="employee_img"
-            render={() => (
-              <FormItem>
-                <FormLabel>Picture</FormLabel>
-                <FormControl>
-                  <Input type="file" className="file-upload" {...imgRef} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+        <FormField
+          control={form.control}
+          name="pemployee_why_pes"
+          render={({ field }) => (
+            <FormItem className="col-span-1 md:col-span-2">
+              <FormLabel>
+                Why are you interested in working at PES?{" "}
+                <span className="text-muted-foreground">(Optional)</span>
+              </FormLabel>
+              <FormControl>
+                <Textarea className="resize-none" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <Button type="submit" className="md:col-span-2">
-          Add Employee
+          Submit application
         </Button>
       </form>
     </Form>
   );
 };
 
-export default FormAddInstructor;
+export default FormPendingEmployee;
