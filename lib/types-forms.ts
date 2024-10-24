@@ -397,22 +397,22 @@ export const FormSchemaAddEmployee = z.object({
     .min(1, { message: "Required" })
     .max(100)
     .nullish(), // Optional father/husband name
-  employee_experience: z
-    .any()
-    // Use this to valdidate if a file is not required
-    .refine((files) => {
-      if (files?.length == 0) return true;
-      if (files[0]?.size < MAX_FILE_SIZE_5MB) {
-        return true;
-      } else return false;
-    }, "File is too big! Max 5MB")
-    .refine((files) => {
-      if (typeof files == undefined) return true;
-      if (checkCVFileType(files[0]?.name)) {
-        return true;
-      } else return false;
-    }, "Only .pdf, .docx formats are supported.")
-    .nullish(),
+  // employee_experience: z
+  //   .any()
+  //   // Use this to valdidate if a file is not required
+  //   .refine((files) => {
+  //     if (files?.length == 0) return true;
+  //     if (files[0]?.size < MAX_FILE_SIZE_5MB) {
+  //       return true;
+  //     } else return false;
+  //   }, "File is too big! Max 5MB")
+  //   .refine((files) => {
+  //     if (typeof files == undefined) return true;
+  //     if (checkCVFileType(files[0]?.name)) {
+  //       return true;
+  //     } else return false;
+  //   }, "Only .pdf, .docx formats are supported.")
+  //   .nullish(),
   employee_religion: z
     .string()
     .trim()

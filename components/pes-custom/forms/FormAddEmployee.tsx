@@ -19,7 +19,7 @@ const FormAddEmployee = () => {
   return (
     <div className="flex flex-col gap-4">
       {/* Select employee type */}
-      <div className="flex gap-4 items-center pt-4">
+      <div className="flex gap-4 items-center pt-4 pb-8 border-b-border border-b-[1px]">
         Select employee type
         <Select onValueChange={(e) => setEmployeeType(e)}>
           <SelectTrigger className="w-[12rem]">

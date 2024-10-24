@@ -39,6 +39,7 @@ const FormAddInstructor = () => {
   const { toast } = useToast();
 
   const defaultValues = {
+    // All employees
     employee_nid: "",
     employee_name: "",
     employee_dateofbirth: undefined,
@@ -51,10 +52,11 @@ const FormAddInstructor = () => {
     employee_password: "",
     employee_roleid: "Instructor",
     employee_experience: null,
+    employee_img: null,
+    // Instructor only
     instructor_cv: null,
     instructor_faculty: "",
     instructor_major: "",
-    employee_img: null,
   };
   // 1. Define your form.
 
@@ -65,7 +67,7 @@ const FormAddInstructor = () => {
 
   const cvRef = form.register("instructor_cv");
   const imgRef = form.register("employee_img");
-  const experienceRef = form.register("employee_experience");
+  // const experienceRef = form.register("employee_experience");
 
   const onSubmit = async (data: TFormSchemaAddInstructor) => {
     // handle form submission
@@ -79,6 +81,7 @@ const FormAddInstructor = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="pes-grid-form">
+        <div className="col-span-1 md:col-span-2 text-h3">New Instructor</div>
         <FormField
           control={form.control}
           name="employee_nid"
@@ -119,7 +122,7 @@ const FormAddInstructor = () => {
                         variant={"outline"}
                         size={"input"}
                         className={cn(
-                          "pl-3 text-left font-normal w-full",
+                          "pl-3 text-left font-normal w-full bg-muted/20",
                           !field.value && "text-muted-foreground"
                         )}
                       >
@@ -188,7 +191,7 @@ const FormAddInstructor = () => {
                         variant={"outline"}
                         size={"input"}
                         className={cn(
-                          "pl-3 text-left font-normal w-full",
+                          "pl-3 text-left font-normal w-full bg-muted/20",
                           !field.value && "text-muted-foreground"
                         )}
                       >
@@ -330,11 +333,7 @@ const FormAddInstructor = () => {
             </FormItem>
           )}
         />
-        <div className="text-large col-span-1 md:col-span-2">
-          Optional fields
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-4">
-          <FormField
+        {/* <FormField
             control={form.control}
             name="employee_experience"
             render={() => (
@@ -350,21 +349,23 @@ const FormAddInstructor = () => {
                 <FormMessage />
               </FormItem>
             )}
-          />
-          <FormField
-            control={form.control}
-            name="employee_img"
-            render={() => (
-              <FormItem>
-                <FormLabel>Picture</FormLabel>
-                <FormControl>
-                  <Input type="file" className="file-upload" {...imgRef} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
+          /> */}
+        <FormField
+          control={form.control}
+          name="employee_img"
+          render={() => (
+            <FormItem>
+              <FormLabel>
+                Picture{" "}
+                <span className="text-muted-foreground">(Optional)</span>
+              </FormLabel>
+              <FormControl>
+                <Input type="file" className="file-upload" {...imgRef} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <Button type="submit" className="md:col-span-2">
           Add Employee
         </Button>

@@ -26,10 +26,8 @@ import { AlertDialogAction } from "@/components/ui/alert-dialog";
 export function UserNav() {
   const { toast } = useToast();
   const LogOut = () => {
-    console.log("Logging out");
     toast({
-      title: "Scheduled: Catch up",
-      description: "Friday, February 10, 2023 at 5:57 PM",
+      title: "Logged out successfully.",
     });
   };
 

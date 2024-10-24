@@ -120,7 +120,7 @@ const FormPendingEmployee = () => {
                         variant={"outline"}
                         size={"input"}
                         className={cn(
-                          "pl-3 text-left font-normal w-full",
+                          "pl-3 text-left font-normal w-full bg-muted/20",
                           !field.value && "text-muted-foreground"
                         )}
                       >
