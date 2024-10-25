@@ -284,7 +284,7 @@ export const FormSchemaAddStudent = z.object({
   student_referralcode: z.string().max(50).optional(),
   student_totalsibs: z.string().trim().min(1, "Required").max(50),
   student_additionalnotes: z.string().max(50).optional(),
-  student_email: z.string().trim().min(1, "Required").max(50),
+  student_email: z.string().email().trim().min(1, "Required").max(50),
   student_password: z.string().trim().min(1, "Required").max(256),
   student_familyid: z.string().max(50).optional(),
 });
