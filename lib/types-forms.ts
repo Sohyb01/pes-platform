@@ -177,48 +177,30 @@ export type TFormSchemaRegisterParent = z.infer<
   typeof FormSchemaRegisterParent
 >;
 
-export const FormSchemaRegisterStudent = z.object({
-  student_nid: z.string().max(50),
-  student_name: z.string().max(100),
-  student_email: z.string().email().max(100),
-  student_password: z.string().min(8), // Minimum length for passwords
-  gender: z.string().max(10), // Adjust based on expected values
-  student_registration_no: z.string().max(50),
-  student_dateofbirth: z.string().max(50), // Adjust as per date format
-  student_address: z.string().max(200),
-  student_mobile: z.string().max(15), // Adjust as needed for mobile format
-  student_whatsappnum: z.string().max(15).nullish().default(""), // Optional
-  student_pic: z
-    .any()
-    .refine((file: File) => file?.size !== 0, "File is required")
-    .refine(
-      (file) => file?.size < 0 && file?.size < MAX_FILE_SIZE_5MB,
-      "Max size is 5MB."
-    )
-    .refine(
-      (file) => checkCVFileType(file),
-      "Only .webp, .png, .jpg, ,jpeg formats are supported."
-    ),
-  student_prevschool: z.string().max(100).nullish().default(""), // Optional
-  student_religion: z.string().max(50).nullish().default(""), // Optional
-  student_diseases: z.string().max(200).nullish().default(""), // Optional
-  student_laptop: z.string().max(50).nullish().default(""), // Optional
-  timezone: z.string().max(50).nullish().default("UTC"), // Optional
-  language: z.string().max(50).nullish().default("English"), // Optional
-  orphan: z.boolean().nullish().default(false), // Optional
-  theme: z.string().max(50).nullish().default("light"), // Optional
-  student_bloodgroup: z.string().max(10).nullish().default(""), // Optional
-  student_feediscount: z.string().max(50).nullish().default(""), // Optional
-  student_referralcode: z.string().max(50).nullish().default(""), // Optional
-  student_totalsibs: z.number().int().nonnegative().nullish().default(0), // Optional
-  student_additionalnotes: z.string().max(500).nullish().default(""), // Optional
-  student_familyid: z.string(), // Assuming family ID is a string
-  isactive: z.boolean().nullish().default(true), // Optional
+export const FormSchemaAddParent = z.object({
+  parent_nid: z.string().max(50),
+  parent_name: z.string().max(50),
+  parent_email: z.string().max(50),
+  parent_phone: z.string().max(50),
+  gender: z.string().max(50),
+  joined_date: z.string().max(50),
+  parent_address: z.string().max(50),
+  is_active: z.string().max(50),
+  language: z.string().max(50),
+  timezone: z.string().max(50),
+  theme: z.string().max(50),
+  parent_promocode: z.string().max(50),
+  parent_numofchildren: z.string().max(50),
+  parent_password: z.string().max(50),
+  username: z.string().max(50),
+  // Optional
+  parent_education: z.string().max(50).optional(),
+  parent_profession: z.string().max(50).optional(),
+  parent_occupation: z.string().max(50).optional(),
+  parent_income: z.string().max(50).optional(),
+  parent_photo: z.string().max(50).optional(),
+  parent_referral: z.string().max(50).optional(),
 });
-
-export type TFormSchemaRegisterStudent = z.infer<
-  typeof FormSchemaRegisterStudent
->;
 
 export const FormSchemaLogin = z.object({
   email: z.string().email().max(100).nullish(), // Optional email field
@@ -273,42 +255,38 @@ export const FormSchemaPendingSchool = z.object({
 export type TFormSchemaPendingSchool = z.infer<typeof FormSchemaPendingSchool>;
 
 export const FormSchemaAddStudent = z.object({
-  student_nid: z.string().max(50), // Required student NID
-  student_name: z.string().max(100), // Required student name
-  gender: z.string().max(10), // Required gender
-  student_dateofbirth: z.string().max(50), // Required date of birth
-  student_address: z.string().max(200), // Required address
-  student_mobile: z.string().max(15), // Required mobile number
-  student_whatsappnum: z.string().max(15), // Required WhatsApp number
+  student_nid: z.string().trim().min(1, "Required").max(50),
+  student_name: z.string().trim().min(1, "Required").max(50),
+  gender: z.string().trim().min(1, "Required").max(50),
+  student_dateofbirth: z.date().optional(),
+  student_address: z.string().optional(),
+  student_mobile: z.string().trim().min(1, "Required").max(50),
+  student_whatsappnum: z.string().max(50).optional(),
   student_pic: z
     .any()
-    .refine((file: File) => file?.size !== 0, "File is required")
     .refine(
-      (file) => file?.size < 0 && file?.size < MAX_FILE_SIZE_5MB,
-      "Max size is 5MB."
+      (files) => checkImageFileType(files[0]?.name, false),
+      "Please upload an image under 5MB (webp, png, jpg)"
     )
-    .refine(
-      (file) => checkCVFileType(file),
-      "Only .webp, .png, .jpg, ,jpeg formats are supported."
-    ),
-  student_dateofadmission: z.string().max(50), // Required date of admission
-  student_prevschool: z.string().max(100), // Required previous school
-  student_religion: z.string().max(50), // Required religion
-  student_diseases: z.string().max(200), // Required diseases
-  student_laptop: z.string().max(50), // Required laptop info
-  timezone: z.string().max(50), // Required timezone
-  language: z.string().max(50), // Required language
-  orphan: z.boolean().nullish(), // Optional orphan status
-  isactive: z.boolean().nullish(), // Optional active status
-  theme: z.string().max(50), // Required theme
-  student_bloodgroup: z.string().max(10), // Required blood group
-  student_feediscount: z.string().max(50).nullish(), // Optional fee discount
-  student_referralcode: z.string().max(50).nullish(), // Optional referral code
-  student_totalsibs: z.number().int().nonnegative().nullish(), // Optional number of siblings
-  student_additionalnotes: z.string().max(500).nullish(), // Optional additional notes
-  student_email: z.string().email().max(100), // Required email
-  student_password: z.string().min(8), // Required password with minimum length
-  student_familyid: z.string().nullish(), // Optional family ID
+    .nullish(),
+  student_dateofadmission: z.date(),
+  student_prevschool: z.string().max(50).optional(),
+  student_religion: z.string().max(50).optional(),
+  student_diseases: z.string().optional(),
+  student_laptop: z.string().trim().min(1, "Required").max(50),
+  timezone: z.string().max(50).optional(),
+  language: z.string().max(50).optional(),
+  orphan: z.string().max(50).optional(),
+  isactive: z.string().trim().min(1, "Required").max(50),
+  theme: z.string().max(50).optional(),
+  student_bloodgroup: z.string().max(50).optional(),
+  student_feediscount: z.string().max(50).optional(),
+  student_referralcode: z.string().max(50).optional(),
+  student_totalsibs: z.string().trim().min(1, "Required").max(50),
+  student_additionalnotes: z.string().max(50).optional(),
+  student_email: z.string().trim().min(1, "Required").max(50),
+  student_password: z.string().trim().min(1, "Required").max(256),
+  student_familyid: z.string().max(50).optional(),
 });
 
 export type TFormSchemaAddStudent = z.infer<typeof FormSchemaAddStudent>;
@@ -396,7 +374,7 @@ export const FormSchemaAddEmployee = z.object({
     .trim()
     .min(1, { message: "Required" })
     .max(100)
-    .nullish(), // Optional father/husband name
+    .nullish(),
   // employee_experience: z
   //   .any()
   //   // Use this to valdidate if a file is not required
