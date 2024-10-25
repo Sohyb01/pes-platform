@@ -454,27 +454,38 @@ export const FormSchemaAddEmployee = z.object({
     .default("light"),
 });
 
-export const BasePropertiesAdmin = z.object({
-  admin_position: z
-    .string()
-    .trim()
-    .min(1, { message: "Required" })
-    .max(50)
-    .nullish()
-    .default("Manager"),
+export const FormSchemaAddAdmin = z.object({
+  nid: z.string().trim().min(1, { message: "Required" }).max(50), // Represents the `nid` from data.get('nid')
+  user_type: z.string().max(50).optional(), // Represents the `user_role` from data.get('user_type')
+  employee_name: z.string().trim().min(1, { message: "Required" }).max(50), // Represents the `admin_name` mapped from data['employee_name']
+  language: z.string().trim().min(1, { message: "Required" }).max(50),
+  admin_position: z.string().trim().min(1, { message: "Required" }).max(50),
+  timezone: z.string().trim().min(1, { message: "Required" }).max(50),
+  joined_date: z.date(),
+  admin_password: z.string().min(8).max(255), // Validates password length
+  username: z.string().trim().min(1, { message: "Required" }).max(50), // Represents `admin_username`
+  currency: z.string().trim().min(1, { message: "Required" }).max(50),
+  theme: z.string().trim().min(1, { message: "Required" }).max(50),
+  branch_id: z.string().trim().min(1, { message: "Required" }).max(50),
 });
-
-export const FormSchemaAddAdmin =
-  FormSchemaAddEmployee.merge(BasePropertiesAdmin);
 
 export type TFormSchemaAddAdmin = z.infer<typeof FormSchemaAddAdmin>;
 
-export const BasePropertiesInstructor = z.object({
-  instructor_faculty: z
+export const FormSchemaAddInstructor = z.object({
+  user_type: z
     .string()
-    .trim()
     .min(1, { message: "Required" })
-    .max(100),
+    .max(50)
+    .default("Instructor"), // Represents `user_role`, will be set by the form itself
+  nid: z.string().min(1, { message: "Required" }).max(50), // Represents `instructor_nid`
+  employee_name: z.string().min(1, { message: "Required" }).max(50), // Represents `instructor_fullname`
+  instructor_age: z.string().min(1, { message: "Required" }).max(50), // String to match the model's age field
+  employee_email: z.string().email(), // Represents `instructor_email`
+  employee_mobilenum: z.string().min(1, { message: "Required" }).max(50), // Represents `instructor_phonenum`
+  gender: z.string().min(1, { message: "Required" }).max(50), // Represents `instructor_gender`
+  instructor_whatsapp: z.string().min(1, { message: "Required" }).max(50),
+  instructor_faculty: z.string().min(1, { message: "Required" }).max(50),
+  joined_date: z.date(),
   instructor_cv: z
     .any()
     .refine((files) => files && files?.length, "Required")
@@ -486,12 +497,19 @@ export const BasePropertiesInstructor = z.object({
       (files) => files && checkCVFileType(files[0]?.name),
       "Only .pdf, .docx formats are supported."
     ),
-  instructor_major: z.string().trim().min(1, { message: "Required" }).max(100),
+  instructor_experience: z.string().min(1, { message: "Required" }).max(50),
+  instructor_picture: z
+    .any()
+    .refine(
+      (files) => checkImageFileType(files[0]?.name, false),
+      "Please upload an image under 5MB (webp, png, jpg)"
+    )
+    .nullish(),
+  instructor_major: z.string().min(1, { message: "Required" }).max(50),
+  instructor_password: z.string().min(1, { message: "Required" }).max(255), // Password validation
+  theme: z.string().max(50),
+  username: z.string().max(50),
 });
-
-export const FormSchemaAddInstructor = FormSchemaAddEmployee.merge(
-  BasePropertiesInstructor
-);
 
 export type TFormSchemaAddInstructor = z.infer<typeof FormSchemaAddInstructor>;
 

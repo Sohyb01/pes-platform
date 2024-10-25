@@ -34,29 +34,29 @@ import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
+import { Textarea } from "@/components/ui/textarea";
 
 const FormAddInstructor = () => {
   const { toast } = useToast();
 
   const defaultValues = {
-    // All employees
-    employee_nid: "",
+    user_type: "Instructor",
+    nid: "",
     employee_name: "",
-    employee_dateofbirth: undefined,
-    employee_gender: "",
-    employee_dateofjoin: undefined,
+    instructor_age: "",
     employee_email: "",
-    employee_address: "",
-    employee_mobile: "",
-    employee_whatsapp: "",
-    employee_password: "",
-    employee_roleid: "Instructor",
-    employee_experience: null,
-    employee_img: null,
-    // Instructor only
-    instructor_cv: null,
+    employee_mobilenum: "",
+    gender: "",
+    instructor_whatsapp: "",
     instructor_faculty: "",
+    joined_date: undefined,
+    instructor_cv: null,
+    instructor_experience: "",
+    instructor_picture: null,
     instructor_major: "",
+    instructor_password: "",
+    theme: "",
+    username: "",
   };
   // 1. Define your form.
 
@@ -66,7 +66,7 @@ const FormAddInstructor = () => {
   });
 
   const cvRef = form.register("instructor_cv");
-  const imgRef = form.register("employee_img");
+  const imgRef = form.register("instructor_picture");
   // const experienceRef = form.register("employee_experience");
 
   const onSubmit = async (data: TFormSchemaAddInstructor) => {
@@ -84,7 +84,7 @@ const FormAddInstructor = () => {
         <div className="col-span-1 md:col-span-2 text-h3">New Instructor</div>
         <FormField
           control={form.control}
-          name="employee_nid"
+          name="nid"
           render={({ field }) => (
             <FormItem>
               <FormLabel>National ID</FormLabel>
@@ -111,53 +111,20 @@ const FormAddInstructor = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-4 h-full">
           <FormField
             control={form.control}
-            name="employee_dateofbirth"
+            name="instructor_age"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Date of birth</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={"outline"}
-                        size={"input"}
-                        className={cn(
-                          "pl-3 text-left font-normal w-full bg-muted/20",
-                          !field.value && "text-muted-foreground"
-                        )}
-                      >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <div>Pick a date</div>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent
-                    side="bottom"
-                    className="w-auto p-0"
-                    align="start"
-                  >
-                    <Calendar
-                      mode="single"
-                      captionLayout="dropdown-buttons"
-                      fromYear={1900}
-                      toYear={2020}
-                      selected={field.value}
-                      onSelect={field.onChange}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
+                <FormLabel>Instructor age</FormLabel>
+                <FormControl>
+                  <Input type="number" {...field} />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
           <FormField
             control={form.control}
-            name="employee_gender"
+            name="gender"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Gender</FormLabel>
@@ -180,7 +147,7 @@ const FormAddInstructor = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-4 h-full">
           <FormField
             control={form.control}
-            name="employee_dateofjoin"
+            name="joined_date"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Date of join</FormLabel>
@@ -257,10 +224,10 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="employee_mobile"
+          name="employee_mobilenum"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone number</FormLabel>
+              <FormLabel>Mobile number</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -270,7 +237,7 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="employee_whatsapp"
+          name="instructor_whatsapp"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Whatsapp</FormLabel>
@@ -309,7 +276,7 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="employee_password"
+          name="instructor_password"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Password</FormLabel>
@@ -322,37 +289,20 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="employee_address"
+          name="instructor_experience"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Address</FormLabel>
+            <FormItem className="col-span-1 md:col-span-2">
+              <FormLabel className="text-p">Instructor experience</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Textarea className="resize-none" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        {/* <FormField
-            control={form.control}
-            name="employee_experience"
-            render={() => (
-              <FormItem>
-                <FormLabel>Experience</FormLabel>
-                <FormControl>
-                  <Input
-                    type="file"
-                    className="file-upload"
-                    {...experienceRef}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          /> */}
         <FormField
           control={form.control}
-          name="employee_img"
+          name="instructor_picture"
           render={() => (
             <FormItem>
               <FormLabel>
