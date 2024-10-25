@@ -178,33 +178,42 @@ export type TFormSchemaRegisterParent = z.infer<
 >;
 
 export const FormSchemaAddParent = z.object({
-  parent_nid: z.string().max(50),
-  parent_name: z.string().max(50),
-  parent_email: z.string().max(50),
-  parent_phone: z.string().max(50),
-  gender: z.string().max(50),
-  joined_date: z.string().max(50),
-  parent_address: z.string().max(50),
-  is_active: z.string().max(50),
-  language: z.string().max(50),
-  timezone: z.string().max(50),
-  theme: z.string().max(50),
-  parent_promocode: z.string().max(50),
-  parent_numofchildren: z.string().max(50),
-  parent_password: z.string().max(50),
-  username: z.string().max(50),
-  // Optional
+  nid: z.string().min(1, { message: "Required" }).max(50),
+  name: z.string().min(1, { message: "Required" }).max(50),
+  email: z.string().email().min(1, { message: "Required" }).max(50),
+  phone: z.string().min(1, { message: "Required" }).max(50),
+  password: z.string().min(8).max(255), // Passwords should have a min length for security
+  gender: z.string().min(1, { message: "Required" }).max(50),
   parent_education: z.string().max(50).optional(),
   parent_profession: z.string().max(50).optional(),
   parent_occupation: z.string().max(50).optional(),
   parent_income: z.string().max(50).optional(),
-  parent_photo: z.string().max(50).optional(),
-  parent_referral: z.string().max(50).optional(),
+  parent_address: z.string().min(1, { message: "Required" }).max(50),
+  // Date auto generates
+  photo: z
+    .any()
+    .refine(
+      (files) => checkImageFileType(files[0]?.name, false),
+      "Please upload an image under 5MB (webp, png, jpg)"
+    )
+    .nullish(),
+  is_active: z.string().min(1, { message: "Required" }).max(50),
+  referral: z.string().max(50).optional(),
+  language: z.string().min(1, { message: "Required" }).max(50),
+  timezone: z.string().min(1, { message: "Required" }).max(50),
+  theme: z.string().min(1, { message: "Required" }).max(50),
+  promocode: z.string().min(1, { message: "Required" }).max(50),
+  num_of_children: z.string().min(1, { message: "Required" }).max(50),
+  username: z.string().min(1, { message: "Required" }).max(50),
 });
+
+export default FormSchemaAddParent;
+
+export type TFormSchemaAddParent = z.infer<typeof FormSchemaAddParent>;
 
 export const FormSchemaLogin = z.object({
   email: z.string().email().max(100).nullish(), // Optional email field
-  password: z.string().min(8).nullish(), // Optional password field with minimum length
+  password: z.string().nullish(), // Optional password field with minimum length
   user_type: z.string().max(50).nullish(), // Optional user type field
 });
 

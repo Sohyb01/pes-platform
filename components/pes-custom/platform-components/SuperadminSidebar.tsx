@@ -16,10 +16,11 @@ import { ProgramIcon } from "@/components/pes-custom/icons/ProgramIcon";
 import { ProjectIcon } from "@/components/pes-custom/icons/ProjectIcon";
 import { QuizIcon } from "@/components/pes-custom/icons/QuizIcon";
 import { ReviewIcon } from "@/components/pes-custom/icons/ReviewIcon";
-import { StudentIcon } from "@/components/pes-custom/icons/StudentIcon";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { PersonIcon } from "../icons/PersonIcon";
+import { StudentIcon } from "../icons/StudentIcon";
 
 const SuperadminSidebar = () => {
   // Get the current pathname
@@ -95,6 +96,15 @@ const SuperadminSidebar = () => {
                 size="sm"
               >
                 <StudentIcon /> Students
+              </Button>
+            </Link>
+            <Link href="/dashboard/superadmin/parents">
+              <Button
+                className="sidebar-button"
+                variant={lastSegment == "parents" ? "default" : "outline"}
+                size="sm"
+              >
+                <PersonIcon /> Parents
               </Button>
             </Link>
             <Link href="/dashboard/superadmin/classes">

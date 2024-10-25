@@ -45,6 +45,7 @@ import {
   User,
 } from "lucide-react";
 import { UserNav } from "./UserNav";
+import { PersonIcon } from "../icons/PersonIcon";
 
 const SuperadminNavbar = () => {
   // Search functionality
@@ -147,6 +148,16 @@ const SuperadminNavbar = () => {
                         }
                       >
                         <StudentIcon /> Students
+                      </Button>
+                    </Link>
+                    <Link href="/dashboard/superadmin/parents">
+                      <Button
+                        className="sidebar-button"
+                        variant={
+                          lastSegment == "parents" ? "default" : "outline"
+                        }
+                      >
+                        <PersonIcon /> Parents
                       </Button>
                     </Link>
                     <Link href="/dashboard/superadmin/classes">
