@@ -71,10 +71,7 @@ export function checkCVFileType(filename: string | undefined) {
   return false;
 }
 
-export function checkAttachmentFileType(
-  filename: string | undefined,
-  required: boolean
-) {
+export function checkAttachmentFileType(filename: string | undefined) {
   if (filename == undefined) return true; // The outside function will always return false if this value is undefined anyway
   const fileType = filename.split(".").pop(); // Choose what attachment types are allowed
   if (fileType === "docx" || fileType === "pdf") return true;
