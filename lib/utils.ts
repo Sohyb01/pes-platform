@@ -66,7 +66,17 @@ export const MAX_FILE_SIZE_5MB = 5242880;
 export function checkCVFileType(filename: string | undefined) {
   if (filename == undefined) return true; // The outside function will always return false if this value is undefined anyway
 
-  const fileType = filename.split(".").pop();
+  const fileType = filename.split(".").pop(); // Choose what attachment types are allowed
+  if (fileType === "docx" || fileType === "pdf") return true;
+  return false;
+}
+
+export function checkAttachmentFileType(
+  filename: string | undefined,
+  required: boolean
+) {
+  if (filename == undefined) return true; // The outside function will always return false if this value is undefined anyway
+  const fileType = filename.split(".").pop(); // Choose what attachment types are allowed
   if (fileType === "docx" || fileType === "pdf") return true;
   return false;
 }
@@ -74,7 +84,7 @@ export function checkCVFileType(filename: string | undefined) {
 export function checkImageFileType(filename: string, required: boolean) {
   if (!required) return true;
   if (filename == undefined) return false;
-  const fileType = filename.split(".").pop();
+  const fileType = filename.split(".").pop(); // Choose what attachment types are allowed
   if (
     fileType === "webp" ||
     fileType === "png" ||

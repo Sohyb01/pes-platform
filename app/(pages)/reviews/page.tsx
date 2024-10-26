@@ -3,17 +3,7 @@
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 import {
   Card,
@@ -29,8 +19,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { StarIcon } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/hooks/use-toast";
+import FormLeaveReview from "@/components/pes-custom/forms/FormLeaveReview";
 
 const ReviewsPage = () => {
   return (
@@ -42,43 +31,7 @@ const ReviewsPage = () => {
             <Button variant="default">Leave a Review</Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle>Leave a Review</DialogTitle>
-            </DialogHeader>
-            <div className="grid gap-4 py-4">
-              <div className="flex flex-col items-start w-full gap-2">
-                <Label htmlFor="name" className="text-right">
-                  Full name
-                </Label>
-                <Input id="name" className="col-span-3" />
-              </div>
-              <div className="flex flex-col items-start w-full gap-2">
-                <Label htmlFor="username" className="text-right">
-                  Review
-                </Label>
-                <Textarea
-                  placeholder="Tell us a little bit about your experience"
-                  id="username"
-                  className="col-span-3 resize-none"
-                />
-              </div>
-            </div>
-            <DialogFooter>
-              <DialogClose asChild>
-                <Button
-                  type="submit"
-                  size="sm"
-                  onClick={() => {
-                    toast({
-                      title: "Review submitted succesfully!",
-                      description: "Thank you for leaving a review ☺",
-                    });
-                  }}
-                >
-                  Submit Review
-                </Button>
-              </DialogClose>
-            </DialogFooter>
+            <FormLeaveReview />
           </DialogContent>
         </Dialog>
 

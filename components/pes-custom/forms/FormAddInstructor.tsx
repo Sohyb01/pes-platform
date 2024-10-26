@@ -44,9 +44,9 @@ const FormAddInstructor = () => {
     nid: "",
     employee_name: "",
     instructor_age: "",
+    gender: "",
     employee_email: "",
     employee_mobilenum: "",
-    gender: "",
     instructor_whatsapp: "",
     instructor_faculty: "",
     joined_date: undefined,
@@ -54,9 +54,9 @@ const FormAddInstructor = () => {
     instructor_experience: "",
     instructor_picture: null,
     instructor_major: "",
-    instructor_password: "",
     theme: "",
     username: "",
+    instructor_password: "",
   };
   // 1. Define your form.
 
@@ -144,6 +144,58 @@ const FormAddInstructor = () => {
             )}
           />
         </div>
+        <FormField
+          control={form.control}
+          name="employee_email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="employee_mobilenum"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Mobile number</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="instructor_whatsapp"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Whatsapp</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="instructor_faculty"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Faculty</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-4 h-full">
           <FormField
             control={form.control}
@@ -211,84 +263,6 @@ const FormAddInstructor = () => {
         </div>
         <FormField
           control={form.control}
-          name="employee_email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="employee_mobilenum"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Mobile number</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="instructor_whatsapp"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Whatsapp</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="instructor_faculty"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Faculty</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="instructor_major"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Major</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="instructor_password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
           name="instructor_experience"
           render={({ field }) => (
             <FormItem className="col-span-1 md:col-span-2">
@@ -311,6 +285,67 @@ const FormAddInstructor = () => {
               </FormLabel>
               <FormControl>
                 <Input type="file" className="file-upload" {...imgRef} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="instructor_major"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Major</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="theme"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Theme</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Light">Light</SelectItem>
+                  <SelectItem value="Dark">Dark</SelectItem>
+                  <SelectItem value="System">System</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="instructor_password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
