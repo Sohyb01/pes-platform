@@ -10,6 +10,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import FormAddInstructor from "./FormAddInstructor";
+import FormAddAdmin from "./FormAddAdmin";
 
 const FormAddEmployee = () => {
   const [employeeType, setEmployeeType] = useState<
@@ -50,6 +51,7 @@ const FormAddEmployee = () => {
         </Select>
       </div>
       {employeeType === "Instructor" && <FormAddInstructor />}
+      {employeeType === "Admin" && <FormAddAdmin />}
     </div>
   );
 };

@@ -43,20 +43,31 @@ const FormAddInstructor = () => {
     user_type: "Instructor",
     nid: "",
     employee_name: "",
-    instructor_age: "",
-    gender: "",
     employee_email: "",
+    gender: "",
+    dateofbirth: undefined, //
+    homeaddress: "", //
+    employee_salary: 0, //
     employee_mobilenum: "",
+    joined_date: undefined,
+    employee_pic: undefined,
+    fathername_husbandname: "", //
+    experience: "", //
+    religion: "", //
+    blood_group: "", //
+    education: "", //
+    username: "",
+    password: "",
+    timezone: "",
+    language: "",
+    currency: "",
+    theme: "",
+    // Instructor specific
+    instructor_age: "",
     instructor_whatsapp: "",
     instructor_faculty: "",
-    joined_date: undefined,
-    instructor_cv: null,
-    instructor_experience: "",
-    instructor_picture: null,
+    instructor_cv: undefined,
     instructor_major: "",
-    theme: "",
-    username: "",
-    instructor_password: "",
   };
   // 1. Define your form.
 
@@ -66,7 +77,7 @@ const FormAddInstructor = () => {
   });
 
   const cvRef = form.register("instructor_cv");
-  const imgRef = form.register("instructor_picture");
+  const imgRef = form.register("employee_pic");
   // const experienceRef = form.register("employee_experience");
 
   const onSubmit = async (data: TFormSchemaAddInstructor) => {
@@ -108,20 +119,20 @@ const FormAddInstructor = () => {
             </FormItem>
           )}
         />
+        <FormField
+          control={form.control}
+          name="employee_email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-4 h-full">
-          <FormField
-            control={form.control}
-            name="instructor_age"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Instructor age</FormLabel>
-                <FormControl>
-                  <Input type="number" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <FormField
             control={form.control}
             name="gender"
@@ -143,66 +154,12 @@ const FormAddInstructor = () => {
               </FormItem>
             )}
           />
-        </div>
-        <FormField
-          control={form.control}
-          name="employee_email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="employee_mobilenum"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Mobile number</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="instructor_whatsapp"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Whatsapp</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="instructor_faculty"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Faculty</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-4 h-full">
           <FormField
             control={form.control}
-            name="joined_date"
+            name="dateofbirth"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Date of join</FormLabel>
+                <FormLabel>Date of birth</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
@@ -247,28 +204,15 @@ const FormAddInstructor = () => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="instructor_cv"
-            render={() => (
-              <FormItem>
-                <FormLabel>CV</FormLabel>
-                <FormControl>
-                  <Input type="file" className="file-upload" {...cvRef} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
         </div>
         <FormField
           control={form.control}
-          name="instructor_experience"
+          name="homeaddress"
           render={({ field }) => (
-            <FormItem className="col-span-1 md:col-span-2">
-              <FormLabel className="text-p">Instructor experience</FormLabel>
+            <FormItem>
+              <FormLabel>Home address</FormLabel>
               <FormControl>
-                <Textarea className="resize-none" {...field} />
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -276,7 +220,83 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="instructor_picture"
+          name="employee_salary"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Salary</FormLabel>
+              <FormControl>
+                <Input type="number" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="employee_mobilenum"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Mobile number</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="joined_date"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Joined date</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      size={"input"}
+                      className={cn(
+                        "pl-3 text-left font-normal w-full bg-muted/20",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value ? (
+                        format(field.value, "PPP")
+                      ) : (
+                        <div>Pick a date</div>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent
+                  side="bottom"
+                  className="w-auto p-0"
+                  align="start"
+                >
+                  <Calendar
+                    mode="single"
+                    captionLayout="dropdown-buttons"
+                    fromYear={1900}
+                    toYear={new Date().getFullYear()}
+                    defaultMonth={new Date()}
+                    selected={field.value}
+                    disabled={(date) =>
+                      date > new Date() || date < new Date("2020-01-01")
+                    }
+                    onSelect={field.onChange}
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="employee_pic"
           render={() => (
             <FormItem>
               <FormLabel>
@@ -292,13 +312,199 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="instructor_major"
+          name="fathername_husbandname"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Major</FormLabel>
+              <FormLabel>Father/Husband name</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="experience"
+          render={({ field }) => (
+            <FormItem className="col-span-1 md:col-span-2">
+              <FormLabel className="text-p">Experience</FormLabel>
+              <FormControl>
+                <Textarea className="resize-none" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="religion"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Religion</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Muslim">Muslim</SelectItem>
+                  <SelectItem value="Christian">Christian</SelectItem>
+                  <SelectItem value="Other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="blood_group"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Blood group</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="A">A</SelectItem>
+                  <SelectItem value="B">B</SelectItem>
+                  <SelectItem value="AB">AB</SelectItem>
+                  <SelectItem value="O">O</SelectItem>
+                  <SelectItem value="Other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="education"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Education</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="timezone"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Timezone</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="GMT - 12:00">GMT - 12:00</SelectItem>
+                  <SelectItem value="GMT - 11:00">GMT - 11:00</SelectItem>
+                  <SelectItem value="GMT - 10:00">GMT - 10:00</SelectItem>
+                  <SelectItem value="GMT - 9:00">GMT - 9:00</SelectItem>
+                  <SelectItem value="GMT - 8:00">GMT - 8:00</SelectItem>
+                  <SelectItem value="GMT - 7:00">GMT - 7:00</SelectItem>
+                  <SelectItem value="GMT - 6:00">GMT - 6:00</SelectItem>
+                  <SelectItem value="GMT - 5:00">GMT - 5:00</SelectItem>
+                  <SelectItem value="GMT - 4:00">GMT - 4:00</SelectItem>
+                  <SelectItem value="GMT - 3:00">GMT - 3:00</SelectItem>
+                  <SelectItem value="GMT - 2:00">GMT - 2:00</SelectItem>
+                  <SelectItem value="GMT - 1:00">GMT - 1:00</SelectItem>
+                  <SelectItem value="GMT + 0:00">GMT + 0:00</SelectItem>
+                  <SelectItem value="GMT + 1:00">GMT + 1:00</SelectItem>
+                  <SelectItem value="GMT + 2:00">GMT + 2:00</SelectItem>
+                  <SelectItem value="GMT + 3:00">GMT + 3:00</SelectItem>
+                  <SelectItem value="GMT + 4:00">GMT + 4:00</SelectItem>
+                  <SelectItem value="GMT + 5:00">GMT + 5:00</SelectItem>
+                  <SelectItem value="GMT + 6:00">GMT + 6:00</SelectItem>
+                  <SelectItem value="GMT + 7:00">GMT + 7:00</SelectItem>
+                  <SelectItem value="GMT + 8:00">GMT + 8:00</SelectItem>
+                  <SelectItem value="GMT + 9:00">GMT + 9:00</SelectItem>
+                  <SelectItem value="GMT + 10:00">GMT + 10:00</SelectItem>
+                  <SelectItem value="GMT + 11:00">GMT + 11:00</SelectItem>
+                  <SelectItem value="GMT + 12:00">GMT + 12:00</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="language"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Language</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="English">English</SelectItem>
+                  <SelectItem value="Arabic">Arabic</SelectItem>
+                  <SelectItem value="Other">Other</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="currency"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Currency</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="USD">USD</SelectItem>
+                  <SelectItem value="AED">AED</SelectItem>
+                  <SelectItem value="EGP">EGP</SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -325,12 +531,13 @@ const FormAddInstructor = () => {
             </FormItem>
           )}
         />
+        {/* Instructor specific */}
         <FormField
           control={form.control}
-          name="username"
+          name="instructor_age"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Username</FormLabel>
+              <FormLabel>Instructor age</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -340,10 +547,49 @@ const FormAddInstructor = () => {
         />
         <FormField
           control={form.control}
-          name="instructor_password"
+          name="instructor_whatsapp"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>Whatsapp</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="instructor_faculty"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Faculty</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="instructor_cv"
+          render={() => (
+            <FormItem>
+              <FormLabel>CV</FormLabel>
+              <FormControl>
+                <Input type="file" className="file-upload" {...cvRef} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="instructor_major"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Major</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>

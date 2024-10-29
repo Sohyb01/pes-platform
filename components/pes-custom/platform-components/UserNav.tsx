@@ -22,6 +22,8 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useToast } from "@/components/hooks/use-toast";
 import { AlertDialogAction } from "@/components/ui/alert-dialog";
+import Link from "next/link";
+import { redirectOnServer } from "@/lib/common-functions";
 
 export function UserNav() {
   const { toast } = useToast();
@@ -29,7 +31,10 @@ export function UserNav() {
     toast({
       title: "Logged out successfully.",
     });
+    redirectOnServer("/");
   };
+
+  const userType = "superadmin";
 
   return (
     <DropdownMenu>
@@ -52,10 +57,13 @@ export function UserNav() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>New Team</DropdownMenuItem>
+          <Link href={`/dashboard/${userType}`}>
+            <DropdownMenuItem>Platform</DropdownMenuItem>
+          </Link>
+
+          <Link href="/account">
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+          </Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <AlertDialog>

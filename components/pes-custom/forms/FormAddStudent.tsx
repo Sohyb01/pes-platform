@@ -358,7 +358,6 @@ const FormAddStudent = () => {
                 </FormControl>
                 <SelectContent>
                   <SelectItem value="GMT - 12:00">GMT - 12:00</SelectItem>
-                  <SelectItem value="GMT - 12:00">GMT - 12:00</SelectItem>
                   <SelectItem value="GMT - 11:00">GMT - 11:00</SelectItem>
                   <SelectItem value="GMT - 10:00">GMT - 10:00</SelectItem>
                   <SelectItem value="GMT - 9:00">GMT - 9:00</SelectItem>

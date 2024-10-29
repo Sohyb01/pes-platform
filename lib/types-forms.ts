@@ -132,7 +132,7 @@ export const FormSchemaPendingEmployee = z.object({
   pemployee_cv: z
     .any()
     .refine(
-      (files) => files && files[0]?.size < MAX_FILE_SIZE_5MB,
+      (files) => files[0] == undefined || files[0]?.size < MAX_FILE_SIZE_5MB,
       "File is too big! Max 5MB"
     )
     .refine(
@@ -248,20 +248,89 @@ export const FormSchemaAddAssignment = z.object({
 
 export type TFormSchemaAddAssignment = z.infer<typeof FormSchemaAddAssignment>;
 
-export const FormSchemaAddAdmin = z.object({
-  nid: z.string().trim().min(1, { message: "Required" }).max(50), // Represents the `nid` from data.get('nid')
-  user_type: z.string().max(50).optional(), // Represents the `user_role` from data.get('user_type')
-  employee_name: z.string().trim().min(1, { message: "Required" }).max(50), // Represents the `admin_name` mapped from data['employee_name']
-  language: z.string().trim().min(1, { message: "Required" }).max(50),
-  admin_position: z.string().trim().min(1, { message: "Required" }).max(50),
-  timezone: z.string().trim().min(1, { message: "Required" }).max(50),
+const FormSchemaAddEmployee = z.object({
+  user_type: z
+    .string()
+    .min(1, { message: "Required" })
+    .max(50)
+    .default("Instructor"), // Represents `user_role`, will be set by the form itself
+
+  nid: z.string().trim().min(1, "Required"), // National ID (required)
+  employee_name: z.string().trim().min(1, "Required"),
+  employee_email: z.string().email("Invalid email address"),
+  gender: z.string().trim().min(1, "Required"), // String gender field
+  dateofbirth: z.date(),
+  homeaddress: z.string().trim().min(1, "Required"),
+  employee_salary: z.coerce.number().min(0, "Salary must be a positive number"),
+  employee_mobilenum: z.string().trim().min(1, "Required"),
   joined_date: z.date(),
-  admin_password: z.string().min(8).max(255), // Validates password length
-  username: z.string().trim().min(1, { message: "Required" }).max(50), // Represents `admin_username`
+  employee_pic: z
+    .any()
+    .refine(
+      (files) => checkImageFileType(files[0]?.name, false),
+      "Please upload an image under 5MB (webp, png, jpg)"
+    )
+    .nullish(),
+  fathername_husbandname: z.string().optional(), // Optional
+  experience: z.string().trim().min(1, "Required"),
+  religion: z.string().trim().min(1, "Required"),
+  blood_group: z.string().trim().min(1, "Required"),
+  education: z.string().trim().min(1, "Required"),
+  username: z
+    .string()
+    .trim()
+    .min(1, "Required")
+    .max(50, "Username must be at most 50 characters"),
+  password: z.string().trim().min(1, "Required"),
+  //
+  timezone: z.string().trim().min(1, { message: "Required" }).max(50),
+  language: z.string().trim().min(1, { message: "Required" }).max(50),
   currency: z.string().trim().min(1, { message: "Required" }).max(50),
   theme: z.string().trim().min(1, { message: "Required" }).max(50),
-  branch_id: z.string().trim().min(1, { message: "Required" }).max(50),
 });
+
+export type TFormSchemaAddEmployee = z.infer<typeof FormSchemaAddEmployee>;
+
+export const FormSchemaAddAdmin = z
+  .object({
+    admin_position: z.string().trim().min(1, { message: "Required" }).max(50),
+    branch_id: z.string().trim().min(1, { message: "Required" }).max(50),
+  })
+  .merge(FormSchemaAddEmployee);
+
+export const FormSchemaAddInstructor = z
+  .object({
+    instructor_age: z.string().min(1, { message: "Required" }).max(50), // String to match the model's age field
+    instructor_whatsapp: z.string().min(1, { message: "Required" }).max(50),
+    instructor_faculty: z.string().min(1, { message: "Required" }).max(50),
+    // Use the format below for optional files
+    // instructor_cv: z
+    //   .any()
+    //   .refine(
+    //     (files) => files[0] == undefined || files[0]?.size < MAX_FILE_SIZE_5MB,
+    //     "File is too big! Max 5MB"
+    //   )
+    //   .refine(
+    //     (files) => files && checkCVFileType(files[0]?.name),
+    //     "Only .pdf, .docx formats are supported."
+    //   )
+    //   .nullish(),
+    instructor_cv: z
+      .any()
+      .refine(
+        (files) => files[0] == undefined || files[0]?.size < MAX_FILE_SIZE_5MB,
+        "File is too big! Max 5MB"
+      )
+      .refine(
+        (files) => files && checkCVFileType(files[0]?.name),
+        "Only .pdf, .docx formats are supported."
+      ),
+    instructor_major: z.string().min(1, { message: "Required" }).max(50),
+    theme: z.string().max(50),
+  })
+  .merge(FormSchemaAddEmployee);
+
+export type TFormSchemaAddInstructor = z.infer<typeof FormSchemaAddInstructor>;
 
 export type TFormSchemaAddAdmin = z.infer<typeof FormSchemaAddAdmin>;
 
@@ -293,51 +362,6 @@ export const FormSchemaAddExam = z.object({
 });
 
 export type TFormSchemaAddExam = z.infer<typeof FormSchemaAddExam>;
-
-export const FormSchemaAddInstructor = z.object({
-  user_type: z
-    .string()
-    .min(1, { message: "Required" })
-    .max(50)
-    .default("Instructor"), // Represents `user_role`, will be set by the form itself
-  nid: z.string().min(1, { message: "Required" }).max(50), // Represents `instructor_nid`
-  employee_name: z.string().min(1, { message: "Required" }).max(50), // Represents `instructor_fullname`
-  instructor_age: z.string().min(1, { message: "Required" }).max(50), // String to match the model's age field
-  employee_email: z.string().email(), // Represents `instructor_email`
-  employee_mobilenum: z.string().min(1, { message: "Required" }).max(50), // Represents `instructor_phonenum`
-  gender: z.string().min(1, { message: "Required" }).max(50), // Represents `instructor_gender`
-  instructor_whatsapp: z.string().min(1, { message: "Required" }).max(50),
-  instructor_faculty: z.string().min(1, { message: "Required" }).max(50),
-  joined_date: z.date(),
-  instructor_cv: z
-    .any()
-    .refine(
-      (files) => files && files[0]?.size < MAX_FILE_SIZE_5MB,
-      "File is too big! Max 5MB"
-    )
-    .refine(
-      (files) => files && checkCVFileType(files[0]?.name),
-      "Only .pdf, .docx formats are supported."
-    ),
-  instructor_experience: z.string().min(1, { message: "Required" }).max(50),
-  instructor_picture: z
-    .any()
-    .refine(
-      (files) => files && files[0]?.size < MAX_FILE_SIZE_5MB,
-      "File is too big! Max 5MB"
-    )
-    .refine(
-      (files) => checkImageFileType(files[0]?.name, false),
-      "Please upload an image under 5MB (webp, png, jpg)"
-    )
-    .nullish(),
-  instructor_major: z.string().min(1, { message: "Required" }).max(50),
-  instructor_password: z.string().min(1, { message: "Required" }).max(255), // Password validation
-  theme: z.string().max(50),
-  username: z.string().max(50),
-});
-
-export type TFormSchemaAddInstructor = z.infer<typeof FormSchemaAddInstructor>;
 
 // Registers
 
