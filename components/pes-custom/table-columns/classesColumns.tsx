@@ -6,7 +6,6 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -25,9 +24,10 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { exampleObject } from "@/lib/types-backend-data";
+import { TFormSchemaAddClass } from "@/lib/types-forms";
+import TableDateFormatter from "@/components/pes-custom/platform-components/TableDateFormatter";
 
-export const exampleColumns: ColumnDef<exampleObject>[] = [
+export const classesColumns: ColumnDef<TFormSchemaAddClass>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -52,15 +52,27 @@ export const exampleColumns: ColumnDef<exampleObject>[] = [
   },
   //
   {
-    accessorKey: "one",
-    header: "Primary Text",
+    accessorKey: "id",
+    header: "Class ID",
   },
   {
-    accessorKey: "two",
-    header: "Primary Text",
+    accessorKey: "class_name",
+    header: "Class Name",
   },
   {
-    accessorKey: "three",
+    accessorKey: "class_fees",
+    header: "Fees",
+  },
+  {
+    accessorKey: "program_id",
+    header: "Program",
+  },
+  {
+    accessorKey: "instructor_id",
+    header: "Instructor",
+  },
+  {
+    accessorKey: "classbegindate",
     header: ({ column }) => {
       return (
         <Button
@@ -68,18 +80,18 @@ export const exampleColumns: ColumnDef<exampleObject>[] = [
           size="sorting"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Number
+          Begin Date
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
+    cell: ({ row }) => {
+      const dateobj = row.getValue("classbegindate") as Date;
+      return <TableDateFormatter date={dateobj} />;
+    },
   },
   {
-    accessorKey: "four",
-    header: "Primary Text",
-  },
-  {
-    accessorKey: "five",
+    accessorKey: "classenddate",
     header: ({ column }) => {
       return (
         <Button
@@ -87,16 +99,23 @@ export const exampleColumns: ColumnDef<exampleObject>[] = [
           size="sorting"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Number
+          End Date
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
+    },
+    cell: ({ row }) => {
+      const dateobj = row.getValue("classenddate") as Date;
+      return <TableDateFormatter date={dateobj} />;
     },
   },
   //
   {
     id: "actions",
-    cell: () => {
+    cell: ({ row }) => {
+      const employee = row.original;
+      console.log(employee);
+
       return (
         <div className="flex justify-end">
           <DropdownMenu>
@@ -108,8 +127,30 @@ export const exampleColumns: ColumnDef<exampleObject>[] = [
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem>Edit Properties</DropdownMenuItem>
-              <DropdownMenuItem>Copy URL</DropdownMenuItem>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full text-start justify-start px-2 py-1.5"
+                  >
+                    Edit Attributes
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Editing Employee</AlertDialogTitle>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction
+                      className={buttonVariants({ variant: "destructive" })}
+                    >
+                      Delete
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
               <DropdownMenuSeparator />
               <AlertDialog>
                 <AlertDialogTrigger asChild>

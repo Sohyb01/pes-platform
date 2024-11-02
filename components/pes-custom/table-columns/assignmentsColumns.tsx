@@ -1,8 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown } from "lucide-react";
-import { MoreVertical } from "lucide-react";
+import { ArrowUpDown, MoreVertical } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,7 +11,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,10 +22,13 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { TFormSchemaAddEmployee } from "@/lib/types-forms";
-import TableDateFormatter from "../platform-components/TableDateFormatter";
 
-export const employeesColumns: ColumnDef<TFormSchemaAddEmployee>[] = [
+import { Checkbox } from "@/components/ui/checkbox";
+import { TFormSchemaAddAssignment } from "@/lib/types-forms";
+import TableDateFormatter from "@/components/pes-custom/platform-components/TableDateFormatter";
+import Link from "next/link";
+
+export const assignmentsColumns: ColumnDef<TFormSchemaAddAssignment>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -52,91 +53,25 @@ export const employeesColumns: ColumnDef<TFormSchemaAddEmployee>[] = [
   },
   //
   {
-    accessorKey: "employee_name",
-    header: "Name",
-  },
-  {
-    accessorKey: "user_type",
-    header: "Type",
-  },
-  {
-    accessorKey: "nid",
-    header: "National ID",
-  },
-  {
-    accessorKey: "employee_name",
-    header: "Name",
-  },
-  {
-    accessorKey: "employee_email",
-    header: "Email",
-  },
-  {
-    accessorKey: "gender",
-    header: "Gender",
-  },
-  {
-    accessorKey: "dateofbirth",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="sorting"
-          size="sorting"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Date of birth
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    accessorKey: "assignment_url",
+    header: "Link",
     cell: ({ row }) => {
-      const dateobj = row.getValue("dateofbirth") as Date;
-      return (
-        <div className="font-medium">
-          {"" +
-            dateobj.getDay() +
-            "/" +
-            dateobj.getMonth() +
-            "/" +
-            dateobj.getFullYear()}
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "homeaddress",
-    header: "Address",
-  },
-  {
-    accessorKey: "employee_salary",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="sorting"
-          size="sorting"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Salary
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("employee_salary"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "EGP",
-      }).format(amount);
+      const assignment = row.original;
 
-      return <div className="font-medium">{formatted}</div>;
+      return assignment.assignment_url ? (
+        <Link
+          href={assignment.assignment_url}
+          className="w-[16ch] hover:underline"
+        >
+          View Assignment
+        </Link>
+      ) : (
+        <div className="w-[16ch] text-muted-foreground">Unavailable</div>
+      );
     },
   },
   {
-    accessorKey: "employee_mobilenum",
-    header: "Mobile",
-  },
-  {
-    accessorKey: "joined_date",
+    accessorKey: "assignment_duedate",
     header: ({ column }) => {
       return (
         <Button
@@ -144,39 +79,47 @@ export const employeesColumns: ColumnDef<TFormSchemaAddEmployee>[] = [
           size="sorting"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Joined
+          Due Date
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => {
-      const dateobj = row.getValue("joined_date") as Date;
+      const dateobj = row.getValue("assignment_duedate") as Date;
       return <TableDateFormatter date={dateobj} />;
     },
   },
-  // employee_pic would be here
   {
-    accessorKey: "fathername_husbandname",
-    header: "Father/Husband Name",
+    accessorKey: "assignment_attachment",
+    header: "Attachment",
+    cell: ({ row }) => {
+      const assignment = row.original;
+
+      return assignment.assignment_attachment ? (
+        <Link href="#" className="hover:underline">
+          {assignment.assignment_attachment[0].name}
+        </Link>
+      ) : (
+        <div className="text-muted-foreground">None</div>
+      );
+    },
   },
-  // experience would be here
   {
-    accessorKey: "religion",
-    header: "Religion",
+    accessorKey: "assignment_description",
+    header: "Description",
   },
   {
-    accessorKey: "blood_group",
-    header: "Blood group",
+    accessorKey: "subject_id",
+    header: "Subject",
   },
-  // education would be here
   {
-    accessorKey: "username",
-    header: "Username",
+    accessorKey: "class_id",
+    header: "Class",
   },
-  // password would be here
-  // timezone would be here
-  // language would be here
-  // theme would be here
+  {
+    accessorKey: "sent_by",
+    header: "Sent by",
+  },
   //
   {
     id: "actions",

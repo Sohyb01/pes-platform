@@ -1,4 +1,4 @@
-import { exampleColumns } from "@/components/pes-custom/table-columns/exampleColumns";
+import { exampleColumns } from "@/components/pes-custom/table-columns/classesColumns";
 import { DataTable } from "@/components/ui/data-table";
 import { exampleData } from "@/lib/data";
 import { exampleObject } from "@/lib/types-backend-data";

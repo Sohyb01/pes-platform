@@ -16,7 +16,6 @@ import {
 
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -32,6 +31,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Settings2 } from "lucide-react";
+import { Checkbox } from "./checkbox";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -104,23 +104,34 @@ export function DataTable<TData, TValue>({
               View
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
+          <DropdownMenuContent
+            align="end"
+            className="max-h-[20rem] overflow-y-scroll"
+          >
             {table
               .getAllColumns()
               .filter((column) => column.getCanHide())
               .map((column) => {
                 return (
-                  <DropdownMenuCheckboxItem
+                  <div
                     key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
+                    className="flex items-center gap-2 capitalize p-2 px-4 border-border/50 border-b-[1px]"
                   >
-                    {/* Replace underscores with spaces, to avoid labels being like "Date_of_join", "Whatsapp_number" */}
-                    {column.id.replace(/_/g, " ")}
-                  </DropdownMenuCheckboxItem>
+                    <Checkbox
+                      id={column.id}
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    />
+                    <label htmlFor={column.id}>
+                      {/* Gets the header I defined and displays it only if it is a string, */}
+                      {/* If header is a function (ex: a Sorting button) returns the ID instead */}
+                      {typeof column.columnDef.header === "string"
+                        ? column.columnDef.header.toString().replace(/_/g, " ")
+                        : column.id.replace(/_/g, " ")}
+                    </label>
+                  </div>
                 );
               })}
           </DropdownMenuContent>

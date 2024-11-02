@@ -1,7 +1,6 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown } from "lucide-react";
 import { MoreVertical } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -12,7 +11,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,10 +22,12 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { TFormSchemaAddEmployee } from "@/lib/types-forms";
-import TableDateFormatter from "../platform-components/TableDateFormatter";
 
-export const employeesColumns: ColumnDef<TFormSchemaAddEmployee>[] = [
+import { Checkbox } from "@/components/ui/checkbox";
+import { TFormSchemaAddParent } from "@/lib/types-forms";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+
+export const parentsColumns: ColumnDef<TFormSchemaAddParent>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -52,131 +52,93 @@ export const employeesColumns: ColumnDef<TFormSchemaAddEmployee>[] = [
   },
   //
   {
-    accessorKey: "employee_name",
-    header: "Name",
-  },
-  {
-    accessorKey: "user_type",
-    header: "Type",
-  },
-  {
     accessorKey: "nid",
     header: "National ID",
   },
   {
-    accessorKey: "employee_name",
+    accessorKey: "name",
     header: "Name",
   },
   {
-    accessorKey: "employee_email",
+    accessorKey: "email",
     header: "Email",
   },
+  {
+    accessorKey: "phone",
+    header: "Phone",
+  },
+  // Password Hidden
+  // {
+  //   accessorKey: "password",
+  //   header: "Password",
+  // },
   {
     accessorKey: "gender",
     header: "Gender",
   },
   {
-    accessorKey: "dateofbirth",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="sorting"
-          size="sorting"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Date of birth
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const dateobj = row.getValue("dateofbirth") as Date;
-      return (
-        <div className="font-medium">
-          {"" +
-            dateobj.getDay() +
-            "/" +
-            dateobj.getMonth() +
-            "/" +
-            dateobj.getFullYear()}
-        </div>
-      );
-    },
+    accessorKey: "parent_education",
+    header: "Education",
   },
   {
-    accessorKey: "homeaddress",
+    accessorKey: "parent_profession",
+    header: "Profession",
+  },
+  {
+    accessorKey: "parent_occupation",
+    header: "Occupation",
+  },
+  {
+    accessorKey: "parent_income",
+    header: "Income",
+  },
+  {
+    accessorKey: "parent_address",
     header: "Address",
   },
   {
-    accessorKey: "employee_salary",
-    header: ({ column }) => {
+    accessorKey: "photo",
+    header: "Photo",
+    cell: () => {
       return (
-        <Button
-          variant="sorting"
-          size="sorting"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Salary
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        <Avatar>
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
       );
     },
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("employee_salary"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "EGP",
-      }).format(amount);
-
-      return <div className="font-medium">{formatted}</div>;
-    },
   },
   {
-    accessorKey: "employee_mobilenum",
-    header: "Mobile",
+    accessorKey: "is_active",
+    header: "Active",
   },
   {
-    accessorKey: "joined_date",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="sorting"
-          size="sorting"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Joined
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const dateobj = row.getValue("joined_date") as Date;
-      return <TableDateFormatter date={dateobj} />;
-    },
-  },
-  // employee_pic would be here
-  {
-    accessorKey: "fathername_husbandname",
-    header: "Father/Husband Name",
-  },
-  // experience would be here
-  {
-    accessorKey: "religion",
-    header: "Religion",
+    accessorKey: "referral",
+    header: "Referral Code",
   },
   {
-    accessorKey: "blood_group",
-    header: "Blood group",
+    accessorKey: "language",
+    header: "Language",
   },
-  // education would be here
+  {
+    accessorKey: "timezone",
+    header: "Timezone",
+  },
+  {
+    accessorKey: "theme",
+    header: "Theme",
+  },
+  {
+    accessorKey: "promocode",
+    header: "Promo code",
+  },
+  {
+    accessorKey: "num_of_children",
+    header: "Children",
+  },
   {
     accessorKey: "username",
     header: "Username",
   },
-  // password would be here
-  // timezone would be here
-  // language would be here
-  // theme would be here
   //
   {
     id: "actions",

@@ -1,9 +1,23 @@
 import { z } from "zod";
 import {
+  checkAttachmentFileType,
   checkCVFileType,
   checkImageFileType,
   MAX_FILE_SIZE_5MB,
 } from "./utils";
+
+// Use the format below for optional files
+// instructor_cv: z
+//   .any()
+//   .refine(
+//     (files) => files[0] == undefined || files[0]?.size < MAX_FILE_SIZE_5MB,
+//     "File is too big! Max 5MB"
+//   )
+//   .refine(
+//     (files) => files && checkCVFileType(files[0]?.name),
+//     "Only .pdf, .docx formats are supported."
+//   )
+//   .nullish(),
 
 // Website Forms
 
@@ -227,27 +241,6 @@ export const FormSchemaAddStudent = z.object({
 
 export type TFormSchemaAddStudent = z.infer<typeof FormSchemaAddStudent>;
 
-export const FormSchemaAddAssignment = z.object({
-  assignment_url: z.string().optional(), // URL format, optional
-  assignment_duedate: z.date(),
-  assignment_attachment: z
-    .any()
-    .refine(
-      (files) => files && files[0]?.size < MAX_FILE_SIZE_5MB,
-      "File is too big! Max 5MB"
-    )
-    .refine(
-      (files) => files && checkCVFileType(files[0]?.name),
-      "Only .pdf, .docx formats are supported."
-    )
-    .nullish(),
-  assignment_description: z.string().optional(), // Optional text field for description
-  subject_id: z.string(), // UUID format for foreign key to Subjects
-  class_id: z.string(), // UUID format for foreign key to Classes
-});
-
-export type TFormSchemaAddAssignment = z.infer<typeof FormSchemaAddAssignment>;
-
 const FormSchemaAddEmployee = z.object({
   user_type: z
     .string()
@@ -303,18 +296,6 @@ export const FormSchemaAddInstructor = z
     instructor_age: z.string().min(1, { message: "Required" }).max(50), // String to match the model's age field
     instructor_whatsapp: z.string().min(1, { message: "Required" }).max(50),
     instructor_faculty: z.string().min(1, { message: "Required" }).max(50),
-    // Use the format below for optional files
-    // instructor_cv: z
-    //   .any()
-    //   .refine(
-    //     (files) => files[0] == undefined || files[0]?.size < MAX_FILE_SIZE_5MB,
-    //     "File is too big! Max 5MB"
-    //   )
-    //   .refine(
-    //     (files) => files && checkCVFileType(files[0]?.name),
-    //     "Only .pdf, .docx formats are supported."
-    //   )
-    //   .nullish(),
     instructor_cv: z
       .any()
       .refine(
@@ -335,6 +316,7 @@ export type TFormSchemaAddInstructor = z.infer<typeof FormSchemaAddInstructor>;
 export type TFormSchemaAddAdmin = z.infer<typeof FormSchemaAddAdmin>;
 
 export const FormSchemaAddClass = z.object({
+  id: z.string().optional(),
   class_name: z.string().trim().min(1, "Required").max(50), // Matches model's max length constraint
   class_fees: z.coerce.number().positive(), // Represents `class_fees` as a positive float
   program_id: z.string().trim().min(1, "Required"), // UUID format for foreign key to Programs
@@ -363,6 +345,30 @@ export const FormSchemaAddExam = z.object({
 
 export type TFormSchemaAddExam = z.infer<typeof FormSchemaAddExam>;
 
+export const FormSchemaAddAssignment = z.object({
+  assignment_url: z.string().optional(), // Optional URL field
+  assignment_duedate: z.date(), // Validated as date
+  assignment_attachment: z
+    .any()
+    .refine(
+      (files) => files[0] == undefined || files[0]?.size < MAX_FILE_SIZE_5MB,
+      "File is too big! Max 5MB"
+    )
+    .refine(
+      (files) => files && checkAttachmentFileType(files[0]?.name),
+      "Only .rar, code file formats are supported."
+    )
+    .nullish(),
+  assignment_description: z.string().optional(), // Optional text field
+  subject_id: z.string().trim().min(1, "Required"), // Required foreign key reference
+  class_id: z.string().trim().min(1, "Required"), // Required foreign key reference
+  sent_by: z.string().trim().min(1, "Required"), // Required foreign key reference
+});
+
+export type TFormSchemaAddAssignment = z.infer<typeof FormSchemaAddAssignment>;
+
 // Registers
 
 // Authentication
+
+//

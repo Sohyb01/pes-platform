@@ -1,12 +1,12 @@
 import { studentsColumns } from "@/components/pes-custom/table-columns/studentsColumns";
 import { DataTable } from "@/components/ui/data-table";
-import { students } from "@/lib/data";
+import { exampleStudent } from "@/lib/data";
 import React from "react";
 
 async function getData() {
   // Fetch data from your API here.
   // Must fit the type definition to be inserted into the table
-  return students;
+  return [exampleStudent];
 }
 
 const page = async () => {
