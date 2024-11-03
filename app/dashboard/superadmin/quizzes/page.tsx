@@ -1,12 +1,12 @@
-import { exampleColumns } from "@/components/pes-custom/table-columns/classesColumns";
+import { examsColumns } from "@/components/pes-custom/table-columns/examsColumns";
 import { DataTable } from "@/components/ui/data-table";
-import { exampleData } from "@/lib/data";
-import { exampleObject } from "@/lib/types-backend-data";
+import { exampleExams } from "@/lib/data";
+import { TFormSchemaAddExam } from "@/lib/types-forms";
 
-async function getData(): Promise<exampleObject[]> {
+async function getData(): Promise<TFormSchemaAddExam[]> {
   // Fetch data from your API here.
   // Must fit the type definition to be inserted into the table
-  return exampleData;
+  return exampleExams;
 }
 
 export default async function ExampleDashboardPage() {
@@ -15,7 +15,7 @@ export default async function ExampleDashboardPage() {
   return (
     <div className="dashboard-tab-wrapper">
       <h3 className="text-h3">Quizzes</h3>
-      <DataTable columns={exampleColumns} data={data} />
+      <DataTable columns={examsColumns} data={data} />
     </div>
   );
 }

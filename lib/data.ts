@@ -1,10 +1,14 @@
 import {
   TFormSchemaAddAdmin,
   TFormSchemaAddAssignment,
+  TFormSchemaAddCertificate,
   TFormSchemaAddClass,
   TFormSchemaAddEmployee,
+  TFormSchemaAddExam,
   TFormSchemaAddInstructor,
   TFormSchemaAddParent,
+  TFormSchemaAddProgram,
+  TFormSchemaAddReview,
   TFormSchemaAddStudent,
 } from "./types-forms";
 
@@ -255,5 +259,103 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     subject_id: "subj3456cdef",
     class_id: "class7890mnop",
     sent_by: "teacher7890def",
+  },
+];
+
+export const exampleExams: TFormSchemaAddExam[] = [
+  {
+    quizname: "Math Quiz 1",
+    quiz_type: "Multiple Choice",
+    timestamp: new Date("2024-11-01T09:30:00"),
+    questions_and_answers: [
+      {
+        question: "What is 5 + 7?",
+        answer: "12",
+      },
+      {
+        question: "What is the square root of 64?",
+        answer: "8",
+      },
+    ],
+    class_field: "Math Class A",
+    instructor_id: "123e4567-e89b-12d3-a456-426614174000",
+  },
+  {
+    quizname: "Science Final Exam",
+    quiz_type: "True/False",
+    timestamp: new Date("2024-12-15T13:00:00"),
+    questions_and_answers: [
+      {
+        question: "The Earth revolves around the Sun.",
+        answer: "True",
+      },
+      {
+        question: "Water boils at 90 degrees Celsius at sea level.",
+        answer: "False",
+      },
+      {
+        question: "Plants produce oxygen during photosynthesis.",
+        answer: "True",
+      },
+    ],
+    class_field: "Science Class B",
+    instructor_id: "987e6543-b21c-34d3-a678-529716184321",
+  },
+];
+
+export const exampleCertificates: TFormSchemaAddCertificate[] = [
+  {
+    certificate_id: "cert-20241101-001", // Unique certificate ID
+    serial_number: "SN123456789",
+    certificate_type: "Completion",
+    class_id: "class-4567-e89b-12d3", // Reference to a specific class
+    student_name: "Alice Johnson",
+    student_id: "stu-1234-e56b-78a9", // Reference to a specific student
+  },
+  {
+    certificate_id: "cert-20241102-002",
+    serial_number: "SN987654321",
+    certificate_type: "Excellence in Science",
+    class_id: "class-1234-f67c-89a0",
+    student_name: "Michael Smith",
+    student_id: "stu-5678-d90e-12b3",
+  },
+];
+
+export const exampleReviews: TFormSchemaAddReview[] = [
+  {
+    rev_fname: "John Doe",
+    rev_email: "johndoe@example.com",
+    rev_job: "Software Engineer",
+    rev_rate: "5", // Rating out of 5
+    rev_desc: "Excellent course, very insightful!",
+  },
+  {
+    rev_fname: "Jane Smith",
+    rev_email: "janesmith@example.com",
+    rev_job: "Project Manager",
+    rev_rate: "4",
+    rev_desc: "Great content, but could use more real-life examples.",
+  },
+];
+
+export const examplePrograms: TFormSchemaAddProgram[] = [
+  {
+    program_id: "program-1234-f67c-89a0",
+    program_name: "Advanced Web Development",
+    program_levels: "Intermediate, Advanced",
+    program_price: 500,
+    description:
+      "A comprehensive program covering front-end and back-end web development.",
+    numberoflevels: "2",
+  },
+  {
+    program_id: "program-1234-f67c-89a0",
+    program_name: "Data Science Fundamentals",
+    program_levels: "Beginner, Intermediate",
+    program_price: 300,
+    description:
+      "An introductory program focused on the basics of data science and machine learning.",
+    numberoflevels: "1",
   },
 ];

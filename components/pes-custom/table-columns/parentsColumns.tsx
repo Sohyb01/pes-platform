@@ -164,12 +164,12 @@ export const parentsColumns: ColumnDef<TFormSchemaAddParent>[] = [
                     size="sm"
                     className="w-full text-start justify-start px-2 py-1.5"
                   >
-                    Edit Attributes
+                    Edit
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Editing Employee</AlertDialogTitle>
+                    <AlertDialogTitle>Edit Parent</AlertDialogTitle>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>

@@ -24,10 +24,10 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { TFormSchemaAddClass } from "@/lib/types-forms";
+import { TFormSchemaAddExam } from "@/lib/types-forms";
 import TableDateFormatter from "@/components/pes-custom/platform-components/TableDateFormatter";
 
-export const classesColumns: ColumnDef<TFormSchemaAddClass>[] = [
+export const examsColumns: ColumnDef<TFormSchemaAddExam>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -52,62 +52,39 @@ export const classesColumns: ColumnDef<TFormSchemaAddClass>[] = [
   },
   //
   {
-    accessorKey: "id",
-    header: "Class ID",
+    accessorKey: "quizname",
+    header: "Title",
   },
   {
-    accessorKey: "class_name",
-    header: "Class Name",
+    accessorKey: "quiz_type",
+    header: "Exam Type",
   },
   {
-    accessorKey: "class_fees",
-    header: "Fees",
+    accessorKey: "timestamp",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="sorting"
+          size="sorting"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Date
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const dateobj = row.getValue("timestamp") as Date;
+      return <TableDateFormatter date={dateobj} />;
+    },
   },
   {
-    accessorKey: "program_id",
-    header: "Program",
+    accessorKey: "class_field",
+    header: "Class",
   },
   {
     accessorKey: "instructor_id",
     header: "Instructor",
-  },
-  {
-    accessorKey: "classbegindate",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="sorting"
-          size="sorting"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Begin Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const dateobj = row.getValue("classbegindate") as Date;
-      return <TableDateFormatter date={dateobj} />;
-    },
-  },
-  {
-    accessorKey: "classenddate",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="sorting"
-          size="sorting"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          End Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const dateobj = row.getValue("classenddate") as Date;
-      return <TableDateFormatter date={dateobj} />;
-    },
   },
   //
   {
@@ -139,7 +116,7 @@ export const classesColumns: ColumnDef<TFormSchemaAddClass>[] = [
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Edit Class</AlertDialogTitle>
+                    <AlertDialogTitle>Edit Exam</AlertDialogTitle>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>

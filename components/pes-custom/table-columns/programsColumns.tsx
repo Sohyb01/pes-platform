@@ -24,10 +24,9 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { TFormSchemaAddClass } from "@/lib/types-forms";
-import TableDateFormatter from "@/components/pes-custom/platform-components/TableDateFormatter";
+import { TFormSchemaAddProgram } from "@/lib/types-forms";
 
-export const classesColumns: ColumnDef<TFormSchemaAddClass>[] = [
+export const programsColumns: ColumnDef<TFormSchemaAddProgram>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -52,27 +51,27 @@ export const classesColumns: ColumnDef<TFormSchemaAddClass>[] = [
   },
   //
   {
-    accessorKey: "id",
-    header: "Class ID",
-  },
-  {
-    accessorKey: "class_name",
-    header: "Class Name",
-  },
-  {
-    accessorKey: "class_fees",
-    header: "Fees",
-  },
-  {
     accessorKey: "program_id",
-    header: "Program",
+    header: "ID",
   },
   {
-    accessorKey: "instructor_id",
-    header: "Instructor",
+    accessorKey: "program_name",
+    header: "Name",
   },
   {
-    accessorKey: "classbegindate",
+    accessorKey: "program_levels",
+    header: "Levels",
+  },
+  {
+    accessorKey: "program_price",
+    header: "Price",
+  },
+  {
+    accessorKey: "description",
+    header: "Description",
+  },
+  {
+    accessorKey: "numberoflevels",
     header: ({ column }) => {
       return (
         <Button
@@ -80,33 +79,10 @@ export const classesColumns: ColumnDef<TFormSchemaAddClass>[] = [
           size="sorting"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Begin Date
+          Levels
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
-    },
-    cell: ({ row }) => {
-      const dateobj = row.getValue("classbegindate") as Date;
-      return <TableDateFormatter date={dateobj} />;
-    },
-  },
-  {
-    accessorKey: "classenddate",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="sorting"
-          size="sorting"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          End Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const dateobj = row.getValue("classenddate") as Date;
-      return <TableDateFormatter date={dateobj} />;
     },
   },
   //

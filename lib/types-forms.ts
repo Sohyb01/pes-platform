@@ -21,7 +21,7 @@ import {
 
 // Website Forms
 
-export const FormSchemaLeaveReview = z.object({
+export const FormSchemaAddReview = z.object({
   rev_fname: z.string().trim().min(1, "Required").max(50),
   rev_email: z.string().trim().min(1, "Required").max(50),
   rev_job: z.string().trim().min(1, "Required").max(50),
@@ -29,7 +29,7 @@ export const FormSchemaLeaveReview = z.object({
   rev_desc: z.string().trim().min(1, "Required").max(50),
 });
 
-export type TFormSchemaLeaveReview = z.infer<typeof FormSchemaLeaveReview>;
+export type TFormSchemaAddReview = z.infer<typeof FormSchemaAddReview>;
 
 export const FormSchemaContactForm = z.object({
   firstname: z.string().min(2).max(50),
@@ -366,6 +366,30 @@ export const FormSchemaAddAssignment = z.object({
 });
 
 export type TFormSchemaAddAssignment = z.infer<typeof FormSchemaAddAssignment>;
+
+export const FormSchemaAddCertificate = z.object({
+  certificate_id: z.string().trim().min(1, "Required"), // Optional, as it’s generated automatically
+  serial_number: z.string().trim().min(1, "Required"),
+  certificate_type: z.string().trim().min(1, "Required"),
+  class_id: z.string().trim().min(1, "Required"), // Foreign key reference to class
+  student_name: z.string().trim().min(1, "Required"),
+  student_id: z.string().trim().min(1, "Required"), // Foreign key reference to student
+});
+
+export type TFormSchemaAddCertificate = z.infer<
+  typeof FormSchemaAddCertificate
+>;
+
+const FormSchemaAddProgram = z.object({
+  program_id: z.string().uuid().optional(), // Optional, as it’s generated automatically
+  program_name: z.string().min(1, "Program name is required"),
+  program_levels: z.string().min(1, "Program levels are required"),
+  program_price: z.number().min(0, "Program price must be a positive number"),
+  description: z.string().min(1, "Description is required"),
+  numberoflevels: z.string().min(1, "Number of levels is required"),
+});
+
+export type TFormSchemaAddProgram = z.infer<typeof FormSchemaAddProgram>;
 
 // Registers
 

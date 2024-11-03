@@ -14,10 +14,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/hooks/use-toast";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  FormSchemaLeaveReview,
-  TFormSchemaLeaveReview,
-} from "@/lib/types-forms";
+import { FormSchemaAddReview, TFormSchemaAddReview } from "@/lib/types-forms";
 import {
   Select,
   SelectContent,
@@ -40,12 +37,12 @@ const FormLeaveReview = () => {
   };
   // 1. Define your form.
 
-  const form = useForm<TFormSchemaLeaveReview>({
-    resolver: zodResolver(FormSchemaLeaveReview),
+  const form = useForm<TFormSchemaAddReview>({
+    resolver: zodResolver(FormSchemaAddReview),
     defaultValues,
   });
 
-  const onSubmit = async (data: TFormSchemaLeaveReview) => {
+  const onSubmit = async (data: TFormSchemaAddReview) => {
     // handle form submission
     console.log(data);
     toast({

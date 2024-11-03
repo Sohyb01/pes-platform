@@ -219,12 +219,12 @@ export const studentsColumns: ColumnDef<TFormSchemaAddStudent>[] = [
                     size="sm"
                     className="w-full text-start justify-start px-2 py-1.5"
                   >
-                    Edit Attributes
+                    Edit
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Editing Employee</AlertDialogTitle>
+                    <AlertDialogTitle>Edit Student</AlertDialogTitle>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel>Cancel</AlertDialogCancel>
