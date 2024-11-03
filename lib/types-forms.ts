@@ -391,6 +391,16 @@ const FormSchemaAddProgram = z.object({
 
 export type TFormSchemaAddProgram = z.infer<typeof FormSchemaAddProgram>;
 
+export const FormSchemaAddLog = z.object({
+  id: z.string(), // Optional since it's auto-generated
+  action: z.string().trim().min(1, "Required"),
+  timestamp: z.date(),
+  user_id: z.string().trim().min(1, "Required"),
+  victim_id: z.string().trim().min(1, "Required"),
+});
+
+export type TFormSchemaAddLog = z.infer<typeof FormSchemaAddLog>;
+
 // Registers
 
 // Authentication

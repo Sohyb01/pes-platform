@@ -6,6 +6,7 @@ import {
   TFormSchemaAddEmployee,
   TFormSchemaAddExam,
   TFormSchemaAddInstructor,
+  TFormSchemaAddLog,
   TFormSchemaAddParent,
   TFormSchemaAddProgram,
   TFormSchemaAddReview,
@@ -357,5 +358,22 @@ export const examplePrograms: TFormSchemaAddProgram[] = [
     description:
       "An introductory program focused on the basics of data science and machine learning.",
     numberoflevels: "1",
+  },
+];
+
+export const exampleLogs: TFormSchemaAddLog[] = [
+  {
+    id: "log-1234-f67c-89a0",
+    action: "User login",
+    timestamp: new Date("2024-10-30T10:00:00Z"),
+    user_id: "123e4567-e89b-12d3-a456-426614174000",
+    victim_id: "123e4567-e89b-12d3-a456-426614174001",
+  },
+  {
+    id: "log-1234-f67c-89a0",
+    action: "Profile update",
+    timestamp: new Date("2024-10-30T14:30:00Z"),
+    user_id: "123e4567-e89b-12d3-a456-426614174002",
+    victim_id: "123e4567-e89b-12d3-a456-426614174003",
   },
 ];
