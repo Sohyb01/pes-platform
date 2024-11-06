@@ -135,6 +135,32 @@ const FormPendingPartnership = () => {
         />
         <FormField
           control={form.control}
+          name="applicant_organization"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Your organization</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="applicant_position"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Your position</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="partnership_type"
           render={({ field }) => (
             <FormItem>
@@ -225,12 +251,10 @@ const FormPendingPartnership = () => {
                     mode="single"
                     captionLayout="dropdown-buttons"
                     fromYear={2020}
-                    toYear={new Date().getFullYear()}
+                    toYear={2030}
                     defaultMonth={new Date()}
                     selected={field.value}
-                    disabled={(date) =>
-                      date > new Date() || date < new Date("2020-01-01")
-                    }
+                    disabled={(date) => date < new Date()}
                     onSelect={field.onChange}
                     initialFocus
                   />

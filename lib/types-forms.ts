@@ -144,11 +144,7 @@ export const FormSchemaPendingPartnership = z.object({
     .trim()
     .min(1, { message: "Required" })
     .max(1000),
-  applicant_message: z
-    .string()
-    .trim()
-    .min(1, { message: "Required" })
-    .max(1000),
+  applicant_message: z.string().max(1000).optional(),
 });
 
 export type TFormSchemaPendingPartnership = z.infer<
