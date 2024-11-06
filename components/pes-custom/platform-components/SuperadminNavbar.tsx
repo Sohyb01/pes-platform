@@ -46,6 +46,8 @@ import {
 } from "lucide-react";
 import { UserNav } from "./UserNav";
 import { PersonIcon } from "../icons/PersonIcon";
+import MessagesTab from "./MessagesTab";
+import NotificationsTab from "./NotificationsTab";
 
 const SuperadminNavbar = () => {
   // Search functionality
@@ -319,7 +321,14 @@ const SuperadminNavbar = () => {
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar> */}
-        <UserNav />
+        <div className="flex gap-4">
+          {/* Messages */}
+          <MessagesTab />
+          {/* Notifications */}
+          <NotificationsTab />
+          {/* User button */}
+          <UserNav />
+        </div>
       </div>
     </nav>
   );

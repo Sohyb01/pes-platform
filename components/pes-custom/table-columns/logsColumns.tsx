@@ -25,6 +25,7 @@ import {
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { TFormSchemaAddLog } from "@/lib/types-forms";
+import TableTimestampFormatter from "../platform-components/TableTimestampFormatter";
 
 export const logsColumns: ColumnDef<TFormSchemaAddLog>[] = [
   {
@@ -80,8 +81,12 @@ export const logsColumns: ColumnDef<TFormSchemaAddLog>[] = [
         </Button>
       );
     },
+    cell: ({ row }) => {
+      const dateobj = row.original.timestamp as Date;
+      return <TableTimestampFormatter date={dateobj} />;
+    },
+    //
   },
-  //
   {
     id: "actions",
     cell: ({ row }) => {

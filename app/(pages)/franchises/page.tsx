@@ -1,4 +1,4 @@
-import FranchisePageForm from "@/components/pes-custom/forms/FormPendingFranchise";
+import FormPendingFranchise from "@/components/pes-custom/forms/FormPendingFranchise";
 import React from "react";
 
 const FranchisesPage = () => {
@@ -9,7 +9,7 @@ const FranchisesPage = () => {
         <p className="text-p">
           Fill out the form below and we will get back to you soon
         </p>
-        <FranchisePageForm />
+        <FormPendingFranchise />
       </div>
     </section>
   );

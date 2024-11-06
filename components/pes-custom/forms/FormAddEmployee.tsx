@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import FormAddInstructor from "./FormAddInstructor";
 import FormAddAdmin from "./FormAddAdmin";
+import FormAddReceptionist from "./FormAddReceptionist";
 
 const FormAddEmployee = () => {
   const [employeeType, setEmployeeType] = useState<
@@ -52,6 +53,7 @@ const FormAddEmployee = () => {
       </div>
       {employeeType === "Instructor" && <FormAddInstructor />}
       {employeeType === "Admin" && <FormAddAdmin />}
+      {employeeType === "Receptionist" && <FormAddReceptionist />}
     </div>
   );
 };

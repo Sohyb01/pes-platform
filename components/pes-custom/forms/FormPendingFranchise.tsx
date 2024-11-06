@@ -29,7 +29,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const FranchisePageForm = () => {
+const FormPendingFranchise = () => {
   const { toast } = useToast();
 
   const defaultValues = {
@@ -500,4 +500,4 @@ const FranchisePageForm = () => {
   );
 };
 
-export default FranchisePageForm;
+export default FormPendingFranchise;

@@ -109,6 +109,52 @@ export type TFormSchemaPendingFranchise = z.infer<
   typeof FormSchemaPendingFranchise
 >;
 
+export const FormSchemaPendingPartnership = z.object({
+  applicant_name: z.string().trim().min(1, { message: "Required" }).max(50),
+  applicant_email: z.string().trim().min(1, { message: "Required" }).max(50),
+  applicant_whatsapp: z.string().trim().min(1, { message: "Required" }).max(50),
+  applicant_address: z.string().trim().min(1, { message: "Required" }).max(50),
+  applicant_organization: z
+    .string()
+    .trim()
+    .min(1, { message: "Required" })
+    .max(50),
+  applicant_position: z.string().trim().min(1, { message: "Required" }).max(50),
+  partnership_type: z.string().trim().min(1, { message: "Required" }).max(50),
+  //
+  partnership_description: z
+    .string()
+    .trim()
+    .min(1, { message: "Required" })
+    .max(1000),
+  partnership_goals: z
+    .string()
+    .trim()
+    .min(1, { message: "Required" })
+    .max(1000),
+  partnership_start_date: z.date(),
+  partnership_duration: z
+    .string()
+    .trim()
+    .min(1, { message: "Required" })
+    .max(50),
+  //
+  partnership_requirements: z
+    .string()
+    .trim()
+    .min(1, { message: "Required" })
+    .max(1000),
+  applicant_message: z
+    .string()
+    .trim()
+    .min(1, { message: "Required" })
+    .max(1000),
+});
+
+export type TFormSchemaPendingPartnership = z.infer<
+  typeof FormSchemaPendingPartnership
+>;
+
 export const FormSchemaPendingEmployee = z.object({
   pemployee_nid: z.string().trim().min(1, { message: "Required" }).max(50), // Required employee NID
   pemployee_name: z.string().trim().min(1, { message: "Required" }).max(100), // Required employee name
@@ -291,6 +337,8 @@ export const FormSchemaAddAdmin = z
   })
   .merge(FormSchemaAddEmployee);
 
+export type TFormSchemaAddAdmin = z.infer<typeof FormSchemaAddAdmin>;
+
 export const FormSchemaAddInstructor = z
   .object({
     instructor_age: z.string().min(1, { message: "Required" }).max(50), // String to match the model's age field
@@ -313,7 +361,14 @@ export const FormSchemaAddInstructor = z
 
 export type TFormSchemaAddInstructor = z.infer<typeof FormSchemaAddInstructor>;
 
-export type TFormSchemaAddAdmin = z.infer<typeof FormSchemaAddAdmin>;
+// Receptionist is the same as employee
+export const FormSchemaAddReceptionist = z
+  .object({})
+  .merge(FormSchemaAddEmployee);
+
+export type TFormSchemaAddReceptionist = z.infer<
+  typeof FormSchemaAddReceptionist
+>;
 
 export const FormSchemaAddClass = z.object({
   id: z.string().optional(),
