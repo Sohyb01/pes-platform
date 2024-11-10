@@ -12,6 +12,8 @@ import {
   TFormSchemaAddProgram,
   TFormSchemaAddReview,
   TFormSchemaAddStudent,
+  TFormSchemaPendingFranchise,
+  TFormSchemaPendingPartnership,
 } from "./types-forms";
 
 export const exampleEmployee: TFormSchemaAddEmployee = {
@@ -393,5 +395,106 @@ export const exampleMaterials: TFormSchemaAddMaterial[] = [
     session_id: "123e4567-e89b-12d3-a456-426614174002",
     class_field: "Physics202",
     instructor_id: "123e4567-e89b-12d3-a456-426614174003",
+  },
+];
+
+export const examplePendingPartnerships: TFormSchemaPendingPartnership[] = [
+  {
+    applicant_name: "John Doe",
+    applicant_email: "johndoe@example.com",
+    applicant_whatsapp: "+1234567890",
+    applicant_address: "123 Main St, Cityville",
+    applicant_organization: "Tech Innovators",
+    applicant_position: "CEO",
+    partnership_type: "Technology Collaboration",
+    partnership_description:
+      "Seeking a partnership to co-develop AI-driven solutions for educational platforms.",
+    partnership_goals:
+      "Enhance learning experiences and develop innovative solutions for global education systems.",
+    partnership_start_date: new Date("2024-11-01"),
+    partnership_duration: "1 year",
+    partnership_requirements:
+      "Commitment to bi-weekly project updates and access to research data.",
+    applicant_message:
+      "Looking forward to a productive partnership that benefits both organizations.",
+    application_date: new Date("2024-10-30T14:30:00Z"),
+  },
+  {
+    applicant_name: "Sarah Lee",
+    applicant_email: "sarahlee@nonprofit.org",
+    applicant_whatsapp: "+0987654321",
+    applicant_address: "456 Elm St, Townville",
+    applicant_organization: "Green Earth Initiative",
+    applicant_position: "Project Manager",
+    partnership_type: "Environmental Advocacy",
+    partnership_description:
+      "A partnership to promote sustainable practices within local communities.",
+    partnership_goals:
+      "Educate communities on eco-friendly practices and reduce carbon footprint.",
+    partnership_start_date: new Date("2025-01-15"),
+    partnership_duration: "6 months",
+    partnership_requirements:
+      "Monthly reporting and access to marketing resources.",
+    application_date: new Date("2024-10-30T10:00:00Z"),
+  },
+];
+
+export const examplePendingFranchises: TFormSchemaPendingFranchise[] = [
+  {
+    applicant_name: "Emily Johnson",
+    applicant_email: "emilyjohnson@example.com",
+    applicant_whatsapp: "+1234567890",
+    applicant_address: "789 Maple St, Citytown",
+    applicant_business_history: true,
+    applicant_business_history_description:
+      "Owned and managed a retail store for 5 years.",
+    applicant_education_business_history: false,
+    applicant_education_business_history_description: undefined,
+    applicant_employment_status: "Self-employed",
+    applicant_investment_budget: "$100,000 - $150,000",
+    applicant_has_financing: true,
+    franchise_desired_location_city: "Los Angeles",
+    franchise_desired_location_country: "USA",
+    applicant_knows_competition_in_location: true,
+    applicant_knows_competition_in_location_description:
+      "Familiar with local competitors in the health and wellness industry.",
+    applicant_why_pes:
+      "PES offers a unique business model with a strong support system that aligns with my passion for wellness.",
+    applicant_was_bankrupt: false,
+    applicant_was_bankrupt_description: undefined,
+    applicant_was_in_lawsuit: false,
+    applicant_was_in_lawsuit_description: undefined,
+    applicant_has_necessary_documents: true,
+    applicant_message: "Looking forward to a long-term partnership with PES.",
+    application_date: new Date("2024-10-30T14:30:00Z"),
+  },
+  {
+    applicant_name: "Michael Smith",
+    applicant_email: "michaelsmith@business.net",
+    applicant_whatsapp: "+0987654321",
+    applicant_address: "101 Oak Ave, Metropolis",
+    applicant_business_history: false,
+    applicant_business_history_description: undefined,
+    applicant_education_business_history: true,
+    applicant_education_business_history_description:
+      "Completed a business management course with a focus on entrepreneurship.",
+    applicant_employment_status: "Employed",
+    applicant_investment_budget: "$50,000 - $80,000",
+    applicant_has_financing: false,
+    franchise_desired_location_city: "Toronto",
+    franchise_desired_location_country: "Canada",
+    applicant_knows_competition_in_location: false,
+    applicant_knows_competition_in_location_description: undefined,
+    applicant_why_pes:
+      "I admire PES's mission and want to bring its benefits to my community.",
+    applicant_was_bankrupt: true,
+    applicant_was_bankrupt_description:
+      "Filed for bankruptcy 10 years ago after a business closure.",
+    applicant_was_in_lawsuit: false,
+    applicant_was_in_lawsuit_description: undefined,
+    applicant_has_necessary_documents: true,
+    applicant_message:
+      "Excited about this opportunity and willing to work hard for success.",
+    application_date: new Date("2024-10-30T10:00:00Z"),
   },
 ];

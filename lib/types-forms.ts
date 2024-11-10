@@ -115,6 +115,7 @@ export const FormSchemaPendingFranchise = z.object({
   applicant_was_in_lawsuit_description: z.string().trim().max(1000).optional(),
   applicant_has_necessary_documents: z.boolean(),
   applicant_message: z.string().trim().max(1000).optional(),
+  application_date: z.date(),
 });
 
 export type TFormSchemaPendingFranchise = z.infer<
@@ -157,6 +158,7 @@ export const FormSchemaPendingPartnership = z.object({
     .min(1, { message: "Required" })
     .max(1000),
   applicant_message: z.string().max(1000).optional(),
+  application_date: z.date(),
 });
 
 export type TFormSchemaPendingPartnership = z.infer<
