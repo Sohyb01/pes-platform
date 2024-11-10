@@ -19,6 +19,18 @@ import {
 //   )
 //   .nullish(),
 
+// Use this for non-optional files
+// instructor_cv: z
+//   .any()
+//   .refine(
+//     (files) => files[0] == undefined || files[0]?.size < MAX_FILE_SIZE_5MB,
+//     "File is too big! Max 5MB"
+//   )
+//   .refine(
+//     (files) => files && checkCVFileType(files[0]?.name),
+//     "Only .py, .js formats are supported."
+//   ),
+
 // Website Forms
 
 export const FormSchemaAddReview = z.object({
@@ -451,6 +463,25 @@ export const FormSchemaAddLog = z.object({
 });
 
 export type TFormSchemaAddLog = z.infer<typeof FormSchemaAddLog>;
+
+export const FormSchemaAddMaterial = z.object({
+  id: z.string().trim().min(1, "Required").optional(), // Optional since it's auto-generated
+  attachment: z
+    .any()
+    .refine(
+      (files) => files[0] == undefined || files[0]?.size < MAX_FILE_SIZE_5MB,
+      "File is too big! Max 5MB"
+    )
+    .refine(
+      (files) => files && checkAttachmentFileType(files[0]?.name),
+      "Only .py, .js formats are supported."
+    ),
+  session_id: z.string().trim().min(1, "Required"),
+  class_field: z.string().trim().min(1, "Required"),
+  instructor_id: z.string().trim().min(1, "Required"),
+});
+
+export type TFormSchemaAddMaterial = z.infer<typeof FormSchemaAddMaterial>;
 
 // Registers
 

@@ -107,7 +107,7 @@ const FormAddExam = () => {
           control={form.control}
           name="timestamp"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="flex w-72 flex-col gap-2">
               <FormLabel>Timestamp</FormLabel>
               <Popover>
                 <PopoverTrigger asChild>
@@ -141,9 +141,7 @@ const FormAddExam = () => {
                     toYear={new Date().getFullYear()}
                     defaultMonth={new Date()}
                     selected={field.value}
-                    disabled={(date) =>
-                      date > new Date() || date < new Date("2020-01-01")
-                    }
+                    disabled={(date) => date < new Date()}
                     onSelect={field.onChange}
                     initialFocus
                   />

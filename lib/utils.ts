@@ -75,7 +75,7 @@ export function checkAttachmentFileType(filename: string | undefined) {
   if (filename == undefined) return true; // The outside function will always return false if this value is undefined anyway
 
   const fileType = filename.split(".").pop();
-  if (fileType === "docx" || fileType === "pdf") return true;
+  if (fileType === "py" || fileType === "js") return true;
   return false;
 }
 

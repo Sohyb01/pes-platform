@@ -269,7 +269,7 @@ const SuperadminNavbar = () => {
           </Sheet>
           {/* Searchbar */}
           <Button
-            className="gap-2 text-muted-foreground w-[160px] justify-start"
+            className="hidden md:flex gap-2 text-muted-foreground w-[160px] justify-start"
             variant={"outline"}
             onClick={() => setOpen((open) => !open)}
           >

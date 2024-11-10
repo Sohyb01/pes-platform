@@ -28,10 +28,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Settings2 } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { PlusIcon, Settings2 } from "lucide-react";
 import { Checkbox } from "./checkbox";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -74,10 +75,13 @@ export function DataTable<TData, TValue>({
     },
   });
 
+  const pathname = usePathname(); //Store current pathname for going to /new page
+
   return (
     <div>
       <div className="flex items-center pb-4">
-        {table.getColumn("email") && (
+        {/* Filter a property */}
+        {/* {table.getColumn("email") && (
           <Input
             placeholder="Filter emails..."
             value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -86,17 +90,17 @@ export function DataTable<TData, TValue>({
             }
             className="max-w-[180px]"
           />
-        )}
-        {table.getColumn("one") && (
-          <Input
-            placeholder="Filter property..."
-            value={(table.getColumn("one")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("one")?.setFilterValue(event.target.value)
-            }
-            className="max-w-[180px]"
-          />
-        )}
+        )} */}
+        <Link
+          href={`${pathname}/new`}
+          className={`${buttonVariants({
+            variant: "outline",
+            size: "sm",
+          })} flex gap-1 items-center`}
+        >
+          <PlusIcon size={16} />
+          Add
+        </Link>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size={"sm"} className="ml-auto gap-2">

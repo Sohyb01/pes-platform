@@ -7,6 +7,7 @@ import {
   TFormSchemaAddExam,
   TFormSchemaAddInstructor,
   TFormSchemaAddLog,
+  TFormSchemaAddMaterial,
   TFormSchemaAddParent,
   TFormSchemaAddProgram,
   TFormSchemaAddReview,
@@ -375,5 +376,22 @@ export const exampleLogs: TFormSchemaAddLog[] = [
     timestamp: new Date("2024-10-30T14:30:00Z"),
     user_id: "123e4567-e89b-12d3-a456-426614174002",
     victim_id: "123e4567-e89b-12d3-a456-426614174003",
+  },
+];
+
+export const exampleMaterials: TFormSchemaAddMaterial[] = [
+  {
+    id: "material-1234-f67c-89a0",
+    attachment: [{ name: "lesson1.py", size: 4500000 }], // Example file within 5MB limit
+    session_id: "123e4567-e89b-12d3-a456-426614174000",
+    class_field: "Math101",
+    instructor_id: "123e4567-e89b-12d3-a456-426614174001",
+  },
+  {
+    id: "material-1234-f67c-89a0",
+    attachment: [{ name: "example.js", size: 3000000 }], // Another valid file within 5MB limit
+    session_id: "123e4567-e89b-12d3-a456-426614174002",
+    class_field: "Physics202",
+    instructor_id: "123e4567-e89b-12d3-a456-426614174003",
   },
 ];
