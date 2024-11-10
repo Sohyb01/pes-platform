@@ -1,3 +1,5 @@
+"use client";
+
 import { examplePendingPartnerships } from "@/lib/data";
 
 import {
@@ -10,17 +12,7 @@ import {
 } from "@/components/ui/card";
 import PartnershipPDFButton from "@/components/pes-custom/pdf/PartnershipPDFButton";
 
-async function getData(): Promise<null> {
-  // Fetch data from your API here.
-  // Must fit the type definition to be inserted into the table
-  return null;
-}
-
-export default async function ExampleDashboardPage() {
-  const data = await getData();
-
-  console.log(data);
-
+export default function ExampleDashboardPage() {
   return (
     <div className="dashboard-tab-wrapper">
       <h3 className="text-h3">Partnership Applications</h3>
