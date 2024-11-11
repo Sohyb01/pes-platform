@@ -441,31 +441,34 @@ export const examplePendingPartnerships: TFormSchemaPendingPartnership[] = [
 
 export const examplePendingFranchises: TFormSchemaPendingFranchise[] = [
   {
-    applicant_name: "Emily Johnson",
-    applicant_email: "emilyjohnson@example.com",
-    applicant_whatsapp: "+1234567890",
-    applicant_address: "789 Maple St, Citytown",
-    applicant_business_history: true,
+    applicant_name: "Emily Johnson", //
+    applicant_email: "emilyjohnson@example.com", //
+    applicant_whatsapp: "+1234567890", //
+    applicant_address: "789 Maple St, Citytown", //
+    applicant_business_history: true, //
+    //
     applicant_business_history_description:
       "Owned and managed a retail store for 5 years.",
-    applicant_education_business_history: false,
-    applicant_education_business_history_description: undefined,
-    applicant_employment_status: "Self-employed",
-    applicant_investment_budget: "$100,000 - $150,000",
-    applicant_has_financing: true,
-    franchise_desired_location_city: "Los Angeles",
-    franchise_desired_location_country: "USA",
-    applicant_knows_competition_in_location: true,
+    applicant_education_business_history: false, //
+    applicant_education_business_history_description: undefined, //
+    applicant_employment_status: "Self-employed", //
+    applicant_investment_budget: "$100,000 - $150,000", //
+    applicant_has_financing: true, //
+    franchise_desired_location_city: "Los Angeles", //
+    franchise_desired_location_country: "USA", //
+    applicant_knows_competition_in_location: true, //
+    //
     applicant_knows_competition_in_location_description:
       "Familiar with local competitors in the health and wellness industry.",
+    //
     applicant_why_pes:
       "PES offers a unique business model with a strong support system that aligns with my passion for wellness.",
-    applicant_was_bankrupt: false,
-    applicant_was_bankrupt_description: undefined,
-    applicant_was_in_lawsuit: false,
-    applicant_was_in_lawsuit_description: undefined,
-    applicant_has_necessary_documents: true,
-    applicant_message: "Looking forward to a long-term partnership with PES.",
+    applicant_was_bankrupt: false, //
+    applicant_was_bankrupt_description: undefined, //
+    applicant_was_in_lawsuit: false, //
+    applicant_was_in_lawsuit_description: undefined, //
+    applicant_has_necessary_documents: true, //
+    applicant_message: "Looking forward to a long-term partnership with PES.", //
     application_date: new Date("2024-10-30T14:30:00Z"),
   },
   {

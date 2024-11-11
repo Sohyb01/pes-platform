@@ -1,4 +1,5 @@
 "use client";
+// Had to be marked as client component or vercel would not work
 
 import { examplePendingPartnerships } from "@/lib/data";
 
@@ -10,7 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import PartnershipPDFButton from "@/components/pes-custom/pdf/PartnershipPDFButton";
 
 export default function ExampleDashboardPage() {
   return (
@@ -28,7 +28,7 @@ export default function ExampleDashboardPage() {
                 {partnership.partnership_description}
               </CardContent>
               <CardFooter className="flex justify-between">
-                <PartnershipPDFButton />
+                {/* <PartnershipPDFButton /> */}
               </CardFooter>
             </Card>
           );
