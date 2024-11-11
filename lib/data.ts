@@ -368,7 +368,7 @@ export const exampleLogs: TFormSchemaAddLog[] = [
   {
     id: "log-1234-f67c-89a0",
     action: "User login",
-    timestamp: new Date("2024-10-30T10:00:00Z"),
+    timestamp: new Date("2024-10-30"),
     user_id: "123e4567-e89b-12d3-a456-426614174000",
     victim_id: "123e4567-e89b-12d3-a456-426614174001",
   },
@@ -400,24 +400,28 @@ export const exampleMaterials: TFormSchemaAddMaterial[] = [
 
 export const examplePendingPartnerships: TFormSchemaPendingPartnership[] = [
   {
-    applicant_name: "John Doe",
-    applicant_email: "johndoe@example.com",
-    applicant_whatsapp: "+1234567890",
-    applicant_address: "123 Main St, Cityville",
-    applicant_organization: "Tech Innovators",
-    applicant_position: "CEO",
+    applicant_name: "John Doe", //
+    applicant_email: "johndoe@example.com", //
+    applicant_whatsapp: "+1234567890", //
+    applicant_address: "123 Main St, Cityville", //
+    applicant_organization: "Tech Innovators", //
+    applicant_position: "CEO", //
     partnership_type: "Technology Collaboration",
+    //
     partnership_description:
       "Seeking a partnership to co-develop AI-driven solutions for educational platforms.",
+    //
     partnership_goals:
       "Enhance learning experiences and develop innovative solutions for global education systems.",
-    partnership_start_date: new Date("2024-11-01"),
-    partnership_duration: "1 year",
+    partnership_start_date: new Date("2024-11-01"), //
+    partnership_duration: "1 year", //
+    //
     partnership_requirements:
       "Commitment to bi-weekly project updates and access to research data.",
+    //
     applicant_message:
       "Looking forward to a productive partnership that benefits both organizations.",
-    application_date: new Date("2024-10-30T14:30:00Z"),
+    application_date: new Date("2024-05-10"), //
   },
   {
     applicant_name: "Sarah Lee",
@@ -435,7 +439,7 @@ export const examplePendingPartnerships: TFormSchemaPendingPartnership[] = [
     partnership_duration: "6 months",
     partnership_requirements:
       "Monthly reporting and access to marketing resources.",
-    application_date: new Date("2024-10-30T10:00:00Z"),
+    application_date: new Date("2024-10-10"),
   },
 ];
 
@@ -469,7 +473,7 @@ export const examplePendingFranchises: TFormSchemaPendingFranchise[] = [
     applicant_was_in_lawsuit_description: undefined, //
     applicant_has_necessary_documents: true, //
     applicant_message: "Looking forward to a long-term partnership with PES.", //
-    application_date: new Date("2024-10-30T14:30:00Z"),
+    application_date: new Date("2024-10-30"),
   },
   {
     applicant_name: "Michael Smith",
@@ -498,6 +502,6 @@ export const examplePendingFranchises: TFormSchemaPendingFranchise[] = [
     applicant_has_necessary_documents: true,
     applicant_message:
       "Excited about this opportunity and willing to work hard for success.",
-    application_date: new Date("2024-10-30T10:00:00Z"),
+    application_date: new Date("2024-10-30"),
   },
 ];

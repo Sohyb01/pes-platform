@@ -43,11 +43,13 @@ export default function ExampleDashboardPage() {
                     </Button>
                   </DialogTrigger>
                   {/* Dialogue content start */}
-                  <DialogContent className="grid grid-cols-1 md:grid-cols-2 gap-4 md:max-w-[80vw] lg:max-w-[1140px] gap-y-6 max-h-[90vh] overflow-y-scroll md:p-8">
+                  <DialogContent className="grid grid-cols-1 md:grid-cols-2 gap-4 md:max-w-[80vw] lg:max-w-screen-md gap-y-6 max-h-[90vh] overflow-y-scroll md:p-8">
                     <div className="text-large col-span-1 md:col-span-2">
                       Franchising Application{" "}
                       <span className="text-muted-foreground pl-2">
-                        {`${franchise.application_date.getDay()}/${franchise.application_date.getMonth()}/${franchise.application_date.getFullYear()}`}
+                        {`${franchise.application_date.getUTCDate()}/${
+                          franchise.application_date.getUTCMonth() + 1
+                        }/${franchise.application_date.getFullYear()}`}
                       </span>
                     </div>
                     {/* Cell */}
