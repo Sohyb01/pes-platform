@@ -21,7 +21,6 @@ import { StudentIcon } from "../icons/StudentIcon";
 import { AssignmentIcon } from "../icons/AssignmentIcon";
 import { usePathname } from "next/navigation";
 import { ActivityLogIcon } from "../icons/ActivityLogIcon";
-import { InfoCircleIcon } from "../icons/InfoCircleIcon";
 import { PartnershipIcon } from "../icons/PartnershipIcon";
 import { FranchiseIcon } from "../icons/FranchiseIcon";
 import { FinancesIcon } from "../icons/FinancesIcon";
@@ -114,16 +113,6 @@ const SuperadminNavbar = () => {
                         }
                       >
                         <PartnershipIcon /> Partnerships
-                      </Button>
-                    </Link>
-                    <Link href="/dashboard/superadmin/company-info">
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "company-info" ? "default" : "outline"
-                        }
-                      >
-                        <InfoCircleIcon /> Company Info
                       </Button>
                     </Link>
                   </div>

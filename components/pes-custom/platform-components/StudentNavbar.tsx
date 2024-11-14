@@ -13,10 +13,8 @@ import { ClassIcon } from "../icons/ClassIcon";
 import { MaterialIcon } from "../icons/MaterialIcon";
 import { MeetingIcon } from "../icons/MeetingIcon";
 import { QuizIcon } from "../icons/QuizIcon";
-import { StudentIcon } from "../icons/StudentIcon";
 import { AssignmentIcon } from "../icons/AssignmentIcon";
 import { usePathname } from "next/navigation";
-import { InfoCircleIcon } from "../icons/InfoCircleIcon";
 
 import {
   CommandDialog,
@@ -84,7 +82,7 @@ const StudentNavbar = () => {
                         }
                         size="sm"
                       >
-                        <ScheduleIcon /> My Schedule
+                        <ScheduleIcon /> Schedule
                       </Button>
                     </Link>
                     <Link href="/dashboard/student/classes">
@@ -153,24 +151,6 @@ const StudentNavbar = () => {
                         <LeaderboardIcon /> Leaderboard
                       </Button>
                     </Link>
-                  </div>
-                </div>
-                {/* Account Group  Title &Links */}
-                <div className="sidebar-group">
-                  <p>My Account</p>
-                  {/* Links */}
-                  <div className="sidebar-links-container">
-                    <Link href="/dashboard/student/account">
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "account" ? "default" : "outline"
-                        }
-                        size="sm"
-                      >
-                        <StudentIcon /> My Account
-                      </Button>
-                    </Link>
                     <Link href="/dashboard/student/certificates">
                       <Button
                         className="sidebar-button"
@@ -180,17 +160,6 @@ const StudentNavbar = () => {
                         size="sm"
                       >
                         <CertificateIcon /> My Certificates
-                      </Button>
-                    </Link>
-                    <Link href="/dashboard/student/preferences">
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "preferences" ? "default" : "outline"
-                        }
-                        size="sm"
-                      >
-                        <InfoCircleIcon /> Preferences
                       </Button>
                     </Link>
                   </div>

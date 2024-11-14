@@ -2,18 +2,17 @@ import * as React from "react";
 
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
-import { Badge } from "@/components/ui/badge";
 import { BadgeLink } from "@/components/pes-custom/platform-components/BadgeLink";
 import { TimeIcon } from "@/components/pes-custom/icons/TimeIcon";
 import { ProgramIcon } from "@/components/pes-custom/icons/ProgramIcon";
 import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
+import { exampleClasses } from "@/lib/data";
 
 const page = () => {
   return (
@@ -21,54 +20,51 @@ const page = () => {
       <h3 className="text-h3">Classes</h3>
       {/* Container */}
       <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
-        {/* Card */}
-        <Card className="w-full md:max-w-[352px]">
-          <CardHeader>
-            <CardTitle>Class A</CardTitle>
-            <CardDescription>
-              <span className="text-detail">Subjects</span>
-              <div className="w-full flex gap-1 flex-wrap justify-start items-start text-badge">
-                <Badge variant="default" className="bg-primary">
-                  Subject
-                </Badge>
-                <Badge variant="default" className="bg-primary">
-                  Subject
-                </Badge>
-                <Badge variant="default" className="bg-primary">
-                  Subject
-                </Badge>
-              </div>
-            </CardDescription>
-          </CardHeader>
-
-          <CardContent className="gap-4 flex flex-col">
-            <div className="horizontal-divider" />
-            <CardDescription>
-              <span className="text-detail">Assignments</span>
-              <div className="w-full flex gap-1 flex-wrap justify-start items-start text-badge">
+        {exampleClasses.map((pesClass, idx) => {
+          return (
+            <Card key={idx} className="w-full md:max-w-[352px]">
+              <CardHeader>
+                <CardTitle>{pesClass.class_name}</CardTitle>
+                <CardDescription>
+                  <div className="w-full flex gap-1 flex-wrap justify-between items-center text-badge pt-2">
+                    <BadgeLink href="#">
+                      <TimeIcon />
+                      <span className="max-w-[12ch] overflow-hidden">
+                        {pesClass.program_id}
+                      </span>
+                    </BadgeLink>
+                    <div>
+                      {`${pesClass.classbegindate.getUTCDate()}/${
+                        pesClass.classbegindate.getUTCMonth() + 1
+                      }/${pesClass.classbegindate.getFullYear()}
+                      -
+                      ${pesClass.classenddate.getUTCDate()}/${
+                        pesClass.classenddate.getUTCMonth() + 1
+                      }/${pesClass.classenddate.getFullYear()}
+                      `}
+                    </div>
+                  </div>
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="flex gap-2">
                 <BadgeLink href="#">
-                  <TimeIcon />
-                  Assignment
+                  <ProgramIcon />
+                  <span className="max-w-[12ch] overflow-hidden">
+                    {pesClass.program_id}
+                  </span>
                 </BadgeLink>
                 <BadgeLink href="#">
-                  <TimeIcon />
-                  Assignment
+                  <EmployeeIcon />
+                  <span className="max-w-[12ch] overflow-hidden">
+                    {pesClass.instructor_id
+                      ? pesClass.instructor_id
+                      : "No instructor"}
+                  </span>
                 </BadgeLink>
-              </div>
-            </CardDescription>
-            <div className="horizontal-divider" />
-          </CardContent>
-          <CardFooter className="flex justify-between">
-            <BadgeLink href="#">
-              <ProgramIcon />
-              Programming Basics
-            </BadgeLink>
-            <BadgeLink href="#">
-              <EmployeeIcon />
-              Mahmoud A
-            </BadgeLink>
-          </CardFooter>
-        </Card>
+              </CardFooter>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );

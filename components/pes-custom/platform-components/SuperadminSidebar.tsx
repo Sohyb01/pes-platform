@@ -8,7 +8,6 @@ import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
 import { FinancesIcon } from "@/components/pes-custom/icons/FinancesIcon";
 import { FranchiseIcon } from "@/components/pes-custom/icons/FranchiseIcon";
-import { InfoCircleIcon } from "@/components/pes-custom/icons/InfoCircleIcon";
 import { MaterialIcon } from "@/components/pes-custom/icons/MaterialIcon";
 import { MeetingIcon } from "@/components/pes-custom/icons/MeetingIcon";
 import { PartnershipIcon } from "@/components/pes-custom/icons/PartnershipIcon";
@@ -62,15 +61,6 @@ const SuperadminSidebar = () => {
                 size="sm"
               >
                 <PartnershipIcon /> Partnerships
-              </Button>
-            </Link>
-            <Link href="/dashboard/superadmin/company-info">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "company-info" ? "default" : "outline"}
-                size="sm"
-              >
-                <InfoCircleIcon /> Company Info
               </Button>
             </Link>
           </div>

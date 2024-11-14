@@ -17,7 +17,7 @@ function BadgeLink({
       href={href}
       className={
         (cn(className),
-        "w-fit focus:outline-none flex gap-1 items-center stroke-foreground rounded-full border px-2.5 py-1.5 text-badge font-semibold transition-colors border-border bg-card text-foreground hover:opacity-80")
+        "w-fit max-w-[140px] overflow-hidden focus:outline-none flex gap-2 stroke-foreground rounded-[3px] border p-2 text-badge font-semibold transition-colors border-border bg-shade text-foreground hover:opacity-80")
       }
       {...props}
     >

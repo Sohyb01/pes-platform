@@ -14,6 +14,8 @@ import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
 import { Button } from "@/components/ui/button";
 import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
 import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
+import { exampleExams } from "@/lib/data";
+// import { CheckIcon } from "lucide-react";
 
 const page = () => {
   return (
@@ -21,8 +23,42 @@ const page = () => {
       <h3 className="text-h3">Quizzes</h3>
       {/* Container */}
       <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
-        {/* Card */}
-        <Card className="w-full md:max-w-[352px]">
+        {exampleExams.map((exam, idx) => {
+          return (
+            <Card key={idx} className="w-full md:max-w-[352px]">
+              <CardHeader>
+                <CardTitle>
+                  {exam.quizname}
+                  <span className="ml-2 text-muted-foreground text-subtle">{`${exam.timestamp.getUTCDate()}/${
+                    exam.timestamp.getUTCMonth() + 1
+                  }/${exam.timestamp.getFullYear()}`}</span>
+                </CardTitle>
+                <CardDescription className="flex justify-between pt-2">
+                  <BadgeLink href="#">
+                    <EmployeeIcon />
+                    {/* {exam.instructor_id} */}
+                    Mahmoud A
+                  </BadgeLink>
+                  <BadgeLink href="#">
+                    <ClassIcon />
+                    {exam.class_field}
+                  </BadgeLink>
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="text-subtle">
+                <p>{exam.questions_and_answers.length} questions</p>
+              </CardContent>
+              <CardFooter>
+                <Button variant="default" size="sm" className="w-full">
+                  <JoinArrowIcon />
+                  Start Quiz
+                </Button>
+              </CardFooter>
+            </Card>
+          );
+        })}
+        {/* Card example */}
+        {/* <Card className="w-full md:max-w-[352px]">
           <CardHeader>
             <CardTitle>Robotics Quiz</CardTitle>
             <CardDescription className="flex justify-between pt-2">
@@ -37,42 +73,7 @@ const page = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="text-subtle">
-            <p>Description</p>
-            <p className="text-muted-foreground line-clamp-3">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum
-              ullam aspernatur adipisci dolores porro doloribus numquam
-              assumenda quae ut qui.
-            </p>
-          </CardContent>
-          <CardFooter>
-            <Button variant="default" size="sm" className="w-full">
-              <JoinArrowIcon />
-              Start Quiz
-            </Button>
-          </CardFooter>
-        </Card>
-        {/* Card */}
-        <Card className="w-full md:max-w-[352px]">
-          <CardHeader>
-            <CardTitle>Robotics Quiz</CardTitle>
-            <CardDescription className="flex justify-between pt-2">
-              <BadgeLink href="#">
-                <EmployeeIcon />
-                Mahmoud A
-              </BadgeLink>
-              <BadgeLink href="#">
-                <ClassIcon />
-                Class B
-              </BadgeLink>
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="text-subtle">
-            <p>Description</p>
-            <p className="text-muted-foreground line-clamp-3">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum
-              ullam aspernatur adipisci dolores porro doloribus numquam
-              assumenda quae ut qui.
-            </p>
+            <p>12 questions</p>
           </CardContent>
           <CardFooter>
             <Button disabled variant="secondary" size="sm" className="w-full">
@@ -80,9 +81,9 @@ const page = () => {
               Available in 00:05:04
             </Button>
           </CardFooter>
-        </Card>
-        {/* Card */}
-        <Card className="w-full md:max-w-[352px]">
+        </Card> */}
+        {/* Card example */}
+        {/* <Card className="w-full md:max-w-[352px]">
           <CardHeader>
             <CardTitle>Robotics Quiz</CardTitle>
             <CardDescription className="flex justify-between pt-2">
@@ -97,19 +98,14 @@ const page = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="text-subtle">
-            <p>Description</p>
-            <p className="text-muted-foreground line-clamp-3">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum
-              ullam aspernatur adipisci dolores porro doloribus numquam
-              assumenda quae ut qui.
-            </p>
+            <p>24 questions</p>
           </CardContent>
           <CardFooter>
             <Button disabled variant="outline" size="sm" className="w-full">
-              Quiz Completed
+              <CheckIcon /> Quiz Completed
             </Button>
           </CardFooter>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );

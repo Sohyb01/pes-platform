@@ -8,6 +8,7 @@ import {
   TFormSchemaAddInstructor,
   TFormSchemaAddLog,
   TFormSchemaAddMaterial,
+  TFormSchemaAddMeeting,
   TFormSchemaAddParent,
   TFormSchemaAddProgram,
   TFormSchemaAddReview,
@@ -208,8 +209,8 @@ export const exampleParents: TFormSchemaAddParent[] = [
 export const exampleClasses: TFormSchemaAddClass[] = [
   {
     id: "c1a2s3s4i5d6", // Optional field
-    class_name: "Advanced Mathematics",
-    class_fees: 150.0,
+    class_name: "Advanced Mathematics", //
+    class_fees: 150.0, //
     program_id: "prog1234abcd5678", // Represents foreign key to Programs
     instructor_id: "instr9876efgh4321", // Optional UUID for instructor
     classbegindate: new Date("2024-01-10"),
@@ -503,5 +504,26 @@ export const examplePendingFranchises: TFormSchemaPendingFranchise[] = [
     applicant_message:
       "Excited about this opportunity and willing to work hard for success.",
     application_date: new Date("2024-10-30"),
+  },
+];
+
+export const exampleMeetings: TFormSchemaAddMeeting[] = [
+  {
+    sessionid: "session123",
+    playback_start_time: "2024-11-01T10:00:00Z",
+    playback_end_timestamp: "2024-11-01T11:00:00Z",
+    session_time: "2024-11-01T09:00:00Z",
+    deviceid: "device456",
+    admin_id: "admin789",
+    user_id: "user012",
+  },
+  {
+    sessionid: "session124",
+    playback_start_time: "2024-12-02T10:00:00Z",
+    playback_end_timestamp: "2024-12-02T10:00:00Z",
+    session_time: "2024-11-02T15:30:00Z",
+    deviceid: "device456",
+    admin_id: "admin789",
+    user_id: "user345",
   },
 ];

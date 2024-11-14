@@ -28,7 +28,7 @@ export default function ExampleDashboardPage() {
                 <CardDescription>{franchise.applicant_email}</CardDescription>
               </CardHeader>
               <CardContent className="line-clamp-3">
-                {franchise.franchise_desired_location_city},
+                {franchise.franchise_desired_location_city},{" "}
                 {franchise.franchise_desired_location_country}
               </CardContent>
               <CardFooter className="flex justify-between">

@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
 import { DownloadIcon } from "@/components/pes-custom/icons/DownloadIcon";
+import { exampleMaterials } from "@/lib/data";
 
 const page = () => {
   return (
@@ -24,46 +25,44 @@ const page = () => {
       {/* Container */}
       <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
         {/* Card */}
-        <Card className="w-full md:max-w-[352px]">
-          <CardHeader>
-            <CardTitle>Robotics Material</CardTitle>
-            <CardDescription className="flex justify-between pt-2">
-              <BadgeLink href="#">
-                <ClassIcon />
-                Programming Basics
-              </BadgeLink>
-              <BadgeLink href="#">
-                <EmployeeIcon />
-                Mahmoud A
-              </BadgeLink>
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="text-subtle">
-            <p>Material Description</p>
-            <p className="text-muted-foreground line-clamp-3">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum
-              ullam aspernatur adipisci dolores porro doloribus numquam
-              assumenda quae ut qui.
-            </p>
-          </CardContent>
-          <CardContent>
-            <p className="text-detail">Attachments</p>
-            <BadgeLink href="#" className="w-fit">
-              <FileIcon />
-              Starting Files
-            </BadgeLink>
-          </CardContent>
-          <CardFooter className="flex flex-col gap-1">
-            <Button variant="outline" size="sm" className="w-full">
-              <JoinArrowIcon />
-              Session link (how to use)
-            </Button>
-            <Button variant="default" size="sm" className="w-full">
-              <DownloadIcon />
-              Download
-            </Button>
-          </CardFooter>
-        </Card>
+        {exampleMaterials.map((material, idx) => {
+          return (
+            <Card key={idx} className="w-full md:max-w-[352px]">
+              <CardHeader>
+                <CardTitle>Material</CardTitle>
+                <CardDescription className="flex justify-between pt-2">
+                  <BadgeLink href="#">
+                    <ClassIcon />
+                    <span className="line-clamp-1 ">{material.session_id}</span>
+                  </BadgeLink>
+                  <BadgeLink href="#">
+                    <EmployeeIcon />
+                    <span className="line-clamp-1 ">
+                      {material.instructor_id}
+                    </span>
+                  </BadgeLink>
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-detail">Files</p>
+                <BadgeLink href="#" className="w-fit">
+                  <FileIcon />
+                  Starting Files
+                </BadgeLink>
+              </CardContent>
+              <CardFooter className="flex flex-col gap-2">
+                <Button variant="outline" size="sm" className="w-full">
+                  <JoinArrowIcon />
+                  Session link (how to use)
+                </Button>
+                <Button variant="default" size="sm" className="w-full">
+                  <DownloadIcon />
+                  Download
+                </Button>
+              </CardFooter>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );

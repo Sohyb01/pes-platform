@@ -489,4 +489,16 @@ export type TFormSchemaAddMaterial = z.infer<typeof FormSchemaAddMaterial>;
 
 // Authentication
 
-//
+// Other
+
+export const FormSchemaAddMeeting = z.object({
+  sessionid: z.string(), // Optional as it’s auto-generated
+  playback_start_time: z.string().datetime(), // Nullable and optional timestamp
+  playback_end_timestamp: z.string().datetime(), // Nullable and optional timestamp
+  session_time: z.string().datetime(), // Required timestamp
+  deviceid: z.string(), // Nullable, optional field
+  admin_id: z.string(), // Nullable and optionaloreign key
+  user_id: z.string(), // Nullable and optional
+});
+
+export type TFormSchemaAddMeeting = z.infer<typeof FormSchemaAddMeeting>;

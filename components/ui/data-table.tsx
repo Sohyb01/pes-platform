@@ -37,11 +37,17 @@ import { usePathname } from "next/navigation";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  // Custom props
+  addButton?: true | false; // Redirects to current url + "/new"
+  viewButton?: true | false; // Redirects to current url + "/new"
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  // Custom props
+  addButton,
+  viewButton,
 }: DataTableProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -79,7 +85,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex items-center pb-4">
+      <div className="flex items-center">
         {/* Filter a property */}
         {/* {table.getColumn("email") && (
           <Input
@@ -91,57 +97,63 @@ export function DataTable<TData, TValue>({
             className="max-w-[180px]"
           />
         )} */}
-        <Link
-          href={`${pathname}/new`}
-          className={`${buttonVariants({
-            variant: "outline",
-            size: "sm",
-          })} flex gap-1 items-center`}
-        >
-          <PlusIcon size={16} />
-          Add
-        </Link>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" size={"sm"} className="ml-auto gap-2">
-              <Settings2 size={16} />
-              View
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="end"
-            className="max-h-[20rem] overflow-y-scroll"
+        {addButton !== false && (
+          <Link
+            href={`${pathname}/new`}
+            className={`${buttonVariants({
+              variant: "outline",
+              size: "sm",
+            })} flex gap-1 items-center`}
           >
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <div
-                    key={column.id}
-                    className="flex items-center gap-2 capitalize p-2 px-4 border-border/50 border-b-[1px]"
-                  >
-                    <Checkbox
-                      id={column.id}
-                      checked={column.getIsVisible()}
-                      onCheckedChange={(value) =>
-                        column.toggleVisibility(!!value)
-                      }
-                    />
-                    <label htmlFor={column.id}>
-                      {/* Gets the header I defined and displays it only if it is a string, */}
-                      {/* If header is a function (ex: a Sorting button) returns the ID instead */}
-                      {typeof column.columnDef.header === "string"
-                        ? column.columnDef.header.toString().replace(/_/g, " ")
-                        : column.id.replace(/_/g, " ")}
-                    </label>
-                  </div>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+            <PlusIcon size={16} />
+            Add
+          </Link>
+        )}
+        {viewButton !== false && (
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size={"sm"} className="ml-auto gap-2">
+                <Settings2 size={16} />
+                View
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="end"
+              className="max-h-[20rem] overflow-y-scroll"
+            >
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <div
+                      key={column.id}
+                      className="flex items-center gap-2 capitalize p-2 px-4 border-border/50 border-b-[1px]"
+                    >
+                      <Checkbox
+                        id={column.id}
+                        checked={column.getIsVisible()}
+                        onCheckedChange={(value) =>
+                          column.toggleVisibility(!!value)
+                        }
+                      />
+                      <label htmlFor={column.id}>
+                        {/* Gets the header I defined and displays it only if it is a string, */}
+                        {/* If header is a function (ex: a Sorting button) returns the ID instead */}
+                        {typeof column.columnDef.header === "string"
+                          ? column.columnDef.header
+                              .toString()
+                              .replace(/_/g, " ")
+                          : column.id.replace(/_/g, " ")}
+                      </label>
+                    </div>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        )}
       </div>
-      <div className="rounded-md border bg-background">
+      <div className="rounded-md border bg-background mt-4">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

@@ -15,7 +15,7 @@ export default async function ExampleDashboardPage() {
   return (
     <div className="dashboard-tab-wrapper">
       <h3 className="text-h3">Reviews</h3>
-      <DataTable columns={reviewsColumns} data={data} />
+      <DataTable columns={reviewsColumns} data={data} addButton={false} />
     </div>
   );
 }
