@@ -36,39 +36,45 @@ import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 
-const FormAddInstructor = () => {
+const FormAddInstructor = ({
+  editObj,
+}: {
+  editObj?: TFormSchemaAddInstructor | undefined;
+}) => {
   const { toast } = useToast();
 
-  const defaultValues = {
-    user_type: "Instructor",
-    nid: "",
-    employee_name: "",
-    employee_email: "",
-    gender: "",
-    dateofbirth: undefined, //
-    homeaddress: "", //
-    employee_salary: 0, //
-    employee_mobilenum: "",
-    joined_date: undefined,
-    employee_pic: undefined,
-    fathername_husbandname: "", //
-    experience: "", //
-    religion: "", //
-    blood_group: "", //
-    education: "", //
-    username: "",
-    password: "",
-    timezone: "",
-    language: "",
-    currency: "",
-    theme: "",
-    // Instructor specific
-    instructor_age: "",
-    instructor_whatsapp: "",
-    instructor_faculty: "",
-    instructor_cv: undefined,
-    instructor_major: "",
-  };
+  const defaultValues = editObj
+    ? editObj
+    : {
+        user_type: "Instructor",
+        nid: "",
+        employee_name: "",
+        employee_email: "",
+        gender: "",
+        dateofbirth: undefined, //
+        homeaddress: "", //
+        employee_salary: 0, //
+        employee_mobilenum: "",
+        joined_date: undefined,
+        employee_pic: undefined,
+        fathername_husbandname: "", //
+        experience: "", //
+        religion: "", //
+        blood_group: "", //
+        education: "", //
+        username: "",
+        password: "",
+        timezone: "",
+        language: "",
+        currency: "",
+        theme: "",
+        // Instructor specific
+        instructor_age: "",
+        instructor_whatsapp: "",
+        instructor_faculty: "",
+        instructor_cv: undefined,
+        instructor_major: "",
+      };
   // 1. Define your form.
 
   const form = useForm<TFormSchemaAddInstructor>({
@@ -92,7 +98,6 @@ const FormAddInstructor = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="pes-grid-form">
-        <div className="col-span-1 md:col-span-2 text-h3">New Instructor</div>
         <FormField
           control={form.control}
           name="nid"
@@ -598,7 +603,7 @@ const FormAddInstructor = () => {
           )}
         />
         <Button type="submit" className="md:col-span-2">
-          Add Employee
+          {editObj ? "Save changes" : "Add Instructor"}
         </Button>
       </form>
     </Form>

@@ -19,16 +19,22 @@ import {
   TFormSchemaAddMaterial,
 } from "@/lib/types-forms";
 
-const FormAddMaterial = () => {
+const FormAddMaterial = ({
+  editObj,
+}: {
+  editObj?: TFormSchemaAddMaterial | undefined;
+}) => {
   const { toast } = useToast();
 
-  const defaultValues = {
-    id: "",
-    attachment: undefined,
-    session_id: "",
-    class_field: "",
-    instructor_id: "",
-  };
+  const defaultValues = editObj
+    ? editObj
+    : {
+        id: "",
+        attachment: undefined,
+        session_id: "",
+        class_field: "",
+        instructor_id: "",
+      };
   // 1. Define your form.
 
   const form = useForm<TFormSchemaAddMaterial>({
@@ -103,7 +109,7 @@ const FormAddMaterial = () => {
           )}
         />
         <Button type="submit" className="md:col-span-2">
-          Add Material
+          {editObj ? "Save changes" : "Add material"}
         </Button>
       </form>
     </Form>

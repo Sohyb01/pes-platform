@@ -23,31 +23,37 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const FormAddParent = () => {
+const FormAddParent = ({
+  editObj,
+}: {
+  editObj?: TFormSchemaAddParent | undefined;
+}) => {
   const { toast } = useToast();
 
-  const defaultValues = {
-    nid: "",
-    name: "",
-    email: "",
-    phone: "",
-    password: "",
-    gender: "",
-    parent_education: "",
-    parent_profession: "",
-    parent_occupation: "",
-    parent_income: "",
-    parent_address: "",
-    photo: null,
-    is_active: "",
-    referral: "",
-    language: "",
-    timezone: "",
-    theme: "",
-    promocode: "",
-    num_of_children: "",
-    username: "",
-  };
+  const defaultValues = editObj
+    ? editObj
+    : {
+        nid: "",
+        name: "",
+        email: "",
+        phone: "",
+        password: "",
+        gender: "",
+        parent_education: "",
+        parent_profession: "",
+        parent_occupation: "",
+        parent_income: "",
+        parent_address: "",
+        photo: null,
+        is_active: "",
+        referral: "",
+        language: "",
+        timezone: "",
+        theme: "",
+        promocode: "",
+        num_of_children: "",
+        username: "",
+      };
 
   // 1. Define your form.
 

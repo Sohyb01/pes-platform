@@ -36,33 +36,39 @@ import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 
-const FormAddReceptionist = () => {
+const FormAddReceptionist = ({
+  editObj,
+}: {
+  editObj?: TFormSchemaAddReceptionist | undefined;
+}) => {
   const { toast } = useToast();
 
-  const defaultValues = {
-    user_type: "Receptionist",
-    nid: "",
-    employee_name: "",
-    employee_email: "",
-    gender: "",
-    dateofbirth: undefined, //
-    homeaddress: "", //
-    employee_salary: 0, //
-    employee_mobilenum: "",
-    joined_date: undefined,
-    employee_pic: undefined,
-    fathername_husbandname: "", //
-    experience: "", //
-    religion: "", //
-    blood_group: "", //
-    education: "", //
-    username: "",
-    password: "",
-    timezone: "",
-    language: "",
-    currency: "",
-    theme: "",
-  };
+  const defaultValues = editObj
+    ? editObj
+    : {
+        user_type: "Receptionist",
+        nid: "",
+        employee_name: "",
+        employee_email: "",
+        gender: "",
+        dateofbirth: undefined, //
+        homeaddress: "", //
+        employee_salary: 0, //
+        employee_mobilenum: "",
+        joined_date: undefined,
+        employee_pic: undefined,
+        fathername_husbandname: "", //
+        experience: "", //
+        religion: "", //
+        blood_group: "", //
+        education: "", //
+        username: "",
+        password: "",
+        timezone: "",
+        language: "",
+        currency: "",
+        theme: "",
+      };
   // 1. Define your form.
 
   const form = useForm<TFormSchemaAddReceptionist>({
@@ -85,7 +91,6 @@ const FormAddReceptionist = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="pes-grid-form">
-        <div className="col-span-1 md:col-span-2 text-h3">New Receptionist</div>
         <FormField
           control={form.control}
           name="nid"
@@ -525,7 +530,7 @@ const FormAddReceptionist = () => {
           )}
         />
         <Button type="submit" className="md:col-span-2">
-          Add Employee
+          {editObj ? "Save changes" : "Add Receptionist"}
         </Button>
       </form>
     </Form>

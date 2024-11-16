@@ -33,17 +33,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const FormAddExam = () => {
+const FormAddExam = ({
+  editObj,
+}: {
+  editObj?: TFormSchemaAddExam | undefined;
+}) => {
   const { toast } = useToast();
 
-  const defaultValues = {
-    quizname: "",
-    quiz_type: "",
-    timestamp: undefined,
-    questions_and_answers: [{ question: "", answer: "" }],
-    class_field: "abc",
-    instructor_id: "abc",
-  };
+  const defaultValues = editObj
+    ? editObj
+    : {
+        quizname: "",
+        quiz_type: "",
+        timestamp: undefined,
+        questions_and_answers: [{ question: "", answer: "" }],
+        class_field: "abc",
+        instructor_id: "abc",
+      };
   // 1. Define your form.
 
   const form = useForm<TFormSchemaAddExam>({
@@ -198,7 +204,7 @@ const FormAddExam = () => {
           </Button>
         </div>
         <Button type="submit" className="md:col-span-2">
-          Create Exam
+          {editObj ? "Save changes" : "Create exam"}
         </Button>
       </form>
     </Form>

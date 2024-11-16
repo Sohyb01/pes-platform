@@ -25,17 +25,23 @@ import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 
-const FormAddClass = () => {
+const FormAddClass = ({
+  editObj,
+}: {
+  editObj?: TFormSchemaAddClass | undefined;
+}) => {
   const { toast } = useToast();
 
-  const defaultValues = {
-    class_name: "",
-    class_fees: 0,
-    program_id: "",
-    instructor_id: "",
-    classbegindate: undefined,
-    classenddate: undefined,
-  };
+  const defaultValues = editObj
+    ? editObj
+    : {
+        class_name: "",
+        class_fees: 0,
+        program_id: "",
+        instructor_id: "",
+        classbegindate: undefined,
+        classenddate: undefined,
+      };
   // 1. Define your form.
 
   const form = useForm<TFormSchemaAddClass>({

@@ -34,37 +34,43 @@ import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 // import { CopyIcon } from "../icons/CopyIcon";
 
-const FormAddStudent = () => {
+const FormAddStudent = ({
+  editObj,
+}: {
+  editObj?: TFormSchemaAddStudent | undefined;
+}) => {
   const { toast } = useToast();
 
-  const defaultValues = {
-    student_nid: "",
-    student_name: "",
-    gender: "",
-    student_dateofbirth: undefined,
-    student_address: "",
-    student_mobile: "",
-    student_whatsappnum: "",
-    student_pic: null,
-    student_dateofadmission: undefined,
-    student_prevschool: "",
-    student_religion: "",
-    student_diseases: "",
-    student_laptop: "",
-    timezone: "",
-    language: "",
-    orphan: "",
-    isactive: "",
-    theme: "",
-    student_bloodgroup: "",
-    student_feediscount: "",
-    student_referralcode: "",
-    student_totalsibs: "",
-    student_additionalnotes: "",
-    student_email: "",
-    student_password: "",
-    student_familyid: "",
-  };
+  const defaultValues = editObj
+    ? editObj
+    : {
+        student_nid: "",
+        student_name: "",
+        gender: "",
+        student_dateofbirth: undefined,
+        student_address: "",
+        student_mobile: "",
+        student_whatsappnum: "",
+        student_pic: null,
+        student_dateofadmission: undefined,
+        student_prevschool: "",
+        student_religion: "",
+        student_diseases: "",
+        student_laptop: "",
+        timezone: "",
+        language: "",
+        orphan: "",
+        isactive: "",
+        theme: "",
+        student_bloodgroup: "",
+        student_feediscount: "",
+        student_referralcode: "",
+        student_totalsibs: "",
+        student_additionalnotes: "",
+        student_email: "",
+        student_password: "",
+        student_familyid: "",
+      };
 
   // 1. Define your form.
 
@@ -123,12 +129,12 @@ const FormAddStudent = () => {
               <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select an option" />
+                    <SelectValue placeholder={field.value} />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="Muslim">Male</SelectItem>
-                  <SelectItem value="Christian">Female</SelectItem>
+                  <SelectItem value="Male">Male</SelectItem>
+                  <SelectItem value="Female">Female</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -223,11 +229,16 @@ const FormAddStudent = () => {
         <FormField
           control={form.control}
           name="student_pic"
-          render={() => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Student picture</FormLabel>
               <FormControl>
-                <Input type="file" className="file-upload" {...imgRef} />
+                <Input
+                  type="file"
+                  className="file-upload"
+                  placeholder={field.value}
+                  {...imgRef}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -590,7 +601,7 @@ const FormAddStudent = () => {
           )}
         />
         <Button type="submit" className="md:col-span-2">
-          Add Employee
+          {editObj ? "Save changes" : "Add Employee"}
         </Button>
       </form>
     </Form>

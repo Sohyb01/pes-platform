@@ -33,36 +33,42 @@ import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 
-const FormAddAdmin = () => {
+const FormAddAdmin = ({
+  editObj,
+}: {
+  editObj?: TFormSchemaAddAdmin | undefined;
+}) => {
   const { toast } = useToast();
 
-  const defaultValues = {
-    nid: "",
-    employee_name: "",
-    employee_email: "",
-    gender: "",
-    dateofbirth: undefined, //
-    homeaddress: "", //
-    employee_salary: 0, //
-    employee_mobilenum: "",
-    joined_date: undefined,
-    employee_pic: undefined,
-    fathername_husbandname: "", //
-    experience: "", //
-    religion: "", //
-    blood_group: "", //
-    education: "", //
-    username: "",
-    password: "",
-    //
-    timezone: "",
-    language: "",
-    currency: "",
-    theme: "",
-    // Admin specific
-    admin_position: "",
-    branch_id: "",
-  };
+  const defaultValues = editObj
+    ? editObj
+    : {
+        nid: "",
+        employee_name: "",
+        employee_email: "",
+        gender: "",
+        dateofbirth: undefined, //
+        homeaddress: "", //
+        employee_salary: 0, //
+        employee_mobilenum: "",
+        joined_date: undefined,
+        employee_pic: undefined,
+        fathername_husbandname: "", //
+        experience: "", //
+        religion: "", //
+        blood_group: "", //
+        education: "", //
+        username: "",
+        password: "",
+        //
+        timezone: "",
+        language: "",
+        currency: "",
+        theme: "",
+        // Admin specific
+        admin_position: "",
+        branch_id: "",
+      };
   // 1. Define your form.
 
   const form = useForm<TFormSchemaAddAdmin>({
@@ -84,7 +90,6 @@ const FormAddAdmin = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="pes-grid-form">
-        <div className="col-span-1 md:col-span-2 text-h3">New Admin</div>
         <FormField
           control={form.control}
           name="nid"
@@ -568,7 +573,7 @@ const FormAddAdmin = () => {
           )}
         />
         <Button type="submit" className="md:col-span-2">
-          Add Admin
+          {editObj ? "Save changes" : "Add Admin"}
         </Button>
       </form>
     </Form>

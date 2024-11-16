@@ -27,18 +27,25 @@ import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
+import { Textarea } from "@/components/ui/textarea";
 
-const FormAddAssignment = () => {
+const FormAddAssignment = ({
+  editObj,
+}: {
+  editObj?: TFormSchemaAddAssignment | undefined;
+}) => {
   const { toast } = useToast();
 
-  const defaultValues = {
-    assignment_url: "",
-    assignment_duedate: undefined,
-    assignment_attachment: null,
-    assignment_description: "",
-    subject_id: "",
-    class_id: "",
-  };
+  const defaultValues = editObj
+    ? editObj
+    : {
+        assignment_url: "",
+        assignment_duedate: undefined,
+        assignment_attachment: null,
+        assignment_description: "",
+        subject_id: "",
+        class_id: "",
+      };
   // 1. Define your form.
 
   const form = useForm<TFormSchemaAddAssignment>({
@@ -140,10 +147,10 @@ const FormAddAssignment = () => {
           control={form.control}
           name="assignment_description"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="col-span-1 md:col-span-2">
               <FormLabel>Assignment description</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Textarea className="resize-none" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -176,7 +183,7 @@ const FormAddAssignment = () => {
           )}
         />
         <Button type="submit" className="md:col-span-2">
-          Add class
+          {editObj ? "Save changes" : "Add class"}
         </Button>
       </form>
     </Form>

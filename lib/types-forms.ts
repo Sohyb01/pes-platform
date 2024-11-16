@@ -221,6 +221,7 @@ export type TFormSchemaPendingEmployee = z.infer<
 // Platform backend requests forms
 
 export const FormSchemaAddParent = z.object({
+  id: z.string().nullish(),
   nid: z.string().min(1, { message: "Required" }).max(50),
   name: z.string().min(1, { message: "Required" }).max(50),
   email: z.string().email().min(1, { message: "Required" }).max(50),
@@ -257,6 +258,7 @@ export const FormSchemaAddParent = z.object({
 export type TFormSchemaAddParent = z.infer<typeof FormSchemaAddParent>;
 
 export const FormSchemaAddStudent = z.object({
+  id: z.string().nullish(),
   student_nid: z.string().trim().min(1, "Required").max(50),
   student_name: z.string().trim().min(1, "Required").max(50),
   gender: z.string().trim().min(1, "Required").max(50),
@@ -267,12 +269,12 @@ export const FormSchemaAddStudent = z.object({
   student_pic: z
     .any()
     .refine(
-      (files) => files && files[0]?.size < MAX_FILE_SIZE_5MB,
+      (files) => files[0] == undefined || files[0]?.size < MAX_FILE_SIZE_5MB,
       "File is too big! Max 5MB"
     )
     .refine(
-      (files) => checkImageFileType(files[0]?.name, false),
-      "Please upload an image under 5MB (webp, png, jpg)"
+      (files) => files && checkImageFileType(files[0]?.name, false),
+      "Only .pdf, .docx formats are supported."
     )
     .nullish(),
   student_dateofadmission: z.date(),
@@ -304,6 +306,7 @@ const FormSchemaAddEmployee = z.object({
     .max(50)
     .default("Instructor"), // Represents `user_role`, will be set by the form itself
 
+  id: z.string().nullish(), // National ID (required)
   nid: z.string().trim().min(1, "Required"), // National ID (required)
   employee_name: z.string().trim().min(1, "Required"),
   employee_email: z.string().email("Invalid email address"),
@@ -393,6 +396,7 @@ export const FormSchemaAddClass = z.object({
 export type TFormSchemaAddClass = z.infer<typeof FormSchemaAddClass>;
 
 export const FormSchemaAddExam = z.object({
+  id: z.string().nullish(),
   quizname: z.string().trim().min(1, "Required"), // Non-empty string
   quiz_type: z.string().trim().min(1, "Required"), // Non-empty string
   timestamp: z.date(),
@@ -411,6 +415,7 @@ export const FormSchemaAddExam = z.object({
 export type TFormSchemaAddExam = z.infer<typeof FormSchemaAddExam>;
 
 export const FormSchemaAddAssignment = z.object({
+  assignment_id: z.string().nullish(),
   assignment_url: z.string().optional(), // Optional URL field
   assignment_duedate: z.date(), // Validated as date
   assignment_attachment: z
