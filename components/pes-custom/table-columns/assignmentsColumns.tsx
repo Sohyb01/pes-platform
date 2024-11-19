@@ -28,7 +28,7 @@ import { TFormSchemaAddAssignment } from "@/lib/types-forms";
 import TableDateFormatter from "@/components/pes-custom/platform-components/TableDateFormatter";
 import Link from "next/link";
 
-export const AssignmentsColumns: ColumnDef<TFormSchemaAddAssignment>[] = [
+export const assignmentsColumns: ColumnDef<TFormSchemaAddAssignment>[] = [
   {
     id: "select",
     header: ({ table }) => (
