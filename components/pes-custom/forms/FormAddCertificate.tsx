@@ -26,17 +26,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const FormAddCertificate = () => {
+const FormAddCertificate = ({
+  editObj,
+}: {
+  editObj?: TFormSchemaAddCertificate | undefined;
+}) => {
   const { toast } = useToast();
 
-  const defaultValues = {
-    certificate_id: "",
-    serial_number: "",
-    certificate_type: "",
-    class_id: "",
-    student_name: "",
-    student_id: "",
-  };
+  const defaultValues = editObj
+    ? editObj
+    : {
+        certificate_id: "",
+        serial_number: "",
+        certificate_type: "",
+        class_id: "",
+        student_name: "",
+        student_id: "",
+      };
   // 1. Define your form.
 
   const form = useForm<TFormSchemaAddCertificate>({
@@ -144,7 +150,7 @@ const FormAddCertificate = () => {
           )}
         />
         <Button type="submit" className="md:col-span-2">
-          Generate Certificate
+          {editObj ? "Save changes" : "Generate certificate"}
         </Button>
       </form>
     </Form>

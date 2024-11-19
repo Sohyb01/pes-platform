@@ -27,6 +27,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { TFormSchemaAddStudent } from "@/lib/types-forms";
 import TableDateFormatter from "@/components/pes-custom/platform-components/TableDateFormatter";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import Link from "next/link";
 
 export const studentsColumns: ColumnDef<TFormSchemaAddStudent>[] = [
   {
@@ -198,8 +199,7 @@ export const studentsColumns: ColumnDef<TFormSchemaAddStudent>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const employee = row.original;
-      console.log(employee);
+      const obj = row.original;
 
       return (
         <div className="flex justify-end">
@@ -212,30 +212,15 @@ export const studentsColumns: ColumnDef<TFormSchemaAddStudent>[] = [
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full text-start justify-start px-2 py-1.5"
-                  >
-                    Edit
-                  </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Edit Student</AlertDialogTitle>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      className={buttonVariants({ variant: "destructive" })}
-                    >
-                      Delete
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
+              <Link
+                href={`/dashboard/superadmin/students/${obj.id}`}
+                className={`${buttonVariants({
+                  variant: "ghost",
+                  size: "sm",
+                })}  text-start justify-start px-2 py-1.5`}
+              >
+                <span className="w-full text-start">Edit</span>
+              </Link>
               <DropdownMenuSeparator />
               <AlertDialog>
                 <AlertDialogTrigger asChild>

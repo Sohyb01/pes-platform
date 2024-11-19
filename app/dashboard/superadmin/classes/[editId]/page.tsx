@@ -9,7 +9,7 @@ const EditPage = ({ params }: { params: { editId: string } }) => {
 
   return (
     <div className="dashboard-tab-wrapper">
-      <h3 className="text-h3">Editing Class</h3>
+      <h3 className="text-h3">Editing class</h3>
       {pesClass == undefined ? (
         <div>Invalid ID provided</div>
       ) : (

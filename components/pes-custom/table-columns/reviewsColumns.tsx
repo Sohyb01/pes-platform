@@ -95,7 +95,7 @@ export const reviewsColumns: ColumnDef<TFormSchemaAddReview>[] = [
                     size="sm"
                     className="w-full text-start justify-start px-2 py-1.5"
                   >
-                    Edit
+                    <span className="w-full text-start">Edit</span>
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
