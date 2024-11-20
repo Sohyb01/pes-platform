@@ -35,7 +35,7 @@ import {
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
+import { CalendarDropdown } from "@/components/ui/calendar-dropdown";
 
 const FormPendingPartnership = () => {
   const { toast } = useToast();
@@ -247,7 +247,7 @@ const FormPendingPartnership = () => {
                   className="w-auto p-0"
                   align="start"
                 >
-                  <Calendar
+                  <CalendarDropdown
                     mode="single"
                     captionLayout="dropdown-buttons"
                     fromYear={2020}

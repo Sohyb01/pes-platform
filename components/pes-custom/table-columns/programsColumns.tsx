@@ -25,6 +25,7 @@ import {
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { TFormSchemaAddProgram } from "@/lib/types-forms";
+import Link from "next/link";
 
 export const programsColumns: ColumnDef<TFormSchemaAddProgram>[] = [
   {
@@ -89,8 +90,8 @@ export const programsColumns: ColumnDef<TFormSchemaAddProgram>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const employee = row.original;
-      console.log(employee);
+      const obj = row.original;
+      console.log(obj);
 
       return (
         <div className="flex justify-end">
@@ -103,30 +104,15 @@ export const programsColumns: ColumnDef<TFormSchemaAddProgram>[] = [
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full text-start justify-start px-2 py-1.5"
-                  >
-                    <span className="w-full text-start">Edit</span>
-                  </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle>Edit Class</AlertDialogTitle>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction
-                      className={buttonVariants({ variant: "destructive" })}
-                    >
-                      Delete
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
+              <Link
+                href={`/dashboard/superadmin/programs/${obj.program_id}`}
+                className={`${buttonVariants({
+                  variant: "ghost",
+                  size: "sm",
+                })} w-full justify-start px-2 py-1.5`}
+              >
+                <span className="w-full text-start">Edit</span>
+              </Link>
               <DropdownMenuSeparator />
               <AlertDialog>
                 <AlertDialogTrigger asChild>

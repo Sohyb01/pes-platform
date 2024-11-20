@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/popover";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
-import { Calendar } from "@/components/ui/calendar";
+import { CalendarDropdown } from "@/components/ui/calendar-dropdown";
 import { cn } from "@/lib/utils";
 import {
   FormSchemaPendingEmployee,
@@ -138,7 +138,7 @@ const FormPendingEmployee = () => {
                     className="w-auto p-0"
                     align="start"
                   >
-                    <Calendar
+                    <CalendarDropdown
                       mode="single"
                       captionLayout="dropdown-buttons"
                       fromYear={1900}

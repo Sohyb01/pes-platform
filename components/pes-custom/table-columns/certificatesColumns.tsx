@@ -97,7 +97,7 @@ export const certificatesColumns: ColumnDef<TFormSchemaAddCertificate>[] = [
                 className={`${buttonVariants({
                   variant: "ghost",
                   size: "sm",
-                })} text-start justify-start px-2 py-1.5`}
+                })} w-full justify-start px-2 py-1.5`}
               >
                 <span className="w-full text-start">Edit</span>
               </Link>

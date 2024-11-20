@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDown, MoreVertical } from "lucide-react";
+import { MoreVertical } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -24,11 +24,10 @@ import {
 } from "@/components/ui/alert-dialog";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { TFormSchemaAddAssignment } from "@/lib/types-forms";
-import TableDateFormatter from "@/components/pes-custom/platform-components/TableDateFormatter";
+import { TFormSchemaAddProject } from "@/lib/types-forms";
 import Link from "next/link";
 
-export const assignmentsColumns: ColumnDef<TFormSchemaAddAssignment>[] = [
+export const projectsColumns: ColumnDef<TFormSchemaAddProject>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -53,72 +52,32 @@ export const assignmentsColumns: ColumnDef<TFormSchemaAddAssignment>[] = [
   },
   //
   {
-    accessorKey: "assignment_url",
-    header: "Link",
-    cell: ({ row }) => {
-      const assignment = row.original;
-
-      return assignment.assignment_url ? (
-        <Link
-          href={assignment.assignment_url}
-          className="w-[16ch] hover:underline"
-        >
-          View Assignment
-        </Link>
-      ) : (
-        <div className="w-[16ch] text-muted-foreground">Unavailable</div>
-      );
-    },
+    accessorKey: "project_id",
+    header: "ID",
   },
   {
-    accessorKey: "assignment_duedate",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="sorting"
-          size="sorting"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Due Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const dateobj = row.getValue("assignment_duedate") as Date;
-      return <TableDateFormatter date={dateobj} />;
-    },
+    accessorKey: "project_name",
+    header: "Name",
   },
   {
-    accessorKey: "assignment_attachment",
-    header: "Attachment",
-    cell: ({ row }) => {
-      const assignment = row.original;
-
-      return assignment.assignment_attachment ? (
-        <Link href="#" className="hover:underline">
-          {assignment.assignment_attachment[0].name}
-        </Link>
-      ) : (
-        <div className="text-muted-foreground">None</div>
-      );
-    },
+    accessorKey: "level_id",
+    header: "Levels",
   },
   {
-    accessorKey: "assignment_description",
+    accessorKey: "project_url",
+    header: "URL",
+  },
+  {
+    accessorKey: "description",
     header: "Description",
   },
   {
-    accessorKey: "subject_id",
-    header: "Subject",
+    accessorKey: "student_id",
+    header: "Student",
   },
   {
-    accessorKey: "class_id",
-    header: "Class",
-  },
-  {
-    accessorKey: "sent_by",
-    header: "Sent by",
+    accessorKey: "track_id",
+    header: "Track",
   },
   //
   {
@@ -138,7 +97,7 @@ export const assignmentsColumns: ColumnDef<TFormSchemaAddAssignment>[] = [
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <Link
-                href={`/dashboard/superadmin/assignments/${obj.assignment_id}`}
+                href={`/dashboard/superadmin/projects/${obj.project_id}`}
                 className={`${buttonVariants({
                   variant: "ghost",
                   size: "sm",

@@ -395,21 +395,47 @@ export const FormSchemaAddClass = z.object({
 
 export type TFormSchemaAddClass = z.infer<typeof FormSchemaAddClass>;
 
+// Base schema for common properties
+const BaseQuestionSchema = z.object({
+  id: z.string(),
+  questionText: z.string(),
+});
+
+// MCQ Question Schema
+const MCQQuestionSchema = BaseQuestionSchema.extend({
+  type: z.literal("mcq"),
+  options: z.array(z.string()),
+  correctAnswer: z.string(),
+});
+
+// Essay Question Schema
+const EssayQuestionSchema = BaseQuestionSchema.extend({
+  type: z.literal("essay"),
+  wordLimit: z.number().int().positive().optional(),
+});
+
+// True/False Question Schema
+const TrueFalseQuestionSchema = BaseQuestionSchema.extend({
+  type: z.literal("true_false"),
+  correctAnswer: z.boolean(),
+});
+
+// Union schema for questions
+const QuestionSchema = z.union([
+  MCQQuestionSchema,
+  EssayQuestionSchema,
+  TrueFalseQuestionSchema,
+]);
+
+// Exam Schema
 export const FormSchemaAddExam = z.object({
-  id: z.string().nullish(),
-  quizname: z.string().trim().min(1, "Required"), // Non-empty string
-  quiz_type: z.string().trim().min(1, "Required"), // Non-empty string
-  timestamp: z.date(),
-  questions_and_answers: z
-    .array(
-      z.object({
-        question: z.string().trim().min(1, "Question is required"), // Non-empty question string
-        answer: z.string().trim().min(1, "Answer is required"), // Non-empty answer string
-      })
-    )
-    .nonempty("Questions and answers must be provided"), // Array of question-answer pairs
+  id: z.string().optional(),
+  quizname: z.string().trim().min(1, "Required"),
+  quiz_type: z.string().trim().min(1, "Required"),
+  timestamp: z.date().optional(),
   class_field: z.string().trim().min(1, "Required"),
   instructor_id: z.string().trim().min(1, "Required"),
+  questions: z.array(QuestionSchema).min(1, "Quiz must have questions"),
 });
 
 export type TFormSchemaAddExam = z.infer<typeof FormSchemaAddExam>;
@@ -489,6 +515,22 @@ export const FormSchemaAddMaterial = z.object({
 });
 
 export type TFormSchemaAddMaterial = z.infer<typeof FormSchemaAddMaterial>;
+
+// Combination of LevelsProject and ProjectLevelMap models
+export const FormSchemaAddProject = z.object({
+  project_id: z.string().optional(),
+  project_name: z.string().trim().min(1, "Required"),
+  //
+  level_id: z.string().optional(),
+  //
+  project_url: z.string().trim().min(1, "Required"),
+  description: z.string().trim().min(1, "Required"),
+  student_id: z.string().trim().min(1, "Required"),
+  track_id: z.string().trim().min(1, "Required"),
+  //
+});
+
+export type TFormSchemaAddProject = z.infer<typeof FormSchemaAddProject>;
 
 // Registers
 

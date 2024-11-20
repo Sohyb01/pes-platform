@@ -25,7 +25,6 @@ import {
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { TFormSchemaAddExam } from "@/lib/types-forms";
-import TableDateFormatter from "@/components/pes-custom/platform-components/TableDateFormatter";
 import Link from "next/link";
 
 export const examsColumns: ColumnDef<TFormSchemaAddExam>[] = [
@@ -74,10 +73,6 @@ export const examsColumns: ColumnDef<TFormSchemaAddExam>[] = [
         </Button>
       );
     },
-    cell: ({ row }) => {
-      const dateobj = row.getValue("timestamp") as Date;
-      return <TableDateFormatter date={dateobj} />;
-    },
   },
   {
     accessorKey: "class_field",
@@ -109,7 +104,7 @@ export const examsColumns: ColumnDef<TFormSchemaAddExam>[] = [
                 className={`${buttonVariants({
                   variant: "ghost",
                   size: "sm",
-                })} text-start justify-start px-2 py-1.5`}
+                })} w-full justify-start px-2 py-1.5`}
               >
                 <span className="w-full text-start">Edit</span>
               </Link>

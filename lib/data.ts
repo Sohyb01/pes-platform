@@ -11,6 +11,7 @@ import {
   TFormSchemaAddMeeting,
   TFormSchemaAddParent,
   TFormSchemaAddProgram,
+  TFormSchemaAddProject,
   TFormSchemaAddReview,
   TFormSchemaAddStudent,
   TFormSchemaPendingFranchise,
@@ -297,44 +298,32 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
 
 export const exampleExams: TFormSchemaAddExam[] = [
   {
-    id: "1",
-    quizname: "Math Quiz 1",
-    quiz_type: "Multiple Choice",
-    timestamp: new Date("2024-11-01T09:30:00"),
-    questions_and_answers: [
+    id: "exam1",
+    quizname: "Midterm A",
+    quiz_type: "Type B",
+    class_field: "abc",
+    instructor_id: "123",
+    questions: [
       {
-        question: "What is 5 + 7?",
-        answer: "12",
+        id: "q1",
+        type: "mcq",
+        questionText: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Rome"],
+        correctAnswer: "Paris",
       },
       {
-        question: "What is the square root of 64?",
-        answer: "8",
-      },
-    ],
-    class_field: "Math Class A",
-    instructor_id: "123e4567-e89b-12d3-a456-426614174000",
-  },
-  {
-    id: "2",
-    quizname: "Science Final Exam",
-    quiz_type: "True/False",
-    timestamp: new Date("2024-12-15T13:00:00"),
-    questions_and_answers: [
-      {
-        question: "The Earth revolves around the Sun.",
-        answer: "True",
+        id: "q2",
+        type: "essay",
+        questionText: "Explain the theory of relativity.",
+        wordLimit: 500,
       },
       {
-        question: "Water boils at 90 degrees Celsius at sea level.",
-        answer: "False",
-      },
-      {
-        question: "Plants produce oxygen during photosynthesis.",
-        answer: "True",
+        id: "q3",
+        type: "true_false",
+        questionText: "The Earth is flat.",
+        correctAnswer: false,
       },
     ],
-    class_field: "Science Class B",
-    instructor_id: "987e6543-b21c-34d3-a678-529716184321",
   },
 ];
 
@@ -555,5 +544,27 @@ export const exampleMeetings: TFormSchemaAddMeeting[] = [
     deviceid: "device456",
     admin_id: "admin789",
     user_id: "user345",
+  },
+];
+
+export const exampleProjects: TFormSchemaAddProject[] = [
+  {
+    project_id: "proj001",
+    project_name: "Web Development Basics",
+    level_id: "level123",
+    project_url: "https://example.com/projects/web-basics",
+    description: "A beginner-level project focusing on HTML and CSS.",
+    student_id: "student456",
+    track_id: "track789",
+  },
+  {
+    project_id: "proj002",
+    project_name: "Machine Learning Model",
+    level_id: undefined, // `null` is allowed for level_id as it is nullish
+    project_url: "https://example.com/projects/ml-model",
+    description:
+      "An advanced project for building a machine learning model using Python.",
+    student_id: "student123",
+    track_id: "track456",
   },
 ];

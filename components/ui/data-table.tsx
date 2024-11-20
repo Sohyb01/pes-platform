@@ -32,6 +32,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { PlusIcon, Settings2 } from "lucide-react";
 import { Checkbox } from "./checkbox";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -80,6 +81,8 @@ export function DataTable<TData, TValue>({
     },
   });
 
+  const pathname = usePathname();
+
   return (
     <div>
       <div className="flex items-center">
@@ -96,7 +99,7 @@ export function DataTable<TData, TValue>({
         )} */}
         {addButton !== false && (
           <Link
-            href={`new`}
+            href={`${pathname}/new`}
             className={`${buttonVariants({
               variant: "outline",
               size: "sm",
