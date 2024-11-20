@@ -29,9 +29,11 @@ const page = () => {
               <CardHeader>
                 <CardTitle>
                   {exam.quizname}
-                  <span className="ml-2 text-muted-foreground text-subtle">{`${exam.timestamp.getUTCDate()}/${
-                    exam.timestamp.getUTCMonth() + 1
-                  }/${exam.timestamp.getFullYear()}`}</span>
+                  {exam.timestamp && (
+                    <span className="ml-2 text-muted-foreground text-subtle">{`${exam.timestamp.getUTCDate()}/${
+                      exam.timestamp.getUTCMonth() + 1
+                    }/${exam.timestamp.getFullYear()}`}</span>
+                  )}
                 </CardTitle>
                 <CardDescription className="flex justify-between pt-2">
                   <BadgeLink href="#">
@@ -46,7 +48,7 @@ const page = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-subtle">
-                <p>{exam.questions_and_answers.length} questions</p>
+                <p>{exam.questions.length} questions</p>
               </CardContent>
               <CardFooter>
                 <Button variant="default" size="sm" className="w-full">
