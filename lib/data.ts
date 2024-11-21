@@ -309,7 +309,7 @@ export const exampleExams: TFormSchemaAddExam[] = [
         id: "q1",
         type: "mcq",
         questionText: "What is the capital of France?",
-        options: ["Berlin", "Madrid", "Paris", "Rome"],
+        options: ["Madrid", "Berlin", "Paris", "Rome"],
         correctAnswer: "Paris",
       },
       {

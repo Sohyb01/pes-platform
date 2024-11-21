@@ -36,7 +36,7 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
     toast({
       title: "Submitted successfully!",
     });
-    form.reset(defaultValues);
+    // form.reset(defaultValues);
   };
 
   const { fields } = useFieldArray({
@@ -56,7 +56,13 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
                   {field.questionText}
                 </FormLabel>
                 <FormControl>
-                  <RadioGroup className="flex flex-col space-y-1">
+                  <RadioGroup
+                    className="flex flex-col space-y-1"
+                    // {...form.register(`questions.${index}.studentAnswer`)}
+                    onValueChange={(value) =>
+                      form.setValue(`questions.${index}.studentAnswer`, value)
+                    }
+                  >
                     {/* Display the options as radio group */}
                     {field.options.map((option, idx) => {
                       return (
@@ -65,12 +71,7 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
                           className="flex items-center space-x-3 space-y-0"
                         >
                           <FormControl>
-                            <RadioGroupItem
-                              {...form.register(
-                                `questions.${index}.studentAnswer`
-                              )}
-                              value={`${option}`}
-                            />
+                            <RadioGroupItem value={`${option}`} />
                           </FormControl>
                           <FormLabel className=" text-p_ui">{option}</FormLabel>
                         </FormItem>
@@ -130,7 +131,17 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
             </div>
           )
         )}
-        <Button type="submit" className="md:col-span-2">
+        <Button
+          type="submit"
+          onClick={() => console.log(form.getValues())}
+          disabled={form.getValues().questions.some(
+            (question) =>
+              question.studentAnswer == null ||
+              (typeof question.studentAnswer == "string" &&
+                question.studentAnswer.length < 1) // Checks for both null and undefined
+          )}
+          className="md:col-span-2"
+        >
           Finish exam
         </Button>
       </form>
