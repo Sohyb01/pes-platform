@@ -444,13 +444,13 @@ export type TFormSchemaAddExam = z.infer<typeof FormSchemaAddExam>;
 // Answers for solved exam object
 
 const MCQAnswerSchema = MCQQuestionSchema.extend({
-  studentAnswer: z.string(),
+  studentAnswer: z.string().trim().min(1, "Required"),
 });
 const EssayAnswerSchema = EssayQuestionSchema.extend({
-  studentAnswer: z.string(),
+  studentAnswer: z.string().trim().min(1, "Required"),
 });
 const TrueFalseAnswerSchema = TrueFalseQuestionSchema.extend({
-  studentAnswer: z.coerce.boolean(),
+  studentAnswer: z.boolean(),
 });
 
 const AnswerSchema = z.union([
