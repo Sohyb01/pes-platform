@@ -5,7 +5,6 @@ import { AssignmentIcon } from "@/components/pes-custom/icons/AssignmentIcon";
 import { CertificateIcon } from "@/components/pes-custom/icons/CertificateIcon";
 import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 import { MaterialIcon } from "@/components/pes-custom/icons/MaterialIcon";
-import { MeetingIcon } from "@/components/pes-custom/icons/MeetingIcon";
 import { QuizIcon } from "@/components/pes-custom/icons/QuizIcon";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
@@ -28,7 +27,7 @@ const StudentSidebar = () => {
           <p>Platform</p>
           {/* Links */}
           <div className="sidebar-links-container">
-            <Link href="/dashboard/student/schedule">
+            <Link href="/dashboard/student/schedules">
               <Button
                 className="sidebar-button"
                 variant={lastSegment == "schedule" ? "default" : "outline"}
@@ -53,15 +52,6 @@ const StudentSidebar = () => {
                 size="sm"
               >
                 <AssignmentIcon /> Assignments
-              </Button>
-            </Link>
-            <Link href="/dashboard/student/meetings">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "meetings" ? "default" : "outline"}
-                size="sm"
-              >
-                <MeetingIcon /> Meetings
               </Button>
             </Link>
             <Link href="/dashboard/student/quizzes">

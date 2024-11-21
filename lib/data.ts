@@ -35,7 +35,7 @@ export const exampleEmployees: TFormSchemaAddEmployee[] = [
     employee_pic: { name: "profile.jpg", size: 400000, type: "image/jpeg" }, // Mock file object for demonstration
     fathername_husbandname: "James Doe", // Optional
     experience: "5 years in software development",
-    religion: "Christianity",
+    religion: "Christian",
     blood_group: "O+",
     education: "Bachelor's Degree in Computer Science",
     username: "johndoe123",
@@ -70,7 +70,7 @@ export const exampleAdmins: TFormSchemaAddAdmin[] = [
     }, // Mock file object for example
     fathername_husbandname: "Robert Smith",
     experience: "10 years in administration",
-    religion: "Hinduism",
+    religion: "Other",
     blood_group: "B+",
     education: "Master's Degree in Business Administration",
     username: "janesmith",
@@ -115,7 +115,7 @@ export const exampleInstructors: TFormSchemaAddInstructor[] = [
     }, // Mock file for profile picture
     fathername_husbandname: "David Johnson",
     experience: "7 years in teaching",
-    religion: "Islam",
+    religion: "Muslim",
     blood_group: "A-",
     education: "Ph.D. in Computer Science",
     username: "alicejohnson",
@@ -143,7 +143,7 @@ export const exampleStudents: TFormSchemaAddStudent[] = [
     }, // Mock file object
     student_dateofadmission: new Date("2023-09-01"),
     student_prevschool: "Springfield Elementary",
-    student_religion: "Christianity",
+    student_religion: "Christian",
     student_diseases: "None",
     student_laptop: "Yes",
     timezone: "UTC-5",

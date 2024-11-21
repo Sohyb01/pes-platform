@@ -11,7 +11,6 @@ import Link from "next/link";
 import { CertificateIcon } from "../icons/CertificateIcon";
 import { ClassIcon } from "../icons/ClassIcon";
 import { MaterialIcon } from "../icons/MaterialIcon";
-import { MeetingIcon } from "../icons/MeetingIcon";
 import { QuizIcon } from "../icons/QuizIcon";
 import { AssignmentIcon } from "../icons/AssignmentIcon";
 import { usePathname } from "next/navigation";
@@ -105,17 +104,6 @@ const StudentNavbar = () => {
                         size="sm"
                       >
                         <AssignmentIcon /> Assignments
-                      </Button>
-                    </Link>
-                    <Link href="/dashboard/student/meetings">
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "meetings" ? "default" : "outline"
-                        }
-                        size="sm"
-                      >
-                        <MeetingIcon /> Meetings
                       </Button>
                     </Link>
                     <Link href="/dashboard/student/quizzes">

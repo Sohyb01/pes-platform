@@ -376,11 +376,14 @@ const FormAddInstructor = ({
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="A">A</SelectItem>
-                  <SelectItem value="B">B</SelectItem>
-                  <SelectItem value="AB">AB</SelectItem>
-                  <SelectItem value="O">O</SelectItem>
-                  <SelectItem value="Other">Other</SelectItem>
+                  <SelectItem value="A+">A+</SelectItem>
+                  <SelectItem value="A-">A-</SelectItem>
+                  <SelectItem value="B+">B+</SelectItem>
+                  <SelectItem value="B-">B-</SelectItem>
+                  <SelectItem value="AB+">AB+</SelectItem>
+                  <SelectItem value="AB-">AB-</SelectItem>
+                  <SelectItem value="O+">O+</SelectItem>
+                  <SelectItem value="O-">O-</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />

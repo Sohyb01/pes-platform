@@ -26,6 +26,7 @@ import {
 import { Checkbox } from "@/components/ui/checkbox";
 import { TFormSchemaAddExam } from "@/lib/types-forms";
 import Link from "next/link";
+import TableTimestampFormatter from "../platform-components/TableTimestampFormatter";
 
 export const examsColumns: ColumnDef<TFormSchemaAddExam>[] = [
   {
@@ -72,6 +73,10 @@ export const examsColumns: ColumnDef<TFormSchemaAddExam>[] = [
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
+    },
+    cell: ({ row }) => {
+      const dateobj = row.getValue("timestamp");
+      return <TableTimestampFormatter date={dateobj} />;
     },
   },
   {
