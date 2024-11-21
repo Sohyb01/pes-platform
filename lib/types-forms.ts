@@ -506,13 +506,55 @@ export type TFormSchemaAddCertificate = z.infer<
   typeof FormSchemaAddCertificate
 >;
 
-const FormSchemaAddProgram = z.object({
-  program_id: z.string().uuid().optional(), // Optional, as it’s generated automatically
-  program_name: z.string().min(1, "Program name is required"),
-  program_levels: z.string().min(1, "Program levels are required"),
-  program_price: z.number().min(0, "Program price must be a positive number"),
-  description: z.string().min(1, "Description is required"),
-  numberoflevels: z.string().min(1, "Number of levels is required"),
+// const FormSchemaAddProgram = z.object({
+//   program_id: z.string().uuid().optional(), // Optional, as it’s generated automatically
+//   program_name: z.string().min(1, "Program name is required"),
+//   program_levels: z.string().min(1, "Program levels are required"),
+//   program_price: z.number().min(0, "Program price must be a positive number"),
+//   description: z.string().min(1, "Description is required"),
+//   numberoflevels: z.string().min(1, "Number of levels is required"),
+// });
+
+// export type TFormSchemaAddProgram = z.infer<typeof FormSchemaAddProgram>;
+
+export const FormSchemaAddSchedule = z.object({
+  id: z.string().optional(),
+  schedule_name: z.string().trim().min(1, "Required"),
+  schedule_type: z.string().trim().min(1, "Required"),
+  url: z
+    .string()
+    .trim()
+    .min(1, "Required")
+    .url("Invalid URL format")
+    .optional(), // URL of the schedule
+  timestamp: z.date(),
+  instructor_id: z.string().trim().min(1, "Required"),
+  class_field: z.string().trim().min(1, "Required"),
+  description: z.string().optional(),
+});
+
+export type TFormSchemaAddSchedule = z.infer<typeof FormSchemaAddSchedule>;
+
+// Define the schema for program phases
+const ProgramlevelSchema = z.object({
+  level_id: z.string().optional(),
+  level_name: z.string(),
+  description: z.string().optional(),
+  subjects: z.array(z.string().trim().min(1, "Required")),
+  sessions: z.array(FormSchemaAddSchedule),
+});
+
+// Define the schema for programs
+export const FormSchemaAddProgram = z.object({
+  program_id: z.string().optional(),
+  program_name: z.string().trim().min(1, "Required"),
+  program_levels: z
+    .array(ProgramlevelSchema)
+    .min(1, "The program must have at least one level"),
+  program_price: z.string().trim().min(1, "Required"),
+  description: z.string().trim().min(1, "Required"),
+  duration: z.string().trim().min(1, "Required"),
+  start_date: z.date().optional(),
 });
 
 export type TFormSchemaAddProgram = z.infer<typeof FormSchemaAddProgram>;

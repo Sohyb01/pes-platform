@@ -9,7 +9,7 @@ import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
 import { FinancesIcon } from "@/components/pes-custom/icons/FinancesIcon";
 import { FranchiseIcon } from "@/components/pes-custom/icons/FranchiseIcon";
 import { MaterialIcon } from "@/components/pes-custom/icons/MaterialIcon";
-import { MeetingIcon } from "@/components/pes-custom/icons/MeetingIcon";
+import { SchedulesIcon } from "@/components/pes-custom/icons/MeetingIcon";
 import { PartnershipIcon } from "@/components/pes-custom/icons/PartnershipIcon";
 import { ProgramIcon } from "@/components/pes-custom/icons/ProgramIcon";
 import { ProjectIcon } from "@/components/pes-custom/icons/ProjectIcon";
@@ -115,13 +115,13 @@ const SuperadminSidebar = () => {
                 <AssignmentIcon /> Assignments
               </Button>
             </Link>
-            <Link href="/dashboard/superadmin/meetings">
+            <Link href="/dashboard/superadmin/schedules">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "meetings" ? "default" : "outline"}
+                variant={lastSegment == "schedules" ? "default" : "outline"}
                 size="sm"
               >
-                <MeetingIcon /> Meetings
+                <SchedulesIcon /> Schedules
               </Button>
             </Link>
             <Link href="/dashboard/superadmin/quizzes">

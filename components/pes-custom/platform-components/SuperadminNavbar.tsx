@@ -12,7 +12,6 @@ import { EmployeeIcon } from "../icons/EmployeeIcon";
 import { CertificateIcon } from "../icons/CertificateIcon";
 import { ClassIcon } from "../icons/ClassIcon";
 import { MaterialIcon } from "../icons/MaterialIcon";
-import { MeetingIcon } from "../icons/MeetingIcon";
 import { ProgramIcon } from "../icons/ProgramIcon";
 import { ProjectIcon } from "../icons/ProjectIcon";
 import { QuizIcon } from "../icons/QuizIcon";
@@ -47,6 +46,7 @@ import { UserNav } from "./UserNav";
 import { PersonIcon } from "../icons/PersonIcon";
 import MessagesTab from "./MessagesTab";
 import NotificationsTab from "./NotificationsTab";
+import { ScheduleIcon } from "../icons/ScheduleIcon";
 
 const SuperadminNavbar = () => {
   // Search functionality
@@ -171,14 +171,14 @@ const SuperadminNavbar = () => {
                         <AssignmentIcon /> Assignments
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/meetings">
+                    <Link href="/dashboard/superadmin/schedules">
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "meetings" ? "default" : "outline"
+                          lastSegment == "schedules" ? "default" : "outline"
                         }
                       >
-                        <MeetingIcon /> Meetings
+                        <ScheduleIcon /> Schedules
                       </Button>
                     </Link>
                     <Link href="/dashboard/superadmin/quizzes">

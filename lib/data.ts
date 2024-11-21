@@ -13,6 +13,7 @@ import {
   TFormSchemaAddProgram,
   TFormSchemaAddProject,
   TFormSchemaAddReview,
+  TFormSchemaAddSchedule,
   TFormSchemaAddStudent,
   TFormSchemaPendingFranchise,
   TFormSchemaPendingPartnership,
@@ -329,6 +330,7 @@ export const exampleExams: TFormSchemaAddExam[] = [
   },
 ];
 
+// Exam solutions
 export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
   {
     id: "exam1",
@@ -336,6 +338,7 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
     quiz_type: "Type B",
     class_field: "abc",
     instructor_id: "123",
+    timestamp: new Date("2024-11-01T11:00:00Z"),
     questions: [
       {
         id: "q1",
@@ -398,27 +401,6 @@ export const exampleReviews: TFormSchemaAddReview[] = [
     rev_job: "Project Manager",
     rev_rate: "4",
     rev_desc: "Great content, but could use more real-life examples.",
-  },
-];
-
-export const examplePrograms: TFormSchemaAddProgram[] = [
-  {
-    program_id: "program-1234-f67c-89a0",
-    program_name: "Advanced Web Development",
-    program_levels: "Intermediate, Advanced",
-    program_price: 500,
-    description:
-      "A comprehensive program covering front-end and back-end web development.",
-    numberoflevels: "2",
-  },
-  {
-    program_id: "program-1234-f67c-89a0",
-    program_name: "Data Science Fundamentals",
-    program_levels: "Beginner, Intermediate",
-    program_price: 300,
-    description:
-      "An introductory program focused on the basics of data science and machine learning.",
-    numberoflevels: "1",
   },
 ];
 
@@ -604,5 +586,100 @@ export const exampleProjects: TFormSchemaAddProject[] = [
       "An advanced project for building a machine learning model using Python.",
     student_id: "student123",
     track_id: "track456",
+  },
+];
+
+export const exampleSchedules: TFormSchemaAddSchedule[] = [
+  {
+    id: "schedule123", // Optional ID, included here
+    schedule_name: "Math Class Schedule",
+    schedule_type: "Class Session",
+    url: "https://example.com/schedules/math", // Valid URL format
+    timestamp: new Date("2024-10-30T09:00:00"), // Valid date object
+    instructor_id: "instructor456",
+    class_field: "class789",
+  },
+  {
+    id: "schedule456", // Optional ID, included here
+    schedule_name: "Parent Meeting",
+    schedule_type: "Meeting",
+    url: undefined, // Optional field not provided
+    timestamp: new Date("2024-11-01T14:00:00"), // Valid date object
+    instructor_id: "instructor123",
+    class_field: "class456",
+  },
+];
+
+export const examplePrograms: TFormSchemaAddProgram[] = [
+  {
+    program_id: "program123", // Optional, included
+    program_name: "Advanced Programming Bootcamp",
+    program_levels: [
+      {
+        level_id: "level1", // Optional, included
+        level_name: "Beginner Level",
+        description: "Introduction to programming fundamentals",
+        subjects: ["Variables", "Loops", "Conditionals"],
+        sessions: [
+          {
+            id: "schedule1",
+            schedule_name: "Introduction to Variables",
+            schedule_type: "Classroom",
+            url: "https://example.com/schedules/variables",
+            timestamp: new Date("2024-11-01T10:00:00"), // Valid date object
+            instructor_id: "instructor456",
+            class_field: "class123",
+          },
+        ],
+      },
+      {
+        level_id: "level2",
+        level_name: "Intermediate Level",
+        description: "In-depth exploration of data structures",
+        subjects: ["Arrays", "Linked Lists", "Trees"],
+        sessions: [
+          {
+            id: "schedule2",
+            schedule_name: "Data Structures Workshop",
+            schedule_type: "Online",
+            url: "https://example.com/schedules/ds-workshop",
+            timestamp: new Date("2024-12-01T15:00:00"),
+            instructor_id: "instructor789",
+            class_field: "class456",
+          },
+        ],
+      },
+    ],
+    program_price: "500 USD",
+    description: "A comprehensive bootcamp for aspiring developers.",
+    duration: "6 months",
+    start_date: new Date("2024-11-01"),
+  },
+  {
+    program_id: "program456", // Optional, included
+    program_name: "Data Science Essentials",
+    program_levels: [
+      {
+        // level_id is optional and omitted
+        level_name: "Fundamentals of Data Science",
+        description: "Learn the basics of data analysis and visualization",
+        subjects: ["Statistics", "Data Cleaning", "Visualization"],
+        sessions: [
+          {
+            id: "schedule3",
+            schedule_name: "Statistics Introduction",
+            schedule_type: "Classroom",
+            url: "https://example.com/schedules/stats",
+            timestamp: new Date("2024-11-05T09:00:00"),
+            instructor_id: "instructor321",
+            class_field: "class789",
+          },
+        ],
+      },
+    ],
+    program_price: "3000 EGP",
+    description: "A beginner-friendly introduction to data science concepts.",
+    duration: "3 months",
+    start_date: new Date("2024-11-05"),
   },
 ];
