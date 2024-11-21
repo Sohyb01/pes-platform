@@ -5,7 +5,7 @@ import {
   TFormSchemaAddExam,
   TFormSchemaSolvedExam,
 } from "@/lib/types-forms";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -36,13 +36,15 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
     toast({
       title: "Submitted successfully!",
     });
-    // form.reset(defaultValues);
+    form.reset(defaultValues);
   };
 
   const { fields } = useFieldArray({
     name: "questions",
     control: form.control,
   });
+
+  const questionsArray = form.watch("questions");
 
   return (
     <Form {...form}>
@@ -133,12 +135,14 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
         )}
         <Button
           type="submit"
-          onClick={() => console.log(form.getValues())}
-          disabled={form.getValues().questions.some(
+          disabled={questionsArray.some(
             (question) =>
-              question.studentAnswer == null ||
-              (typeof question.studentAnswer == "string" &&
-                question.studentAnswer.length < 1) // Checks for both null and undefined
+              question.studentAnswer == null
+                ? true
+                : typeof question.studentAnswer == "string" &&
+                  question.studentAnswer.length < 1
+                ? true
+                : false // Checks for both null and undefined
           )}
           className="md:col-span-2"
         >
