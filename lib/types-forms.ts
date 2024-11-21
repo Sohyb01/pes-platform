@@ -436,9 +436,39 @@ export const FormSchemaAddExam = z.object({
   class_field: z.string().trim().min(1, "Required"),
   instructor_id: z.string().trim().min(1, "Required"),
   questions: z.array(QuestionSchema).min(1, "Quiz must have questions"),
+  duration: z.coerce.number().min(60, "Must be at least 60"), // Duration in seconds
 });
 
 export type TFormSchemaAddExam = z.infer<typeof FormSchemaAddExam>;
+
+// Answers for solved exam object
+
+const MCQAnswerSchema = MCQQuestionSchema.extend({
+  studentAnswer: z.string(),
+});
+const EssayAnswerSchema = EssayQuestionSchema.extend({
+  studentAnswer: z.string(),
+});
+const TrueFalseAnswerSchema = TrueFalseQuestionSchema.extend({
+  studentAnswer: z.coerce.boolean(),
+});
+
+const AnswerSchema = z.union([
+  MCQAnswerSchema,
+  EssayAnswerSchema,
+  TrueFalseAnswerSchema,
+]);
+
+// Exam Schema, replaces default questions array with the one that includes student answers
+export const FormSchemaSolvedExam = FormSchemaAddExam.merge(
+  z.object({
+    questions: z.array(AnswerSchema),
+    student_id: z.string(),
+    grade: z.number().optional(),
+  })
+);
+
+export type TFormSchemaSolvedExam = z.infer<typeof FormSchemaSolvedExam>;
 
 export const FormSchemaAddAssignment = z.object({
   assignment_id: z.string().nullish(),

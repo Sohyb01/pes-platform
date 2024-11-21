@@ -58,6 +58,7 @@ const FormAddExam = ({
         class_field: "abc",
         instructor_id: "123",
         questions: [],
+        duration: undefined,
       };
   // 1. Define your form.
 
@@ -159,6 +160,19 @@ const FormAddExam = ({
                   </div>
                 </PopoverContent>
               </Popover>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="duration"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Duration (in seconds)</FormLabel>
+              <FormControl>
+                <Input type="number" {...field} />
+              </FormControl>
+              <FormMessage />
             </FormItem>
           )}
         />

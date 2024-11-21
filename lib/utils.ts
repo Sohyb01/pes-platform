@@ -92,3 +92,22 @@ export function checkImageFileType(filename: string, required: boolean) {
     return true;
   return false;
 }
+
+export function shuffleArray(array: string[] | number[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Generate a random index between 0 and i (inclusive)
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+
+    // Swap the elements at i and randomIndex
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
+  }
+  return array;
+}
+
+export const str2bool = (value: string) => {
+  if (value && typeof value === "string") {
+    if (value.toLowerCase() === "true") return true;
+    if (value.toLowerCase() === "false") return false;
+  }
+  return value;
+};

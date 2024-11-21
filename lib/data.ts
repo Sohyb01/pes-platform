@@ -16,6 +16,7 @@ import {
   TFormSchemaAddStudent,
   TFormSchemaPendingFranchise,
   TFormSchemaPendingPartnership,
+  TFormSchemaSolvedExam,
 } from "./types-forms";
 
 export const exampleEmployees: TFormSchemaAddEmployee[] = [
@@ -324,6 +325,43 @@ export const exampleExams: TFormSchemaAddExam[] = [
         correctAnswer: false,
       },
     ],
+    duration: 120,
+  },
+];
+
+export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
+  {
+    id: "exam1",
+    quizname: "Midterm A",
+    quiz_type: "Type B",
+    class_field: "abc",
+    instructor_id: "123",
+    questions: [
+      {
+        id: "q1",
+        type: "mcq",
+        questionText: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Rome"],
+        correctAnswer: "Paris",
+        studentAnswer: "Berlin",
+      },
+      {
+        id: "q2",
+        type: "essay",
+        questionText: "Explain the theory of relativity.",
+        wordLimit: 500,
+        studentAnswer: "Good morning 123",
+      },
+      {
+        id: "q3",
+        type: "true_false",
+        questionText: "The Earth is flat.",
+        correctAnswer: false,
+        studentAnswer: false,
+      },
+    ],
+    duration: 120,
+    student_id: "123",
   },
 ];
 
