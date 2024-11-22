@@ -4,7 +4,7 @@ import React from "react";
 const TableTimestampFormatter = ({
   date,
 }: {
-  date: Date | String | unknown;
+  date: Date | string | unknown;
 }) => {
   if (typeof date == "string") {
     const dateobj = new Date(date);
