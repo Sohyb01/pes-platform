@@ -620,34 +620,34 @@ export const examplePrograms: TFormSchemaAddProgram[] = [
         level_name: "Beginner Level",
         description: "Introduction to programming fundamentals",
         subjects: ["Variables", "Loops", "Conditionals"],
-        sessions: [
-          {
-            id: "schedule1",
-            schedule_name: "Introduction to Variables",
-            schedule_type: "Classroom",
-            url: "https://example.com/schedules/variables",
-            timestamp: new Date("2024-11-01T10:00:00"), // Valid date object
-            instructor_id: "instructor456",
-            class_field: "class123",
-          },
-        ],
+        // sessions: [
+        //   {
+        //     id: "schedule1",
+        //     schedule_name: "Introduction to Variables",
+        //     schedule_type: "Classroom",
+        //     url: "https://example.com/schedules/variables",
+        //     timestamp: new Date("2024-11-01T10:00:00"), // Valid date object
+        //     instructor_id: "instructor456",
+        //     class_field: "class123",
+        //   },
+        // ],
       },
       {
         level_id: "level2",
         level_name: "Intermediate Level",
         description: "In-depth exploration of data structures",
         subjects: ["Arrays", "Linked Lists", "Trees"],
-        sessions: [
-          {
-            id: "schedule2",
-            schedule_name: "Data Structures Workshop",
-            schedule_type: "Online",
-            url: "https://example.com/schedules/ds-workshop",
-            timestamp: new Date("2024-12-01T15:00:00"),
-            instructor_id: "instructor789",
-            class_field: "class456",
-          },
-        ],
+        // sessions: [
+        //   {
+        //     id: "schedule2",
+        //     schedule_name: "Data Structures Workshop",
+        //     schedule_type: "Online",
+        //     url: "https://example.com/schedules/ds-workshop",
+        //     timestamp: new Date("2024-12-01T15:00:00"),
+        //     instructor_id: "instructor789",
+        //     class_field: "class456",
+        //   },
+        // ],
       },
     ],
     program_price: "500 USD",
@@ -664,17 +664,17 @@ export const examplePrograms: TFormSchemaAddProgram[] = [
         level_name: "Fundamentals of Data Science",
         description: "Learn the basics of data analysis and visualization",
         subjects: ["Statistics", "Data Cleaning", "Visualization"],
-        sessions: [
-          {
-            id: "schedule3",
-            schedule_name: "Statistics Introduction",
-            schedule_type: "Classroom",
-            url: "https://example.com/schedules/stats",
-            timestamp: new Date("2024-11-05T09:00:00"),
-            instructor_id: "instructor321",
-            class_field: "class789",
-          },
-        ],
+        // sessions: [
+        //   {
+        //     id: "schedule3",
+        //     schedule_name: "Statistics Introduction",
+        //     schedule_type: "Classroom",
+        //     url: "https://example.com/schedules/stats",
+        //     timestamp: new Date("2024-11-05T09:00:00"),
+        //     instructor_id: "instructor321",
+        //     class_field: "class789",
+        //   },
+        // ],
       },
     ],
     program_price: "3000 EGP",

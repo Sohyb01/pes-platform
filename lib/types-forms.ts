@@ -541,7 +541,7 @@ const ProgramlevelSchema = z.object({
   level_name: z.string(),
   description: z.string().optional(),
   subjects: z.array(z.string().trim().min(1, "Required")),
-  sessions: z.array(FormSchemaAddSchedule),
+  // sessions: z.array(FormSchemaAddSchedule), //removed sessions
 });
 
 // Define the schema for programs
