@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import {
-  Card,
   CardContent,
   CardDescription,
   CardFooter,
@@ -17,6 +16,8 @@ import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
 import { DownloadIcon } from "@/components/pes-custom/icons/DownloadIcon";
 import { exampleMaterials } from "@/lib/data";
+import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
+import { VariantSlideInDown } from "@/lib/motion-constants";
 
 const page = () => {
   return (
@@ -27,7 +28,14 @@ const page = () => {
         {/* Card */}
         {exampleMaterials.map((material, idx) => {
           return (
-            <Card key={idx} className="w-full md:max-w-[352px]">
+            <M_Card
+              variants={VariantSlideInDown}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: idx * 0.05 }} // Custom delay for each item
+              key={idx}
+              className="w-full md:max-w-[352px]"
+            >
               <CardHeader>
                 <CardTitle>Material</CardTitle>
                 <CardDescription className="flex justify-between pt-2">
@@ -60,7 +68,7 @@ const page = () => {
                   Download
                 </Button>
               </CardFooter>
-            </Card>
+            </M_Card>
           );
         })}
       </div>

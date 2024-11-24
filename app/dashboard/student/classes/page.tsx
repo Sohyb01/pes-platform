@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import {
-  Card,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -13,6 +12,8 @@ import { TimeIcon } from "@/components/pes-custom/icons/TimeIcon";
 import { ProgramIcon } from "@/components/pes-custom/icons/ProgramIcon";
 import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
 import { exampleClasses } from "@/lib/data";
+import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
+import { VariantSlideInDown } from "@/lib/motion-constants";
 
 const page = () => {
   return (
@@ -22,7 +23,14 @@ const page = () => {
       <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
         {exampleClasses.map((pesClass, idx) => {
           return (
-            <Card key={idx} className="w-full md:max-w-[352px]">
+            <M_Card
+              variants={VariantSlideInDown}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: idx * 0.05 }} // Custom delay for each item
+              key={idx}
+              className="w-full md:max-w-[352px]"
+            >
               <CardHeader>
                 <CardTitle>{pesClass.class_name}</CardTitle>
                 <CardDescription>
@@ -62,7 +70,7 @@ const page = () => {
                   </span>
                 </BadgeLink>
               </CardFooter>
-            </Card>
+            </M_Card>
           );
         })}
       </div>

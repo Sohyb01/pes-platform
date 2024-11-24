@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import {
-  Card,
   CardContent,
   CardDescription,
   CardFooter,
@@ -15,6 +14,8 @@ import { Button } from "@/components/ui/button";
 import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
 import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 import { exampleExams } from "@/lib/data";
+import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
+import { VariantSlideInDown } from "@/lib/motion-constants";
 // import { CheckIcon } from "lucide-react";
 
 const page = () => {
@@ -25,7 +26,14 @@ const page = () => {
       <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
         {exampleExams.map((exam, idx) => {
           return (
-            <Card key={idx} className="w-full md:max-w-[352px]">
+            <M_Card
+              variants={VariantSlideInDown}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: idx * 0.05 }} // Custom delay for each item
+              key={idx}
+              className="w-full md:max-w-[352px]"
+            >
               <CardHeader>
                 <CardTitle>
                   {exam.quizname}
@@ -56,7 +64,7 @@ const page = () => {
                   Start Quiz
                 </Button>
               </CardFooter>
-            </Card>
+            </M_Card>
           );
         })}
         {/* Card example */}

@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import {
-  Card,
   CardContent,
   CardDescription,
   CardFooter,
@@ -25,6 +24,8 @@ import {
 import { DownloadIcon } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
+import { VariantSlideInDown } from "@/lib/motion-constants";
 
 const page = () => {
   return (
@@ -34,13 +35,20 @@ const page = () => {
       <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
         {exampleAssignments.map((assignment, idx) => {
           return (
-            <Card key={idx} className="w-full md:max-w-[352px]">
+            <M_Card
+              variants={VariantSlideInDown}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: idx * 0.05 }} // Custom delay for each item
+              key={idx}
+              className="w-full md:max-w-[352px]"
+            >
               <CardHeader>
                 <CardTitle>Robotics Class B Assignment</CardTitle>
                 <CardDescription className="flex justify-between pt-2">
                   <BadgeLink href="#">
                     <ProgramIcon />
-                    Programming Basics
+                    <span className="line-clamp-1">Programming Basics</span>
                   </BadgeLink>
                   <BadgeLink href="#">
                     <EmployeeIcon />
@@ -118,7 +126,7 @@ const page = () => {
                   Submit
                 </Button>
               </CardFooter>
-            </Card>
+            </M_Card>
           );
         })}
       </div>

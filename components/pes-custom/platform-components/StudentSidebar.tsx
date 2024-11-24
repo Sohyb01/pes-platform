@@ -27,7 +27,7 @@ const StudentSidebar = () => {
           <p>Platform</p>
           {/* Links */}
           <div className="sidebar-links-container">
-            <Link href="/dashboard/student/schedules">
+            <Link href="/dashboard/student/schedule">
               <Button
                 className="sidebar-button"
                 variant={lastSegment == "schedule" ? "default" : "outline"}
