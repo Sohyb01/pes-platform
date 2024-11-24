@@ -25,7 +25,7 @@ import { DownloadIcon } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
-import { VariantSlideInDown } from "@/lib/motion-constants";
+import { VariantSlideInUp } from "@/lib/motion-constants";
 
 const page = () => {
   return (
@@ -36,7 +36,7 @@ const page = () => {
         {exampleAssignments.map((assignment, idx) => {
           return (
             <M_Card
-              variants={VariantSlideInDown}
+              variants={VariantSlideInUp}
               initial="initial"
               animate="animate"
               transition={{ delay: idx * 0.05 }} // Custom delay for each item

@@ -17,7 +17,7 @@ import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
 import { DownloadIcon } from "@/components/pes-custom/icons/DownloadIcon";
 import { exampleMaterials } from "@/lib/data";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
-import { VariantSlideInDown } from "@/lib/motion-constants";
+import { VariantSlideInUp } from "@/lib/motion-constants";
 
 const page = () => {
   return (
@@ -29,7 +29,7 @@ const page = () => {
         {exampleMaterials.map((material, idx) => {
           return (
             <M_Card
-              variants={VariantSlideInDown}
+              variants={VariantSlideInUp}
               initial="initial"
               animate="animate"
               transition={{ delay: idx * 0.05 }} // Custom delay for each item

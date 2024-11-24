@@ -15,7 +15,7 @@ import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
 import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 import { exampleExams } from "@/lib/data";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
-import { VariantSlideInDown } from "@/lib/motion-constants";
+import { VariantSlideInUp } from "@/lib/motion-constants";
 // import { CheckIcon } from "lucide-react";
 
 const page = () => {
@@ -27,7 +27,7 @@ const page = () => {
         {exampleExams.map((exam, idx) => {
           return (
             <M_Card
-              variants={VariantSlideInDown}
+              variants={VariantSlideInUp}
               initial="initial"
               animate="animate"
               transition={{ delay: idx * 0.05 }} // Custom delay for each item

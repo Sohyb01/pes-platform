@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/toaster";
+import "@schedule-x/theme-default/dist/index.css";
 import "./globals.css";
 import "./css/components.css";
+import "./css/backgrounds.css";
 
 import { Inter } from "next/font/google";
 

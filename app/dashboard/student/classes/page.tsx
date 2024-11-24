@@ -13,7 +13,7 @@ import { ProgramIcon } from "@/components/pes-custom/icons/ProgramIcon";
 import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
 import { exampleClasses } from "@/lib/data";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
-import { VariantSlideInDown } from "@/lib/motion-constants";
+import { VariantSlideInUp } from "@/lib/motion-constants";
 
 const page = () => {
   return (
@@ -24,7 +24,7 @@ const page = () => {
         {exampleClasses.map((pesClass, idx) => {
           return (
             <M_Card
-              variants={VariantSlideInDown}
+              variants={VariantSlideInUp}
               initial="initial"
               animate="animate"
               transition={{ delay: idx * 0.05 }} // Custom delay for each item

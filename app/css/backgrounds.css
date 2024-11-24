@@ -1,0 +1,4 @@
+.graphic-background-1 {
+  background-image: url("../../public/backgrounds/shapes-abstract-1.png");
+  @apply bg-contain;
+}
