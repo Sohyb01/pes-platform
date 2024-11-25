@@ -1,6 +1,7 @@
 "use client";
 
 import { useNextCalendarApp, ScheduleXCalendar } from "@schedule-x/react";
+import { createEventModalPlugin } from "@schedule-x/event-modal";
 import {
   createViewDay,
   createViewMonthAgenda,
@@ -10,10 +11,11 @@ import {
 import { createEventsServicePlugin } from "@schedule-x/events-service";
 
 import { useEffect } from "react";
+import CustomEventModal from "./CustomEventModal";
 // import { useEffect } from "react";
 
 function PESCalendar() {
-  const plugins = [createEventsServicePlugin()];
+  const plugins = [createEventsServicePlugin(), createEventModalPlugin()];
 
   const calendar = useNextCalendarApp(
     {
@@ -43,7 +45,12 @@ function PESCalendar() {
 
   return (
     <div className="w-full">
-      <ScheduleXCalendar calendarApp={calendar} />
+      <ScheduleXCalendar
+        calendarApp={calendar}
+        customComponents={{
+          eventModal: CustomEventModal,
+        }}
+      />
     </div>
   );
 }

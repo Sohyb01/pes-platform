@@ -28,9 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="min-h-[100vh] h-full">
       <body
-        className={`${coolvetica.variable} ${inter.className} flex flex-col items-center`}
+        className={`${coolvetica.variable} ${inter.className} flex flex-col items-center h-full`}
       >
         {children}
         <Toaster />

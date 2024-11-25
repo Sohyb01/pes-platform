@@ -1,16 +1,9 @@
 "use client";
 
 import React from "react";
-import { AssignmentIcon } from "@/components/pes-custom/icons/AssignmentIcon";
-import { CertificateIcon } from "@/components/pes-custom/icons/CertificateIcon";
-import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
-import { MaterialIcon } from "@/components/pes-custom/icons/MaterialIcon";
-import { QuizIcon } from "@/components/pes-custom/icons/QuizIcon";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { ScheduleIcon } from "../icons/ScheduleIcon";
-import { LeaderboardIcon } from "../icons/LeaderboardIcon";
 
 const StudentSidebar = () => {
   // Get the current pathname
@@ -18,7 +11,7 @@ const StudentSidebar = () => {
   // Split the pathname and get the last segment
   const lastSegment = pathname.split("/").filter(Boolean).pop();
   return (
-    <nav className="hidden lg:flex p-8 gap-8 flex-col items-start w-full max-w-[280px] dashboard-sizing border-r border-border overflow-scroll">
+    <nav className="hidden lg:flex p-8 gap-8 flex-col items-start w-full max-w-[280px] dashboard-sizing border-r border-border overflow-scroll student-sidebar-bg">
       <p className="text-lead">Student Dashboard</p>
       {/* All Platform Link Groups */}
       <div className="sidebar-groups-container">
@@ -33,7 +26,7 @@ const StudentSidebar = () => {
                 variant={lastSegment == "schedule" ? "default" : "outline"}
                 size="sm"
               >
-                <ScheduleIcon /> Schedule
+                📆 Schedule
               </Button>
             </Link>
             <Link href="/dashboard/student/classes">
@@ -42,7 +35,7 @@ const StudentSidebar = () => {
                 variant={lastSegment == "classes" ? "default" : "outline"}
                 size="sm"
               >
-                <ClassIcon /> Classes
+                📚 Classes
               </Button>
             </Link>
             <Link href="/dashboard/student/assignments">
@@ -51,7 +44,7 @@ const StudentSidebar = () => {
                 variant={lastSegment == "assignments" ? "default" : "outline"}
                 size="sm"
               >
-                <AssignmentIcon /> Assignments
+                ⏰ Assignments
               </Button>
             </Link>
             <Link href="/dashboard/student/quizzes">
@@ -60,7 +53,7 @@ const StudentSidebar = () => {
                 variant={lastSegment == "quizzes" ? "default" : "outline"}
                 size="sm"
               >
-                <QuizIcon /> Quizzes
+                💯 Quizzes
               </Button>
             </Link>
             <Link href="/dashboard/student/materials">
@@ -69,7 +62,7 @@ const StudentSidebar = () => {
                 variant={lastSegment == "materials" ? "default" : "outline"}
                 size="sm"
               >
-                <MaterialIcon /> Materials
+                🧊 Materials
               </Button>
             </Link>
             <Link href="/dashboard/student/leaderboard">
@@ -78,7 +71,7 @@ const StudentSidebar = () => {
                 variant={lastSegment == "leaderboard" ? "default" : "outline"}
                 size="sm"
               >
-                <LeaderboardIcon /> Leaderboard
+                🏅 Leaderboard
               </Button>
             </Link>
             <Link href="/dashboard/student/certificates">
@@ -87,7 +80,7 @@ const StudentSidebar = () => {
                 variant={lastSegment == "certificates" ? "default" : "outline"}
                 size="sm"
               >
-                <CertificateIcon /> My Certificates
+                📜 My Certificates
               </Button>
             </Link>
           </div>

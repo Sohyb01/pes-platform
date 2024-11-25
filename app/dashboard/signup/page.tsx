@@ -41,7 +41,7 @@ const SignupPage = () => {
   return (
     <>
       <WebsiteNavbar />
-      <section className="w-full">
+      <section className="w-full graphic-bg-1 h-full">
         <div className="container flex flex-col items-start text-start section-px py-20 pt-[100px] text-foreground gap-10">
           <Form {...form}>
             <form

@@ -21,7 +21,7 @@ import { VariantSlideInUp } from "@/lib/motion-constants";
 const page = () => {
   return (
     <div className="dashboard-tab-wrapper">
-      <h3 className="text-h3">Quizzes</h3>
+      <h3 className="text-h3">Quizzes 💯</h3>
       {/* Container */}
       <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
         {exampleExams.map((exam, idx) => {

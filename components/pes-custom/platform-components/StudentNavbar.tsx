@@ -8,11 +8,6 @@ import { AlignLeft, Search } from "lucide-react";
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import { CertificateIcon } from "../icons/CertificateIcon";
-import { ClassIcon } from "../icons/ClassIcon";
-import { MaterialIcon } from "../icons/MaterialIcon";
-import { QuizIcon } from "../icons/QuizIcon";
-import { AssignmentIcon } from "../icons/AssignmentIcon";
 import { usePathname } from "next/navigation";
 
 import {
@@ -34,8 +29,6 @@ import {
   User,
 } from "lucide-react";
 import { UserNav } from "./UserNav";
-import { ScheduleIcon } from "../icons/ScheduleIcon";
-import { LeaderboardIcon } from "../icons/LeaderboardIcon";
 
 const StudentNavbar = () => {
   // Search functionality
@@ -63,7 +56,7 @@ const StudentNavbar = () => {
             </SheetTrigger>
             <SheetContent
               side={"left"}
-              className="p-8 gap-8 flex flex-col items-start overflow-scroll lg:hidden"
+              className="p-8 gap-8 flex flex-col items-start overflow-scroll lg:hidden student-sidebar-bg"
             >
               <p className="text-lead">Superadmin Dashboard</p>
               {/* All Platform Link Groups */}
@@ -81,7 +74,7 @@ const StudentNavbar = () => {
                         }
                         size="sm"
                       >
-                        <ScheduleIcon /> Schedule
+                        📆 Schedule
                       </Button>
                     </Link>
                     <Link href="/dashboard/student/classes">
@@ -92,7 +85,7 @@ const StudentNavbar = () => {
                         }
                         size="sm"
                       >
-                        <ClassIcon /> Classes
+                        📚 Classes
                       </Button>
                     </Link>
                     <Link href="/dashboard/student/assignments">
@@ -103,7 +96,7 @@ const StudentNavbar = () => {
                         }
                         size="sm"
                       >
-                        <AssignmentIcon /> Assignments
+                        ⏰ Assignments
                       </Button>
                     </Link>
                     <Link href="/dashboard/student/quizzes">
@@ -114,7 +107,7 @@ const StudentNavbar = () => {
                         }
                         size="sm"
                       >
-                        <QuizIcon /> Quizzes
+                        💯 Quizzes
                       </Button>
                     </Link>
                     <Link href="/dashboard/student/materials">
@@ -125,7 +118,7 @@ const StudentNavbar = () => {
                         }
                         size="sm"
                       >
-                        <MaterialIcon /> Materials
+                        🧊 Materials
                       </Button>
                     </Link>
                     <Link href="/dashboard/student/leaderboard">
@@ -136,7 +129,7 @@ const StudentNavbar = () => {
                         }
                         size="sm"
                       >
-                        <LeaderboardIcon /> Leaderboard
+                        🏅 Leaderboard
                       </Button>
                     </Link>
                     <Link href="/dashboard/student/certificates">
@@ -147,7 +140,7 @@ const StudentNavbar = () => {
                         }
                         size="sm"
                       >
-                        <CertificateIcon /> My Certificates
+                        📜 My Certificates
                       </Button>
                     </Link>
                   </div>

@@ -1,4 +1,15 @@
-.graphic-background-1 {
+.gradient-bg {
+  background-image: url("../../public/backgrounds/gradient-1.png");
+  background-attachment: fixed;
+  @apply bg-repeat;
+}
+
+.graphic-bg-1 {
   background-image: url("../../public/backgrounds/shapes-abstract-1.png");
-  @apply bg-contain;
+  @apply bg-cover bg-top;
+}
+
+.student-sidebar-bg{
+  background-image: url("../../public/backgrounds/sidebar-bottom-1.svg");
+  @apply bg-contain bg-bottom bg-no-repeat
 }

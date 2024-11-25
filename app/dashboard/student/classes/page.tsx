@@ -1,24 +1,16 @@
 import * as React from "react";
 
-import {
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
-import { BadgeLink } from "@/components/pes-custom/platform-components/BadgeLink";
-import { TimeIcon } from "@/components/pes-custom/icons/TimeIcon";
-import { ProgramIcon } from "@/components/pes-custom/icons/ProgramIcon";
-import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
 import { exampleClasses } from "@/lib/data";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
 import { VariantSlideInUp } from "@/lib/motion-constants";
+import Link from "next/link";
 
 const page = () => {
   return (
     <div className="dashboard-tab-wrapper">
-      <h3 className="text-h3">Classes</h3>
+      <h3 className="text-h3">Classes 📚</h3>
       {/* Container */}
       <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
         {exampleClasses.map((pesClass, idx) => {
@@ -32,43 +24,33 @@ const page = () => {
               className="w-full md:max-w-[352px]"
             >
               <CardHeader>
-                <CardTitle>{pesClass.class_name}</CardTitle>
-                <CardDescription>
-                  <div className="w-full flex gap-1 flex-wrap justify-between items-center text-badge pt-2">
-                    <BadgeLink href="#">
-                      <TimeIcon />
-                      <span className="max-w-[12ch] overflow-hidden">
-                        {pesClass.program_id}
-                      </span>
-                    </BadgeLink>
-                    <div>
-                      {`${pesClass.classbegindate.getUTCDate()}/${
-                        pesClass.classbegindate.getUTCMonth() + 1
-                      }/${pesClass.classbegindate.getFullYear()}
+                <CardTitle>📘 {pesClass.class_name}</CardTitle>
+                <div className="w-full flex gap-1 flex-wrap justify-between items-center text-subtle pt-2">
+                  <Link href="#">
+                    <span className="max-w-[12ch] overflow-hidden">
+                      ENG. Ahmed Reda
+                      {/* {pesClass.instructor_id} */}
+                    </span>
+                  </Link>
+                  <div className="text-muted-foreground">
+                    {`${pesClass.classbegindate.getUTCDate()}/${
+                      pesClass.classbegindate.getUTCMonth() + 1
+                    }
                       -
                       ${pesClass.classenddate.getUTCDate()}/${
-                        pesClass.classenddate.getUTCMonth() + 1
-                      }/${pesClass.classenddate.getFullYear()}
+                      pesClass.classenddate.getUTCMonth() + 1
+                    }
                       `}
-                    </div>
                   </div>
-                </CardDescription>
+                </div>
               </CardHeader>
               <CardFooter className="flex gap-2">
-                <BadgeLink href="#">
-                  <ProgramIcon />
+                <Link href="#" className="text-subtle text-muted-foreground">
                   <span className="max-w-[12ch] overflow-hidden">
-                    {pesClass.program_id}
+                    {/* {pesClass.program_id} */}
+                    Young Geniuses Program
                   </span>
-                </BadgeLink>
-                <BadgeLink href="#">
-                  <EmployeeIcon />
-                  <span className="max-w-[12ch] overflow-hidden">
-                    {pesClass.instructor_id
-                      ? pesClass.instructor_id
-                      : "No instructor"}
-                  </span>
-                </BadgeLink>
+                </Link>
               </CardFooter>
             </M_Card>
           );
