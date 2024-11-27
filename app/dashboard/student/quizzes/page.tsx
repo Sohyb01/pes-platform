@@ -2,17 +2,14 @@ import * as React from "react";
 
 import {
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
 import { BadgeLink } from "@/components/pes-custom/platform-components/BadgeLink";
-import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
 import { Button } from "@/components/ui/button";
 import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
-import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 import { exampleExams } from "@/lib/data";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
 import { VariantSlideInUp } from "@/lib/motion-constants";
@@ -36,27 +33,19 @@ const page = () => {
             >
               <CardHeader>
                 <CardTitle>
-                  {exam.quizname}
+                  {exam.quizname} 📝
                   {exam.timestamp && (
                     <span className="ml-2 text-muted-foreground text-subtle">{`${exam.timestamp.getUTCDate()}/${
                       exam.timestamp.getUTCMonth() + 1
                     }/${exam.timestamp.getFullYear()}`}</span>
                   )}
                 </CardTitle>
-                <CardDescription className="flex justify-between pt-2">
-                  <BadgeLink href="#">
-                    <EmployeeIcon />
-                    {/* {exam.instructor_id} */}
-                    Mahmoud A
-                  </BadgeLink>
-                  <BadgeLink href="#">
-                    <ClassIcon />
-                    {exam.class_field}
-                  </BadgeLink>
-                </CardDescription>
               </CardHeader>
-              <CardContent className="text-subtle">
-                <p>{exam.questions.length} questions</p>
+              <CardContent className="flex items-center justify-between text-subtle">
+                <p>
+                  {exam.questions.length} questions - {exam.duration} minutes
+                </p>
+                <BadgeLink href="#">📚 {exam.class_field}</BadgeLink>
               </CardContent>
               <CardFooter>
                 <Button variant="default" size="sm" className="w-full">

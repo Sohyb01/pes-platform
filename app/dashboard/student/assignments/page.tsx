@@ -2,18 +2,13 @@ import * as React from "react";
 
 import {
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
 import { BadgeLink } from "@/components/pes-custom/platform-components/BadgeLink";
-import { ProgramIcon } from "@/components/pes-custom/icons/ProgramIcon";
-import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
-import { FileIcon } from "@/components/pes-custom/icons/FileIcon";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { TimeIcon } from "@/components/pes-custom/icons/TimeIcon";
 import { UploadIcon } from "@/components/pes-custom/icons/UploadIcon";
 import { exampleAssignments } from "@/lib/data";
 import {
@@ -21,7 +16,6 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { DownloadIcon } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
@@ -44,17 +38,13 @@ const page = () => {
               className="w-full md:max-w-[352px]"
             >
               <CardHeader>
-                <CardTitle>Robotics Class B Assignment</CardTitle>
-                <CardDescription className="flex justify-between pt-2">
-                  <BadgeLink href="#">
-                    <ProgramIcon />
-                    <span className="line-clamp-1">Programming Basics</span>
-                  </BadgeLink>
-                  <BadgeLink href="#">
-                    <EmployeeIcon />
-                    {assignment.sent_by}
-                  </BadgeLink>
-                </CardDescription>
+                <CardTitle>Robotics Class B Assignment ⏱️</CardTitle>
+                <Link href="#">
+                  <span className="max-w-[12ch] overflow-hidden text-subtle text-muted-foreground">
+                    ENG. Ahmed Reda 👨‍🏫
+                    {/* {assignment.sent_by} */}
+                  </span>
+                </Link>
               </CardHeader>
               <CardContent className="text-subtle">
                 <p>Task Description</p>
@@ -68,8 +58,7 @@ const page = () => {
                     <HoverCard>
                       <HoverCardTrigger asChild>
                         <BadgeLink href="#" className="w-fit">
-                          <FileIcon />
-                          Attachments
+                          Attachments 📂
                         </BadgeLink>
                       </HoverCardTrigger>
                       <HoverCardContent className="w-60 text-subtle flex flex-col gap-2">
@@ -86,8 +75,7 @@ const page = () => {
                                   { variant: "outline", size: "sm" }
                                 )}`}
                               >
-                                <DownloadIcon size={12} />
-                                {attachment.name}
+                                {attachment.name} 📁
                               </Link>
                             );
                           }
@@ -110,13 +98,12 @@ const page = () => {
                       </HoverCardContent>
                     </HoverCard>
                   ) : (
-                    <div className="w-fit focus:outline-none flex gap-2 items-center stroke-foreground rounded-[3px] border p-2 text-badge font-semibold transition-colors border-border bg-shade text-muted-foreground">
+                    <div className="w-fit focus:outline-none flex gap-2 items-center stroke-foreground rounded-[3px] border p-2 text-badge font-semibold transition-colors border-border bg-shade opacity-50">
                       No attachments
                     </div>
                   )}
                   <div className="flex w-fit gap-1 items-center stroke-secondary text-secondary">
-                    <TimeIcon />
-                    <span className="text-detail">Due in 2d 4h</span>
+                    ⚠️<span className="text-detail">Due in 2d 4h</span>
                   </div>
                 </div>
               </CardContent>

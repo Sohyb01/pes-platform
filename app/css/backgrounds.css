@@ -9,7 +9,7 @@
   @apply bg-cover bg-top;
 }
 
-.student-sidebar-bg{
-  background-image: url("../../public/backgrounds/sidebar-bottom-1.svg");
-  @apply bg-contain bg-bottom bg-no-repeat
+.student-sidebar-bg {
+  background-image: url("../../public/backgrounds/shapes-abstract-2.png");
+  @apply bg-cover bg-repeat bg-center;
 }
