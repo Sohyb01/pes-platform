@@ -51,6 +51,7 @@ import { ScheduleIcon } from "../icons/ScheduleIcon";
 const SuperadminNavbar = () => {
   // Search functionality
   const [open, setOpen] = React.useState(false);
+  const [searchOpen, setSearchOpen] = React.useState(false);
 
   // Get the current pathname
   const pathname = usePathname();
@@ -63,7 +64,7 @@ const SuperadminNavbar = () => {
       <div className="nav-internal">
         <div className="flex gap-4">
           {/* Sheet */}
-          <Sheet>
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               className={`${buttonVariants({
                 variant: "outline",
@@ -85,7 +86,10 @@ const SuperadminNavbar = () => {
                   <p>Company</p>
                   {/* Links */}
                   <div className="sidebar-links-container">
-                    <Link href="/dashboard/superadmin/finances">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/finances"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -95,7 +99,10 @@ const SuperadminNavbar = () => {
                         <FinancesIcon /> Finances
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/franchises">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/franchises"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -105,7 +112,10 @@ const SuperadminNavbar = () => {
                         <FranchiseIcon /> Franchises
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/partnerships">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/partnerships"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -121,7 +131,10 @@ const SuperadminNavbar = () => {
                   <p>Platform</p>
                   {/* Links */}
                   <div className="sidebar-links-container">
-                    <Link href="/dashboard/superadmin/employees">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/employees"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -131,7 +144,10 @@ const SuperadminNavbar = () => {
                         <EmployeeIcon /> Employees
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/students">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/students"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -141,7 +157,10 @@ const SuperadminNavbar = () => {
                         <StudentIcon /> Students
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/parents">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/parents"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -151,7 +170,10 @@ const SuperadminNavbar = () => {
                         <PersonIcon /> Parents
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/classes">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/classes"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -161,7 +183,10 @@ const SuperadminNavbar = () => {
                         <ClassIcon /> Classes
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/assignments">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/assignments"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -171,7 +196,10 @@ const SuperadminNavbar = () => {
                         <AssignmentIcon /> Assignments
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/schedules">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/schedules"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -181,7 +209,10 @@ const SuperadminNavbar = () => {
                         <ScheduleIcon /> Schedules
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/quizzes">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/quizzes"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -191,7 +222,10 @@ const SuperadminNavbar = () => {
                         <QuizIcon /> Quizzes
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/materials">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/materials"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -201,7 +235,10 @@ const SuperadminNavbar = () => {
                         <MaterialIcon /> Materials
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/certificates">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/certificates"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -211,7 +248,10 @@ const SuperadminNavbar = () => {
                         <CertificateIcon /> Certificates
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/reviews">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/reviews"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -221,7 +261,10 @@ const SuperadminNavbar = () => {
                         <ReviewIcon /> Reviews
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/projects">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/projects"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -231,7 +274,10 @@ const SuperadminNavbar = () => {
                         <ProjectIcon /> Projects
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/programs">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/programs"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -241,7 +287,10 @@ const SuperadminNavbar = () => {
                         <ProgramIcon /> Programs
                       </Button>
                     </Link>
-                    <Link href="/dashboard/superadmin/activity-log">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/superadmin/activity-log"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -260,14 +309,14 @@ const SuperadminNavbar = () => {
           <Button
             className="hidden md:flex gap-2 text-muted-foreground w-[160px] justify-start"
             variant={"outline"}
-            onClick={() => setOpen((open) => !open)}
+            onClick={() => setSearchOpen((searchOpen) => !searchOpen)}
           >
             <Search size={16} />
             Search...
           </Button>
         </div>
         {/* Search Dialog */}
-        <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
           <CommandInput placeholder="Type a command or search..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>

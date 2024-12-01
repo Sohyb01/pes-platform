@@ -33,6 +33,7 @@ import { UserNav } from "./UserNav";
 const StudentNavbar = () => {
   // Search functionality
   const [open, setOpen] = React.useState(false);
+  const [searchOpen, setSearchOpen] = React.useState(false);
 
   // Get the current pathname
   const pathname = usePathname();
@@ -45,7 +46,7 @@ const StudentNavbar = () => {
       <div className="nav-internal">
         <div className="flex gap-4">
           {/* Sheet */}
-          <Sheet>
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               className={`${buttonVariants({
                 variant: "outline",
@@ -58,7 +59,7 @@ const StudentNavbar = () => {
               side={"left"}
               className="p-8 gap-8 flex flex-col items-start overflow-scroll lg:hidden student-sidebar-bg"
             >
-              <p className="text-lead">Superadmin Dashboard</p>
+              <p className="text-lead">Student Dashboard</p>
               {/* All Platform Link Groups */}
               <div className="sidebar-groups-container">
                 {/* Platform Group Title & Links */}
@@ -66,7 +67,10 @@ const StudentNavbar = () => {
                   <p>Platform</p>
                   {/* Links */}
                   <div className="sidebar-links-container">
-                    <Link href="/dashboard/student/schedule">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/student/schedule"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -77,7 +81,10 @@ const StudentNavbar = () => {
                         📆 Schedule
                       </Button>
                     </Link>
-                    <Link href="/dashboard/student/classes">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/student/classes"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -88,7 +95,10 @@ const StudentNavbar = () => {
                         📚 Classes
                       </Button>
                     </Link>
-                    <Link href="/dashboard/student/assignments">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/student/assignments"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -99,7 +109,10 @@ const StudentNavbar = () => {
                         ⏰ Assignments
                       </Button>
                     </Link>
-                    <Link href="/dashboard/student/quizzes">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/student/quizzes"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -110,7 +123,10 @@ const StudentNavbar = () => {
                         💯 Quizzes
                       </Button>
                     </Link>
-                    <Link href="/dashboard/student/materials">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/student/materials"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -121,7 +137,10 @@ const StudentNavbar = () => {
                         🧊 Materials
                       </Button>
                     </Link>
-                    <Link href="/dashboard/student/leaderboard">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/student/leaderboard"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -132,7 +151,10 @@ const StudentNavbar = () => {
                         🏅 Leaderboard
                       </Button>
                     </Link>
-                    <Link href="/dashboard/student/certificates">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/student/certificates"
+                    >
                       <Button
                         className="sidebar-button"
                         variant={
@@ -152,14 +174,14 @@ const StudentNavbar = () => {
           <Button
             className="gap-2 text-muted-foreground w-[160px] justify-start"
             variant={"outline"}
-            onClick={() => setOpen((open) => !open)}
+            onClick={() => setSearchOpen((searchOpen) => !searchOpen)}
           >
             <Search size={16} />
             Search...
           </Button>
         </div>
         {/* Search Dialog */}
-        <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
           <CommandInput placeholder="Type a command or search..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
