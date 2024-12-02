@@ -11,6 +11,8 @@ const buttonVariants = cva(
       variant: {
         default:
           "bg-primary stroke-primary-foreground text-primary-foreground hover:bg-primary/90 border border-primary",
+        reversed:
+          "bg-foreground stroke-background text-background hover:bg-foreground/90 border border-border/25",
         destructive:
           "bg-destructive stroke-destructive text-destructive-foreground hover:bg-destructive/90 border border-destructive",
         outline:
@@ -26,7 +28,7 @@ const buttonVariants = cva(
       size: {
         default: "h-fit px-4 py-2 gap-2",
         sm: "h-9 rounded-md px-3 text-[14px] leading-[20px] gap-1", // For some reason applying styles like "text-subtle" will prevent applying the color styles from the variants above
-        lg: "h-11 rounded-md px-8 gap-2",
+        lg: "h-11 rounded-md px-4 gap-2",
         icon: "h-10 w-10",
         sorting: "p-0",
         link: "p-0 bg-transparent hover:bg-transparent border-transparent",

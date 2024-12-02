@@ -8,15 +8,13 @@ export default function RootLayout({
 }>) {
   return (
     <div
-      className={`antialiased flex flex-col w-full h-[100vh] overflow-hidden`}
+      className={`antialiased flex flex-col w-full h-[100vh] overflow-hidden bg-shade`}
     >
       <StudentNavbar />
-      <div className="flex w-full overflow-hidden dashboard-sizing gradient-bg">
+      <div className="flex w-full dashboard-sizing gradient-bg p-4 gap-4 md:gap-8">
         <StudentSidebar />
         {/* Main Content */}
-        <main className="w-full flex flex-col gap-8 p-4 md:p-8 dashboard-sizing overflow-scroll bg-shade/50">
-          {children}
-        </main>
+        <main className="w-full p-4 overflow-scroll">{children}</main>
       </div>
     </div>
   );

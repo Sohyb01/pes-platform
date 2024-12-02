@@ -3,10 +3,10 @@
 import { useNextCalendarApp, ScheduleXCalendar } from "@schedule-x/react";
 import { createEventModalPlugin } from "@schedule-x/event-modal";
 import {
-  createViewDay,
+  // createViewDay,
   createViewMonthAgenda,
   createViewMonthGrid,
-  createViewWeek,
+  // createViewWeek,
 } from "@schedule-x/calendar";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
 
@@ -19,18 +19,37 @@ function PESCalendar() {
 
   const calendar = useNextCalendarApp(
     {
-      views: [
-        createViewDay(),
-        createViewWeek(),
-        createViewMonthGrid(),
-        createViewMonthAgenda(),
-      ],
+      views: [createViewMonthGrid(), createViewMonthAgenda()],
       events: [
         {
           id: "1",
           title: "Event 1",
           start: "2024-11-24 00:00",
           end: "2024-11-24 05:00",
+        },
+        {
+          id: "1",
+          title: "Event 1",
+          start: "2024-12-04 00:00",
+          end: "2024-12-04 05:00",
+        },
+        {
+          id: "1",
+          title: "Event 1",
+          start: "2024-12-07 00:00",
+          end: "2024-12-07 05:00",
+        },
+        {
+          id: "1",
+          title: "Event 1",
+          start: "2024-12-11 00:00",
+          end: "2024-12-11 05:00",
+        },
+        {
+          id: "1",
+          title: "Event 1",
+          start: "2024-12-13 00:00",
+          end: "2024-12-13 05:00",
         },
       ],
     },

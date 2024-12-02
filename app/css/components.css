@@ -1,61 +1,51 @@
-.nav{
- @apply w-full flex justify-center z-50 mx-auto bg-background text-foreground border-b border-border py-3
+.nav {
+  @apply w-full flex justify-center z-50 mx-auto bg-background text-foreground border-b border-border py-3;
 }
-.nav-internal{
- @apply w-full flex justify-between items-center px-4 md:px-8
+.nav-internal {
+  @apply w-full flex justify-between items-center px-4 md:px-8;
 }
-.dashboard-sizing{
-    height: calc(100vh - 66.4px);
+.dashboard-sizing {
+  height: calc(100vh - 66.4px);
 }
 
 /* Navbar Sheets and Sidebars */
-.sidebar-groups-container{
-   @apply flex flex-col gap-8 w-full items-start
+.sidebar-groups-container {
+  @apply flex flex-col gap-8 w-full items-start;
 }
-.sidebar-group{
-    @apply flex flex-col gap-2 w-full items-start text-p_ui_medium
+.sidebar-group {
+  @apply flex flex-col gap-2 w-full items-start text-p_ui_medium;
 }
-.sidebar-links-container{
-    @apply flex flex-col gap-2 border-l border-l-border px-4 w-full
+.sidebar-links-container {
+  @apply flex flex-col gap-4 w-full;
 }
-.sidebar-button{
-    @apply gap-2 w-full justify-start
+.sidebar-button {
+  @apply gap-2 w-full justify-start;
 }
 
 /* Old styles below */
 /* Buttons */
-.btn-primary{
-}
-.btn-secondary{
-}
-.btn-whatsapp{
-    /* background: #25D366;     */
-    /* @apply px-4 py-2 text-center rounded-md text-white flex flex-row  items-center gap-[10px] */
-}
-
 /* Other */
-.pes-feature{
-    @apply w-[220px] px-2 py-1.5 bg-card border-border border-[1px] text-foreground text-start flex items-center rounded-md gap-2
+.pes-feature {
+  @apply w-[220px] px-2 py-1.5 bg-card border-border border-[1px] text-foreground text-start flex items-center rounded-md gap-2;
 }
-.pes-testimonial{
-    @apply flex justify-center items-center gap-4 w-full max-w-[332px] lg:max-w-[338px] p-4 text-start shadow-lg rounded-md bg-card border-border border-[1px]
+.pes-testimonial {
+  @apply flex justify-center items-center gap-4 w-full max-w-[332px] lg:max-w-[338px] p-4 text-start shadow-lg rounded-md bg-card border-border border-[1px];
 }
-.pes-value{
-    @apply flex justify-center items-center gap-4 w-full max-w-[332px] lg:max-w-none p-6 text-start shadow-lg rounded-md bg-muted
+.pes-value {
+  @apply flex justify-center items-center gap-4 w-full max-w-[332px] lg:max-w-none p-6 text-start shadow-lg rounded-md bg-muted;
+}
+.pes-problem {
+  @apply bg-muted text-foreground px-4 py-3 border-solid border-[1px] border-destructive border-b-[0px] rounded-md;
+}
+.pes-solution {
+  @apply bg-muted text-foreground px-4 py-3 border-solid border-[1px] border-primary rounded-md;
+}
 
+.pes-grid-form {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-12 w-full pt-8 max-w-screen-md;
 }
-.pes-problem{
-    @apply bg-muted text-foreground px-4 py-3 border-solid border-[1px] border-destructive border-b-[0px] rounded-md
-}
-.pes-solution{
-    @apply bg-muted text-foreground px-4 py-3 border-solid border-[1px] border-primary rounded-md
-}
-
-.pes-grid-form{
-    @apply grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-12 w-full pt-8 max-w-screen-md
-}
-.dashboard-tab-wrapper{
-  @apply flex w-full flex-col gap-4
+.dashboard-tab-wrapper {
+  @apply flex w-full flex-col gap-4;
 }
 
 .sx-react-calendar-wrapper {

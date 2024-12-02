@@ -11,20 +11,28 @@ const StudentSidebar = () => {
   // Split the pathname and get the last segment
   const lastSegment = pathname.split("/").filter(Boolean).pop();
   return (
-    <nav className="hidden lg:flex p-8 gap-8 flex-col items-start w-full max-w-[280px] dashboard-sizing border-r border-border overflow-scroll student-sidebar-bg">
-      <p className="text-lead">Student Dashboard</p>
+    <nav className="hidden lg:flex rounded-[1rem] p-4 md:p-6 gap-8 flex-col items-start w-full max-w-[280px] h-full bg-background">
+      {/* <p className="text-h3">Hello, Omar!</p> */}
       {/* All Platform Link Groups */}
       <div className="sidebar-groups-container">
         {/* Platform Group Title & Links */}
         <div className="sidebar-group">
-          <p>Platform</p>
           {/* Links */}
           <div className="sidebar-links-container">
+            <Link href="/dashboard/student/home">
+              <Button
+                className="sidebar-button"
+                variant={lastSegment == "home" ? "default" : "ghost"}
+                size="lg"
+              >
+                🏠 Home
+              </Button>
+            </Link>
             <Link href="/dashboard/student/schedule">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "schedule" ? "default" : "outline"}
-                size="sm"
+                variant={lastSegment == "schedule" ? "default" : "ghost"}
+                size="lg"
               >
                 📆 Schedule
               </Button>
@@ -32,8 +40,8 @@ const StudentSidebar = () => {
             <Link href="/dashboard/student/classes">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "classes" ? "default" : "outline"}
-                size="sm"
+                variant={lastSegment == "classes" ? "default" : "ghost"}
+                size="lg"
               >
                 📚 Classes
               </Button>
@@ -41,8 +49,8 @@ const StudentSidebar = () => {
             <Link href="/dashboard/student/assignments">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "assignments" ? "default" : "outline"}
-                size="sm"
+                variant={lastSegment == "assignments" ? "default" : "ghost"}
+                size="lg"
               >
                 ⏰ Assignments
               </Button>
@@ -50,8 +58,8 @@ const StudentSidebar = () => {
             <Link href="/dashboard/student/quizzes">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "quizzes" ? "default" : "outline"}
-                size="sm"
+                variant={lastSegment == "quizzes" ? "default" : "ghost"}
+                size="lg"
               >
                 💯 Quizzes
               </Button>
@@ -59,8 +67,8 @@ const StudentSidebar = () => {
             <Link href="/dashboard/student/materials">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "materials" ? "default" : "outline"}
-                size="sm"
+                variant={lastSegment == "materials" ? "default" : "ghost"}
+                size="lg"
               >
                 🧊 Materials
               </Button>
@@ -68,8 +76,8 @@ const StudentSidebar = () => {
             <Link href="/dashboard/student/leaderboard">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "leaderboard" ? "default" : "outline"}
-                size="sm"
+                variant={lastSegment == "leaderboard" ? "default" : "ghost"}
+                size="lg"
               >
                 🏅 Leaderboard
               </Button>
@@ -77,8 +85,8 @@ const StudentSidebar = () => {
             <Link href="/dashboard/student/certificates">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "certificates" ? "default" : "outline"}
-                size="sm"
+                variant={lastSegment == "certificates" ? "default" : "ghost"}
+                size="lg"
               >
                 📜 My Certificates
               </Button>

@@ -238,7 +238,7 @@ export const exampleParents: TFormSchemaAddParent[] = [
 export const exampleClasses: TFormSchemaAddClass[] = [
   {
     id: "1", // Optional field
-    class_name: "Advanced Mathematics", //
+    class_name: "Advanced Mathematics ➗", //
     class_fees: 150.0, //
     program_id: "prog1234abcd5678", // Represents foreign key to Programs
     instructor_id: "instr9876efgh4321", // Optional UUID for instructor
@@ -247,7 +247,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
   },
   {
     id: "2",
-    class_name: "Introduction to Computer Science",
+    class_name: "Introduction to Computer Science 🖥️",
     class_fees: 200.0,
     program_id: "prog5678ijkl9012",
     instructor_id: "instr1234mnop5678",
@@ -256,7 +256,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
   },
   {
     id: "3",
-    class_name: "Creative Writing Workshop",
+    class_name: "Creative Writing Workshop ✍️",
     class_fees: 75.5,
     program_id: "prog3456qrst7890",
     // `instructor_id` is omitted as it's optional

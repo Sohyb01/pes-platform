@@ -49,7 +49,7 @@ const StudentNavbar = () => {
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               className={`${buttonVariants({
-                variant: "outline",
+                variant: "reversed",
                 size: "icon",
               })} lg:hidden`}
             >
@@ -57,16 +57,28 @@ const StudentNavbar = () => {
             </SheetTrigger>
             <SheetContent
               side={"left"}
-              className="p-8 gap-8 flex flex-col items-start overflow-scroll lg:hidden student-sidebar-bg"
+              className="p-4 md:p-6 pt-20 w-[280px] gap-8 flex flex-col items-start overflow-scroll lg:hidden student-sidebar-bg bg-foreground text-background"
             >
-              <p className="text-lead">Student Dashboard</p>
+              {/* <p className="text-lead">Student Dashboard</p> */}
               {/* All Platform Link Groups */}
               <div className="sidebar-groups-container">
                 {/* Platform Group Title & Links */}
                 <div className="sidebar-group">
-                  <p>Platform</p>
+                  {/* <p>Platform</p> */}
                   {/* Links */}
                   <div className="sidebar-links-container">
+                    <Link
+                      onClick={() => setOpen(false)}
+                      href="/dashboard/student/home"
+                    >
+                      <Button
+                        className="sidebar-button"
+                        variant={lastSegment == "home" ? "default" : "reversed"}
+                        size="lg"
+                      >
+                        🏠 Home
+                      </Button>
+                    </Link>
                     <Link
                       onClick={() => setOpen(false)}
                       href="/dashboard/student/schedule"
@@ -74,9 +86,9 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "schedule" ? "default" : "outline"
+                          lastSegment == "schedule" ? "default" : "reversed"
                         }
-                        size="sm"
+                        size="lg"
                       >
                         📆 Schedule
                       </Button>
@@ -88,9 +100,9 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "classes" ? "default" : "outline"
+                          lastSegment == "classes" ? "default" : "reversed"
                         }
-                        size="sm"
+                        size="lg"
                       >
                         📚 Classes
                       </Button>
@@ -102,9 +114,9 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "assignments" ? "default" : "outline"
+                          lastSegment == "assignments" ? "default" : "reversed"
                         }
-                        size="sm"
+                        size="lg"
                       >
                         ⏰ Assignments
                       </Button>
@@ -116,9 +128,9 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "quizzes" ? "default" : "outline"
+                          lastSegment == "quizzes" ? "default" : "reversed"
                         }
-                        size="sm"
+                        size="lg"
                       >
                         💯 Quizzes
                       </Button>
@@ -130,9 +142,9 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "materials" ? "default" : "outline"
+                          lastSegment == "materials" ? "default" : "reversed"
                         }
-                        size="sm"
+                        size="lg"
                       >
                         🧊 Materials
                       </Button>
@@ -144,9 +156,9 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "leaderboard" ? "default" : "outline"
+                          lastSegment == "leaderboard" ? "default" : "reversed"
                         }
-                        size="sm"
+                        size="lg"
                       >
                         🏅 Leaderboard
                       </Button>
@@ -158,9 +170,9 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "certificates" ? "default" : "outline"
+                          lastSegment == "certificates" ? "default" : "reversed"
                         }
-                        size="sm"
+                        size="lg"
                       >
                         📜 My Certificates
                       </Button>
