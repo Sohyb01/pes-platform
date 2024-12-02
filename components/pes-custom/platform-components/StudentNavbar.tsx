@@ -49,7 +49,7 @@ const StudentNavbar = () => {
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               className={`${buttonVariants({
-                variant: "reversed",
+                variant: "ghost",
                 size: "icon",
               })} lg:hidden`}
             >
@@ -57,7 +57,7 @@ const StudentNavbar = () => {
             </SheetTrigger>
             <SheetContent
               side={"left"}
-              className="p-4 md:p-6 pt-20 w-[280px] gap-8 flex flex-col items-start overflow-scroll lg:hidden student-sidebar-bg bg-foreground text-background"
+              className="p-4 md:p-6 pt-20 w-[280px] gap-8 flex flex-col items-start overflow-scroll lg:hidden student-sidebar-bg bg-background text-foreground"
             >
               {/* <p className="text-lead">Student Dashboard</p> */}
               {/* All Platform Link Groups */}
@@ -73,7 +73,7 @@ const StudentNavbar = () => {
                     >
                       <Button
                         className="sidebar-button"
-                        variant={lastSegment == "home" ? "default" : "reversed"}
+                        variant={lastSegment == "home" ? "default" : "ghost"}
                         size="lg"
                       >
                         🏠 Home
@@ -86,7 +86,7 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "schedule" ? "default" : "reversed"
+                          lastSegment == "schedule" ? "default" : "ghost"
                         }
                         size="lg"
                       >
@@ -99,9 +99,7 @@ const StudentNavbar = () => {
                     >
                       <Button
                         className="sidebar-button"
-                        variant={
-                          lastSegment == "classes" ? "default" : "reversed"
-                        }
+                        variant={lastSegment == "classes" ? "default" : "ghost"}
                         size="lg"
                       >
                         📚 Classes
@@ -114,7 +112,7 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "assignments" ? "default" : "reversed"
+                          lastSegment == "assignments" ? "default" : "ghost"
                         }
                         size="lg"
                       >
@@ -127,9 +125,7 @@ const StudentNavbar = () => {
                     >
                       <Button
                         className="sidebar-button"
-                        variant={
-                          lastSegment == "quizzes" ? "default" : "reversed"
-                        }
+                        variant={lastSegment == "quizzes" ? "default" : "ghost"}
                         size="lg"
                       >
                         💯 Quizzes
@@ -142,7 +138,7 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "materials" ? "default" : "reversed"
+                          lastSegment == "materials" ? "default" : "ghost"
                         }
                         size="lg"
                       >
@@ -156,7 +152,7 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "leaderboard" ? "default" : "reversed"
+                          lastSegment == "leaderboard" ? "default" : "ghost"
                         }
                         size="lg"
                       >
@@ -170,7 +166,7 @@ const StudentNavbar = () => {
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "certificates" ? "default" : "reversed"
+                          lastSegment == "certificates" ? "default" : "ghost"
                         }
                         size="lg"
                       >

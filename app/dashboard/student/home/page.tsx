@@ -5,7 +5,6 @@ import { Progress } from "@/components/ui/progress";
 import { exampleClasses } from "@/lib/data";
 import { ArrowRightCircle, ArrowRightCircleIcon } from "lucide-react";
 import * as React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
