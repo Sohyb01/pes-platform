@@ -683,3 +683,22 @@ export const examplePrograms: TFormSchemaAddProgram[] = [
     start_date: new Date("2024-11-05"),
   },
 ];
+
+export type LeaderboardStudent = {
+  name: string;
+  pointsThisWeek: number;
+  pointsThisMonth: number;
+};
+
+export const leaderboardData: LeaderboardStudent[] = [
+  { name: "Alice Johnson", pointsThisWeek: 120, pointsThisMonth: 450 },
+  { name: "Bob Smith", pointsThisWeek: 90, pointsThisMonth: 320 },
+  { name: "Charlie Davis", pointsThisWeek: 150, pointsThisMonth: 500 },
+  { name: "Diana Lewis", pointsThisWeek: 80, pointsThisMonth: 290 },
+  { name: "Evan Carter", pointsThisWeek: 110, pointsThisMonth: 420 },
+  // { name: "Fiona Brown", pointsThisWeek: 140, pointsThisMonth: 480 },
+  // { name: "George Wilson", pointsThisWeek: 95, pointsThisMonth: 330 },
+  // { name: "Hannah Lee", pointsThisWeek: 70, pointsThisMonth: 250 },
+  // { name: "Irene Miller", pointsThisWeek: 60, pointsThisMonth: 220 },
+  // { name: "Jack Taylor", pointsThisWeek: 130, pointsThisMonth: 460 },
+];
