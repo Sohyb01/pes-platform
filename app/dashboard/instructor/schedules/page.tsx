@@ -1,10 +1,10 @@
-import { exampleStudents } from "@/lib/data";
+import { exampleSchedules } from "@/lib/data";
 import React from "react";
 
 async function getData() {
   // Fetch data from your API here.
   // Must fit the type definition to be inserted into the table
-  return exampleStudents;
+  return exampleSchedules;
 }
 
 const page = async () => {

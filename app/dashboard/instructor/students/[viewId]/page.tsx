@@ -287,7 +287,7 @@ const ViewStudentPage = ({ params }: { params: { viewId: string } }) => {
               </div>
             </TabsContent>
             <TabsContent value="Classes" className="px-4 pb-4">
-              <div className="flex gap-4 overflow-x-scroll pt-8">
+              <div className="flex gap-4 overflow-x-scroll">
                 {exampleClasses.map((pesClass, idx) => {
                   return (
                     <M_Card

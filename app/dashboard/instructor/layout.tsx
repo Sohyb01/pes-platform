@@ -1,5 +1,5 @@
-import SuperadminNavbar from "@/components/pes-custom/platform-components/SuperadminNavbar";
-import SuperadminSidebar from "@/components/pes-custom/platform-components/SuperadminSidebar";
+import InstructorNavbar from "@/components/pes-custom/platform-components/InstructorNavbar";
+import InstructorSidebar from "@/components/pes-custom/platform-components/InstructorSidebar";
 
 export default function RootLayout({
   children,
@@ -10,9 +10,9 @@ export default function RootLayout({
     <div
       className={`antialiased flex flex-col w-full h-[100vh] overflow-hidden`}
     >
-      <SuperadminNavbar />
+      <InstructorNavbar />
       <div className="flex w-full overflow-hidden dashboard-sizing">
-        <SuperadminSidebar />
+        <InstructorSidebar />
         {/* Main Content */}
         <main className="w-full flex flex-col gap-8 p-4 md:p-8 lg:pl-12 dashboard-sizing overflow-scroll bg-background">
           {children}
