@@ -19,13 +19,13 @@ const page = () => {
           <p className="text-h3 pb-4">Schedule</p>
           <PESCalendar />
         </div>
-        <div className="flex-1 min-w-[300px] max-w-[580px] grow h-fit">
-          <p className="text-h3 pb-4">Classes</p>
+        <div className="flex-1 min-w-[300px] max-w-[580px] grow h-fit flex flex-col gap-4">
+          <p className="text-h3">Classes</p>
           {exampleClasses.map((studentClass) => {
             return (
               <div
                 key={studentClass.id}
-                className="bg-background rounded-[1rem] flex flex-col text-p_ui overflow-hidden"
+                className="bg-background rounded-[1rem] flex flex-col text-p_ui overflow-hidden border-border border-[1px]"
               >
                 <div className="flex justify-between text-large px-6 pt-6">
                   {studentClass.class_name}
@@ -106,27 +106,21 @@ const page = () => {
           </div>
           <Tabs
             defaultValue="Weekly"
-            className="w-full p-4 border-border bg-background border-[1px] rounded-[1rem]"
+            className="w-full border-border bg-background border-[1px] rounded-[1rem]"
           >
-            <div className="text-h4 mb-4">Leaderboard ⭐</div>
-            <TabsList className="flex gap-2 max-w-[300px] mb-4 bg-background">
-              <TabsTrigger
-                className="data-[state=active]:bg-primary bg-muted border-border border-[1px] w-full"
-                value="Weekly"
-              >
+            <div className="text-h4 mb-4 pt-4 px-4">Leaderboard ⭐</div>
+            <TabsList className="flex gap-4 bg-background border-b-[1px] border-b-muted rounded-none mb-4 justify-start">
+              <TabsTrigger className="tab-trigger ml-4" value="Weekly">
                 Weekly
               </TabsTrigger>
-              <TabsTrigger
-                className="data-[state=active]:bg-primary bg-muted border-border border-[1px] w-full"
-                value="Monthly"
-              >
+              <TabsTrigger className="tab-trigger " value="Monthly">
                 Monthly
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="Weekly">
+            <TabsContent value="Weekly" className="px-4 pb-4">
               <Leaderboard students={leaderboardData} variant="week" />
             </TabsContent>
-            <TabsContent value="Monthly">
+            <TabsContent value="Monthly" className="px-4 pb-4">
               <Leaderboard students={leaderboardData} variant="month" />
             </TabsContent>
           </Tabs>

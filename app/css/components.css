@@ -48,6 +48,10 @@
   @apply flex w-full flex-col gap-4;
 }
 
+.tab-trigger {
+  @apply data-[state=active]:text-foreground text-muted-foreground rounded-none data-[state=active]:border-b-[2px] border-b-primary mt-1.5;
+}
+
 .sx-react-calendar-wrapper {
   width: 100%;
   max-width: 100vw;
