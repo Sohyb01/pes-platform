@@ -134,8 +134,8 @@ const ViewStudentPage = ({ params }: { params: { viewId: string } }) => {
             <TabsContent value="Exams" className="px-4 pb-4">
               <div className="flex gap-8 text-subtle">
                 <span>Exams Taken: 14</span>
-                <span className="text-green-500">Passed: 12</span>
-                <span className="text-red-500">Failed: 2</span>
+                <span className="text-success">Passed: 12</span>
+                <span className="text-destructive">Failed: 2</span>
               </div>
               <div className="flex gap-4 overflow-x-scroll pt-8">
                 {exampleSolvedExams.map((exam, idx) => {
@@ -182,7 +182,7 @@ const ViewStudentPage = ({ params }: { params: { viewId: string } }) => {
               <div className="flex gap-8 text-subtle">
                 <span>Assignments: 14</span>
                 <span className="text-green-500">Passed: 12</span>
-                <span className="text-red-500">Failed: 2</span>
+                <span className="text-destructive">Failed: 2</span>
               </div>
               <div className="flex gap-4 overflow-x-scroll pt-8">
                 {exampleAssignments.map((assignment, idx) => {
