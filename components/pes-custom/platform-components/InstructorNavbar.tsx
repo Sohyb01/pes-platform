@@ -116,15 +116,15 @@ const InstructorNavbar = () => {
                     </Link>
                     <Link
                       onClick={() => setOpen(false)}
-                      href="/dashboard/instructor/schedules"
+                      href="/dashboard/instructor/schedule"
                     >
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "schedules" ? "default" : "outline"
+                          lastSegment == "schedule" ? "default" : "outline"
                         }
                       >
-                        <ScheduleIcon /> Schedules
+                        <ScheduleIcon /> Schedule
                       </Button>
                     </Link>
                     <Link

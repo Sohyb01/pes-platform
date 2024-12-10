@@ -535,6 +535,34 @@ export const FormSchemaAddSchedule = z.object({
 
 export type TFormSchemaAddSchedule = z.infer<typeof FormSchemaAddSchedule>;
 
+export const FormSchemaAddScheduleEvent = z.object({
+  eventName: z
+    .string()
+    .trim()
+    .min(1, "Required")
+    .max(100, "Event name must be less than 100 characters"),
+  eventType: z
+    .string()
+    .trim()
+    .min(1, "Required")
+    .max(50, "Event type must be less than 50 characters"),
+  timestamp: z
+    .date()
+    .refine((date) => date > new Date(), "Timestamp must be a future date"),
+  peopleInvited: z
+    .array(z.string())
+    .nonempty("At least one person must be invited"),
+  description: z
+    .string()
+    .max(500, "Description must be less than 500 characters")
+    .optional(),
+  schedulerId: z.string(),
+});
+
+export type TFormSchemaAddScheduleEvent = z.infer<
+  typeof FormSchemaAddScheduleEvent
+>;
+
 // Define the schema for program phases
 const ProgramlevelSchema = z.object({
   level_id: z.string().optional(),

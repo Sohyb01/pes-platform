@@ -12,7 +12,7 @@ export default async function EmployeesPage() {
 
   return (
     <div className="dashboard-tab-wrapper">
-      <h3 className="text-h3">Employees</h3>
+      <h3 className="text-h3">Materials</h3>
     </div>
   );
 }

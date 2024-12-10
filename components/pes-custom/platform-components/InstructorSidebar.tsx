@@ -53,13 +53,13 @@ const InstructorSidebar = () => {
                 <AssignmentIcon /> Assignments
               </Button>
             </Link>
-            <Link href="/dashboard/instructor/schedules">
+            <Link href="/dashboard/instructor/schedule">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "schedules" ? "default" : "outline"}
+                variant={lastSegment == "schedule" ? "default" : "outline"}
                 size="sm"
               >
-                <SchedulesIcon /> Schedules
+                <SchedulesIcon /> Schedule
               </Button>
             </Link>
             <Link href="/dashboard/instructor/quizzes">

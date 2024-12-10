@@ -9,6 +9,7 @@ import Link from "next/link";
 import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Leaderboard from "@/components/pes-custom/platform-components/Leaderboard";
+import { TFormSchemaAddClass } from "@/lib/types-forms";
 
 const page = () => {
   return (
@@ -21,7 +22,7 @@ const page = () => {
         </div>
         <div className="flex-1 min-w-[300px] max-w-[580px] grow h-fit flex flex-col gap-4">
           <p className="text-h3">Classes</p>
-          {exampleClasses.map((studentClass) => {
+          {exampleClasses.map((studentClass: TFormSchemaAddClass) => {
             return (
               <div
                 key={studentClass.id}
