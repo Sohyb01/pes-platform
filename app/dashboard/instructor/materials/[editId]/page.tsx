@@ -8,7 +8,7 @@ const EditPage = ({ params }: { params: { editId: string } }) => {
   );
   return (
     <div className="dashboard-tab-wrapper">
-      <h3 className="text-h3">Editing materialt</h3>
+      <h3 className="text-h3">Editing material</h3>
       <FormAddMaterial editObj={material} />
     </div>
   );

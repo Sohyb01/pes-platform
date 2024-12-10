@@ -18,6 +18,14 @@ import {
   FormSchemaAddMaterial,
   TFormSchemaAddMaterial,
 } from "@/lib/types-forms";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { exampleClasses, exampleInstructors } from "@/lib/data";
 
 const FormAddMaterial = ({
   editObj,
@@ -88,9 +96,22 @@ const FormAddMaterial = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Class</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {exampleClasses.map((pesClass) => {
+                    return (
+                      <SelectItem key={pesClass.id} value={pesClass.id!}>
+                        {pesClass.class_name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -101,9 +122,22 @@ const FormAddMaterial = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Instructor</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {exampleInstructors.map((instructor) => {
+                    return (
+                      <SelectItem key={instructor.id} value={instructor.id!}>
+                        {instructor.employee_name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

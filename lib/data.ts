@@ -76,7 +76,7 @@ export const exampleAdmins: TFormSchemaAddAdmin[] = [
     education: "Master's Degree in Business Administration",
     username: "janesmith",
     password: "strongPassword!2024",
-    timezone: "UTC+1",
+    timezone: "GMT + 5:00",
     language: "English",
     currency: "USD",
     theme: "Dark",
@@ -99,7 +99,7 @@ export const exampleInstructors: TFormSchemaAddInstructor[] = [
 
     // Fields from FormSchemaAddEmployee
     user_type: "Instructor",
-    id: "instructor2",
+    id: "instructor1",
     nid: "6543210987",
     employee_name: "Alice Johnson",
     employee_email: "alice.johnson@example.com",
@@ -367,7 +367,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
 
 export const exampleAssignments: TFormSchemaAddAssignment[] = [
   {
-    assignment_id: "1",
+    assignment_id: "assignment1",
     assignment_url: "/",
     assignment_duedate: new Date("2024-04-01"),
     assignment_attachment: null, // No file uploaded
@@ -378,7 +378,7 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     sent_by: "teacher1234xyz",
   },
   {
-    assignment_id: "2",
+    assignment_id: "assignment2",
     assignment_url: undefined, // Optional field left undefined
     assignment_duedate: new Date("2024-05-15"),
     assignment_attachment: [{ name: "assignment2.docx", size: 4500000 }], // Valid file attachment under 5MB
@@ -388,6 +388,7 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     sent_by: "teacher5678abc",
   },
   {
+    assignment_id: "assignment3",
     assignment_url: "/",
     assignment_duedate: new Date("2024-06-10"),
     assignment_attachment: null, // No file attached
@@ -526,15 +527,15 @@ export const exampleMaterials: TFormSchemaAddMaterial[] = [
     id: "material-1234-f67c-89a0",
     attachment: [{ name: "lesson1.py", size: 4500000 }], // Example file within 5MB limit
     session_id: "123e4567-e89b-12d3-a456-426614174000",
-    class_field: "Math101",
-    instructor_id: "123e4567-e89b-12d3-a456-426614174001",
+    class_field: "1",
+    instructor_id: "instructor1",
   },
   {
     id: "material-1234-f67c-89a0",
     attachment: [{ name: "example.js", size: 3000000 }], // Another valid file within 5MB limit
     session_id: "123e4567-e89b-12d3-a456-426614174002",
-    class_field: "Physics202",
-    instructor_id: "123e4567-e89b-12d3-a456-426614174003",
+    class_field: "2",
+    instructor_id: "instructor1",
   },
 ];
 
@@ -801,4 +802,22 @@ export const leaderboardData: LeaderboardStudent[] = [
   // { name: "Hannah Lee", pointsThisWeek: 70, pointsThisMonth: 250 },
   // { name: "Irene Miller", pointsThisWeek: 60, pointsThisMonth: 220 },
   // { name: "Jack Taylor", pointsThisWeek: 130, pointsThisMonth: 460 },
+];
+
+export const selectClassExampleData = [
+  {
+    id: "class1",
+    name: "Advanced Mathematics ➗",
+  },
+  { id: "class2", name: "Introduction to Computer Science 🖥️" },
+  { id: "class3", name: "Creative Writing Workshop ✍️" },
+];
+
+export const selectEmployeeExampleData = [
+  {
+    id: "employee1",
+    name: "John Doe",
+  },
+  { id: "admin1", name: "Jane Smith" },
+  { id: "instructor1", name: "Alice Johnson" },
 ];
