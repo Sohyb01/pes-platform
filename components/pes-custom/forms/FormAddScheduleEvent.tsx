@@ -35,9 +35,7 @@ import { cn } from "@/lib/utils";
 
 import {
   Command,
-  CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
@@ -262,7 +260,7 @@ const FormAddScheduleEvent = ({
                             e.preventDefault();
                             e.stopPropagation();
                           }}
-                          onSelect={(value) => {
+                          onSelect={() => {
                             setInputValue("");
                             setSelected((prev) => [...prev, user]);
                           }}

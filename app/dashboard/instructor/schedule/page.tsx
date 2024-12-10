@@ -1,23 +1,9 @@
 import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar";
-import { buttonVariants } from "@/components/ui/button";
 import { exampleSchedules } from "@/lib/data";
 import { PlusIcon } from "lucide-react";
-import Link from "next/link";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import FormAddScheduleEvent from "@/components/pes-custom/forms/FormAddScheduleEvent";
 
 async function getData() {
