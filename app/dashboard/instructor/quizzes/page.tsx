@@ -14,6 +14,7 @@ import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
 import Link from "next/link";
 import { PenIcon } from "@/components/pes-custom/icons/PenIcon";
 import { PlusIcon } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
 
 async function getData(): Promise<TFormSchemaAddExam[]> {
   // Fetch data from your API here.
@@ -68,7 +69,6 @@ export default async function ExampleDashboardPage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="text-subtle text-muted-foreground flex flex-col gap-1">
-                    <p className="text-foreground">Grade: 79%</p>
                     {exam.timestamp && (
                       <span className="text-muted-foreground text-subtle">{`${exam.timestamp.getUTCDate()}/${
                         exam.timestamp.getUTCMonth() + 1
@@ -112,7 +112,6 @@ export default async function ExampleDashboardPage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="text-subtle text-muted-foreground flex flex-col gap-1">
-                    <p className="text-foreground">Grade: 79%</p>
                     {exam.timestamp && (
                       <span className="text-muted-foreground text-subtle">{`${exam.timestamp.getUTCDate()}/${
                         exam.timestamp.getUTCMonth() + 1
@@ -121,7 +120,11 @@ export default async function ExampleDashboardPage() {
                     <p>{exam.questions.length} Questions</p>
                     <p>{exam.duration} Minutes</p>
                   </CardContent>
-                  <CardFooter>
+                  <CardFooter className="flex flex-col text-subtle text-muted-foreground w-full">
+                    <div className="flex flex-col py-4 w-full">
+                      <div className="pb-2">Pass rate 80%</div>
+                      <Progress className="h-1 bg-muted" value={80} />
+                    </div>
                     <Button
                       variant="outline"
                       size="sm"

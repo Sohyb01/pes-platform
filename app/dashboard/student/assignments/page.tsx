@@ -20,6 +20,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
 import { VariantSlideInUp } from "@/lib/motion-constants";
+import { DownloadIcon } from "lucide-react";
 
 const page = () => {
   return (
@@ -76,6 +77,7 @@ const page = () => {
                                 )}`}
                               >
                                 {attachment.name} 📁
+                                <DownloadIcon className="ml-auto" size={16} />
                               </Link>
                             );
                           }
