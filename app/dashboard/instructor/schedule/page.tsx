@@ -1,5 +1,5 @@
 import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar";
-import { exampleSchedules } from "@/lib/data";
+import { exampleScheduleEvents } from "@/lib/data";
 import { PlusIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
@@ -9,7 +9,7 @@ import FormAddScheduleEvent from "@/components/pes-custom/forms/FormAddScheduleE
 async function getData() {
   // Fetch data from your API here.
   // Must fit the type definition to be inserted into the table
-  return exampleSchedules;
+  return exampleScheduleEvents;
 }
 
 const page = async () => {

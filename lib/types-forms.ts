@@ -535,28 +535,75 @@ export const FormSchemaAddSchedule = z.object({
 
 export type TFormSchemaAddSchedule = z.infer<typeof FormSchemaAddSchedule>;
 
-export const FormSchemaAddScheduleEvent = z.object({
-  eventName: z
+const dateTimeFormatRegex = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/;
+
+const scheduleDateTimeStringSchema = z
+  .string()
+  .refine(
+    (value) => dateTimeFormatRegex.test(value), // Check format
+    { message: "Invalid date format. Expected format: YYYY-MM-DD HH:mm" }
+  )
+  .refine(
+    (value) => !isNaN(new Date(value.replace(" ", "T")).getTime()), // Check if it's a valid date
+    { message: "Invalid date and time." }
+  );
+
+// Only for displaying events in the schedule
+
+export const FormSchemaDisplayScheduleEvent = z.object({
+  id: z.string(),
+  title: z
     .string()
     .trim()
     .min(1, "Required")
     .max(100, "Event name must be less than 100 characters"),
-  eventType: z
+  type: z
     .string()
     .trim()
     .min(1, "Required")
     .max(50, "Event type must be less than 50 characters"),
-  timestamp: z
-    .date()
-    .refine((date) => date > new Date(), "Timestamp must be a future date"),
-  peopleInvited: z
+  start: scheduleDateTimeStringSchema,
+  end: scheduleDateTimeStringSchema,
+  people_invited: z
     .array(z.string())
     .nonempty("At least one person must be invited"),
   description: z
     .string()
     .max(500, "Description must be less than 500 characters")
     .optional(),
-  schedulerId: z.string(),
+  scheduler_id: z.string(),
+});
+
+export type TFormSchemaDisplayScheduleEvent = z.infer<
+  typeof FormSchemaDisplayScheduleEvent
+>;
+
+export const FormSchemaAddScheduleEvent = z.object({
+  id: z.string().optional(),
+  title: z
+    .string()
+    .trim()
+    .min(1, "Required")
+    .max(100, "Event name must be less than 100 characters"),
+  type: z
+    .string()
+    .trim()
+    .min(1, "Required")
+    .max(50, "Event type must be less than 50 characters"),
+  start: z
+    .date()
+    .refine((date) => date > new Date(), "Timestamp must be a future date"),
+  end: z
+    .date()
+    .refine((date) => date > new Date(), "Timestamp must be a future date"),
+  people_invited: z
+    .array(z.string())
+    .nonempty("At least one person must be invited"),
+  description: z
+    .string()
+    .max(500, "Description must be less than 500 characters")
+    .optional(),
+  scheduler_id: z.string(),
 });
 
 export type TFormSchemaAddScheduleEvent = z.infer<

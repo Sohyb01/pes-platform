@@ -13,8 +13,8 @@ import {
   TFormSchemaAddProgram,
   TFormSchemaAddProject,
   TFormSchemaAddReview,
-  TFormSchemaAddSchedule,
   TFormSchemaAddStudent,
+  TFormSchemaDisplayScheduleEvent,
   TFormSchemaPendingFranchise,
   TFormSchemaPendingPartnership,
   TFormSchemaSolvedExam,
@@ -129,106 +129,7 @@ export const exampleInstructors: TFormSchemaAddInstructor[] = [
 
 export const exampleStudents: TFormSchemaAddStudent[] = [
   {
-    id: "1",
-    student_nid: "1234567890",
-    student_name: "Tom Brown",
-    gender: "Male",
-    student_dateofbirth: new Date("2010-06-15"),
-    student_address: "123 Maple St, Springfield",
-    student_mobile: "+1234567890",
-    student_whatsappnum: "+1234567891",
-    student_pic: {
-      name: "student_photo.jpg",
-      size: 400000,
-      type: "image/jpeg",
-    }, // Mock file object
-    student_dateofadmission: new Date("2023-09-01"),
-    student_prevschool: "Springfield Elementary",
-    student_religion: "Christian",
-    student_diseases: "None",
-    student_laptop: "Yes",
-    timezone: "UTC-5",
-    language: "English",
-    orphan: "No",
-    isactive: "Yes",
-    theme: "Light",
-    student_bloodgroup: "O+",
-    student_feediscount: "10%",
-    student_referralcode: "REF123",
-    student_totalsibs: "2",
-    student_additionalnotes: "Allergic to peanuts",
-    student_email: "tom.brown@example.com",
-    student_password: "password123",
-    student_familyid: "FAM456",
-  },
-  {
-    id: "1",
-    student_nid: "1234567890",
-    student_name: "Tom Brown",
-    gender: "Male",
-    student_dateofbirth: new Date("2010-06-15"),
-    student_address: "123 Maple St, Springfield",
-    student_mobile: "+1234567890",
-    student_whatsappnum: "+1234567891",
-    student_pic: {
-      name: "student_photo.jpg",
-      size: 400000,
-      type: "image/jpeg",
-    }, // Mock file object
-    student_dateofadmission: new Date("2023-09-01"),
-    student_prevschool: "Springfield Elementary",
-    student_religion: "Christian",
-    student_diseases: "None",
-    student_laptop: "Yes",
-    timezone: "UTC-5",
-    language: "English",
-    orphan: "No",
-    isactive: "Yes",
-    theme: "Light",
-    student_bloodgroup: "O+",
-    student_feediscount: "10%",
-    student_referralcode: "REF123",
-    student_totalsibs: "2",
-    student_additionalnotes: "Allergic to peanuts",
-    student_email: "tom.brown@example.com",
-    student_password: "password123",
-    student_familyid: "FAM456",
-  },
-  {
-    id: "1",
-    student_nid: "1234567890",
-    student_name: "Tom Brown",
-    gender: "Male",
-    student_dateofbirth: new Date("2010-06-15"),
-    student_address: "123 Maple St, Springfield",
-    student_mobile: "+1234567890",
-    student_whatsappnum: "+1234567891",
-    student_pic: {
-      name: "student_photo.jpg",
-      size: 400000,
-      type: "image/jpeg",
-    }, // Mock file object
-    student_dateofadmission: new Date("2023-09-01"),
-    student_prevschool: "Springfield Elementary",
-    student_religion: "Christian",
-    student_diseases: "None",
-    student_laptop: "Yes",
-    timezone: "UTC-5",
-    language: "English",
-    orphan: "No",
-    isactive: "Yes",
-    theme: "Light",
-    student_bloodgroup: "O+",
-    student_feediscount: "10%",
-    student_referralcode: "REF123",
-    student_totalsibs: "2",
-    student_additionalnotes: "Allergic to peanuts",
-    student_email: "tom.brown@example.com",
-    student_password: "password123",
-    student_familyid: "FAM456",
-  },
-  {
-    id: "1",
+    id: "student1",
     student_nid: "1234567890",
     student_name: "Tom Brown",
     gender: "Male",
@@ -264,7 +165,7 @@ export const exampleStudents: TFormSchemaAddStudent[] = [
 
 export const exampleParents: TFormSchemaAddParent[] = [
   {
-    id: "1",
+    id: "parent1",
     nid: "9876543210",
     name: "John Doe",
     email: "john.doe@example.com",
@@ -287,7 +188,7 @@ export const exampleParents: TFormSchemaAddParent[] = [
     username: "johndoe",
   },
   {
-    id: "2",
+    id: "parent2",
     nid: "1234567890",
     name: "John Doe",
     email: "john.doe@example.com",
@@ -311,7 +212,7 @@ export const exampleParents: TFormSchemaAddParent[] = [
   },
 
   {
-    id: "3",
+    id: "parent3",
     nid: "9876543210",
     name: "Jane Smith",
     email: "jane.smith@example.com",
@@ -337,7 +238,7 @@ export const exampleParents: TFormSchemaAddParent[] = [
 
 export const exampleClasses: TFormSchemaAddClass[] = [
   {
-    id: "1", // Optional field
+    id: "class1", // Optional field
     class_name: "Advanced Mathematics ➗", //
     class_fees: 150.0, //
     program_id: "prog1234abcd5678", // Represents foreign key to Programs
@@ -346,7 +247,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     classenddate: new Date("2024-06-10"),
   },
   {
-    id: "2",
+    id: "class2",
     class_name: "Introduction to Computer Science 🖥️",
     class_fees: 200.0,
     program_id: "prog5678ijkl9012",
@@ -355,7 +256,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     classenddate: new Date("2024-07-01"),
   },
   {
-    id: "3",
+    id: "class3",
     class_name: "Creative Writing Workshop ✍️",
     class_fees: 75.5,
     program_id: "prog3456qrst7890",
@@ -434,7 +335,7 @@ export const exampleExams: TFormSchemaAddExam[] = [
 // Exam solutions
 export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
   {
-    id: "exam1",
+    id: "solvedexam1",
     quizname: "Midterm A",
     quiz_type: "Type B",
     class_field: "abc",
@@ -690,24 +591,38 @@ export const exampleProjects: TFormSchemaAddProject[] = [
   },
 ];
 
-export const exampleSchedules: TFormSchemaAddSchedule[] = [
+export const exampleScheduleEvents: TFormSchemaDisplayScheduleEvent[] = [
   {
-    id: "schedule123", // Optional ID, included here
-    schedule_name: "Math Class Schedule",
-    schedule_type: "Class Session",
-    url: "https://example.com/schedules/math", // Valid URL format
-    timestamp: new Date("2024-10-30T09:00:00"), // Valid date object
-    instructor_id: "instructor456",
-    class_field: "class789",
+    id: "event1",
+    title: "Team Meeting",
+    type: "Meeting",
+    start: "2024-12-13 14:00",
+    end: "2024-12-13 16:00",
+    people_invited: ["instructor1", "student1", "parent1"],
+    description: "This is a scheduled team meeting to discuss project updates.",
+    scheduler_id: "scheduler456",
   },
+
   {
-    id: "schedule456", // Optional ID, included here
-    schedule_name: "Parent Meeting",
-    schedule_type: "Meeting",
-    url: undefined, // Optional field not provided
-    timestamp: new Date("2024-11-01T14:00:00"), // Valid date object
-    instructor_id: "instructor123",
-    class_field: "class456",
+    id: "event2",
+    title: "Project Kickoff",
+    type: "Meeting",
+    start: "2024-12-13 11:00",
+    end: "2024-12-13 14:00",
+    people_invited: ["instructor1", "student1", "parent1"],
+    description: "Kickoff meeting for the new project launch.",
+    scheduler_id: "scheduler457",
+  },
+
+  {
+    id: "event3",
+    title: "Code Review",
+    type: "Class Session",
+    start: "2024-12-13 00:00",
+    end: "2024-12-13 05:00",
+    people_invited: ["instructor1", "student1", "parent1"],
+    description: "Code review session for the upcoming release.",
+    scheduler_id: "scheduler458",
   },
 ];
 
