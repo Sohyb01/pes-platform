@@ -299,7 +299,7 @@ const ViewStudentPage = ({ params }: { params: { viewId: string } }) => {
                       className="w-full md:max-w-[352px]"
                     >
                       <CardHeader>
-                        <CardTitle>📘 {pesClass.class_name}</CardTitle>
+                        <CardTitle>{pesClass.class_name}</CardTitle>
                         <div className="w-full flex gap-1 flex-wrap justify-between items-center text-subtle pt-2">
                           <Link href="#">
                             <span className="max-w-[12ch] overflow-hidden">

@@ -15,7 +15,7 @@ const InstructorSidebar = () => {
   // Get the current pathname
   const pathname = usePathname();
   // Split the pathname and get the last segment
-  const lastSegment = pathname.split("/").filter(Boolean).pop();
+  const lastSegment = pathname.split("/").filter(Boolean)[2];
   return (
     <nav className="hidden lg:flex p-8 gap-8 flex-col items-start w-full max-w-[280px] dashboard-sizing border-r border-border overflow-scroll">
       <p className="text-lead">Instructor Dashboard</p>

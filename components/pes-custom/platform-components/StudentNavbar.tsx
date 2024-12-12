@@ -39,7 +39,7 @@ const StudentNavbar = () => {
   const pathname = usePathname();
 
   // Split the pathname and get the last segment
-  const lastSegment = pathname.split("/").filter(Boolean).pop();
+  const lastSegment = pathname.split("/").filter(Boolean)[2];
 
   return (
     <nav className="nav">

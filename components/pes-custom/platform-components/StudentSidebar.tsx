@@ -9,7 +9,7 @@ const StudentSidebar = () => {
   // Get the current pathname
   const pathname = usePathname();
   // Split the pathname and get the last segment
-  const lastSegment = pathname.split("/").filter(Boolean).pop();
+  const lastSegment = pathname.split("/").filter(Boolean)[2];
   return (
     <nav className="hidden lg:flex rounded-[1rem] p-4 md:p-6 gap-8 flex-col items-start w-full max-w-[280px] h-full bg-background">
       {/* <p className="text-h3">Hello, Omar!</p> */}
