@@ -16,9 +16,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   FormSchemaAddScheduleEvent,
-  TFormSchemaAddAdmin,
-  TFormSchemaAddEmployee,
-  TFormSchemaAddInstructor,
   TFormSchemaAddScheduleEvent,
 } from "@/lib/types-forms";
 import { Textarea } from "@/components/ui/textarea";
@@ -27,7 +24,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { CalendarIcon, X } from "lucide-react";
+import { X } from "lucide-react";
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { TimePickerDemo } from "@/components/ui/time-picker-demo";
@@ -41,18 +38,56 @@ import {
 } from "@/components/ui/command";
 import { Command as CommandPrimitive } from "cmdk";
 import { Badge } from "@/components/ui/badge";
+
 import {
-  exampleAdmins,
-  exampleEmployees,
-  exampleInstructors,
-} from "@/lib/data";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { PersonIcon } from "../icons/PersonIcon";
+import { ClassIcon } from "../icons/ClassIcon";
 
 // Later change this to get an array of objects of {name, id} from backend to display choices of who to add to meeting
 // Combined object
-const exampleUsers = [
-  ...exampleAdmins,
-  ...exampleEmployees,
-  ...exampleInstructors,
+
+const selectOptions = [
+  {
+    id: "employee1",
+    type: "person",
+    name: "John Doe",
+  },
+  {
+    id: "admin1",
+    type: "person",
+    name: "Jane Smith",
+  },
+  {
+    id: "instructor1",
+    type: "person",
+    name: "Alice Johnson",
+  },
+  {
+    id: "student1",
+    type: "person",
+    name: "Tom Brown",
+  },
+  {
+    id: "class1",
+    type: "class",
+    name: "Advanced Mathematics ➗",
+  },
+  {
+    id: "class2",
+    type: "class",
+    name: "Introduction to Computer Science 🖥️",
+  },
+  {
+    id: "class3",
+    type: "class",
+    name: "Creative Writing Workshop ✍️",
+  },
 ];
 
 const FormAddScheduleEvent = ({
@@ -62,16 +97,11 @@ const FormAddScheduleEvent = ({
 }) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [open, setOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<typeof exampleUsers>([]);
+  const [selected, setSelected] = React.useState<typeof selectOptions>([]);
   const [inputValue, setInputValue] = React.useState("");
 
   const handleUnselect = React.useCallback(
-    (
-      person:
-        | TFormSchemaAddAdmin
-        | TFormSchemaAddEmployee
-        | TFormSchemaAddInstructor
-    ) => {
+    (person: { id: string; name: string }) => {
       setSelected((prev) => prev.filter((s) => s.id !== person.id));
     },
     []
@@ -99,7 +129,7 @@ const FormAddScheduleEvent = ({
     []
   );
 
-  const selectables = exampleUsers.filter((user) => !selected.includes(user));
+  const selectables = selectOptions.filter((user) => !selected.includes(user));
 
   const { toast } = useToast();
 
@@ -157,9 +187,17 @@ const FormAddScheduleEvent = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Event Type</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select the event type" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Meeting">Meeting</SelectItem>
+                  <SelectItem value="Session">Session</SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -168,28 +206,27 @@ const FormAddScheduleEvent = ({
           control={form.control}
           name="start"
           render={({ field }) => (
-            <FormItem className="flex flex-col mt-auto overflow-hidden">
-              <FormLabel className="text-left h-[16.8px]">Start</FormLabel>
+            <FormItem className="flex flex-col">
+              <FormLabel className="text-left">Start</FormLabel>
               <Popover>
                 <FormControl>
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
                       className={cn(
-                        "w-full justify-start text-left h-10",
+                        "w-full justify-start text-left font-normal overflow-hidden",
                         !field.value && "text-muted-foreground"
                       )}
                     >
-                      <CalendarIcon className="h-4 w-4" />
                       {field.value ? (
                         format(field.value, "PPP HH:mm:ss")
                       ) : (
-                        <span>...</span>
+                        <span>Set timestamp</span>
                       )}
                     </Button>
                   </PopoverTrigger>
                 </FormControl>
-                <PopoverContent className="w-auto p-0">
+                <PopoverContent className="w-auto p-0 pointer-events-auto">
                   <Calendar
                     mode="single"
                     selected={field.value}
@@ -211,28 +248,27 @@ const FormAddScheduleEvent = ({
           control={form.control}
           name="end"
           render={({ field }) => (
-            <FormItem className="flex flex-col mt-auto overflow-hidden">
-              <FormLabel className="text-left h-[16.8px]">End</FormLabel>
+            <FormItem className="flex flex-col">
+              <FormLabel className="text-left">End</FormLabel>
               <Popover>
                 <FormControl>
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
                       className={cn(
-                        "w-full justify-start text-left h-10",
+                        "w-full justify-start text-left font-normal overflow-hidden",
                         !field.value && "text-muted-foreground"
                       )}
                     >
-                      <CalendarIcon className="h-4 w-4" />
                       {field.value ? (
                         format(field.value, "PPP HH:mm:ss")
                       ) : (
-                        <span>...</span>
+                        <span>Set timestamp</span>
                       )}
                     </Button>
                   </PopoverTrigger>
                 </FormControl>
-                <PopoverContent className="w-auto p-0">
+                <PopoverContent className="w-auto p-0 pointer-events-auto">
                   <Calendar
                     mode="single"
                     selected={field.value}
@@ -247,6 +283,9 @@ const FormAddScheduleEvent = ({
                   </div>
                 </PopoverContent>
               </Popover>
+              <span className="text-subtle text-destructive">
+                {form.formState.errors.end?.message}
+              </span>
             </FormItem>
           )}
         />
@@ -269,7 +308,7 @@ const FormAddScheduleEvent = ({
               {selected.map((user) => {
                 return (
                   <Badge key={user.id} variant="default">
-                    {user.employee_name}
+                    {user.name}
                     <button
                       className="ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
                       onKeyDown={(e) => {
@@ -314,7 +353,7 @@ const FormAddScheduleEvent = ({
             <CommandList>
               {open && selectables.length > 0 ? (
                 <div className="absolute top-0 z-10 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in">
-                  <CommandGroup className="h-full overflow-auto">
+                  <CommandGroup className="h-full overflow-auto border-border border-[1px] bg-background">
                     {selectables.map((user) => {
                       return (
                         <CommandItem
@@ -341,7 +380,13 @@ const FormAddScheduleEvent = ({
                           }}
                           className={"cursor-pointer"}
                         >
-                          {user.employee_name}
+                          {user.type == "person" && (
+                            <PersonIcon className="w-4 stroke-foreground mr-2" />
+                          )}
+                          {user.type == "class" && (
+                            <ClassIcon className="w-4 stroke-foreground mr-2" />
+                          )}
+                          {user.name}
                         </CommandItem>
                       );
                     })}

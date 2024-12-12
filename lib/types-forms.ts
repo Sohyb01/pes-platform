@@ -578,33 +578,38 @@ export type TFormSchemaDisplayScheduleEvent = z.infer<
   typeof FormSchemaDisplayScheduleEvent
 >;
 
-export const FormSchemaAddScheduleEvent = z.object({
-  id: z.string().optional(),
-  title: z
-    .string()
-    .trim()
-    .min(1, "Required")
-    .max(100, "Event name must be less than 100 characters"),
-  type: z
-    .string()
-    .trim()
-    .min(1, "Required")
-    .max(50, "Event type must be less than 50 characters"),
-  start: z
-    .date()
-    .refine((date) => date > new Date(), "Timestamp must be a future date"),
-  end: z
-    .date()
-    .refine((date) => date > new Date(), "Timestamp must be a future date"),
-  people_invited: z
-    .array(z.string())
-    .nonempty("At least one person must be invited"),
-  description: z
-    .string()
-    .max(500, "Description must be less than 500 characters")
-    .optional(),
-  scheduler_id: z.string(),
-});
+export const FormSchemaAddScheduleEvent = z
+  .object({
+    id: z.string().optional(),
+    title: z
+      .string()
+      .trim()
+      .min(1, "Required")
+      .max(100, "Event name must be less than 100 characters"),
+    type: z
+      .string()
+      .trim()
+      .min(1, "Required")
+      .max(50, "Event type must be less than 50 characters"),
+    start: z
+      .date()
+      .refine((date) => date > new Date(), "Timestamp must be a future date"),
+    end: z
+      .date()
+      .refine((date) => date > new Date(), "Timestamp must be a future date"),
+    people_invited: z
+      .array(z.string())
+      .nonempty("At least one person must be invited"),
+    description: z
+      .string()
+      .max(500, "Description must be less than 500 characters")
+      .optional(),
+    scheduler_id: z.string(),
+  })
+  .refine((data) => data.end > data.start, {
+    message: "End date must be after start date",
+    path: ["end"], // Points to the `end` field in the error message
+  });
 
 export type TFormSchemaAddScheduleEvent = z.infer<
   typeof FormSchemaAddScheduleEvent

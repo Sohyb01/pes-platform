@@ -31,7 +31,10 @@ const page = async () => {
               Add Event
             </Button>
           </SheetTrigger>
-          <SheetContent className="w-[100vw] md:max-w-[540px] px-2">
+          <SheetContent
+            side="right"
+            className="w-[100vw] md:max-w-[540px] px-2"
+          >
             <FormAddScheduleEvent />
           </SheetContent>
         </Sheet>
