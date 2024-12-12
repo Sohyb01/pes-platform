@@ -7,16 +7,17 @@ const page = () => {
   return (
     <div className="dashboard-tab-wrapper">
       <h3 className="text-h3 pb-4">Leaderboard 🏅</h3>
+      {/* Tabs */}
       <Tabs defaultValue="Weekly" className="w-full">
-        <TabsList className="flex gap-2 max-w-[300px] p-2 h-fit border-border border-[1px] mb-4 bg-background">
+        <TabsList className="flex gap-4 bg-transparent border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
           <TabsTrigger
-            className="data-[state=active]:bg-primary bg-muted border-border border-[1px] w-full"
+            className="tab-trigger data-[state=active]:bg-transparent"
             value="Weekly"
           >
             Weekly
           </TabsTrigger>
           <TabsTrigger
-            className="data-[state=active]:bg-primary bg-muted border-border border-[1px] w-full"
+            className="tab-trigger data-[state=active]:bg-transparent"
             value="Monthly"
           >
             Monthly
