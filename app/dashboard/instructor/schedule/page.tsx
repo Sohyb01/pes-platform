@@ -33,7 +33,7 @@ const page = async () => {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="w-[100vw] md:max-w-[540px] px-2"
+            className="w-[100vw] md:max-w-[540px] px-2 overflow-y-scroll"
           >
             <FormAddScheduleEvent />
           </SheetContent>

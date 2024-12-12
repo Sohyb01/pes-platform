@@ -325,7 +325,7 @@ const FormAddScheduleEvent = ({
 
                         // Safely filter out users and map IDs
                         const updatedSelectedIds = selected
-                          .filter((s) => s.id && s.id !== user.id) // Exclude the unselected user
+                          .filter((s) => s.id !== user.id) // Exclude the unselected user
                           .map((u) => u.id as string); // Ensure IDs are strings
 
                         // Update form only if array is non-empty
@@ -353,7 +353,7 @@ const FormAddScheduleEvent = ({
             <CommandList>
               {open && selectables.length > 0 ? (
                 <div className="absolute top-0 z-10 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in">
-                  <CommandGroup className="h-full overflow-auto border-border border-[1px] bg-background">
+                  <CommandGroup className="h-full overflow-auto border-border border-[1px] bg-background max-h-[200px] overflow-y-scroll">
                     {selectables.map((user) => {
                       return (
                         <CommandItem
