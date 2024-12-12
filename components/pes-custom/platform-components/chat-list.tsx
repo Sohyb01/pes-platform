@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Message, UserData } from "@/lib/shadcn-chat-data";
 import React, { useRef, useEffect } from "react";
 import ChatBottombar from "./chat-bottombar";
@@ -34,14 +35,14 @@ export function ChatList({ messages, selectedUser, isMobile }: ChatListProps) {
   }, [messages]);
 
   const actionIcons = [
-    { icon: DotSquareIcon, type: "More" },
-    { icon: Forward, type: "Like" },
+    // { icon: DotSquareIcon, type: "More" },
+    // { icon: Forward, type: "Like" },
     { icon: Heart, type: "Share" },
   ];
 
   return (
     <div className="w-full overflow-y-auto h-full flex flex-col">
-      <ChatMessageList ref={messagesContainerRef}>
+      <ChatMessageList className="px-0" ref={messagesContainerRef}>
         <AnimatePresence>
           {messages.map((message, index) => {
             const variant = getMessageVariant(message.name, selectedUser.name);
@@ -65,14 +66,14 @@ export function ChatList({ messages, selectedUser, isMobile }: ChatListProps) {
               >
                 {/* Usage of ChatBubble component */}
                 <ChatBubble variant={variant}>
-                  <ChatBubbleAvatar src={message.avatar} />
-                  <ChatBubbleMessage isLoading={message.isLoading}>
+                  <ChatBubbleAvatar className="h-5 w-5" src={message.avatar} />
+                  <ChatBubbleMessage
+                    className="p-2 text-detail"
+                    isLoading={message.isLoading}
+                  >
                     {message.message}
-                    {message.timestamp && (
-                      <ChatBubbleTimestamp timestamp={message.timestamp} />
-                    )}
                   </ChatBubbleMessage>
-                  <ChatBubbleActionWrapper>
+                  <ChatBubbleActionWrapper className="flex items-center">
                     {actionIcons.map(({ icon: Icon, type }) => (
                       <ChatBubbleAction
                         className="size-7"
@@ -85,6 +86,9 @@ export function ChatList({ messages, selectedUser, isMobile }: ChatListProps) {
                         }
                       />
                     ))}
+                    <span className="text-muted-foreground text-detail px-2">
+                      {message.timestamp}
+                    </span>
                   </ChatBubbleActionWrapper>
                 </ChatBubble>
               </motion.div>

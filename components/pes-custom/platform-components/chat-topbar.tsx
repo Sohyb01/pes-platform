@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { UserData } from "@/lib/shadcn-chat-data";
@@ -17,22 +18,20 @@ export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
   return (
     <ExpandableChatHeader>
       <div className="flex items-center gap-2">
-        <Avatar className="flex justify-center items-center">
+        {/* <Avatar className="flex justify-center items-center h-8 w-8">
           <AvatarImage
             src={selectedUser.avatar}
             alt={selectedUser.name}
-            width={6}
-            height={6}
-            className="w-10 h-10 "
+            // width={3}
+            // height={3}
           />
-        </Avatar>
+        </Avatar> */}
         <div className="flex flex-col">
-          <span className="font-medium">{selectedUser.name}</span>
-          <span className="text-xs">Active 2 mins ago</span>
+          <span className="font-medium">Class Chat</span>
         </div>
       </div>
 
-      <div className="flex gap-1">
+      {/* <div className="flex gap-1">
         {TopbarIcons.map((icon, index) => (
           <Link
             key={index}
@@ -45,7 +44,7 @@ export default function ChatTopbar({ selectedUser }: ChatTopbarProps) {
             <icon.icon size={20} className="text-muted-foreground" />
           </Link>
         ))}
-      </div>
+      </div> */}
     </ExpandableChatHeader>
   );
 }

@@ -76,7 +76,7 @@ const chatBubbleMessageVariants = cva("p-4", {
   variants: {
     variant: {
       received:
-        "bg-secondary text-secondary-foreground rounded-r-lg rounded-tl-lg",
+        "bg-shade border-border border-[1px] text-foreground rounded-r-lg rounded-tl-lg",
       sent: "bg-primary text-primary-foreground rounded-l-lg rounded-tr-lg",
     },
     layout: {
@@ -135,7 +135,13 @@ const ChatBubbleTimestamp: React.FC<ChatBubbleTimestampProps> = ({
   className,
   ...props
 }) => (
-  <div className={cn("text-xs mt-2 text-right", className)} {...props}>
+  <div
+    className={cn(
+      "text-detail text-muted-foreground mt-2 text-right",
+      className
+    )}
+    {...props}
+  >
     {timestamp}
   </div>
 );
