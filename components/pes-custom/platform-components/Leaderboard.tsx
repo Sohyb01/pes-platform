@@ -47,7 +47,7 @@ const Leaderboard = ({
   );
 
   return variant === "week" ? (
-    <div className="flex flex-col gap-2 lg:max-w-[544px]">
+    <div className="flex flex-col gap-2">
       {sortedWeeklyPositions.map((student, idx) => {
         return (
           <LeaderboardPosition
@@ -60,7 +60,7 @@ const Leaderboard = ({
       })}
     </div>
   ) : (
-    <div className="flex flex-col gap-2 lg:max-w-[544px]">
+    <div className="flex flex-col gap-2">
       {sortedMonthlyPositions.map((student, idx) => {
         return (
           <LeaderboardPosition
