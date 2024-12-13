@@ -22,12 +22,12 @@ import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components"
 import { VariantSlideInUp } from "@/lib/motion-constants";
 import { DownloadIcon } from "lucide-react";
 
-const page = () => {
+const Assignments = () => {
   return (
     <div className="dashboard-tab-wrapper">
-      <h3 className="text-h3">Ahmed&apos;s Assignments</h3>
+      <h2 className="text-h2 pb-4">Ahmed&apos;s Assignments</h2>
       {/* Container */}
-      <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {exampleAssignments.map((assignment, idx) => {
           return (
             <M_Card
@@ -36,7 +36,7 @@ const page = () => {
               animate="animate"
               transition={{ delay: idx * 0.05 }} // Custom delay for each item
               key={idx}
-              className="w-full md:max-w-[352px]"
+              className="w-full"
             >
               <CardHeader>
                 <CardTitle>Robotics Class B Assignment ⏱️</CardTitle>
@@ -123,4 +123,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Assignments;

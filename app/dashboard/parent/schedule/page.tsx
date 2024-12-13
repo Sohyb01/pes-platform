@@ -4,7 +4,7 @@ import * as React from "react";
 const page = () => {
   return (
     <div className="dashboard-tab-wrapper">
-      <h3 className="text-h3">Ahmed&apos;s Schedule</h3>
+      <h2 className="text-h2 pb-4">Ahmed&apos;s Schedule 🗓️</h2>
       <PESCalendar />
     </div>
   );
