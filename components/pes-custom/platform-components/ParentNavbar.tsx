@@ -1,15 +1,10 @@
 "use client";
 
 import React from "react";
-// import { Button } from "@/components/ui/button";
-// import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { AlignLeft, Home, Phone, Search } from "lucide-react";
-// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { AlignLeft, Search } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import { QuizIcon } from "../icons/QuizIcon";
-import { AssignmentIcon } from "../icons/AssignmentIcon";
 import { usePathname } from "next/navigation";
 
 import {
@@ -33,9 +28,9 @@ import {
 import { UserNav } from "./UserNav";
 import MessagesTab from "./MessagesTab";
 import NotificationsTab from "./NotificationsTab";
-import { ScheduleIcon } from "../icons/ScheduleIcon";
+import { PARENT_SIDE_BAR_ITEMS } from "./ParentSidebar";
 
-const InstructorNavbar = () => {
+const ParentNavbar = () => {
   // Search functionality
   const [open, setOpen] = React.useState(false);
   const [searchOpen, setSearchOpen] = React.useState(false);
@@ -44,7 +39,7 @@ const InstructorNavbar = () => {
   const pathname = usePathname();
 
   // Split the pathname and get the last segment
-  const lastSegment = pathname.split("/").filter(Boolean)[2];
+  const lastSegment = pathname.split("/").filter(Boolean).pop();
 
   return (
     <nav className="nav">
@@ -71,69 +66,22 @@ const InstructorNavbar = () => {
                 <div className="sidebar-group">
                   {/* Links */}
                   <div className="sidebar-links-container">
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/parent/home"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={lastSegment == "home" ? "default" : "outline"}
+                    {PARENT_SIDE_BAR_ITEMS.map((item) => (
+                      <Link
+                        key={item.title}
+                        href={`/dashboard/parent/${item.url}`}
                       >
-                        <Home size={16} /> Home
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/parent/assignments"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "assignments" ? "default" : "outline"
-                        }
-                      >
-                        <AssignmentIcon /> Assignments
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/parent/schedule"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "schedule" ? "default" : "outline"
-                        }
-                      >
-                        <ScheduleIcon /> Schedule
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/parent/quizzes"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "quizzes" ? "default" : "outline"
-                        }
-                      >
-                        <QuizIcon /> Quizzes
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/parent/book-a-call"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "book-a-call" ? "default" : "outline"
-                        }
-                      >
-                        <Phone size={16} /> Book a call
-                      </Button>
-                    </Link>
+                        <Button
+                          className="sidebar-button"
+                          variant={
+                            lastSegment == item.url ? "default" : "outline"
+                          }
+                          size="sm"
+                        >
+                          <item.icon size={16} /> {item.title}
+                        </Button>
+                      </Link>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -206,4 +154,4 @@ const InstructorNavbar = () => {
   );
 };
 
-export default InstructorNavbar;
+export default ParentNavbar;
