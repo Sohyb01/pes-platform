@@ -123,7 +123,7 @@ const InstructorNavbar = () => {
                     </Link>
                     <Link
                       onClick={() => setOpen(false)}
-                      href="/dashboard/parent/book-a-cool"
+                      href="/dashboard/parent/book-a-call"
                     >
                       <Button
                         className="sidebar-button"
