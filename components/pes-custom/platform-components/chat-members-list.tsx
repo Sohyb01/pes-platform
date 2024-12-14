@@ -28,7 +28,7 @@ const ChatMembersList = ({ members }: { members: Member[] }) => {
         </div>
       </DialogTrigger>
       <DialogContent className="max-w-[400px]">
-        <div className="text-p_ui">Group Members</div>
+        {/* <div className="text-p_ui">Group Members</div> */}
         <div className="max-h-[400px] overflow-y-scroll flex flex-col gap-4 text-subtle pt-2">
           {members.map((member, index) => (
             <div key={index} className="flex gap-4 items-center">

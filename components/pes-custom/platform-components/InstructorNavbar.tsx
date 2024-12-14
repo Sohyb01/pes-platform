@@ -77,6 +77,17 @@ const InstructorNavbar = () => {
                   <div className="sidebar-links-container">
                     <Link
                       onClick={() => setOpen(false)}
+                      href="/dashboard/instructor/home"
+                    >
+                      <Button
+                        className="sidebar-button"
+                        variant={lastSegment == "home" ? "default" : "outline"}
+                      >
+                        <StudentIcon /> Home
+                      </Button>
+                    </Link>
+                    <Link
+                      onClick={() => setOpen(false)}
                       href="/dashboard/instructor/students"
                     >
                       <Button

@@ -26,6 +26,15 @@ const InstructorSidebar = () => {
           <p>Platform</p>
           {/* Links */}
           <div className="sidebar-links-container">
+            <Link href="/dashboard/instructor/home">
+              <Button
+                className="sidebar-button"
+                variant={lastSegment == "home" ? "default" : "outline"}
+                size="sm"
+              >
+                <StudentIcon /> Home
+              </Button>
+            </Link>
             <Link href="/dashboard/instructor/students">
               <Button
                 className="sidebar-button"

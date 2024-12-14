@@ -118,10 +118,16 @@ const page = () => {
                 Monthly
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="Weekly" className="px-4 pb-4">
+            <TabsContent
+              value="Weekly"
+              className="px-4 pb-4 max-h-[300px] overflow-y-scroll"
+            >
               <Leaderboard students={leaderboardData} variant="week" />
             </TabsContent>
-            <TabsContent value="Monthly" className="px-4 pb-4">
+            <TabsContent
+              value="Monthly"
+              className="px-4 pb-4 max-h-[300px] overflow-y-scroll"
+            >
               <Leaderboard students={leaderboardData} variant="month" />
             </TabsContent>
           </Tabs>

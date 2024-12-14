@@ -24,7 +24,7 @@ import {
   TFormSchemaSendMessage,
 } from "@/lib/types-forms";
 
-export default function ChatSupportStudent({
+export default function PESChatSupport({
   messagesData,
   conversationsData,
 }: {
@@ -101,8 +101,10 @@ export default function ChatSupportStudent({
         />
         <div className="w-full h-full flex flex-col">
           <ExpandableChatHeader>
-            <h1 className="">{selectedConversation.conversation_name}</h1>
-            <SidebarTrigger />
+            <div className="flex gap-2 items-center">
+              <SidebarTrigger />
+              <h1 className="">{selectedConversation.conversation_name}</h1>
+            </div>
           </ExpandableChatHeader>
           {/* Messages here */}
           <ExpandableChatBody>
