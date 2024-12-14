@@ -34,7 +34,6 @@ import {
   User,
 } from "lucide-react";
 import { UserNav } from "./UserNav";
-import MessagesTab from "./MessagesTab";
 import NotificationsTab from "./NotificationsTab";
 import { ScheduleIcon } from "../icons/ScheduleIcon";
 
@@ -224,8 +223,6 @@ const InstructorNavbar = () => {
           <AvatarFallback>CN</AvatarFallback>
         </Avatar> */}
         <div className="flex gap-4">
-          {/* Messages */}
-          <MessagesTab />
           {/* Notifications */}
           <NotificationsTab />
           {/* User button */}

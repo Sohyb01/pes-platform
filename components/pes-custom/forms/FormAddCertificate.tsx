@@ -25,6 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { exampleClasses } from "@/lib/data";
 
 const FormAddCertificate = ({
   editObj,
@@ -116,9 +117,22 @@ const FormAddCertificate = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Class ID</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select class" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {exampleClasses.map((pesClass, idx) => {
+                    return (
+                      <SelectItem key={idx} value={pesClass.class_name}>
+                        {pesClass.class_name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

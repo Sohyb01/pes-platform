@@ -28,6 +28,14 @@ import { format } from "date-fns";
 import { CalendarDropdown } from "@/components/ui/calendar-dropdown";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { exampleClasses } from "@/lib/data";
 
 const FormAddAssignment = ({
   editObj,
@@ -161,10 +169,18 @@ const FormAddAssignment = ({
           name="subject_id"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject ID</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <FormLabel>Subject</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select subject" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Subject A">Subject A</SelectItem>
+                  <SelectItem value="Subject B">Subject B</SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -175,9 +191,22 @@ const FormAddAssignment = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Class ID</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select class" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {exampleClasses.map((pesClass, idx) => {
+                    return (
+                      <SelectItem key={idx} value={pesClass.class_name}>
+                        {pesClass.class_name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

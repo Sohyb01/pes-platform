@@ -16,6 +16,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormSchemaAddProject, TFormSchemaAddProject } from "@/lib/types-forms";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { exampleStudents } from "@/lib/data";
 
 const FormAddProject = ({
   editObj,
@@ -29,7 +37,7 @@ const FormAddProject = ({
     : {
         project_id: "",
         project_name: "",
-        level_id: undefined,
+        level_id: "",
         project_url: "",
         description: "",
         student_id: "",
@@ -73,9 +81,18 @@ const FormAddProject = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Level</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select level" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Level A">Level A</SelectItem>
+                  <SelectItem value="Level B">Level B</SelectItem>
+                  <SelectItem value="Level C">Level C</SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -99,9 +116,22 @@ const FormAddProject = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Student</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select student" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {exampleStudents.map((student, idx) => {
+                    return (
+                      <SelectItem key={idx} value={`${student.id}`}>
+                        {student.student_name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -112,9 +142,18 @@ const FormAddProject = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Track</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select track" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Track A">Track A</SelectItem>
+                  <SelectItem value="Track B">Track B</SelectItem>
+                  <SelectItem value="Track C">Track C</SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

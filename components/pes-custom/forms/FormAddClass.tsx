@@ -24,6 +24,14 @@ import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { CalendarDropdown } from "@/components/ui/calendar-dropdown";
 import { cn } from "@/lib/utils";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { exampleInstructors, examplePrograms } from "@/lib/data";
 
 const FormAddClass = ({
   editObj,
@@ -92,10 +100,23 @@ const FormAddClass = ({
           name="program_id"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Program ID</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <FormLabel>Program</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select program" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {examplePrograms.map((program, idx) => {
+                    return (
+                      <SelectItem key={idx} value={`${program.program_id}`}>
+                        {program.program_name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -105,10 +126,23 @@ const FormAddClass = ({
           name="instructor_id"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Instructor ID</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <FormLabel>Instructor</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select instructor" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {exampleInstructors.map((instructor, idx) => {
+                    return (
+                      <SelectItem key={idx} value={`${instructor.id}`}>
+                        {instructor.employee_name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

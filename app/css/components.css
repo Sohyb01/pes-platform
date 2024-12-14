@@ -42,7 +42,7 @@
 }
 
 .pes-grid-form {
-  @apply grid grid-cols-1 md:grid-cols-2 gap-4 gap-y-4 w-full pt-4 max-w-screen-md;
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4 gap-y-8 w-full pt-4 max-w-screen-md;
 }
 .dashboard-tab-wrapper {
   @apply flex w-full flex-col gap-4;
