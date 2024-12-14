@@ -33,7 +33,7 @@ const InstructorSidebar = () => {
                 variant={lastSegment == "home" ? "default" : "outline"}
                 size="sm"
               >
-                <Home /> Home
+                <Home size={16} /> Home
               </Button>
             </Link>
             <Link href="/dashboard/instructor/students">

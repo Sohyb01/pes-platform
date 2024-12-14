@@ -93,7 +93,7 @@ export default function PESChatSupport({
       size="lg"
       position="bottom-right"
     >
-      <div className="flex gap-2 h-full">
+      <div className="flex gap-2 h-full max-h-[90vh]">
         <ChatSidebar
           conversationsData={conversationsData}
           selectedConversation={selectedConversation}

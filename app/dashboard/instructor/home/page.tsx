@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TFormSchemaAddClass } from "@/lib/types-forms";
 import ChatMembersList from "@/components/pes-custom/platform-components/chat-members-list";
 import { Card, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import Link from "next/link";
 
 const fakeMembersData = [
   {
@@ -51,8 +52,9 @@ const page = () => {
           <p className="text-h3">Classes</p>
           {exampleClasses.map((studentClass: TFormSchemaAddClass) => {
             return (
-              <div
+              <Link
                 key={studentClass.id}
+                href={`classes/${studentClass.id}`}
                 className="bg-background rounded-[1rem] flex flex-col text-p_ui overflow-hidden border-border border-[1px] px-6"
               >
                 <div className="flex justify-between text-large pt-6">
@@ -84,11 +86,29 @@ const page = () => {
                     value={Math.random() * 100}
                   />
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
-        <div className="flex-1 min-w-[340px] lg:max-w-[400px] grow h-fit lg:h-full flex-col gap-8">
+        <div className="flex-1 min-w-[340px] lg:max-w-[400px] grow h-fit lg:h-full flex flex-col gap-4">
+          <div className="grid grid-cols-2 gap-4 p-4 rounded-[1rem] bg-background border-border border-[1px] text-detail">
+            <div className="flex flex-col text-center">
+              <div className="text-h4">12</div>
+              Sessions finished
+            </div>
+            <div className="flex flex-col text-center">
+              <div className="text-h4">17</div>
+              Assignments reviewed
+            </div>
+            <div className="flex flex-col text-center">
+              <div className="text-h4">5</div>
+              Calls finished
+            </div>
+            <div className="flex flex-col text-center">
+              <div className="text-h4">12</div>
+              Free sessions given
+            </div>
+          </div>
           <Tabs
             defaultValue="Class A"
             className="w-full border-border bg-background border-[1px] rounded-[1rem]"
@@ -126,7 +146,7 @@ const page = () => {
                           className="w-fit ml-auto"
                         >
                           <ArrowRight size={16} />
-                          View Assignment
+                          View Submission
                         </Button>
                       </CardFooter>
                     </Card>
@@ -159,7 +179,7 @@ const page = () => {
                           className="w-fit ml-auto"
                         >
                           <ArrowRight size={16} />
-                          View Assignment
+                          View Submission
                         </Button>
                       </CardFooter>
                     </Card>

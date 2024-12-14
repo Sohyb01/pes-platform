@@ -83,7 +83,7 @@ const InstructorNavbar = () => {
                         className="sidebar-button"
                         variant={lastSegment == "home" ? "default" : "outline"}
                       >
-                        <Home /> Home
+                        <Home size={16} /> Home
                       </Button>
                     </Link>
                     <Link
