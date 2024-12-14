@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { exampleAssignments, exampleClasses } from "@/lib/data";
-import { ArrowRight, ArrowRightCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import * as React from "react";
 import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";

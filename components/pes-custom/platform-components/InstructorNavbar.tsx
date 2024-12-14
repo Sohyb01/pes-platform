@@ -4,7 +4,7 @@ import React from "react";
 // import { Button } from "@/components/ui/button";
 // import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { AlignLeft, Search } from "lucide-react";
+import { AlignLeft, Home, Search } from "lucide-react";
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
@@ -83,7 +83,7 @@ const InstructorNavbar = () => {
                         className="sidebar-button"
                         variant={lastSegment == "home" ? "default" : "outline"}
                       >
-                        <StudentIcon /> Home
+                        <Home /> Home
                       </Button>
                     </Link>
                     <Link

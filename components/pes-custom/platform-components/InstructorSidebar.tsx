@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { StudentIcon } from "../icons/StudentIcon";
+import { Home } from "lucide-react";
 
 const InstructorSidebar = () => {
   // Get the current pathname
@@ -32,7 +33,7 @@ const InstructorSidebar = () => {
                 variant={lastSegment == "home" ? "default" : "outline"}
                 size="sm"
               >
-                <StudentIcon /> Home
+                <Home /> Home
               </Button>
             </Link>
             <Link href="/dashboard/instructor/students">
