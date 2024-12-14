@@ -490,8 +490,33 @@ export const FormSchemaAddAssignment = z.object({
   class_id: z.string().trim().min(1, "Required"), // Required foreign key reference
   sent_by: z.string().trim().min(1, "Required"), // Required foreign key reference
 });
-
 export type TFormSchemaAddAssignment = z.infer<typeof FormSchemaAddAssignment>;
+
+export const FormSchemaSendMessage = z.object({
+  message_id: z.string().trim().min(1, "Required").optional(),
+  message_text: z.string().trim().min(1, "Required"),
+  // message_media: z.string().optional(), Add Later
+  sent_datetime: z.date(),
+  received_datetime: z.date({
+    required_error: "Required",
+  }),
+  from_id: z.string().trim().min(1, "Required"),
+  to_id: z.string().trim().min(1, "Required"),
+  conversation_id: z.string().trim().min(1, "Required"),
+  contact_id: z.string().trim().min(1, "Required"),
+});
+
+export type TFormSchemaSendMessage = z.infer<typeof FormSchemaSendMessage>;
+
+export const FormSchemaAddConversation = z.object({
+  conversation_id: z.string().optional(),
+  conversation_name: z.string().trim().min(1, "Required"),
+  host_id: z.string().trim().min(1, "Required"),
+});
+
+export type TFormSchemaAddConversation = z.infer<
+  typeof FormSchemaAddConversation
+>;
 
 export const FormSchemaAddCertificate = z.object({
   certificate_id: z.string().trim().min(1, "Required"), // Optional, as it’s generated automatically

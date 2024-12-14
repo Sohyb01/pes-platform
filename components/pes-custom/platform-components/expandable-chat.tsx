@@ -12,7 +12,7 @@ const chatConfig = {
   dimensions: {
     sm: "sm:max-w-sm sm:max-h-[500px]",
     md: "sm:max-w-md sm:max-h-[600px]",
-    lg: "sm:max-w-lg sm:max-h-[700px]",
+    lg: "sm:max-w-[800px] sm:max-h-[700px]",
     xl: "sm:max-w-xl sm:max-h-[800px]",
     full: "sm:w-full sm:h-full",
   },
@@ -62,7 +62,7 @@ const ExpandableChat: React.FC<ExpandableChatProps> = ({
           chatConfig.chatPositions[position],
           chatConfig.dimensions[size],
           isOpen ? chatConfig.states.open : chatConfig.states.closed,
-          className,
+          className
         )}
       >
         {children}
@@ -131,7 +131,7 @@ const ExpandableChatToggle: React.FC<ExpandableChatToggleProps> = ({
     onClick={toggleChat}
     className={cn(
       "w-14 h-14 rounded-full shadow-md flex items-center justify-center hover:shadow-lg hover:shadow-black/30 transition-all duration-300",
-      className,
+      className
     )}
     {...props}
   >

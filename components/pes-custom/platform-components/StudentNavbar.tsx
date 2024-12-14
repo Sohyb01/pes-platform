@@ -232,7 +232,9 @@ const StudentNavbar = () => {
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar> */}
-        <UserNav />
+        <div className="flex gap-2">
+          <UserNav />
+        </div>
       </div>
     </nav>
   );

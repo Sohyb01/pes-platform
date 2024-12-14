@@ -7,6 +7,7 @@ import "./css/components.css";
 import "./css/backgrounds.css";
 
 import { Inter } from "next/font/google";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,10 +33,11 @@ export default function RootLayout({
       <body
         className={`${coolvetica.variable} ${inter.className} flex flex-col items-center h-full`}
       >
-        {children}
-        <Toaster />
+        <SidebarProvider>
+          {children}
+          <Toaster />
+        </SidebarProvider>
         {/* Chat support component */}
-        {/* <ChatSupport /> */}
       </body>
     </html>
   );

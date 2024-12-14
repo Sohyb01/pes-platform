@@ -736,3 +736,54 @@ export const selectEmployeeExampleData = [
   { id: "admin1", name: "Jane Smith" },
   { id: "instructor1", name: "Alice Johnson" },
 ];
+
+export const exampleConversations = [
+  {
+    conversation_id: "conv1",
+    conversation_name: "Intro to Robotics",
+    host_id: "user123",
+  },
+  {
+    conversation_id: "conv2",
+    conversation_name: "AI Advanced",
+    host_id: "user456",
+  },
+  {
+    conversation_id: "conv3",
+    conversation_name: "Computer Fundamentals",
+    host_id: "user789",
+  },
+];
+
+export const exampleMessages = [
+  {
+    message_id: "msg1",
+    message_text: "Hello, how are you?",
+    sent_datetime: new Date("2024-12-14T15:30:00Z"),
+    received_datetime: new Date("2024-12-14T15:31:00Z"),
+    from_id: "user123",
+    to_id: "user456",
+    conversation_id: "conv1",
+    contact_id: "instructor1",
+  },
+  {
+    message_id: "msg2",
+    message_text: "Don't forget our meeting at 3 PM.",
+    sent_datetime: new Date("2024-12-14T12:00:00Z"),
+    received_datetime: new Date("2024-12-14T12:00:30Z"),
+    from_id: "user789",
+    to_id: "user123",
+    conversation_id: "conv1",
+    contact_id: "instructor1",
+  },
+  {
+    message_id: "msg3",
+    message_text: "Can you review this document?",
+    sent_datetime: new Date("2024-12-14T08:45:00Z"),
+    received_datetime: new Date("2024-12-14T08:46:00Z"),
+    from_id: "user456",
+    to_id: "user789",
+    conversation_id: "conv2",
+    contact_id: "admin1",
+  },
+];

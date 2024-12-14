@@ -1,5 +1,7 @@
+import ChatSupportStudent from "@/components/pes-custom/platform-components/chat-support-student";
 import StudentNavbar from "@/components/pes-custom/platform-components/StudentNavbar";
 import StudentSidebar from "@/components/pes-custom/platform-components/StudentSidebar";
+import { exampleConversations, exampleMessages } from "@/lib/data";
 
 export default function RootLayout({
   children,
@@ -14,7 +16,13 @@ export default function RootLayout({
       <div className="flex w-full dashboard-sizing gradient-bg p-4 gap-4 md:gap-8">
         <StudentSidebar />
         {/* Main Content */}
-        <main className="w-full p-4 overflow-scroll">{children}</main>
+        <main className="w-full p-4 overflow-scroll">
+          {children}
+          <ChatSupportStudent
+            messagesData={exampleMessages}
+            conversationsData={exampleConversations}
+          />
+        </main>
       </div>
     </div>
   );
