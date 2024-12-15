@@ -13,7 +13,6 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { exampleAssignments } from "@/lib/data";
@@ -79,8 +78,6 @@ export default async function AssignmentsPage() {
         <TabsContent value="schedule-assignments">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {data.map((assignment, idx) => {
-              const passingPercentage = Math.floor(Math.random() * 100);
-
               return (
                 <M_Card
                   variants={VariantSlideInUp}
@@ -183,18 +180,6 @@ export default async function AssignmentsPage() {
                           No attachments
                         </div>
                       )}
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <p>Passing Percentage</p>
-                        <p className="text-muted-foreground">
-                          {passingPercentage}%
-                        </p>
-                      </div>
-                      <Progress
-                        className="h-2 bg-muted"
-                        value={passingPercentage}
-                      />
                     </div>
                   </CardContent>
                   <CardFooter>

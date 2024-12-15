@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { exampleClasses, leaderboardData } from "@/lib/data";
-import { ArrowRightCircle, ArrowRightCircleIcon } from "lucide-react";
+import { ArrowRightCircle } from "lucide-react";
 import * as React from "react";
 import Link from "next/link";
 import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar";
@@ -70,7 +70,7 @@ const page = () => {
         <div className="flex-1 min-w-[340px] max-w-[580px] grow h-fit flex flex-col gap-4">
           {/* Achievements & Certificates widget */}
           {/* Need help */}
-          <div className="flex flex-col rounded-[1rem] bg-background border-border border-[1px]">
+          {/* <div className="flex flex-col rounded-[1rem] bg-background border-border border-[1px]">
             <div className="p-4">
               <div className="text-h3 pb-4">Need to ask a question?</div>
               <Button variant="secondary" className="gap-2">
@@ -78,7 +78,7 @@ const page = () => {
                 <ArrowRightCircleIcon size={16} />
               </Button>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col rounded-[1rem] bg-background border-border border-[1px]">
             <div className="px-4 pt-4">
               <div className="text-p_ui">Omar Mohamed</div>

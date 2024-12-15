@@ -89,7 +89,7 @@ const FormAddExam = ({
           name="quizname"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Quiz name</FormLabel>
+              <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -102,19 +102,10 @@ const FormAddExam = ({
           name="quiz_type"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Quiz type</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select an option" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="Pop quiz">Pop quiz</SelectItem>
-                  <SelectItem value="Mid-term">Mid-term</SelectItem>
-                  <SelectItem value="Final">Final</SelectItem>
-                </SelectContent>
-              </Select>
+              <FormLabel>Type</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}

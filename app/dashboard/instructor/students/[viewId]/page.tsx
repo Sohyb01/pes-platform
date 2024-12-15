@@ -107,12 +107,7 @@ const ViewStudentPage = ({ params }: { params: { viewId: string } }) => {
                     "/" +
                     student.student_dateofadmission.getFullYear()}
                 </p>
-                {student.student_whatsappnum && (
-                  <p>Mobile: {student.student_mobile}</p>
-                )}
-                {student.student_whatsappnum && (
-                  <p>Whatsapp: {student.student_whatsappnum}</p>
-                )}
+
                 {/*  */}
                 {student.student_whatsappnum && (
                   <p>Address: {student.student_address}</p>
