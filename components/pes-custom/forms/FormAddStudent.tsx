@@ -348,9 +348,17 @@ const FormAddStudent = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Student laptop</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Yes">Yes</SelectItem>
+                  <SelectItem value="No">No</SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -595,10 +603,18 @@ const FormAddStudent = ({
           name="student_familyid"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Family ID</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <FormLabel>Family</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an option" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Family A">Family A</SelectItem>
+                  <SelectItem value="Family B">Family B</SelectItem>
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}

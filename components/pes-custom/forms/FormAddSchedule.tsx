@@ -19,6 +19,14 @@ import {
   TFormSchemaAddSchedule,
 } from "@/lib/types-forms";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { exampleClasses, exampleInstructors } from "@/lib/data";
 
 const FormAddSchedule = ({
   editObj,
@@ -101,9 +109,22 @@ const FormAddSchedule = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Instructor</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select instructor" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {exampleInstructors.map((instructor, idx) => {
+                    return (
+                      <SelectItem key={idx} value={`${instructor.id}`}>
+                        {instructor.employee_name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
@@ -114,9 +135,22 @@ const FormAddSchedule = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Class</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select class" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {exampleClasses.map((pesClass, idx) => {
+                    return (
+                      <SelectItem key={idx} value={`${pesClass.id}`}>
+                        {pesClass.class_name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
               <FormMessage />
             </FormItem>
           )}
