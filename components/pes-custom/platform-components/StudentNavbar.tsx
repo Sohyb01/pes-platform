@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React from "react";
@@ -29,6 +30,7 @@ import {
   User,
 } from "lucide-react";
 import { UserNav } from "./UserNav";
+import PESLogo from "@/components/pes-custom/PESLogo";
 
 const StudentNavbar = () => {
   // Search functionality
@@ -45,6 +47,8 @@ const StudentNavbar = () => {
     <nav className="nav">
       <div className="nav-internal">
         <div className="flex gap-4">
+          <PESLogo />
+
           {/* Sheet */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
@@ -179,17 +183,17 @@ const StudentNavbar = () => {
             </SheetContent>
           </Sheet>
           {/* Searchbar */}
-          <Button
+          {/* <Button
             className="gap-2 text-muted-foreground w-[160px] justify-start"
             variant={"outline"}
             onClick={() => setSearchOpen((searchOpen) => !searchOpen)}
           >
             <Search size={16} />
             Search...
-          </Button>
+          </Button> */}
         </div>
         {/* Search Dialog */}
-        <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
+        {/* <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
           <CommandInput placeholder="Type a command or search..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
@@ -226,7 +230,7 @@ const StudentNavbar = () => {
               </CommandItem>
             </CommandGroup>
           </CommandList>
-        </CommandDialog>
+        </CommandDialog> */}
         {/* Avatar */}
         {/* <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />

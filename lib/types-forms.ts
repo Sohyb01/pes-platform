@@ -391,6 +391,7 @@ export const FormSchemaAddClass = z.object({
   instructor_id: z.string().trim().min(1, "Required").optional(), // UUID format, optional if not provided
   classbegindate: z.date(),
   classenddate: z.date(),
+  class_level: z.string(),
 });
 
 export type TFormSchemaAddClass = z.infer<typeof FormSchemaAddClass>;
@@ -436,7 +437,7 @@ export const FormSchemaAddExam = z.object({
   class_field: z.string().trim().min(1, "Required"),
   instructor_id: z.string().trim().min(1, "Required"),
   questions: z.array(QuestionSchema).min(1, "Quiz must have questions"),
-  duration: z.coerce.number().min(60, "Must be at least 60"), // Duration in seconds
+  duration: z.coerce.number().min(1, "Must be at least 1 minute"), // Duration in minutes
 });
 
 export type TFormSchemaAddExam = z.infer<typeof FormSchemaAddExam>;

@@ -19,6 +19,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/components/hooks/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { redirectOnServer } from "@/lib/common-functions";
+import Countdown from "react-countdown";
 
 const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
   const { toast } = useToast();
@@ -37,6 +39,7 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
       title: "Submitted successfully!",
     });
     form.reset(defaultValues);
+    redirectOnServer("/dashboard/student/quizzes");
   };
 
   const { fields } = useFieldArray({
@@ -49,7 +52,12 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="pes-grid-form">
-        <h3 className="text-h3 col-span-1 md:col-span-2">{exam.quizname}</h3>
+        <h3 className="text-h3 col-span-1 md:col-span-2">
+          {exam.quizname}{" "}
+          <span className="fixed right-10 p-2 border-border border-[1px] rounded-[0.5rem] bg-background text-large">
+            <Countdown date={Date.now() + exam.duration * 60 * 1000} />
+          </span>
+        </h3>
         {fields.map((field, index) =>
           field.type == "mcq" ? (
             <div key={index} className="col-span-1 md:col-span-2">
@@ -92,6 +100,7 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
                 </FormLabel>
                 <FormControl>
                   <Textarea
+                    className="bg-background"
                     {...form.register(`questions.${index}.studentAnswer`)}
                   ></Textarea>
                 </FormControl>

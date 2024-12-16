@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React from "react";
@@ -36,6 +37,7 @@ import {
 import { UserNav } from "./UserNav";
 import NotificationsTab from "./NotificationsTab";
 import { ScheduleIcon } from "../icons/ScheduleIcon";
+import PESLogo from "@/components/pes-custom/PESLogo";
 
 const InstructorNavbar = () => {
   // Search functionality
@@ -52,6 +54,7 @@ const InstructorNavbar = () => {
     <nav className="nav">
       <div className="nav-internal">
         <div className="flex gap-4">
+          <PESLogo />
           {/* Sheet */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
@@ -169,17 +172,17 @@ const InstructorNavbar = () => {
             </SheetContent>
           </Sheet>
           {/* Searchbar */}
-          <Button
+          {/* <Button
             className="hidden md:flex gap-2 text-muted-foreground w-[160px] justify-start"
             variant={"outline"}
             onClick={() => setSearchOpen((searchOpen) => !searchOpen)}
           >
             <Search size={16} />
             Search...
-          </Button>
+          </Button> */}
         </div>
         {/* Search Dialog */}
-        <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
+        {/* <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
           <CommandInput placeholder="Type a command or search..." />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
@@ -216,7 +219,7 @@ const InstructorNavbar = () => {
               </CommandItem>
             </CommandGroup>
           </CommandList>
-        </CommandDialog>
+        </CommandDialog> */}
         {/* Avatar */}
         {/* <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />

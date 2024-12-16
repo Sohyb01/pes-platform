@@ -286,6 +286,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     instructor_id: "instr9876efgh4321", // Optional UUID for instructor
     classbegindate: new Date("2024-01-10"),
     classenddate: new Date("2024-06-10"),
+    class_level: "Beginner",
   },
   {
     id: "class2",
@@ -295,6 +296,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     instructor_id: "instr1234mnop5678",
     classbegindate: new Date("2024-02-01"),
     classenddate: new Date("2024-07-01"),
+    class_level: "Intermediate",
   },
   {
     id: "class3",
@@ -304,6 +306,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     // `instructor_id` is omitted as it's optional
     classbegindate: new Date("2024-03-15"),
     classenddate: new Date("2024-05-15"),
+    class_level: "Expert",
   },
 ];
 
@@ -369,7 +372,7 @@ export const exampleExams: TFormSchemaAddExam[] = [
         correctAnswer: false,
       },
     ],
-    duration: 120,
+    duration: 10, //Minutes
   },
 ];
 

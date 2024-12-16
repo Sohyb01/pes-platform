@@ -1,9 +1,7 @@
 import { exampleClasses, exampleStudents } from "@/lib/data";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
-import { VariantSlideInUp } from "@/lib/motion-constants";
-import Link from "next/link";
+import PESClassCard from "@/components/pes-custom/platform-components/PESClassCard";
 
 async function getData() {
   // Fetch data from your API here.
@@ -30,48 +28,14 @@ const page = async () => {
         <TabsContent value="Active Classes">
           <div className="flex gap-4 flex-wrap">
             {exampleClasses.map((pesClass, idx) => {
-              return (
-                <Link
-                  className="flex-1 min-w-[340px] grow"
-                  key={idx}
-                  href={`classes/${pesClass.id}`}
-                >
-                  <M_Card
-                    variants={VariantSlideInUp}
-                    initial="initial"
-                    animate="animate"
-                    transition={{ delay: idx * 0.05 }} // Custom delay for each item
-                    className="items-center border-primary/50 hover:border-primary duration-100 p-4"
-                  >
-                    <div className="pb-2">{pesClass.class_name}</div>
-                    <div className="text-muted-foreground">ENG. Ahmed Reda</div>
-                  </M_Card>
-                </Link>
-              );
+              return <PESClassCard pesClass={pesClass} key={idx} />;
             })}
           </div>
         </TabsContent>
         <TabsContent value="Past Classes">
           <div className="flex gap-4 flex-wrap">
             {exampleClasses.map((pesClass, idx) => {
-              return (
-                <Link
-                  className="flex-1 min-w-[340px] grow"
-                  key={idx}
-                  href={`classes/${pesClass.id}`}
-                >
-                  <M_Card
-                    variants={VariantSlideInUp}
-                    initial="initial"
-                    animate="animate"
-                    transition={{ delay: idx * 0.05 }} // Custom delay for each item
-                    className="items-center border-primary/50 hover:border-primary duration-100 p-4"
-                  >
-                    <div className="pb-2">{pesClass.class_name}</div>
-                    <div className="text-muted-foreground">ENG. Ahmed Reda</div>
-                  </M_Card>
-                </Link>
-              );
+              return <PESClassCard pesClass={pesClass} key={idx} />;
             })}
           </div>
         </TabsContent>
