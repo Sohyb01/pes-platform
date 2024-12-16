@@ -2,5 +2,5 @@ import { redirect } from "next/navigation";
 
 export default function InstructorPage() {
   // Redirect to the 'finances' subpage
-  redirect("/dashboard/instructor/students");
+  redirect("/dashboard/instructor/home");
 }

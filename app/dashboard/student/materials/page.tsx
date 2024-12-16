@@ -8,16 +8,21 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { BadgeLink } from "@/components/pes-custom/platform-components/BadgeLink";
 import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
-import { FileIcon } from "@/components/pes-custom/icons/FileIcon";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
-import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
-import { DownloadIcon } from "@/components/pes-custom/icons/DownloadIcon";
 import { exampleMaterials } from "@/lib/data";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
 import { VariantSlideInUp } from "@/lib/motion-constants";
+import { getNameById } from "@/lib/getNameById";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { Separator } from "@radix-ui/react-separator";
+import { DownloadIcon } from "lucide-react";
+import Link from "next/link";
 
 const page = () => {
   return (
@@ -37,32 +42,67 @@ const page = () => {
               className="w-full md:max-w-[352px]"
             >
               <CardHeader>
-                <CardTitle>Material</CardTitle>
-                <CardDescription className="flex justify-between pt-2">
-                  <BadgeLink href="#">
-                    <ClassIcon />
-                    <span className="line-clamp-1 ">{material.session_id}</span>
-                  </BadgeLink>
-                  <BadgeLink href="#">
-                    <EmployeeIcon />
-                    <span className="line-clamp-1 ">
-                      {material.instructor_id}
-                    </span>
-                  </BadgeLink>
+                <CardTitle>{material.name}</CardTitle>
+                <CardDescription className="pt-2">
+                  <div>{getNameById(material.class_field, "Class")}</div>
+                  <div>
+                    {getNameById(material.instructor_id, "Employee")} 👨‍🏫
+                  </div>
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-detail">Files</p>
-                <BadgeLink href="#" className="w-fit">
-                  <FileIcon />
-                  Starting Files
-                </BadgeLink>
+                <div className="flex justify-between items-center">
+                  {material.attachment ? (
+                    <HoverCard>
+                      <HoverCardTrigger asChild>
+                        <div className="w-fit py-2 px-4 border-secondary/50 hover:border-secondary duration-100 border-[1px] rounded-[0.5rem] text-detail cursor-pointer">
+                          Attachments 📂
+                        </div>
+                      </HoverCardTrigger>
+                      <HoverCardContent className="w-60 text-subtle flex flex-col gap-2">
+                        {material.attachment.map(
+                          (
+                            attachment: { name: string; size: number },
+                            idx: number
+                          ) => {
+                            return (
+                              <Link
+                                key={idx}
+                                href="#"
+                                className={`flex items-center w-full gap-2 !justify-start ${buttonVariants(
+                                  { variant: "outline", size: "sm" }
+                                )}`}
+                              >
+                                {attachment.name} 📁
+                                <DownloadIcon className="ml-auto" size={16} />
+                              </Link>
+                            );
+                          }
+                        )}
+                        {material.attachment.length > 1 && (
+                          <>
+                            <Separator className="my-1" />
+                            <Link
+                              key={idx}
+                              href="#"
+                              className={`flex items-center w-full gap-2 ${buttonVariants(
+                                { variant: "outline", size: "sm" }
+                              )}`}
+                            >
+                              Download all ({material.attachment.length})
+                            </Link>
+                          </>
+                        )}
+                      </HoverCardContent>
+                    </HoverCard>
+                  ) : (
+                    <div className="w-fit focus:outline-none flex gap-2 items-center stroke-foreground rounded-[3px] border p-2 text-badge font-semibold transition-colors border-border bg-shade opacity-50">
+                      No attachments
+                    </div>
+                  )}
+                </div>
               </CardContent>
               <CardFooter className="flex flex-col gap-2">
-                <Button variant="outline" size="sm" className="w-full">
-                  <JoinArrowIcon />
-                  Session link (how to use)
-                </Button>
                 <Button variant="default" size="sm" className="w-full">
                   <DownloadIcon />
                   Download

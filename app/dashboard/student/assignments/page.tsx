@@ -77,9 +77,9 @@ const page = () => {
                         {assignment.assignment_attachment ? (
                           <HoverCard>
                             <HoverCardTrigger asChild>
-                              <BadgeLink href="#" className="w-fit">
+                              <div className="w-fit py-2 px-4 border-secondary/50 hover:border-secondary duration-100 border-[1px] rounded-[0.5rem] text-detail cursor-pointer">
                                 Attachments 📂
-                              </BadgeLink>
+                              </div>
                             </HoverCardTrigger>
                             <HoverCardContent className="w-60 text-subtle flex flex-col gap-2">
                               {assignment.assignment_attachment.map(

@@ -93,7 +93,7 @@ export function ChatSidebar({
       <SidebarContent className="bg-background py-8 lg:py-0">
         <SidebarGroup>
           <SidebarGroupLabel className="text-muted-foreground text-large py-4 pb-8">
-            Class Chats
+            Chats
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>

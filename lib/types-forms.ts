@@ -433,7 +433,7 @@ export const FormSchemaAddExam = z.object({
   id: z.string().optional(),
   quizname: z.string().trim().min(1, "Required"),
   quiz_type: z.string().trim().min(1, "Required"),
-  timestamp: z.date().optional(),
+  timestamp: z.date(),
   class_field: z.string().trim().min(1, "Required"),
   instructor_id: z.string().trim().min(1, "Required"),
   questions: z.array(QuestionSchema).min(1, "Quiz must have questions"),
@@ -676,6 +676,7 @@ export const FormSchemaAddLog = z.object({
 export type TFormSchemaAddLog = z.infer<typeof FormSchemaAddLog>;
 
 export const FormSchemaAddMaterial = z.object({
+  name: z.string(),
   id: z.string().trim().min(1, "Required").optional(), // Optional since it's auto-generated
   attachment: z
     .any()

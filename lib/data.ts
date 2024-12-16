@@ -319,7 +319,7 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     assignment_description:
       "Complete the essay on environmental sustainability.",
     subject_id: "subj1234abcd",
-    class_id: "class5678efgh",
+    class_id: "class1",
     sent_by: "teacher1234xyz",
   },
   {
@@ -329,7 +329,7 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     assignment_attachment: [{ name: "assignment2.docx", size: 4500000 }], // Valid file attachment under 5MB
     assignment_description: "Prepare a presentation on renewable energy.",
     subject_id: "subj2345bcde",
-    class_id: "class6789ijkl",
+    class_id: "class2",
     sent_by: "teacher5678abc",
   },
   {
@@ -339,7 +339,7 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     assignment_attachment: null, // No file attached
     assignment_description: "Solve all exercises from Chapter 3.",
     subject_id: "subj3456cdef",
-    class_id: "class7890mnop",
+    class_id: "class3",
     sent_by: "teacher7890def",
   },
 ];
@@ -372,6 +372,7 @@ export const exampleExams: TFormSchemaAddExam[] = [
         correctAnswer: false,
       },
     ],
+    timestamp: new Date("2024-11-01T11:00:00Z"),
     duration: 10, //Minutes
   },
 ];
@@ -469,17 +470,19 @@ export const exampleLogs: TFormSchemaAddLog[] = [
 
 export const exampleMaterials: TFormSchemaAddMaterial[] = [
   {
+    name: "Material 1",
     id: "material-1234-f67c-89a0",
     attachment: [{ name: "lesson1.py", size: 4500000 }], // Example file within 5MB limit
     session_id: "123e4567-e89b-12d3-a456-426614174000",
-    class_field: "1",
+    class_field: "class1",
     instructor_id: "instructor1",
   },
   {
+    name: "Material 2",
     id: "material-1234-f67c-89a0",
     attachment: [{ name: "example.js", size: 3000000 }], // Another valid file within 5MB limit
     session_id: "123e4567-e89b-12d3-a456-426614174002",
-    class_field: "2",
+    class_field: "class2",
     instructor_id: "instructor1",
   },
 ];

@@ -48,12 +48,67 @@ const Leaderboard = ({
 
   return variant === "week" ? (
     <div className="flex flex-col gap-2">
-      {sortedWeeklyPositions.map((student, idx) => {
+      <div className="flex gap-4 flex-col md:flex-row py-4">
+        {/* 1st */}
+        <div className="flex items-center px-4 py-4 rounded-[0.5rem] border-border border-[1px] bg-primary text-primary-foreground w-full">
+          <span className="w-[3ch]">1</span>
+          <div className="flex items-center justify-between gap-2 w-full">
+            <div className="flex items-center">
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <span className="pl-4">
+                {sortedWeeklyPositions[0].name} ⭐⭐⭐
+              </span>
+            </div>
+            <span>{sortedWeeklyPositions[0].pointsThisWeek}</span>
+          </div>
+        </div>
+        {/* 2nd */}
+        <div className="flex items-center px-4 py-3 rounded-[0.5rem] border-border border-[1px] bg-secondary text-secondary-foreground w-full">
+          <span className="w-[3ch]">2</span>
+          <div className="flex items-center justify-between gap-2 w-full">
+            <div className="flex items-center">
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <span className="pl-4">{sortedWeeklyPositions[1].name} ⭐⭐</span>
+            </div>
+            <span>{sortedWeeklyPositions[1].pointsThisWeek}</span>
+          </div>
+        </div>
+        {/* 3rd */}
+        <div className="flex items-center px-4 py-3 rounded-[0.5rem] border-primary border-[1px] bg-background w-full">
+          <span className="w-[3ch]">3</span>
+          <div className="flex items-center justify-between gap-2 w-full">
+            <div className="flex items-center">
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <span className="pl-4">{sortedWeeklyPositions[2].name} ⭐</span>
+            </div>
+            <span>{sortedWeeklyPositions[2].pointsThisWeek}</span>
+          </div>
+        </div>
+      </div>
+      {sortedWeeklyPositions.slice(3).map((student, idx) => {
         return (
           <LeaderboardPosition
             student={student}
             key={idx}
-            idx={idx}
+            idx={idx + 3}
             variant={variant}
           />
         );
@@ -61,12 +116,69 @@ const Leaderboard = ({
     </div>
   ) : (
     <div className="flex flex-col gap-2">
-      {sortedMonthlyPositions.map((student, idx) => {
+      <div className="flex gap-4 flex-col md:flex-row py-4">
+        {/* 1st */}
+        <div className="flex items-center px-4 py-4 rounded-[0.5rem] border-border border-[1px] bg-primary text-primary-foreground w-full">
+          <span className="w-[3ch]">1</span>
+          <div className="flex items-center justify-between gap-2 w-full">
+            <div className="flex items-center">
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <span className="pl-4">
+                {sortedMonthlyPositions[0].name} ⭐⭐⭐
+              </span>
+            </div>
+            <span>{sortedMonthlyPositions[0].pointsThisMonth}</span>
+          </div>
+        </div>
+        {/* 2nd */}
+        <div className="flex items-center px-4 py-3 rounded-[0.5rem] border-border border-[1px] bg-secondary text-secondary-foreground w-full">
+          <span className="w-[3ch]">2</span>
+          <div className="flex items-center justify-between gap-2 w-full">
+            <div className="flex items-center">
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <span className="pl-4">
+                {sortedMonthlyPositions[1].name} ⭐⭐
+              </span>
+            </div>
+            <span>{sortedMonthlyPositions[1].pointsThisMonth}</span>
+          </div>
+        </div>
+        {/* 3rd */}
+        <div className="flex items-center px-4 py-3 rounded-[0.5rem] border-primary border-[1px] bg-background w-full">
+          <span className="w-[3ch]">3</span>
+          <div className="flex items-center justify-between gap-2 w-full">
+            <div className="flex items-center">
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <span className="pl-4">{sortedMonthlyPositions[2].name} ⭐</span>
+            </div>
+            <span>{sortedMonthlyPositions[2].pointsThisMonth}</span>
+          </div>
+        </div>
+      </div>
+      {sortedMonthlyPositions.slice(3).map((student, idx) => {
         return (
           <LeaderboardPosition
             student={student}
             key={idx}
-            idx={idx}
+            idx={idx + 3}
             variant={variant}
           />
         );

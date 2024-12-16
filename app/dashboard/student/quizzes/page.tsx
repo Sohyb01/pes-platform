@@ -75,19 +75,16 @@ const page = () => {
                   variants={VariantSlideInUp}
                   initial="initial"
                   animate="animate"
-                  transition={{ delay: idx * 0.05 }} // Custom delay for each item
                   key={idx}
                   className="w-full md:max-w-[352px]"
                 >
                   <CardHeader>
                     <CardTitle>
                       {exam.quizname} 📝
-                      {exam.timestamp && (
-                        <span className="ml-2 text-muted-foreground text-subtle">{`${exam.timestamp.getUTCDate()}/${
-                          exam.timestamp.getUTCMonth() + 1
-                        }/${exam.timestamp.getFullYear()}`}</span>
-                      )}
-                      <p className="text-muted-foreground pt-2">
+                      <span className="ml-2 text-muted-foreground">{`${exam.timestamp.getUTCDate()}/${
+                        exam.timestamp.getUTCMonth() + 1
+                      }/${exam.timestamp.getFullYear()}`}</span>
+                      <p className="text-muted-foreground pt-4 text-subtle">
                         {exam.questions.length} questions - {exam.duration}{" "}
                         minutes
                       </p>

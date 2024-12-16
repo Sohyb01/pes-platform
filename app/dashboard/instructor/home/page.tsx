@@ -6,11 +6,11 @@ import { exampleAssignments, exampleClasses } from "@/lib/data";
 import { ArrowRight } from "lucide-react";
 import * as React from "react";
 import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TFormSchemaAddClass } from "@/lib/types-forms";
 import ChatMembersList from "@/components/pes-custom/platform-components/chat-members-list";
 import { Card, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import Link from "next/link";
+import { getNameById } from "@/lib/getNameById";
 
 const fakeMembersData = [
   {
@@ -109,23 +109,10 @@ const page = () => {
               Free sessions given
             </div>
           </div>
-          <Tabs
-            defaultValue="Class A"
-            className="w-full border-border bg-background border-[1px] rounded-[1rem]"
-          >
+          <div className="border border-border rounded-[1rem]">
             <div className="text-p_ui mb-4 pt-4 px-4">Student Submissions</div>
-            <TabsList className="flex gap-4 bg-background border-b-[1px] border-b-muted rounded-none mb-4 justify-start">
-              <TabsTrigger className="tab-trigger ml-4" value="Class A">
-                Class A
-              </TabsTrigger>
-              <TabsTrigger className="tab-trigger " value="Class B">
-                Class B
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent
-              className="max-h-[400px] overflow-y-scroll"
-              value="Class A"
-            >
+            <div className="w-full h-[1px] bg-muted"></div>
+            <div className="max-h-[400px] overflow-y-scroll pr-2">
               {exampleAssignments.map((assignment, idx) => {
                 return (
                   <>
@@ -133,10 +120,11 @@ const page = () => {
                       key={idx}
                       className="w-full bg-transparent border-none rounded-none p-4"
                     >
-                      <CardHeader className="px-0 pb-2 pt-0">
-                        <CardTitle>Class A</CardTitle>
-                        <div className="text-subtle text-muted-foreground">
-                          Omar Mohamed
+                      <CardHeader className="px-0 pb-2 pt-0 gap-0">
+                        <CardTitle>Omar Mohamed</CardTitle>
+                        <div className="text-muted-foreground text-subtle">
+                          {getNameById(assignment.class_id, "Class")}
+                          <div>8/10/2024 5:42</div>
                         </div>
                       </CardHeader>
                       <CardFooter className="pb-2 px-0 pt-2 justify-between">
@@ -154,41 +142,8 @@ const page = () => {
                   </>
                 );
               })}
-            </TabsContent>
-            <TabsContent
-              className="max-h-[400px] overflow-y-scroll"
-              value="Class B"
-            >
-              {exampleAssignments.map((assignment, idx) => {
-                return (
-                  <>
-                    <Card
-                      key={idx}
-                      className="w-full bg-transparent border-none rounded-none p-4"
-                    >
-                      <CardHeader className="px-0 pb-2 pt-0">
-                        <CardTitle>Class B</CardTitle>
-                        <div className="text-subtle text-muted-foreground">
-                          Omar Mohamed
-                        </div>
-                      </CardHeader>
-                      <CardFooter className="pb-2 px-0 pt-2 justify-between">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-fit ml-auto"
-                        >
-                          <ArrowRight size={16} />
-                          View Submission
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                    <div className="w-full h-[1px] bg-muted"></div>
-                  </>
-                );
-              })}
-            </TabsContent>
-          </Tabs>
+            </div>
+          </div>
         </div>
       </div>
       {/* Container */}

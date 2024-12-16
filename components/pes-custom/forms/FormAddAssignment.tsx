@@ -36,6 +36,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { exampleClasses } from "@/lib/data";
+import { Calendar } from "@/components/ui/calendar";
+import { TimePickerDemo } from "@/components/ui/time-picker-demo";
 
 const FormAddAssignment = ({
   editObj,
@@ -92,49 +94,42 @@ const FormAddAssignment = ({
           control={form.control}
           name="assignment_duedate"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Due date</FormLabel>
+            <FormItem className="flex flex-col mt-auto">
+              <FormLabel className="text-left h-[16.8px]">Due</FormLabel>
               <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
+                <FormControl>
+                  <PopoverTrigger asChild>
                     <Button
-                      variant={"outline"}
-                      size={"input"}
+                      variant="outline"
                       className={cn(
-                        "pl-3 text-left font-normal w-full",
+                        "w-full justify-start text-left font-normal overflow-hidden h-10 mt-auto",
                         !field.value && "text-muted-foreground"
                       )}
                     >
                       {field.value ? (
-                        format(field.value, "PPP")
+                        format(field.value, "PPP HH:mm:ss")
                       ) : (
-                        <div>Pick a date</div>
+                        <span>Set timestamp</span>
                       )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                     </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent
-                  side="bottom"
-                  className="w-auto p-0"
-                  align="start"
-                >
-                  <CalendarDropdown
+                  </PopoverTrigger>
+                </FormControl>
+                <PopoverContent className="w-auto p-0 pointer-events-auto">
+                  <Calendar
                     mode="single"
-                    captionLayout="dropdown-buttons"
-                    fromYear={2020}
-                    toYear={new Date().getFullYear()}
-                    defaultMonth={new Date()}
                     selected={field.value}
-                    disabled={(date) =>
-                      date > new Date() || date < new Date("2020-01-01")
-                    }
                     onSelect={field.onChange}
                     initialFocus
+                    fromDate={new Date()}
                   />
+                  <div className="p-3 border-t border-border">
+                    <TimePickerDemo
+                      setDate={field.onChange}
+                      date={field.value}
+                    />
+                  </div>
                 </PopoverContent>
               </Popover>
-              <FormMessage />
             </FormItem>
           )}
         />

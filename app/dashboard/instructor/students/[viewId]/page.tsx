@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/hover-card";
 import { BadgeLink } from "@/components/pes-custom/platform-components/BadgeLink";
 import { Separator } from "@radix-ui/react-select";
+import PESClassCard from "@/components/pes-custom/platform-components/PESClassCard";
 
 const ViewStudentPage = ({ params }: { params: { viewId: string } }) => {
   const student = exampleStudents.find(
@@ -284,49 +285,7 @@ const ViewStudentPage = ({ params }: { params: { viewId: string } }) => {
             <TabsContent value="Classes" className="px-4 pb-4">
               <div className="flex gap-4 overflow-x-scroll">
                 {exampleClasses.map((pesClass, idx) => {
-                  return (
-                    <M_Card
-                      variants={VariantSlideInUp}
-                      initial="initial"
-                      animate="animate"
-                      transition={{ delay: idx * 0.05 }} // Custom delay for each item
-                      key={idx}
-                      className="w-full md:max-w-[352px]"
-                    >
-                      <CardHeader>
-                        <CardTitle>{pesClass.class_name}</CardTitle>
-                        <div className="w-full flex gap-1 flex-wrap justify-between items-center text-subtle pt-2">
-                          <Link href="#">
-                            <span className="max-w-[12ch] overflow-hidden">
-                              ENG. Ahmed Reda
-                              {/* {pesClass.instructor_id} */}
-                            </span>
-                          </Link>
-                          <div className="text-muted-foreground">
-                            {`${pesClass.classbegindate.getUTCDate()}/${
-                              pesClass.classbegindate.getUTCMonth() + 1
-                            }
-                      -
-                      ${pesClass.classenddate.getUTCDate()}/${
-                              pesClass.classenddate.getUTCMonth() + 1
-                            }
-                      `}
-                          </div>
-                        </div>
-                      </CardHeader>
-                      <CardFooter className="flex gap-2">
-                        <Link
-                          href="#"
-                          className="text-subtle text-muted-foreground"
-                        >
-                          <span className="max-w-[12ch] overflow-hidden">
-                            {/* {pesClass.program_id} */}
-                            Young Geniuses Program
-                          </span>
-                        </Link>
-                      </CardFooter>
-                    </M_Card>
-                  );
+                  return <PESClassCard pesClass={pesClass} />;
                 })}
               </div>
             </TabsContent>
