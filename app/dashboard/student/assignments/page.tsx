@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { BadgeLink } from "@/components/pes-custom/platform-components/BadgeLink";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { UploadIcon } from "@/components/pes-custom/icons/UploadIcon";
 import { exampleAssignments } from "@/lib/data";

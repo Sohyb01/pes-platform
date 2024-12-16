@@ -8,9 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { EmployeeIcon } from "@/components/pes-custom/icons/EmployeeIcon";
 import { Button, buttonVariants } from "@/components/ui/button";
-import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 import { exampleMaterials } from "@/lib/data";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
 import { VariantSlideInUp } from "@/lib/motion-constants";
