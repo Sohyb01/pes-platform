@@ -10,6 +10,7 @@ import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Leaderboard from "@/components/pes-custom/platform-components/Leaderboard";
 import { TFormSchemaAddClass } from "@/lib/types-forms";
+import RequiredActionWidget from "@/components/pes-custom/platform-components/RequiredActionWidget";
 
 const page = () => {
   return (
@@ -68,17 +69,8 @@ const page = () => {
           })}
         </div>
         <div className="flex-1 min-w-[340px] max-w-[580px] grow h-fit flex flex-col gap-4">
-          {/* Achievements & Certificates widget */}
-          {/* Need help */}
-          {/* <div className="flex flex-col rounded-[1rem] bg-background border-border border-[1px]">
-            <div className="p-4">
-              <div className="text-h3 pb-4">Need to ask a question?</div>
-              <Button variant="secondary" className="gap-2">
-                Message instructor
-                <ArrowRightCircleIcon size={16} />
-              </Button>
-            </div>
-          </div> */}
+          {/* Alert widget (current action: exam, submit homework, etc) */}
+          <RequiredActionWidget label="Final Exam: Robotics" link="#" />
           <div className="flex flex-col rounded-[1rem] bg-background border-border border-[1px]">
             <div className="px-4 pt-4">
               <div className="text-p_ui">Omar Mohamed</div>

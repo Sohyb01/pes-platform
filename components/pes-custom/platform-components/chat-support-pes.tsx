@@ -31,9 +31,12 @@ export default function PESChatSupport({
   messagesData: TFormSchemaSendMessage[];
   conversationsData: TFormSchemaAddConversation[];
 }) {
+  const [conversationsDataState, setConversationsDataState] =
+    useState(conversationsData);
+
   // Set the selected conversation
   const [selectedConversation, setSelectedConversation] = useState(
-    conversationsData[0]
+    conversationsDataState[0]
   );
 
   const [messages, setMessages] = useState(
@@ -95,7 +98,8 @@ export default function PESChatSupport({
     >
       <div className="flex gap-2 h-full max-h-[90vh]">
         <ChatSidebar
-          conversationsData={conversationsData}
+          conversationsDataState={conversationsDataState}
+          setConversationsDataState={setConversationsDataState}
           selectedConversation={selectedConversation}
           setSelectedConversation={setSelectedConversation}
         />

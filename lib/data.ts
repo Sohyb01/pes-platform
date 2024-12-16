@@ -125,6 +125,47 @@ export const exampleInstructors: TFormSchemaAddInstructor[] = [
     language: "English",
     currency: "EUR",
   },
+  {
+    // Fields specific to FormSchemaAddInstructor
+    instructor_age: "35",
+    instructor_whatsapp: "+123456789",
+    instructor_faculty: "Engineering Faculty",
+    instructor_cv: {
+      name: "resume.pdf",
+      size: 4000000,
+      type: "application/pdf",
+    }, // Mock file object for CV
+    instructor_major: "Computer Science",
+    theme: "Dark",
+
+    // Fields from FormSchemaAddEmployee
+    user_type: "Instructor",
+    id: "instructor2",
+    nid: "6543210987",
+    employee_name: "Ahmed Reda",
+    employee_email: "ahmed.reda@example.com",
+    gender: "Female",
+    dateofbirth: new Date("1988-07-12"),
+    homeaddress: "789 Oak St, Villagetown",
+    employee_salary: 60000,
+    employee_mobilenum: "+1230984567",
+    joined_date: new Date("2021-09-10"),
+    employee_pic: {
+      name: "instructor_photo.jpg",
+      size: 300000,
+      type: "image/jpeg",
+    }, // Mock file for profile picture
+    fathername_husbandname: "David reda",
+    experience: "7 years in teaching",
+    religion: "Muslim",
+    blood_group: "A-",
+    education: "Ph.D. in Computer Science",
+    username: "aahmedreda",
+    password: "securePassword!2024",
+    timezone: "UTC+3",
+    language: "English",
+    currency: "EUR",
+  },
 ];
 
 export const exampleStudents: TFormSchemaAddStudent[] = [

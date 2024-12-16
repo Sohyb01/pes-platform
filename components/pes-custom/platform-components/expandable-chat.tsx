@@ -127,10 +127,10 @@ const ExpandableChatToggle: React.FC<ExpandableChatToggleProps> = ({
   ...props
 }) => (
   <Button
-    variant="default"
+    variant="ghost"
     onClick={toggleChat}
     className={cn(
-      "w-14 h-14 rounded-full shadow-md flex items-center justify-center hover:shadow-lg hover:shadow-black/30 transition-all duration-300",
+      "w-14 h-14 rounded-full shadow-md flex items-center justify-center hover:shadow-lg hover:shadow-black/30 transition-all duration-300 bg-primary hover:bg-green-500",
       className
     )}
     {...props}

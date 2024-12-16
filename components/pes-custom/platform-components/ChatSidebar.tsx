@@ -1,3 +1,4 @@
+import { buttonVariants } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -8,14 +9,35 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { TFormSchemaAddConversation } from "@/lib/types-forms";
+import {
+  TFormSchemaAddConversation,
+  TFormSchemaAddInstructor,
+} from "@/lib/types-forms";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { exampleInstructors } from "@/lib/data";
 
 export function ChatSidebar({
-  conversationsData,
+  conversationsDataState,
+  setConversationsDataState,
   selectedConversation,
   setSelectedConversation,
 }: {
-  conversationsData: TFormSchemaAddConversation[];
+  conversationsDataState: TFormSchemaAddConversation[];
+  setConversationsDataState: React.Dispatch<
+    React.SetStateAction<
+      {
+        conversation_name: string;
+        host_id: string;
+        conversation_id?: string | undefined;
+      }[]
+    >
+  >;
   selectedConversation: TFormSchemaAddConversation;
   setSelectedConversation: React.Dispatch<
     React.SetStateAction<{
@@ -25,6 +47,47 @@ export function ChatSidebar({
     }>
   >;
 }) {
+  const handleCreateNewChatInstructor = (
+    instructor: TFormSchemaAddInstructor
+  ) => {
+    if (
+      conversationsDataState.some((item) => item.host_id === instructor.id!)
+    ) {
+      setSelectedConversation(
+        () =>
+          conversationsDataState[
+            conversationsDataState.findIndex(
+              (item) => item.host_id === instructor.id
+            )
+          ]
+      );
+    }
+
+    // Create conversation in back end and get data back
+    const newConversation: TFormSchemaAddConversation = {
+      conversation_name: instructor.employee_name,
+      host_id: instructor.id!,
+      conversation_id: instructor.id!, // Changel ater
+    };
+
+    // Check if conversations already have a conversation with a host id equal to the instructor id, in which case do not add a new conversation
+    if (
+      conversationsDataState.some((item) => item.host_id === instructor.id!) ==
+      false
+    ) {
+      setConversationsDataState((prev) => {
+        const newConvos = [...prev, newConversation];
+
+        setSelectedConversation(
+          () =>
+            newConvos[newConvos.findIndex((item) => item === newConversation)]
+        );
+
+        return newConvos;
+      });
+    }
+  };
+
   return (
     <Sidebar className="h-full">
       <SidebarContent className="bg-background py-8 lg:py-0">
@@ -34,7 +97,7 @@ export function ChatSidebar({
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {conversationsData.map((convo, idx) => (
+              {conversationsDataState.map((convo, idx) => (
                 <SidebarMenuItem
                   className={`text-subtle cursor-pointer`}
                   key={idx}
@@ -47,7 +110,7 @@ export function ChatSidebar({
                         : `bg-transparent hover:bg-muted`
                     }`}
                     onClick={() => {
-                      setSelectedConversation(conversationsData[idx]);
+                      setSelectedConversation(conversationsDataState[idx]);
                     }}
                     asChild
                   >
@@ -58,6 +121,30 @@ export function ChatSidebar({
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        <div className="mt-auto px-4 w-full">
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className={`bg-secondary text-primary-foreground hover:bg-secondary w-full mb-4 ${buttonVariants(
+                { size: "sm", variant: "secondary" }
+              )}`}
+            >
+              Message Instructor
+            </DropdownMenuTrigger>
+            <DropdownMenuContent side="top">
+              {exampleInstructors.map((instructor) => {
+                return (
+                  <DropdownMenuItem
+                    key={instructor.id}
+                    onClick={() => handleCreateNewChatInstructor(instructor)}
+                  >
+                    {instructor.employee_name}
+                  </DropdownMenuItem>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </SidebarContent>
     </Sidebar>
   );
