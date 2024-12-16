@@ -14,7 +14,9 @@ export default function RootLayout({
       <div className="flex w-full overflow-hidden dashboard-sizing">
         <InstructorSidebar />
         {/* Main Content */}
-        <main className="w-full flex flex-col gap-8 p-4 md:p-8 lg:pl-12 dashboard-sizing overflow-scroll bg-background"></main>
+        <main className="w-full flex flex-col gap-8 p-4 md:p-8 lg:pl-12 dashboard-sizing overflow-scroll bg-background">
+          {children}
+        </main>
       </div>
     </div>
   );

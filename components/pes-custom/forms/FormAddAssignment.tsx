@@ -55,6 +55,7 @@ const FormAddAssignment = ({
         assignment_description: "",
         subject_id: "",
         class_id: "",
+        sent_by: "instructor1",
       };
   // 1. Define your form.
 
