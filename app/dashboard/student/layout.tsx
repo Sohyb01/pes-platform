@@ -1,4 +1,4 @@
-import PESChatSupport from "@/components/pes-custom/platform-components/chat-support-pes";
+import PESChatStudent from "@/components/pes-custom/platform-components/PESChatStudent";
 import StudentNavbar from "@/components/pes-custom/platform-components/StudentNavbar";
 import StudentSidebar from "@/components/pes-custom/platform-components/StudentSidebar";
 import { exampleConversations, exampleMessages } from "@/lib/data";
@@ -17,7 +17,7 @@ export default function RootLayout({
         <StudentSidebar />
         {/* Main Content */}
         <main className="w-full p-4 overflow-scroll">
-          <PESChatSupport
+          <PESChatStudent
             messagesData={exampleMessages}
             conversationsData={exampleConversations}
           />

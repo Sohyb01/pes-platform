@@ -24,7 +24,7 @@ import {
   TFormSchemaSendMessage,
 } from "@/lib/types-forms";
 
-export default function PESChatSupport({
+export default function PESChatStudent({
   messagesData,
   conversationsData,
 }: {
