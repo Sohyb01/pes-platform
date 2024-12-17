@@ -637,8 +637,8 @@ export const FormSchemaAddScheduleEvent = z
     (data) =>
       !(
         data.type == "Session" &&
-        data.people_invited &&
-        data.people_invited.length == 0
+        (data.people_invited?.length == undefined ||
+          data.people_invited?.length == 0)
       ),
     {
       message: "Sessions must include at least one invitee",
