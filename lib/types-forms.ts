@@ -622,9 +622,7 @@ export const FormSchemaAddScheduleEvent = z
     end: z
       .date()
       .refine((date) => date > new Date(), "Timestamp must be a future date"),
-    people_invited: z
-      .array(z.string())
-      .nonempty("At least one person must be invited"),
+    people_invited: z.array(z.string()).optional(),
     description: z
       .string()
       .max(500, "Description must be less than 500 characters")
@@ -636,7 +634,12 @@ export const FormSchemaAddScheduleEvent = z
     path: ["end"], // Points to the `end` field in the error message
   })
   .refine(
-    (data) => !(data.type == "Session" && data.people_invited.length == 0),
+    (data) =>
+      !(
+        data.type == "Session" &&
+        data.people_invited &&
+        data.people_invited.length == 0
+      ),
     {
       message: "Sessions must include at least one invitee",
       path: ["people_invited"],

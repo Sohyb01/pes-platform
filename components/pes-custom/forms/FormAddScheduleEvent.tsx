@@ -328,7 +328,6 @@ const FormAddScheduleEvent = ({
                           .map((u) => u.id as string); // Ensure IDs are strings
 
                         // Update form only if array is non-empty
-                        //@ts-expect-error idk
                         form.setValue("people_invited", updatedSelectedIds);
                       }}
                     >
@@ -374,7 +373,6 @@ const FormAddScheduleEvent = ({
                               .map((u) => u.id as string); // Ensure IDs are strings
 
                             // Update form with valid IDs
-                            //@ts-expect-error idk
                             form.setValue("people_invited", updatedSelectedIds);
                           }}
                           className={"cursor-pointer"}
