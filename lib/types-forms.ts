@@ -473,6 +473,7 @@ export const FormSchemaSolvedExam = FormSchemaAddExam.merge(
 export type TFormSchemaSolvedExam = z.infer<typeof FormSchemaSolvedExam>;
 
 export const FormSchemaAddAssignment = z.object({
+  name: z.string(),
   assignment_id: z.string().nullish(),
   assignment_url: z.string().optional(), // Optional URL field
   assignment_duedate: z.date(), // Validated as date

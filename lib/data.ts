@@ -315,10 +315,11 @@ export const exampleClasses: TFormSchemaAddClass[] = [
 
 export const exampleAssignments: TFormSchemaAddAssignment[] = [
   {
+    name: "Homework 1",
     assignment_id: "assignment1",
     assignment_url: "/",
     assignment_duedate: new Date("2024-04-01"),
-    assignment_attachment: null, // No file uploaded
+    assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
     assignment_description:
       "Complete the essay on environmental sustainability.",
     subject_id: "subj1234abcd",
@@ -326,16 +327,21 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     sent_by: "teacher1234xyz",
   },
   {
+    name: "Project A",
     assignment_id: "assignment2",
     assignment_url: undefined, // Optional field left undefined
     assignment_duedate: new Date("2024-05-15"),
-    assignment_attachment: [{ name: "assignment2.docx", size: 4500000 }], // Valid file attachment under 5MB
+    assignment_attachment: [
+      { name: "requirements.docx", size: 4500000 },
+      { name: "assignment2.py", size: 4500000 },
+    ], // Valid file attachment under 5MB
     assignment_description: "Prepare a presentation on renewable energy.",
     subject_id: "subj2345bcde",
     class_id: "class2",
     sent_by: "teacher5678abc",
   },
   {
+    name: "Assignment C",
     assignment_id: "assignment3",
     assignment_url: "/",
     assignment_duedate: new Date("2024-06-10"),

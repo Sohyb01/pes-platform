@@ -20,14 +20,7 @@ import { VariantSlideInUp } from "@/lib/motion-constants";
 import { TFormSchemaAddAssignment } from "@/lib/types-forms";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import {
-  Brain,
-  Calendar,
-  Clock,
-  DownloadIcon,
-  PenIcon,
-  PlusIcon,
-} from "lucide-react";
+import { Calendar, Clock, DownloadIcon, PenIcon, PlusIcon } from "lucide-react";
 import Link from "next/link";
 
 async function getData(): Promise<TFormSchemaAddAssignment[]> {
@@ -89,7 +82,7 @@ export default async function AssignmentsPage() {
                 >
                   <CardHeader>
                     <CardTitle className="flex justify-between">
-                      Assignment Title 📖
+                      {assignment.name}
                     </CardTitle>
                     <p className="text-muted-foreground">
                       {assignment.assignment_description}
@@ -101,10 +94,6 @@ export default async function AssignmentsPage() {
                         <p className="flex items-center gap-2">
                           <ClassIcon />
                           {assignment.class_id}
-                        </p>
-                        <p className="flex items-center gap-2">
-                          <Brain size={16} />
-                          {assignment.subject_id}
                         </p>
                         <p className="flex items-center gap-2">
                           <Calendar size={16} />
