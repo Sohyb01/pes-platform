@@ -384,6 +384,7 @@ export type TFormSchemaAddReceptionist = z.infer<
 >;
 
 export const FormSchemaAddClass = z.object({
+  class_times: z.string(),
   id: z.string().optional(),
   class_name: z.string().trim().min(1, "Required").max(50), // Matches model's max length constraint
   class_fees: z.coerce.number().positive(), // Represents `class_fees` as a positive float

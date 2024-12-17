@@ -192,10 +192,13 @@ const FormAddAssignment = ({
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {exampleClasses.map((pesClass, idx) => {
+                  {exampleClasses.map((pesClass) => {
                     return (
-                      <SelectItem key={idx} value={pesClass.class_name}>
-                        {pesClass.class_name}
+                      <SelectItem key={pesClass.id} value={pesClass.id!}>
+                        {pesClass.class_name}{" "}
+                        <span className="text-muted-foreground">
+                          {pesClass.class_times}
+                        </span>
                       </SelectItem>
                     );
                   })}

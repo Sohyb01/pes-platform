@@ -84,6 +84,19 @@ const FormAddClass = ({
         />
         <FormField
           control={form.control}
+          name="class_times"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Class times</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="class_fees"
           render={({ field }) => (
             <FormItem>

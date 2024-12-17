@@ -279,6 +279,7 @@ export const exampleParents: TFormSchemaAddParent[] = [
 
 export const exampleClasses: TFormSchemaAddClass[] = [
   {
+    class_times: "Mon 4PM",
     id: "class1", // Optional field
     class_name: "Advanced Mathematics ➗", //
     class_fees: 150.0, //
@@ -289,6 +290,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     class_level: "Beginner",
   },
   {
+    class_times: "Wed 7PM - Sat 7PM",
     id: "class2",
     class_name: "Introduction to Computer Science 🖥️",
     class_fees: 200.0,
@@ -299,6 +301,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     class_level: "Intermediate",
   },
   {
+    class_times: "Fri 5PM",
     id: "class3",
     class_name: "Creative Writing Workshop ✍️",
     class_fees: 75.5,
