@@ -84,7 +84,7 @@ export default async function AssignmentsPage() {
                     <CardTitle className="flex justify-between">
                       {assignment.name}
                     </CardTitle>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground h-12 line-clamp-2">
                       {assignment.assignment_description}
                     </p>
                   </CardHeader>
