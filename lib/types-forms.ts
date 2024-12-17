@@ -689,7 +689,7 @@ export const FormSchemaAddMaterial = z.object({
       "Only .py, .js formats are supported."
     ),
   session_id: z.string().trim().min(1, "Required"),
-  class_field: z.string().trim().min(1, "Required"),
+  class_field: z.string().trim().min(1, "Required"), // Class ID
   instructor_id: z.string().trim().min(1, "Required"),
 });
 

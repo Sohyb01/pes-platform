@@ -115,7 +115,7 @@ const FormAddExam = ({
           control={form.control}
           name="timestamp"
           render={({ field }) => (
-            <FormItem className="flex flex-col">
+            <FormItem className="flex flex-col mt-auto">
               <FormLabel className="text-left">Timestamp</FormLabel>
               <Popover>
                 <FormControl>

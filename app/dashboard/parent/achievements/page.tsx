@@ -1,4 +1,3 @@
-import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -7,16 +6,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { exampleClasses } from "@/lib/data";
-import { VariantSlideInUp } from "@/lib/motion-constants";
 import { cn } from "@/lib/utils";
 import { Award, Calendar, ChevronRight } from "lucide-react";
 import Link from "next/link";
-
-const getClasses = async () => {
-  return exampleClasses;
-};
 
 export const ACHIEVEMENTS = [
   {
@@ -36,59 +28,11 @@ export const ACHIEVEMENTS = [
 ];
 
 const Achievements = async () => {
-  const classes = await getClasses();
   const recentAchievements = ACHIEVEMENTS.splice(0, 6);
 
   return (
     <section className="dashboard-tab-wrapper">
       <div className="grid gap-8 lg:grid-cols-2">
-        <div className="flex flex-col gap-4 lg:col-span-2">
-          <h2 className="text-h2 pb-4">Progress 📈</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {classes.map((pesClass, idx) => {
-              const randomValue = Math.floor(Math.random() * 100);
-              return (
-                <M_Card
-                  variants={VariantSlideInUp}
-                  initial="initial"
-                  animate="animate"
-                  transition={{ delay: idx * 0.05 }} // Custom delay for each item
-                  key={idx}
-                  className="bg-background"
-                >
-                  <CardHeader>
-                    <CardTitle className="text-pretty lg:text-nowrap">
-                      📘 {pesClass.class_name}
-                    </CardTitle>
-                    <div className="w-full flex gap-1 flex-wrap justify-between items-center text-subtle pt-2">
-                      <Link href="#">
-                        <span className="overflow-hidden">
-                          ENG. Ahmed Reda
-                          {/* {pesClass.instructor_id} */}
-                        </span>
-                      </Link>
-                      <div className="text-muted-foreground">
-                        {`${pesClass.classbegindate.getUTCDate()}/${
-                          pesClass.classbegindate.getUTCMonth() + 1
-                        }
--
-${pesClass.classenddate.getUTCDate()}/${pesClass.classenddate.getUTCMonth() + 1}
-`}
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardFooter className="flex gap-2">
-                    <Progress className="h-2 bg-muted" value={randomValue} />
-                    <span className="text-muted-foreground">
-                      {randomValue}%
-                    </span>
-                  </CardFooter>
-                </M_Card>
-              );
-            })}
-          </div>
-        </div>
-
         <div className="flex flex-col gap-4">
           <h2 className="text-h2">Achievements 🏆</h2>
           <Card className="flex-1 bg-background h-64">

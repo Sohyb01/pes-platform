@@ -184,7 +184,7 @@ const FormAddAssignment = ({
           name="class_id"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Class ID</FormLabel>
+              <FormLabel>Class</FormLabel>
               <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger>
