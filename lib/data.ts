@@ -317,12 +317,11 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
   {
     name: "Homework 1",
     assignment_id: "assignment1",
-    assignment_url: "/",
+    assignment_url: "www.google.com",
     assignment_duedate: new Date("2024-04-01"),
     assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
     assignment_description:
       "Complete the essay on environmental sustainability.",
-    subject_id: "subj1234abcd",
     class_id: "class1",
     sent_by: "teacher1234xyz",
   },
@@ -336,18 +335,16 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
       { name: "assignment2.py", size: 4500000 },
     ], // Valid file attachment under 5MB
     assignment_description: "Prepare a presentation on renewable energy.",
-    subject_id: "subj2345bcde",
     class_id: "class2",
     sent_by: "teacher5678abc",
   },
   {
     name: "Assignment C",
     assignment_id: "assignment3",
-    assignment_url: "/",
+    assignment_url: "www.google.com",
     assignment_duedate: new Date("2024-06-10"),
     assignment_attachment: null, // No file attached
     assignment_description: "Solve all exercises from Chapter 3.",
-    subject_id: "subj3456cdef",
     class_id: "class3",
     sent_by: "teacher7890def",
   },

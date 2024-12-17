@@ -78,6 +78,19 @@ const FormAddAssignment = ({
       <form onSubmit={form.handleSubmit(onSubmit)} className="pes-grid-form">
         <FormField
           control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Assignment Name</FormLabel>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="assignment_url"
           render={({ field }) => (
             <FormItem>
@@ -154,27 +167,6 @@ const FormAddAssignment = ({
               <FormControl>
                 <Textarea className="resize-none" {...field} />
               </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="subject_id"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Subject</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select subject" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="Subject A">Subject A</SelectItem>
-                  <SelectItem value="Subject B">Subject B</SelectItem>
-                </SelectContent>
-              </Select>
               <FormMessage />
             </FormItem>
           )}

@@ -489,7 +489,6 @@ export const FormSchemaAddAssignment = z.object({
     )
     .nullish(),
   assignment_description: z.string().optional(), // Optional text field
-  subject_id: z.string().trim().min(1, "Required"), // Required foreign key reference
   class_id: z.string().trim().min(1, "Required"), // Required foreign key reference
   sent_by: z.string().trim().min(1, "Required"), // Required foreign key reference
 });
@@ -592,9 +591,7 @@ export const FormSchemaDisplayScheduleEvent = z.object({
     .max(50, "Event type must be less than 50 characters"),
   start: scheduleDateTimeStringSchema,
   end: scheduleDateTimeStringSchema,
-  people_invited: z
-    .array(z.string())
-    .nonempty("At least one person must be invited"),
+  people_invited: z.array(z.string()),
   description: z
     .string()
     .max(500, "Description must be less than 500 characters")

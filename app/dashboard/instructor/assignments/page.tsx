@@ -88,7 +88,7 @@ export default async function AssignmentsPage() {
                       {assignment.assignment_description}
                     </p>
                   </CardHeader>
-                  <CardContent className="flex flex-col gap-4">
+                  <CardContent className="flex flex-col gap-4 h-full">
                     <div className="flex lg:flex-col lg:items-start items-center justify-between gap-4">
                       <div className="w-full grid grid-cols-2 gap-4 gap-y-2 text-muted-foreground stroke-muted-foreground">
                         <p className="flex items-center gap-2">

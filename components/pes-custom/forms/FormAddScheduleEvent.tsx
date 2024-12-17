@@ -167,7 +167,6 @@ const FormAddScheduleEvent = ({
         onSubmit={form.handleSubmit(onSubmit)}
         className="pes-grid-form px-2 pr-4"
       >
-        <p className="text-large col-span-1 md:col-span-2">Schedule Event</p>
         <FormField
           control={form.control}
           name="title"
@@ -194,7 +193,7 @@ const FormAddScheduleEvent = ({
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="Meeting">Meeting</SelectItem>
+                  <SelectItem value="Meeting">Call Availability</SelectItem>
                   <SelectItem value="Session">Session</SelectItem>
                 </SelectContent>
               </Select>
