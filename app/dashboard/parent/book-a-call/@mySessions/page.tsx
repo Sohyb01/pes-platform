@@ -1,5 +1,6 @@
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
-import { Button, buttonVariants } from "@/components/ui/button";
+import ConfirmDialog from "@/components/pes-custom/platform-components/ConfirmDialog";
+import { buttonVariants } from "@/components/ui/button";
 import {
   CardContent,
   CardFooter,
@@ -35,12 +36,18 @@ const MySessions = () => {
             <Clock size={16} /> 6:00 PM
           </div>
         </CardContent>
-        <CardFooter className="gap-4">
-          <Button className="flex-1" variant={"destructive"} size="sm">
-            Cancel
-          </Button>
+        <CardFooter className="flex gap-4">
+          <ConfirmDialog
+            body="This action cannot be undone. This will permanently cancle your
+            session."
+            action={async () => {
+              "use server";
+              return;
+            }}
+            toastMsg="Your session has been canceled successfully"
+          />
           <Link
-            href="#"
+            href="book-a-call/sessionId"
             className={cn(buttonVariants({ size: "sm" }), "group flex-1")}
           >
             View Details{" "}

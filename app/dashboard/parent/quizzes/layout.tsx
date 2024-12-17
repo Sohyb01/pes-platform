@@ -10,7 +10,7 @@ const ConnectWithInstructorsLayout = ({
 }) => {
   return (
     <section className="dashboard-tab-wrapper">
-      <h2 className="text-h2 pb-4">Ahmed&apos;s Quizzes</h2>
+      <h2 className="text-h2 pb-4">Quizzes</h2>
 
       <Tabs defaultValue="Scheduled">
         <TabsList className="bg-transparent flex gap-4 border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
