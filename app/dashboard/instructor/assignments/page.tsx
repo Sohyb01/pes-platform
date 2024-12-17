@@ -88,7 +88,7 @@ export default async function AssignmentsPage() {
                       {assignment.assignment_description}
                     </p>
                   </CardHeader>
-                  <CardContent className="flex flex-col gap-4 h-full">
+                  <CardContent className="flex flex-col gap-4">
                     <div className="flex lg:flex-col lg:items-start items-center justify-between gap-4">
                       <div className="w-full grid grid-cols-2 gap-4 gap-y-2 text-muted-foreground stroke-muted-foreground">
                         <p className="flex items-center gap-2">
@@ -171,7 +171,7 @@ export default async function AssignmentsPage() {
                       )}
                     </div>
                   </CardContent>
-                  <CardFooter>
+                  <CardFooter className="mt-auto">
                     <Link
                       href={`assignments/${assignment.assignment_id}`}
                       className={cn(
