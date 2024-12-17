@@ -634,7 +634,14 @@ export const FormSchemaAddScheduleEvent = z
   .refine((data) => data.end > data.start, {
     message: "End date must be after start date",
     path: ["end"], // Points to the `end` field in the error message
-  });
+  })
+  .refine(
+    (data) => !(data.type == "Session" && data.people_invited.length == 0),
+    {
+      message: "Sessions must include at least one invitee",
+      path: ["people_invited"],
+    }
+  );
 
 export type TFormSchemaAddScheduleEvent = z.infer<
   typeof FormSchemaAddScheduleEvent
