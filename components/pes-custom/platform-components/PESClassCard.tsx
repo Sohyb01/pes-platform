@@ -5,7 +5,8 @@ import { VariantSlideInUp } from "@/lib/motion-constants";
 import Link from "next/link";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, X } from "lucide-react";
+import { ArrowLeft, CheckCircle, X } from "lucide-react";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
   return (
@@ -37,6 +38,25 @@ const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
             </Badge>
           </div>
         </div>
+        {pesClass.classenddate < new Date() ? (
+          <div className="pt-4">
+            <Link
+              href="#"
+              className={`${buttonVariants({
+                variant: "outline",
+                size: "sm",
+              })}`}
+            >
+              <ArrowLeft size={16} /> Certificate
+            </Link>
+          </div>
+        ) : (
+          <div className="pt-4">
+            <Button disabled variant="outline" size="sm">
+              Certificate unavailable
+            </Button>
+          </div>
+        )}
         {/* Progress & Dates & Class level*/}
         <div className="pt-6">
           <div
@@ -64,7 +84,12 @@ const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
                 (pesClass.classenddate.getMonth() + 1)}
             </span>
           </div>
-          <Progress className="bg-muted mt-2 h-1" value={Math.random() * 100} />
+          <Progress
+            className="bg-muted mt-2 h-1"
+            value={
+              pesClass.classenddate < new Date() ? 100 : Math.random() * 100
+            }
+          />
         </div>
       </M_Card>
     </Link>

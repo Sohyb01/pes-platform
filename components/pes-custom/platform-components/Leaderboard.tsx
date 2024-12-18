@@ -48,9 +48,9 @@ const Leaderboard = ({
 
   return variant === "week" ? (
     <div className="flex flex-col gap-2">
-      <div className="flex gap-4 flex-col md:flex-row py-4">
+      <div className="flex gap-4 flex-col md:flex-row lg:flex-nowrap md:flex-wrap  py-4 items-end">
         {/* 1st */}
-        <div className="flex items-center px-4 py-4 rounded-[0.5rem] border-border border-[1px] bg-primary text-primary-foreground w-full">
+        <div className="md:min-w-[280px] grow flex items-center px-4 py-5 rounded-[0.5rem] border-border border-[1px] bg-primary text-primary-foreground w-full h-fit">
           <span className="w-[3ch]">1</span>
           <div className="flex items-center justify-between gap-2 w-full">
             <div className="flex items-center">
@@ -69,7 +69,7 @@ const Leaderboard = ({
           </div>
         </div>
         {/* 2nd */}
-        <div className="flex items-center px-4 py-3 rounded-[0.5rem] border-border border-[1px] bg-secondary text-secondary-foreground w-full">
+        <div className="md:min-w-[280px] grow flex items-center px-4 py-4 rounded-[0.5rem] border-border border-[1px] bg-secondary text-secondary-foreground w-full h-fit">
           <span className="w-[3ch]">2</span>
           <div className="flex items-center justify-between gap-2 w-full">
             <div className="flex items-center">
@@ -86,7 +86,7 @@ const Leaderboard = ({
           </div>
         </div>
         {/* 3rd */}
-        <div className="flex items-center px-4 py-3 rounded-[0.5rem] border-primary border-[1px] bg-background w-full">
+        <div className="md:min-w-[280px] grow flex items-center px-4 py-3 rounded-[0.5rem] border-primary border-[1px] bg-background w-full h-fit">
           <span className="w-[3ch]">3</span>
           <div className="flex items-center justify-between gap-2 w-full">
             <div className="flex items-center">
@@ -116,9 +116,9 @@ const Leaderboard = ({
     </div>
   ) : (
     <div className="flex flex-col gap-2">
-      <div className="flex gap-4 flex-col md:flex-row py-4">
+      <div className="flex gap-4 flex-col md:flex-row lg:flex-nowrap md:flex-wrap py-4 items-end">
         {/* 1st */}
-        <div className="flex items-center px-4 py-4 rounded-[0.5rem] border-border border-[1px] bg-primary text-primary-foreground w-full">
+        <div className="md:min-w-[280px] grow flex items-center px-4 py-5 rounded-[0.5rem] border-border border-[1px] bg-primary text-primary-foreground w-full h-fit">
           <span className="w-[3ch]">1</span>
           <div className="flex items-center justify-between gap-2 w-full">
             <div className="flex items-center">
@@ -137,7 +137,7 @@ const Leaderboard = ({
           </div>
         </div>
         {/* 2nd */}
-        <div className="flex items-center px-4 py-3 rounded-[0.5rem] border-border border-[1px] bg-secondary text-secondary-foreground w-full">
+        <div className="md:min-w-[280px] grow flex items-center px-4 py-4 rounded-[0.5rem] border-border border-[1px] bg-secondary text-secondary-foreground w-full h-fit">
           <span className="w-[3ch]">2</span>
           <div className="flex items-center justify-between gap-2 w-full">
             <div className="flex items-center">
@@ -156,7 +156,7 @@ const Leaderboard = ({
           </div>
         </div>
         {/* 3rd */}
-        <div className="flex items-center px-4 py-3 rounded-[0.5rem] border-primary border-[1px] bg-background w-full">
+        <div className="md:min-w-[280px] grow flex items-center px-4 py-3 rounded-[0.5rem] border-primary border-[1px] bg-background w-full h-fit">
           <span className="w-[3ch]">3</span>
           <div className="flex items-center justify-between gap-2 w-full">
             <div className="flex items-center">

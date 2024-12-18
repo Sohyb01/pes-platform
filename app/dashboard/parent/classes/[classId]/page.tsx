@@ -1,15 +1,49 @@
 import * as React from "react";
-import { ChatLayout } from "@/components/pes-custom/platform-components/chat-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { exampleAssignments } from "@/lib/data";
+import {
+  exampleAssignments,
+  exampleExams,
+  exampleSolvedExams,
+} from "@/lib/data";
 import PESStudentAssignmentCard from "@/components/pes-custom/platform-components/PESStudentAssignmentCard";
+import PESExamCard from "@/components/pes-custom/platform-components/PESExamCard";
+import PESSolvedExamCard from "@/components/pes-custom/platform-components/PESSolvedExamCard";
 
 const page = () => {
   return (
     <div className="dashboard-tab-wrapper h-full">
       <div className="flex flex-wrap gap-8 h-full">
-        <div className="flex-1 min-w-[340px] grow max-h-full overflow-y-scroll bg-background border-border border-[1px] rounded-[1rem]">
-          <ChatLayout defaultLayout={undefined} navCollapsedSize={8} />
+        <div className="flex-1 min-w-[340px] grow max-h-full overflow-y-scroll rounded-[1rem]">
+          {/* Tabs */}
+          <Tabs defaultValue="Scheduled" className="w-full">
+            <div className="text-h4">Exams</div>
+            <TabsList className="flex gap-4 bg-transparent border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
+              <TabsTrigger className="tab-trigger" value="Scheduled">
+                Scheduled
+              </TabsTrigger>
+              <TabsTrigger className="tab-trigger" value="Past Exams">
+                Past Exams
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="Scheduled">
+              <div className="flex gap-4 flex-wrap">
+                {exampleExams
+                  .filter((e) => e.timestamp > new Date())
+                  .map((exam, idx) => {
+                    return <PESExamCard exam={exam} key={idx} />;
+                  })}
+              </div>
+            </TabsContent>
+            <TabsContent value="Past Exams">
+              <div className="flex gap-4 flex-wrap">
+                {exampleSolvedExams
+                  .filter((e) => e.timestamp <= new Date())
+                  .map((exam, idx) => {
+                    return <PESSolvedExamCard exam={exam} key={idx} />;
+                  })}
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
         <div className="flex-1 min-w-[340px] lg:max-w-[400px] grow h-fit lg:h-full flex-col gap-8">
           <Tabs defaultValue="due">

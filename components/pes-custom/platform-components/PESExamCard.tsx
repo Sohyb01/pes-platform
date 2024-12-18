@@ -1,15 +1,8 @@
 import React from "react";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
-import {
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { VariantSlideInUp } from "@/lib/motion-constants";
 import { TFormSchemaAddExam } from "@/lib/types-forms";
-import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
-import { Button } from "@/components/ui/button";
 import { getNameById } from "@/lib/getNameById";
 import { examplePrograms } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
@@ -22,7 +15,7 @@ const PESExamCard = ({ exam }: { exam: TFormSchemaAddExam }) => {
       variants={VariantSlideInUp}
       initial="initial"
       animate="animate"
-      className="w-full md:max-w-[352px] bg-background"
+      className="w-full md:max-w-[352px] bg-background rounded-[1rem]"
     >
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
@@ -44,12 +37,6 @@ const PESExamCard = ({ exam }: { exam: TFormSchemaAddExam }) => {
           {examplePrograms[0].program_name}
         </div>
       </CardContent>
-      <CardFooter>
-        <Button variant="outline" size="sm" className="w-full">
-          <JoinArrowIcon />
-          Revise Questions
-        </Button>
-      </CardFooter>
     </M_Card>
   );
 };

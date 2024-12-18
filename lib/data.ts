@@ -286,7 +286,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     program_id: "prog1234abcd5678", // Represents foreign key to Programs
     instructor_id: "instr9876efgh4321", // Optional UUID for instructor
     classbegindate: new Date("2024-01-10"),
-    classenddate: new Date("2024-06-10"),
+    classenddate: new Date("2025-06-10"),
     class_level: "Beginner",
   },
   {
@@ -297,7 +297,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     program_id: "prog5678ijkl9012",
     instructor_id: "instr1234mnop5678",
     classbegindate: new Date("2024-02-01"),
-    classenddate: new Date("2024-07-01"),
+    classenddate: new Date("2025-07-01"),
     class_level: "Intermediate",
   },
   {
@@ -719,7 +719,7 @@ export const exampleScheduleEvents: TFormSchemaDisplayScheduleEvent[] = [
     end: "2024-12-13 16:00",
     people_invited: ["instructor1", "student1", "parent1"],
     description: "This is a scheduled team meeting to discuss project updates.",
-    scheduler_id: "scheduler456",
+    scheduler_id: "instructor1",
   },
 
   {
@@ -730,7 +730,7 @@ export const exampleScheduleEvents: TFormSchemaDisplayScheduleEvent[] = [
     end: "2024-12-13 14:00",
     people_invited: ["instructor1", "student1", "parent1"],
     description: "Kickoff meeting for the new project launch.",
-    scheduler_id: "scheduler457",
+    scheduler_id: "instructor2",
   },
 
   {
@@ -741,7 +741,7 @@ export const exampleScheduleEvents: TFormSchemaDisplayScheduleEvent[] = [
     end: "2024-12-13 05:00",
     people_invited: ["instructor1", "student1", "parent1"],
     description: "Code review session for the upcoming release.",
-    scheduler_id: "scheduler458",
+    scheduler_id: "admin1",
   },
 ];
 

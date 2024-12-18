@@ -25,7 +25,7 @@ const ConfirmDialog = ({ body, toastMsg, action }: ConfirmDialogProps) => {
   return (
     <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
       <DialogTrigger className="flex-1" asChild>
-        <Button variant="destructive" size="sm">
+        <Button className="w-fit" variant="destructive" size="sm">
           Cancel
         </Button>
       </DialogTrigger>

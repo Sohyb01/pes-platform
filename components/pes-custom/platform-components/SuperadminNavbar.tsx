@@ -2,11 +2,8 @@
 "use client";
 
 import React from "react";
-// import { Button } from "@/components/ui/button";
-// import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { AlignLeft, Search } from "lucide-react";
-// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { EmployeeIcon } from "../icons/EmployeeIcon";
@@ -25,27 +22,8 @@ import { PartnershipIcon } from "../icons/PartnershipIcon";
 import { FranchiseIcon } from "../icons/FranchiseIcon";
 import { FinancesIcon } from "../icons/FinancesIcon";
 
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/components/ui/command";
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react";
 import { UserNav } from "./UserNav";
 import { PersonIcon } from "../icons/PersonIcon";
-import MessagesTab from "./MessagesTab";
 import NotificationsTab from "./NotificationsTab";
 import { ScheduleIcon } from "../icons/ScheduleIcon";
 import PESLogo from "@/components/pes-custom/PESLogo";
@@ -53,7 +31,6 @@ import PESLogo from "@/components/pes-custom/PESLogo";
 const SuperadminNavbar = () => {
   // Search functionality
   const [open, setOpen] = React.useState(false);
-  const [searchOpen, setSearchOpen] = React.useState(false);
 
   // Get the current pathname
   const pathname = usePathname();
@@ -66,7 +43,6 @@ const SuperadminNavbar = () => {
       <div className="nav-internal">
         <div className="flex gap-4">
           <PESLogo />
-          {/* Sheet */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               className={`${buttonVariants({
@@ -308,63 +284,9 @@ const SuperadminNavbar = () => {
               </div>
             </SheetContent>
           </Sheet>
-          {/* Searchbar */}
-          {/* <Button
-            className="hidden md:flex gap-2 text-muted-foreground w-[160px] justify-start"
-            variant={"outline"}
-            onClick={() => setSearchOpen((searchOpen) => !searchOpen)}
-          >
-            <Search size={16} />
-            Search...
-          </Button> */}
         </div>
-        {/* Search Dialog */}
-        {/* <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
-          <CommandInput placeholder="Type a command or search..." />
-          <CommandList>
-            <CommandEmpty>No results found.</CommandEmpty>
-            <CommandGroup heading="Suggestions">
-              <CommandItem>
-                <Calendar className="mr-2 h-4 w-4" />
-                <span>Calendar</span>
-              </CommandItem>
-              <CommandItem>
-                <Smile className="mr-2 h-4 w-4" />
-                <span>Search Emoji</span>
-              </CommandItem>
-              <CommandItem>
-                <Calculator className="mr-2 h-4 w-4" />
-                <span>Calculator</span>
-              </CommandItem>
-            </CommandGroup>
-            <CommandSeparator />
-            <CommandGroup heading="Settings">
-              <CommandItem>
-                <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
-                <CommandShortcut>⌘P</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <CreditCard className="mr-2 h-4 w-4" />
-                <span>Billing</span>
-                <CommandShortcut>⌘B</CommandShortcut>
-              </CommandItem>
-              <CommandItem>
-                <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
-                <CommandShortcut>⌘S</CommandShortcut>
-              </CommandItem>
-            </CommandGroup>
-          </CommandList>
-        </CommandDialog> */}
-        {/* Avatar */}
-        {/* <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar> */}
+
         <div className="flex gap-4">
-          {/* Messages */}
-          <MessagesTab />
           {/* Notifications */}
           <NotificationsTab />
           {/* User button */}
