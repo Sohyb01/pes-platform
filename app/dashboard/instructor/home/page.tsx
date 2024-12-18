@@ -50,10 +50,10 @@ const page = () => {
         </div>
         <div className="flex-1 min-w-[300px] max-w-[580px] grow h-fit flex flex-col gap-4">
           <p className="text-h3">Classes</p>
-          {exampleClasses.map((studentClass: TFormSchemaAddClass) => {
+          {exampleClasses.map((studentClass: TFormSchemaAddClass, idx) => {
             return (
               <Link
-                key={studentClass.id}
+                key={idx}
                 href={`classes/${studentClass.id}`}
                 className="bg-background rounded-[1rem] flex flex-col text-p_ui overflow-hidden border-border border-[1px] px-6"
               >

@@ -491,6 +491,9 @@ export const FormSchemaAddAssignment = z.object({
   assignment_description: z.string().optional(), // Optional text field
   class_id: z.string().trim().min(1, "Required"), // Required foreign key reference
   sent_by: z.string().trim().min(1, "Required"), // Required foreign key reference
+  max_grade: z.number(),
+  student_grade: z.number().optional(),
+  status: z.string(),
 });
 export type TFormSchemaAddAssignment = z.infer<typeof FormSchemaAddAssignment>;
 
