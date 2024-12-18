@@ -466,7 +466,8 @@ export const FormSchemaSolvedExam = FormSchemaAddExam.merge(
   z.object({
     questions: z.array(AnswerSchema),
     student_id: z.string(),
-    grade: z.number().optional(),
+    max_grade: z.number(),
+    student_grade: z.number().optional(),
   })
 );
 

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Gauge, Home, Phone, Trophy } from "lucide-react";
+import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 
 export const PARENT_SIDE_BAR_ITEMS = [
   {
@@ -19,6 +20,11 @@ export const PARENT_SIDE_BAR_ITEMS = [
     title: "Assignments",
     url: "assignments",
     icon: AssignmentIcon,
+  },
+  {
+    title: "Classes",
+    url: "classes",
+    icon: ClassIcon,
   },
   {
     title: "Quizzes",

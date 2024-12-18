@@ -4,6 +4,8 @@ import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components"
 import { VariantSlideInUp } from "@/lib/motion-constants";
 import Link from "next/link";
 import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle, X } from "lucide-react";
 
 const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
   return (
@@ -21,6 +23,19 @@ const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
         <div className="text-muted-foreground text-subtle w-full pt-2">
           <div>ENG. Ahmed Reda 👨‍🏫</div>
           <div>Creative Geniuses Program</div>
+        </div>
+
+        <div className="flex flex-col pt-4">
+          <div className="text-muted-foreground text-subtle">Assignments</div>
+          <div className="flex flex-wrap gap-2 gap-y-1 py-1">
+            <Badge className="flex items-center gap-2 bg-success hover:bg-success w-fit">
+              <CheckCircle size={16} className="stroke-success-foreground" />7
+              Submitted
+            </Badge>
+            <Badge className="flex items-center gap-2 bg-destructive hover:bg-destructive w-fit">
+              <X size={16} className="stroke-destructive-foreground" />3 Missed
+            </Badge>
+          </div>
         </div>
         {/* Progress & Dates & Class level*/}
         <div className="pt-6">

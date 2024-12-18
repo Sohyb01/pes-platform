@@ -10,7 +10,13 @@ import {
 } from "@/components/ui/card";
 
 import { VariantSlideInUp } from "@/lib/motion-constants";
-import { Calendar, ChartNoAxesColumn, Eye, TriangleAlert } from "lucide-react";
+import {
+  Calendar,
+  ChartNoAxesColumn,
+  CheckCircle,
+  Eye,
+  TriangleAlert,
+} from "lucide-react";
 import Link from "next/link";
 import AssignmentAttachmentsBadge from "./AssignmentAttachmentsBadge";
 import { getNameById } from "@/lib/getNameById";
@@ -18,6 +24,7 @@ import { XMarkIcon } from "../icons/XMarkIcon";
 import { DownloadIcon } from "../icons/DownloadIcon";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { format } from "date-fns";
 
 const PESStudentAssignmentCard = ({
   assignment,
@@ -78,19 +85,25 @@ const PESStudentAssignmentCard = ({
             Missed
           </Badge>
         ) : (
-          <div className="flex gap-4">
+          <div className="flex gap-2 gap-y-1">
             <Badge className="flex items-center gap-2">
               <Calendar size={16} />
-              Assigned 1/30
+              Due {format(assignment.assignment_duedate, "dd-LL")}
             </Badge>
-            <Badge variant="secondary" className="flex items-center gap-2">
-              <TriangleAlert size={16} />
-              Due 2 days
-            </Badge>
+            {assignment.status == "due" ? (
+              <Badge variant="secondary" className="flex items-center gap-2">
+                <TriangleAlert size={16} />2 days left
+              </Badge>
+            ) : (
+              <Badge className="bg-green-500 hover:bg-green-500 flex items-center gap-2">
+                <CheckCircle size={16} />
+                Submitted
+              </Badge>
+            )}
           </div>
         )}
       </CardContent>
-      {assignment.status !== "missed" && (
+      {assignment.status !== "missed" && assignment.status !== "due" && (
         <CardFooter className="mt-auto">
           <Link
             href={`#`}

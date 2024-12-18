@@ -1,7 +1,8 @@
-import { exampleExams } from "@/lib/data";
+import { exampleExams, exampleSolvedExams } from "@/lib/data";
 import { TFormSchemaAddExam } from "@/lib/types-forms";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PESExamCard from "@/components/pes-custom/platform-components/PESExamCard";
+import PESSolvedExamCard from "@/components/pes-custom/platform-components/PESSolvedExamCard";
 
 async function getData(): Promise<TFormSchemaAddExam[]> {
   // Fetch data from your API here.
@@ -39,10 +40,10 @@ export default async function ExampleDashboardPage() {
         </TabsContent>
         <TabsContent value="Past Exams">
           <div className="flex gap-4 flex-wrap">
-            {exampleExams
+            {exampleSolvedExams
               .filter((e) => e.timestamp <= new Date())
               .map((exam, idx) => {
-                return <PESExamCard exam={exam} key={idx} />;
+                return <PESSolvedExamCard exam={exam} key={idx} />;
               })}
           </div>
         </TabsContent>

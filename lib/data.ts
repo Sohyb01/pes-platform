@@ -329,6 +329,20 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     status: "reviewed",
   },
   {
+    name: "Homework 1",
+    assignment_id: "assignment1",
+    assignment_url: "www.google.com",
+    assignment_duedate: new Date("2025-04-01"),
+    assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
+    assignment_description:
+      "Complete the essay on environmental sustainability.",
+    class_id: "class1",
+    sent_by: "instructor1",
+    max_grade: 40,
+    student_grade: 18,
+    status: "reviewed",
+  },
+  {
     name: "Project A",
     assignment_id: "assignment2",
     assignment_url: undefined, // Optional field left undefined
@@ -342,6 +356,18 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     sent_by: "instructor1",
     max_grade: 20,
     status: "submitted",
+  },
+  {
+    name: "Project BB",
+    assignment_id: "assignment2",
+    assignment_url: undefined, // Optional field left undefined
+    assignment_duedate: new Date("2024-1-15"),
+    assignment_attachment: [{ name: "assignment2.py", size: 4500000 }], // Valid file attachment under 5MB
+    assignment_description: "Do homework.",
+    class_id: "class1",
+    sent_by: "instructor1",
+    max_grade: 20,
+    status: "due",
   },
   {
     name: "Assignment C",
@@ -428,7 +454,7 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
     quizname: "Midterm A",
     quiz_type: "Type B",
     class_field: "class1",
-    instructor_id: "123",
+    instructor_id: "instructor1",
     timestamp: new Date("2024-11-01T11:00:00Z"),
     questions: [
       {
@@ -456,25 +482,27 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
     ],
     duration: 120,
     student_id: "123",
+    max_grade: 100,
+    student_grade: 58,
   },
 ];
 
 export const exampleCertificates: TFormSchemaAddCertificate[] = [
   {
-    certificate_id: "cert-20241101-001", // Unique certificate ID
+    certificate_id: "cert1", // Unique certificate ID
     serial_number: "SN123456789",
     certificate_type: "Completion",
-    class_id: "class-4567-e89b-12d3", // Reference to a specific class
+    class_id: "class2", // Reference to a specific class
     student_name: "Alice Johnson",
-    student_id: "stu-1234-e56b-78a9", // Reference to a specific student
+    student_id: "student1", // Reference to a specific student
   },
   {
-    certificate_id: "cert-20241102-002",
+    certificate_id: "cert2",
     serial_number: "SN987654321",
     certificate_type: "Excellence in Science",
-    class_id: "class-1234-f67c-89a0",
+    class_id: "class1",
     student_name: "Michael Smith",
-    student_id: "stu-5678-d90e-12b3",
+    student_id: "student2",
   },
 ];
 
