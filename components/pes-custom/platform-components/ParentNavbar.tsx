@@ -146,7 +146,6 @@ const ParentNavbar = () => {
         </Avatar> */}
         <div className="flex gap-4">
           {/* Messages */}
-          <MessagesTab />
           {/* Notifications */}
           <NotificationsTab />
           {/* User button */}

@@ -363,7 +363,7 @@ export const exampleExams: TFormSchemaAddExam[] = [
     id: "exam1",
     quizname: "Midterm A",
     quiz_type: "Type B",
-    class_field: "abc",
+    class_field: "class1",
     instructor_id: "123",
     questions: [
       {
@@ -389,6 +389,36 @@ export const exampleExams: TFormSchemaAddExam[] = [
     timestamp: new Date("2024-11-01T11:00:00Z"),
     duration: 10, //Minutes
   },
+  {
+    id: "exam2",
+    quizname: "Final Exam ",
+    quiz_type: "Type A",
+    class_field: "class2",
+    instructor_id: "123",
+    questions: [
+      {
+        id: "q1",
+        type: "mcq",
+        questionText: "What is the capital of France?",
+        options: ["Madrid", "Berlin", "Paris", "Rome"],
+        correctAnswer: "Paris",
+      },
+      {
+        id: "q2",
+        type: "essay",
+        questionText: "Explain the theory of relativity.",
+        wordLimit: 500,
+      },
+      {
+        id: "q3",
+        type: "true_false",
+        questionText: "The Earth is flat.",
+        correctAnswer: false,
+      },
+    ],
+    timestamp: new Date("2025-11-01T11:00:00Z"),
+    duration: 10, //Minutes
+  },
 ];
 
 // Exam solutions
@@ -397,7 +427,7 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
     id: "solvedexam1",
     quizname: "Midterm A",
     quiz_type: "Type B",
-    class_field: "abc",
+    class_field: "class1",
     instructor_id: "123",
     timestamp: new Date("2024-11-01T11:00:00Z"),
     questions: [
