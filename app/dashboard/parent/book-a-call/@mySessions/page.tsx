@@ -78,7 +78,7 @@ const MySessions = () => {
                   </DialogHeader>
                   <DialogFooter className="gap-2 pt-2">
                     <Button variant="outline" size="sm">
-                      No, Don't cancel
+                      No, Don&apos;t cancel
                     </Button>
                     <Button variant="destructive" size="sm">
                       Yes, Cancel
