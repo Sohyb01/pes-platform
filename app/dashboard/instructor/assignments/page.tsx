@@ -120,7 +120,9 @@ export default async function AssignmentsPage() {
                             </span>
                           </p>
                         </div>
-                        <AssignmentAttachmentsBadge assignment={assignment} />
+                        <AssignmentAttachmentsBadge
+                          attachment={assignment.assignment_attachment}
+                        />
                       </div>
                     </CardContent>
                     <CardFooter className="mt-auto">
