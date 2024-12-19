@@ -1,13 +1,6 @@
 import * as React from "react";
 
-import { CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-
-import { Button } from "@/components/ui/button";
-import { JoinArrowIcon } from "@/components/pes-custom/icons/JoinArrowIcon";
 import { exampleExams } from "@/lib/data";
-import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
-import { VariantSlideInUp } from "@/lib/motion-constants";
-// import { CheckIcon } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PESExamCard from "@/components/pes-custom/platform-components/PESExamCard";
 
