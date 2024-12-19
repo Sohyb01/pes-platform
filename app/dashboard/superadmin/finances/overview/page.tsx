@@ -10,13 +10,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import {
-  BaggageClaim,
-  CircleUser,
-  DollarSign,
-  SquareUser,
-  User,
-} from "lucide-react";
+import { DollarSign } from "lucide-react";
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
 export default function EmployeesPage() {
@@ -154,7 +148,7 @@ export default function EmployeesPage() {
             </CardHeader>
             <CardContent className="text-detail">
               <p className="text-muted-foreground">
-                We've achieved 75% from our target
+                We&apos;ve achieved 75% from our target
               </p>
             </CardContent>
             <CardFooter>

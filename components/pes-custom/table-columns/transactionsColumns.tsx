@@ -2,11 +2,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import {
-  TFormSchemaAddBill,
-  TFormSchemaAddTransaction,
-} from "@/lib/types-forms";
-import { Badge } from "@/components/ui/badge";
+import { TFormSchemaAddTransaction } from "@/lib/types-forms";
 import {
   DropdownMenu,
   DropdownMenuContent,
