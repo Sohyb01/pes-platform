@@ -5,7 +5,7 @@ import React from "react";
 // import { Button } from "@/components/ui/button";
 // import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { AlignLeft, Home, Search } from "lucide-react";
+import { AlignLeft, Home } from "lucide-react";
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
@@ -16,24 +16,6 @@ import { StudentIcon } from "../icons/StudentIcon";
 import { AssignmentIcon } from "../icons/AssignmentIcon";
 import { usePathname } from "next/navigation";
 
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut,
-} from "@/components/ui/command";
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react";
 import { UserNav } from "./UserNav";
 import NotificationsTab from "./NotificationsTab";
 import { ScheduleIcon } from "../icons/ScheduleIcon";
@@ -42,7 +24,6 @@ import PESLogo from "@/components/pes-custom/PESLogo";
 const InstructorNavbar = () => {
   // Search functionality
   const [open, setOpen] = React.useState(false);
-  const [searchOpen, setSearchOpen] = React.useState(false);
 
   // Get the current pathname
   const pathname = usePathname();

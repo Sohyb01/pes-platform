@@ -1,65 +1,52 @@
-import PESAssignmentCard from "@/components/pes-custom/platform-components/PESStudentAssignmentCard";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import * as React from "react";
 import { exampleAssignments } from "@/lib/data";
-import { TFormSchemaAddAssignment } from "@/lib/types-forms";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import PESStudentAssignmentCard from "@/components/pes-custom/platform-components/PESStudentAssignmentCard";
 
-async function getData(): Promise<TFormSchemaAddAssignment[]> {
-  // Fetch data from your API here.
-  // Must fit the type definition to be inserted into the table
-  return exampleAssignments;
-}
-
-export default async function AssignmentsPage() {
-  const data = await getData();
-  console.log(data);
-
+const page = () => {
   return (
     <div className="dashboard-tab-wrapper">
-      <div className="flex justify-between">
-        <h3 className="text-h3">Assignments</h3>
-      </div>
-      <Tabs defaultValue="submitted" className="">
-        <TabsList className="flex justify-between bg-transparent border-b-[1px] border-b-muted rounded-none mb-4 h-fit">
-          <div className="flex gap-4">
-            <TabsTrigger className="tab-trigger" value="submitted">
-              Submitted
-            </TabsTrigger>
-            <TabsTrigger className="tab-trigger" value="reviewed">
-              Reviewed
-            </TabsTrigger>
-            <TabsTrigger className="tab-trigger" value="missed">
-              Missed
-            </TabsTrigger>
-          </div>
+      <h3 className="text-h3">Assignments</h3>
+      <Tabs defaultValue="Current Assignments" className="w-full">
+        <TabsList className="flex gap-4 bg-transparent border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
+          <TabsTrigger
+            className="tab-trigger data-[state=active]:bg-transparent"
+            value="Current Assignments"
+          >
+            Current Assignments
+          </TabsTrigger>
+          <TabsTrigger
+            className="tab-trigger data-[state=active]:bg-transparent"
+            value="Past Assignments"
+          >
+            Past Assignments
+          </TabsTrigger>
         </TabsList>
-        <TabsContent value="submitted">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {data
-              .filter((a) => a.status == "submitted")
+        <TabsContent value="Current Assignments">
+          <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
+            {exampleAssignments
+              .filter((a) => new Date() <= a.assignment_duedate)
               .map((assignment, idx) => {
-                return <PESAssignmentCard key={idx} assignment={assignment} />;
+                return (
+                  <PESStudentAssignmentCard assignment={assignment} key={idx} />
+                );
               })}
           </div>
         </TabsContent>
-        <TabsContent value="reviewed">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {data
-              .filter((a) => a.status == "reviewed")
+        <TabsContent value="Past Assignments">
+          <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
+            {exampleAssignments
+              .filter((a) => new Date() > a.assignment_duedate)
               .map((assignment, idx) => {
-                return <PESAssignmentCard key={idx} assignment={assignment} />;
-              })}
-          </div>
-        </TabsContent>
-        <TabsContent value="missed">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {data
-              .filter((a) => a.status == "missed")
-              .map((assignment, idx) => {
-                return <PESAssignmentCard key={idx} assignment={assignment} />;
+                return (
+                  <PESStudentAssignmentCard assignment={assignment} key={idx} />
+                );
               })}
           </div>
         </TabsContent>
       </Tabs>
     </div>
   );
-}
+};
+
+export default page;

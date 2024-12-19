@@ -39,18 +39,6 @@ export default async function AssignmentsPage() {
               History
             </TabsTrigger>
           </div>
-          {/* <div */}
-          {/*   className={cn( */}
-          {/*     inputVariants(), */}
-          {/*     "w-1/4 flex items-center gap-2 has-[:focus]:ring-2 has-[:focus]:ring-ring has-[:focus]:ring-offset-2" */}
-          {/*   )} */}
-          {/* > */}
-          {/*   <SearchIcon className="size-4" /> */}
-          {/*   <input */}
-          {/*     className="flex-1 bg-transparent outline-none w-full" */}
-          {/*     placeholder="Search..." */}
-          {/*   /> */}
-          {/* </div> */}
         </TabsList>
         <TabsContent value="active">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

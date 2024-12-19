@@ -74,7 +74,6 @@ const Achievements = async () => {
             </CardContent>
           </Card>
         </div>
-
         <div className="flex flex-col gap-4">
           <div className="text-h2">Badges 🥇</div>
           <Card className="bg-background flex-1">

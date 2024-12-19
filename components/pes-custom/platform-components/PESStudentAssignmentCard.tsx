@@ -1,3 +1,5 @@
+"use client";
+
 import { TFormSchemaAddAssignment } from "@/lib/types-forms";
 import React from "react";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
@@ -26,12 +28,14 @@ import { DownloadIcon } from "../icons/DownloadIcon";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { usePathname } from "next/navigation";
 
 const PESStudentAssignmentCard = ({
   assignment,
 }: {
   assignment: TFormSchemaAddAssignment;
 }) => {
+  const pathname = usePathname();
   return (
     <M_Card
       variants={VariantSlideInUp}
@@ -120,34 +124,36 @@ const PESStudentAssignmentCard = ({
           Download Submission
         </Link>
         {/* Submit */}
-        {assignment.assignment_duedate >= new Date() && (
-          <>
-            {assignment.status == "due" && (
-              <Link
-                href={`#`}
-                className={cn(
-                  buttonVariants({ variant: "default", size: "sm" }),
-                  "w-full"
+        {assignment.assignment_duedate >= new Date() &&
+          pathname.split("/").filter(Boolean)[1] !== "parent" && (
+            <>
+              {assignment.status == "due" && (
+                <Link
+                  href={`#`}
+                  className={cn(
+                    buttonVariants({ variant: "default", size: "sm" }),
+                    "w-full"
+                  )}
+                >
+                  <UploadIcon size={16} />
+                  Submit
+                </Link>
+              )}
+              {assignment.status == "submitted" &&
+                pathname.split("/").filter(Boolean)[1] !== "parent" && (
+                  <Link
+                    href={`#`}
+                    className={cn(
+                      buttonVariants({ variant: "outline", size: "sm" }),
+                      "w-full"
+                    )}
+                  >
+                    <UploadIcon size={16} />
+                    Re-submit
+                  </Link>
                 )}
-              >
-                <UploadIcon size={16} />
-                Submit
-              </Link>
-            )}
-            {assignment.status == "submitted" && (
-              <Link
-                href={`#`}
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "sm" }),
-                  "w-full"
-                )}
-              >
-                <UploadIcon size={16} />
-                Re-submit
-              </Link>
-            )}
-          </>
-        )}
+            </>
+          )}
       </CardFooter>
     </M_Card>
   );
