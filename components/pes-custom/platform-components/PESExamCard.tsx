@@ -4,7 +4,7 @@ import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { VariantSlideInUp } from "@/lib/motion-constants";
 import { TFormSchemaAddExam } from "@/lib/types-forms";
 import { getNameById } from "@/lib/getNameById";
-import { examplePrograms } from "@/lib/data";
+import { exampleClasses, examplePrograms } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
 import { Calendar } from "lucide-react";
 import { format } from "date-fns";
@@ -19,16 +19,20 @@ const PESExamCard = ({ exam }: { exam: TFormSchemaAddExam }) => {
     >
       <CardHeader>
         <CardTitle className="flex justify-between items-center">
-          <div>{exam.quizname} 📝</div>
+          <div>{exam.quizname}</div>
+          <div className="flex gap-2 items-center stroke-muted-foreground text-muted-foreground pb-2"></div>
           <Badge className="flex items-center gap-2" variant="outline">
             <Calendar size={16} />
-            {format(new Date(), "MM / dd")}
+            {format(exam.timestamp, "MMMM dd, hh:mm a")}
           </Badge>
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="text-muted-foreground text-subtle">
-          <div>{getNameById(exam.class_field, "Class")}</div>
+          <div className="flex gap-2 items-center stroke-muted-foreground text-muted-foreground pb-2">
+            <div>{getNameById(exam.class_field, "Class")}</div>
+            {exampleClasses[0].class_times}
+          </div>
           <div>
             {exam.questions.length} questions - {exam.duration} minutes
           </div>
