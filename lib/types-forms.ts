@@ -446,13 +446,13 @@ export type TFormSchemaAddExam = z.infer<typeof FormSchemaAddExam>;
 // Answers for solved exam object
 
 const MCQAnswerSchema = MCQQuestionSchema.extend({
-  studentAnswer: z.string().trim().min(1, "Required"),
+  studentAnswer: z.string().nullish(),
 });
 const EssayAnswerSchema = EssayQuestionSchema.extend({
-  studentAnswer: z.string().trim().min(1, "Required"),
+  studentAnswer: z.string().nullish(),
 });
 const TrueFalseAnswerSchema = TrueFalseQuestionSchema.extend({
-  studentAnswer: z.boolean(),
+  studentAnswer: z.boolean().nullish(),
 });
 
 const AnswerSchema = z.union([
@@ -466,7 +466,8 @@ export const FormSchemaSolvedExam = FormSchemaAddExam.merge(
   z.object({
     questions: z.array(AnswerSchema),
     student_id: z.string(),
-    grade: z.number().optional(),
+    max_grade: z.number(),
+    student_grade: z.number().optional(),
   })
 );
 
@@ -491,6 +492,9 @@ export const FormSchemaAddAssignment = z.object({
   assignment_description: z.string().optional(), // Optional text field
   class_id: z.string().trim().min(1, "Required"), // Required foreign key reference
   sent_by: z.string().trim().min(1, "Required"), // Required foreign key reference
+  max_grade: z.number(),
+  student_grade: z.number().optional(),
+  status: z.string(),
 });
 export type TFormSchemaAddAssignment = z.infer<typeof FormSchemaAddAssignment>;
 

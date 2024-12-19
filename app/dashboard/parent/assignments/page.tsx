@@ -1,102 +1,65 @@
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { exampleClasses } from "@/lib/data";
-import { format } from "date-fns";
-import {
-  ArrowRight,
-  CheckCircle,
-  Clock,
-  SquareCode,
-  User,
-  X,
-} from "lucide-react";
-import Link from "next/link";
+import PESAssignmentCard from "@/components/pes-custom/platform-components/PESStudentAssignmentCard";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { exampleAssignments } from "@/lib/data";
+import { TFormSchemaAddAssignment } from "@/lib/types-forms";
 
-const getClasses = async () => {
-  return exampleClasses;
-};
+async function getData(): Promise<TFormSchemaAddAssignment[]> {
+  // Fetch data from your API here.
+  // Must fit the type definition to be inserted into the table
+  return exampleAssignments;
+}
 
-const AssignmentsClasses = async () => {
-  const classes = await getClasses();
+export default async function AssignmentsPage() {
+  const data = await getData();
+  console.log(data);
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-h3">Choose a Course</h3>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {classes.map((classs) => (
-          <Link key={classs.id} href={`assignments/${classs.id}`}>
-            <Card className="bg-background group hover:border-primary transition">
-              <CardHeader>
-                <CardTitle className="text-h3 flex items-center justify-between">
-                  <span className="group-hover:text-primary transition">
-                    {classs.class_name}
-                  </span>
-                  <ArrowRight
-                    className="group-hover:translate-x-1 group-hover:stroke-primary transition"
-                    size={24}
-                  />
-                </CardTitle>
-                <CardDescription className="flex gap-2 items-center">
-                  <span className="inline-flex items-center gap-1 font-bold">
-                    <SquareCode size={16} />
-                    Program :
-                  </span>{" "}
-                  {classs.program_id}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="text-muted-foreground flex flex-col gap-2">
-                  <p className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1 font-bold">
-                      <User size={16} />
-                      Instructor :
-                    </span>{" "}
-                    {classs.instructor_id}
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <Clock size={16} />
-                    <p>
-                      <span className="font-semibold">From: </span>
-                      {format(classs.classbegindate, "MM/dd")}
-                    </p>
-                    <span>-</span>
-                    <p>
-                      <span className="font-semibold">To: </span>
-                      {format(classs.classenddate, "MM/dd")}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-              <CardFooter className="gap-4 flex-wrap">
-                <Badge className="gap-2 bg-success hover:bg-success/80">
-                  <CheckCircle size={16} />
-                  Completed
-                  <span className="font-bold">7</span>
-                </Badge>
-                <Badge className="gap-2 bg-secondary hover:bg-secondary/80">
-                  <Clock size={16} />
-                  Pending
-                  <span className="font-bold">3</span>
-                </Badge>
-                <Badge className="gap-2 bg-destructive hover:bg-destructive/80">
-                  <X size={16} />
-                  Missed
-                  <span className="font-bold">2</span>
-                </Badge>
-              </CardFooter>
-            </Card>
-          </Link>
-        ))}
+    <div className="dashboard-tab-wrapper">
+      <div className="flex justify-between">
+        <h3 className="text-h3">Assignments</h3>
       </div>
+      <Tabs defaultValue="submitted" className="">
+        <TabsList className="flex justify-between bg-transparent border-b-[1px] border-b-muted rounded-none mb-4 h-fit">
+          <div className="flex gap-4">
+            <TabsTrigger className="tab-trigger" value="submitted">
+              Submitted
+            </TabsTrigger>
+            <TabsTrigger className="tab-trigger" value="reviewed">
+              Reviewed
+            </TabsTrigger>
+            <TabsTrigger className="tab-trigger" value="missed">
+              Missed
+            </TabsTrigger>
+          </div>
+        </TabsList>
+        <TabsContent value="submitted">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {data
+              .filter((a) => a.status == "submitted")
+              .map((assignment, idx) => {
+                return <PESAssignmentCard key={idx} assignment={assignment} />;
+              })}
+          </div>
+        </TabsContent>
+        <TabsContent value="reviewed">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {data
+              .filter((a) => a.status == "reviewed")
+              .map((assignment, idx) => {
+                return <PESAssignmentCard key={idx} assignment={assignment} />;
+              })}
+          </div>
+        </TabsContent>
+        <TabsContent value="missed">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {data
+              .filter((a) => a.status == "missed")
+              .map((assignment, idx) => {
+                return <PESAssignmentCard key={idx} assignment={assignment} />;
+              })}
+          </div>
+        </TabsContent>
+      </Tabs>
     </div>
   );
-};
-
-export default AssignmentsClasses;
+}

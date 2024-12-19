@@ -104,6 +104,19 @@ const FormAddAssignment = ({
         />
         <FormField
           control={form.control}
+          name="max_grade"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Max Grade</FormLabel>
+              <FormControl>
+                <Input type="number" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="assignment_duedate"
           render={({ field }) => (
             <FormItem className="flex flex-col mt-auto">
@@ -147,32 +160,6 @@ const FormAddAssignment = ({
         />
         <FormField
           control={form.control}
-          name="assignment_attachment"
-          render={() => (
-            <FormItem>
-              <FormLabel>Attachment</FormLabel>
-              <FormControl>
-                <Input type="file" className="file-upload" {...cvRef} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="assignment_description"
-          render={({ field }) => (
-            <FormItem className="col-span-1 md:col-span-2">
-              <FormLabel>Assignment description</FormLabel>
-              <FormControl>
-                <Textarea className="resize-none" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
           name="class_id"
           render={({ field }) => (
             <FormItem>
@@ -196,6 +183,32 @@ const FormAddAssignment = ({
                   })}
                 </SelectContent>
               </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="assignment_attachment"
+          render={() => (
+            <FormItem>
+              <FormLabel>Attachment</FormLabel>
+              <FormControl>
+                <Input type="file" className="file-upload" {...cvRef} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="assignment_description"
+          render={({ field }) => (
+            <FormItem className="col-span-1 md:col-span-2">
+              <FormLabel>Assignment description</FormLabel>
+              <FormControl>
+                <Textarea className="resize-none" {...field} />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}

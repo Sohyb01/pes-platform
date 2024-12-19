@@ -57,7 +57,7 @@ const AssignmentAttachmentsBadge = ({
       </HoverCardContent>
     </HoverCard>
   ) : (
-    <div className="w-fit focus:outline-none flex gap-2 items-center stroke-foreground rounded-[3px] border p-2 text-badge font-semibold transition-colors border-border bg-shade opacity-50">
+    <div className="w-fit py-2 px-4 duration-100 border-[1px] rounded-[0.5rem] text-detail opacity-50">
       No attachments
     </div>
   );

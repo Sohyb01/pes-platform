@@ -47,8 +47,6 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
     control: form.control,
   });
 
-  const questionsArray = form.watch("questions");
-
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="pes-grid-form">
@@ -143,16 +141,16 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
           )
         )}
         <Button
-          type="submit"
-          disabled={questionsArray.some(
-            (question) =>
-              question.studentAnswer == null
-                ? true
-                : typeof question.studentAnswer == "string" &&
-                  question.studentAnswer.length < 1
-                ? true
-                : false // Checks for both null and undefined
-          )}
+          // disabled={questionsArray.some(
+          //   (question) =>
+          //     question.studentAnswer == null
+          //       ? true
+          //       : typeof question.studentAnswer == "string" &&
+          //         question.studentAnswer.length < 1
+          //       ? true
+          //       : false // Checks for both null and undefined
+          // )}
+          onClick={() => onSubmit(form.getValues())}
           className="md:col-span-2"
         >
           Finish exam

@@ -286,7 +286,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     program_id: "prog1234abcd5678", // Represents foreign key to Programs
     instructor_id: "instr9876efgh4321", // Optional UUID for instructor
     classbegindate: new Date("2024-01-10"),
-    classenddate: new Date("2024-06-10"),
+    classenddate: new Date("2025-06-10"),
     class_level: "Beginner",
   },
   {
@@ -297,7 +297,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     program_id: "prog5678ijkl9012",
     instructor_id: "instr1234mnop5678",
     classbegindate: new Date("2024-02-01"),
-    classenddate: new Date("2024-07-01"),
+    classenddate: new Date("2025-07-01"),
     class_level: "Intermediate",
   },
   {
@@ -318,25 +318,56 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     name: "Homework 1",
     assignment_id: "assignment1",
     assignment_url: "www.google.com",
-    assignment_duedate: new Date("2024-04-01"),
+    assignment_duedate: new Date("2025-04-01"),
     assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
     assignment_description:
       "Complete the essay on environmental sustainability.",
     class_id: "class1",
-    sent_by: "teacher1234xyz",
+    sent_by: "instructor1",
+    max_grade: 20,
+    student_grade: 15,
+    status: "reviewed",
+  },
+  {
+    name: "Homework 1",
+    assignment_id: "assignment1",
+    assignment_url: "www.google.com",
+    assignment_duedate: new Date("2025-04-01"),
+    assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
+    assignment_description:
+      "Complete the essay on environmental sustainability.",
+    class_id: "class1",
+    sent_by: "instructor1",
+    max_grade: 40,
+    student_grade: 18,
+    status: "reviewed",
   },
   {
     name: "Project A",
     assignment_id: "assignment2",
     assignment_url: undefined, // Optional field left undefined
-    assignment_duedate: new Date("2024-05-15"),
+    assignment_duedate: new Date("2024-12-18"),
     assignment_attachment: [
       { name: "requirements.docx", size: 4500000 },
       { name: "assignment2.py", size: 4500000 },
     ], // Valid file attachment under 5MB
     assignment_description: "Prepare a presentation on renewable energy.",
     class_id: "class2",
-    sent_by: "teacher5678abc",
+    sent_by: "instructor1",
+    max_grade: 20,
+    status: "submitted",
+  },
+  {
+    name: "Project BB",
+    assignment_id: "assignment2",
+    assignment_url: undefined, // Optional field left undefined
+    assignment_duedate: new Date("2024-1-15"),
+    assignment_attachment: [{ name: "assignment2.py", size: 4500000 }], // Valid file attachment under 5MB
+    assignment_description: "Do homework.",
+    class_id: "class1",
+    sent_by: "instructor1",
+    max_grade: 20,
+    status: "due",
   },
   {
     name: "Assignment C",
@@ -346,7 +377,10 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     assignment_attachment: null, // No file attached
     assignment_description: "Solve all exercises from Chapter 3.",
     class_id: "class3",
-    sent_by: "teacher7890def",
+    sent_by: "instructor2",
+    max_grade: 20,
+    student_grade: 5,
+    status: "missed",
   },
 ];
 
@@ -355,7 +389,7 @@ export const exampleExams: TFormSchemaAddExam[] = [
     id: "exam1",
     quizname: "Midterm A",
     quiz_type: "Type B",
-    class_field: "abc",
+    class_field: "class1",
     instructor_id: "123",
     questions: [
       {
@@ -381,6 +415,36 @@ export const exampleExams: TFormSchemaAddExam[] = [
     timestamp: new Date("2024-11-01T11:00:00Z"),
     duration: 10, //Minutes
   },
+  {
+    id: "exam2",
+    quizname: "Final Exam ",
+    quiz_type: "Type A",
+    class_field: "class2",
+    instructor_id: "123",
+    questions: [
+      {
+        id: "q1",
+        type: "mcq",
+        questionText: "What is the capital of France?",
+        options: ["Madrid", "Berlin", "Paris", "Rome"],
+        correctAnswer: "Paris",
+      },
+      {
+        id: "q2",
+        type: "essay",
+        questionText: "Explain the theory of relativity.",
+        wordLimit: 500,
+      },
+      {
+        id: "q3",
+        type: "true_false",
+        questionText: "The Earth is flat.",
+        correctAnswer: false,
+      },
+    ],
+    timestamp: new Date("2025-11-01T11:00:00Z"),
+    duration: 10, //Minutes
+  },
 ];
 
 // Exam solutions
@@ -389,8 +453,8 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
     id: "solvedexam1",
     quizname: "Midterm A",
     quiz_type: "Type B",
-    class_field: "abc",
-    instructor_id: "123",
+    class_field: "class1",
+    instructor_id: "instructor1",
     timestamp: new Date("2024-11-01T11:00:00Z"),
     questions: [
       {
@@ -418,25 +482,27 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
     ],
     duration: 120,
     student_id: "123",
+    max_grade: 100,
+    student_grade: 58,
   },
 ];
 
 export const exampleCertificates: TFormSchemaAddCertificate[] = [
   {
-    certificate_id: "cert-20241101-001", // Unique certificate ID
+    certificate_id: "cert1", // Unique certificate ID
     serial_number: "SN123456789",
     certificate_type: "Completion",
-    class_id: "class-4567-e89b-12d3", // Reference to a specific class
+    class_id: "class2", // Reference to a specific class
     student_name: "Alice Johnson",
-    student_id: "stu-1234-e56b-78a9", // Reference to a specific student
+    student_id: "student1", // Reference to a specific student
   },
   {
-    certificate_id: "cert-20241102-002",
+    certificate_id: "cert2",
     serial_number: "SN987654321",
     certificate_type: "Excellence in Science",
-    class_id: "class-1234-f67c-89a0",
+    class_id: "class1",
     student_name: "Michael Smith",
-    student_id: "stu-5678-d90e-12b3",
+    student_id: "student2",
   },
 ];
 
@@ -653,7 +719,7 @@ export const exampleScheduleEvents: TFormSchemaDisplayScheduleEvent[] = [
     end: "2024-12-13 16:00",
     people_invited: ["instructor1", "student1", "parent1"],
     description: "This is a scheduled team meeting to discuss project updates.",
-    scheduler_id: "scheduler456",
+    scheduler_id: "instructor1",
   },
 
   {
@@ -664,7 +730,7 @@ export const exampleScheduleEvents: TFormSchemaDisplayScheduleEvent[] = [
     end: "2024-12-13 14:00",
     people_invited: ["instructor1", "student1", "parent1"],
     description: "Kickoff meeting for the new project launch.",
-    scheduler_id: "scheduler457",
+    scheduler_id: "instructor2",
   },
 
   {
@@ -675,7 +741,7 @@ export const exampleScheduleEvents: TFormSchemaDisplayScheduleEvent[] = [
     end: "2024-12-13 05:00",
     people_invited: ["instructor1", "student1", "parent1"],
     description: "Code review session for the upcoming release.",
-    scheduler_id: "scheduler458",
+    scheduler_id: "admin1",
   },
 ];
 

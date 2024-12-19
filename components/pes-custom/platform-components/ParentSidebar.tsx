@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Gauge, Home, Phone, Trophy } from "lucide-react";
+import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 
 export const PARENT_SIDE_BAR_ITEMS = [
   {
@@ -19,6 +20,11 @@ export const PARENT_SIDE_BAR_ITEMS = [
     title: "Assignments",
     url: "assignments",
     icon: AssignmentIcon,
+  },
+  {
+    title: "Classes",
+    url: "classes",
+    icon: ClassIcon,
   },
   {
     title: "Quizzes",
@@ -51,7 +57,7 @@ const InstructorSidebar = () => {
   // Get the current pathname
   const pathname = usePathname();
   // Split the pathname and get the last segment
-  const lastSegment = pathname.split("/").filter(Boolean).pop();
+  const lastSegment = pathname.split("/").filter(Boolean)[2];
 
   return (
     <nav className="bg-background hidden lg:flex p-8 gap-8 flex-col items-start w-full max-w-[280px] dashboard-sizing border-r border-border overflow-scroll">

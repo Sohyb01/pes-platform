@@ -14,7 +14,7 @@ const page = async () => {
 
   return (
     <div className="dashboard-tab-wrapper">
-      <h3 className="text-h3">Your Classes 📚</h3>
+      <h3 className="text-h3">Omar&apos;s Classes</h3>
       {/* Tabs */}
       <Tabs defaultValue="Active Classes" className="w-full">
         <TabsList className="flex gap-4 bg-transparent border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
@@ -27,20 +27,16 @@ const page = async () => {
         </TabsList>
         <TabsContent value="Active Classes">
           <div className="flex gap-4 flex-wrap">
-            {exampleClasses
-              .filter((c) => new Date() <= c.classenddate)
-              .map((pesClass, idx) => {
-                return <PESClassCard pesClass={pesClass} key={idx} />;
-              })}
+            {exampleClasses.map((pesClass, idx) => {
+              return <PESClassCard pesClass={pesClass} key={idx} />;
+            })}
           </div>
         </TabsContent>
         <TabsContent value="Past Classes">
           <div className="flex gap-4 flex-wrap">
-            {exampleClasses
-              .filter((c) => new Date() > c.classenddate)
-              .map((pesClass, idx) => {
-                return <PESClassCard pesClass={pesClass} key={idx} />;
-              })}
+            {exampleClasses.map((pesClass, idx) => {
+              return <PESClassCard pesClass={pesClass} key={idx} />;
+            })}
           </div>
         </TabsContent>
       </Tabs>

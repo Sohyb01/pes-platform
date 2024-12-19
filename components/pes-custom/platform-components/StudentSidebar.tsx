@@ -12,7 +12,7 @@ const StudentSidebar = () => {
   const lastSegment = pathname.split("/").filter(Boolean)[2];
   return (
     <nav className="hidden lg:flex rounded-[1rem] p-4 md:p-6 gap-8 flex-col items-start w-full max-w-[280px] h-full bg-background">
-      {/* <p className="text-h3">Hello, Omar!</p> */}
+      <p className="text-h3">Hello, Omar!</p>
       {/* All Platform Link Groups */}
       <div className="sidebar-groups-container">
         {/* Platform Group Title & Links */}
@@ -82,13 +82,13 @@ const StudentSidebar = () => {
                 🏅 Leaderboard
               </Button>
             </Link>
-            <Link href="/dashboard/student/certificates">
+            <Link href="/dashboard/student/achievements">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "certificates" ? "default" : "ghost"}
+                variant={lastSegment == "achievements" ? "default" : "ghost"}
                 size="lg"
               >
-                📜 My Certificates
+                ⭐ Achievements
               </Button>
             </Link>
           </div>
