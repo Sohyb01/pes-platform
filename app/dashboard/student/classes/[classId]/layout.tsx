@@ -5,8 +5,11 @@ import { ReactNode } from "react";
 const ClassLayout = ({
   overview,
   chat,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   exams,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   assignments,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   material,
 }: {
   overview: ReactNode;
@@ -18,7 +21,7 @@ const ClassLayout = ({
   return (
     <section className="relative dashboard-tab-wrapper">
       <h2 className="text-h2">Your Classes 📚</h2>
-      <Tabs defaultValue="overview" className="md:block">
+      <Tabs defaultValue="chat" className="md:block">
         {/* Medium Screens TabList */}
         <TabsList className="hidden md:flex bg-transparent gap-4 border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
           <TabsTrigger

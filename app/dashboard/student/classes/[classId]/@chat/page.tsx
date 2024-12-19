@@ -1,5 +1,7 @@
-const ClassChat = () => {
-  return <div>Class Chat</div>;
+import ClassChatLayout from "./_chat/chat-layout";
+
+const ClassChatRoom = () => {
+  return <ClassChatLayout />;
 };
 
-export default ClassChat;
+export default ClassChatRoom;

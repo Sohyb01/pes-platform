@@ -8,13 +8,13 @@ import {
   TFormSchemaAddInstructor,
   TFormSchemaAddLog,
   TFormSchemaAddMaterial,
-  TFormSchemaAddSession,
   TFormSchemaAddParent,
   TFormSchemaAddProgram,
   TFormSchemaAddProject,
   TFormSchemaAddReview,
   TFormSchemaAddStudent,
   TFormSchemaDisplayScheduleEvent,
+  TFormSchemaExamSubmition,
   TFormSchemaPendingFranchise,
   TFormSchemaPendingPartnership,
   TFormSchemaSolvedExam,
@@ -283,7 +283,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     id: "class1", // Optional field
     class_name: "Advanced Mathematics ➗", //
     class_fees: 150.0, //
-    program_id: "prog1", // Represents foreign key to Programs
+    program_id: "prog1234abcd5678", // Represents foreign key to Programs
     instructor_id: "instr9876efgh4321", // Optional UUID for instructor
     classbegindate: new Date("2024-01-10"),
     classenddate: new Date("2025-06-10"),
@@ -294,7 +294,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     id: "class2",
     class_name: "Introduction to Computer Science 🖥️",
     class_fees: 200.0,
-    program_id: "prog2",
+    program_id: "prog5678ijkl9012",
     instructor_id: "instr1234mnop5678",
     classbegindate: new Date("2024-02-01"),
     classenddate: new Date("2025-07-01"),
@@ -305,7 +305,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     id: "class3",
     class_name: "Creative Writing Workshop ✍️",
     class_fees: 75.5,
-    program_id: "prog2",
+    program_id: "prog3456qrst7890",
     // `instructor_id` is omitted as it's optional
     classbegindate: new Date("2024-03-15"),
     classenddate: new Date("2024-05-15"),
@@ -315,10 +315,10 @@ export const exampleClasses: TFormSchemaAddClass[] = [
 
 export const exampleAssignments: TFormSchemaAddAssignment[] = [
   {
-    name: "Homework X",
+    name: "Homework 1",
     assignment_id: "assignment1",
     assignment_url: "www.google.com",
-    assignment_duedate: new Date("2024-04-01"),
+    assignment_duedate: new Date("2025-04-01"),
     assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
     assignment_description:
       "Complete the essay on environmental sustainability.",
@@ -346,7 +346,7 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     name: "Project A",
     assignment_id: "assignment2",
     assignment_url: undefined, // Optional field left undefined
-    assignment_duedate: new Date("2025-12-18"),
+    assignment_duedate: new Date("2024-12-18"),
     assignment_attachment: [
       { name: "requirements.docx", size: 4500000 },
       { name: "assignment2.py", size: 4500000 },
@@ -361,7 +361,7 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     name: "Project BB",
     assignment_id: "assignment2",
     assignment_url: undefined, // Optional field left undefined
-    assignment_duedate: new Date("2025-6-15"),
+    assignment_duedate: new Date("2024-1-15"),
     assignment_attachment: [{ name: "assignment2.py", size: 4500000 }], // Valid file attachment under 5MB
     assignment_description: "Do homework.",
     class_id: "class1",
@@ -398,18 +398,21 @@ export const exampleExams: TFormSchemaAddExam[] = [
         questionText: "What is the capital of France?",
         options: ["Madrid", "Berlin", "Paris", "Rome"],
         correctAnswer: "Paris",
+        score: 2,
       },
       {
         id: "q2",
         type: "essay",
         questionText: "Explain the theory of relativity.",
         wordLimit: 500,
+        score: 1,
       },
       {
         id: "q3",
         type: "true_false",
         questionText: "The Earth is flat.",
         correctAnswer: false,
+        score: 1,
       },
     ],
     timestamp: new Date("2024-11-01T11:00:00Z"),
@@ -428,22 +431,83 @@ export const exampleExams: TFormSchemaAddExam[] = [
         questionText: "What is the capital of France?",
         options: ["Madrid", "Berlin", "Paris", "Rome"],
         correctAnswer: "Paris",
+        score: 2,
       },
       {
         id: "q2",
         type: "essay",
         questionText: "Explain the theory of relativity.",
         wordLimit: 500,
+        score: 1,
       },
       {
         id: "q3",
         type: "true_false",
         questionText: "The Earth is flat.",
         correctAnswer: false,
+        score: 2,
       },
     ],
     timestamp: new Date("2025-11-01T11:00:00Z"),
     duration: 10, //Minutes
+  },
+];
+
+// Exam Submition
+export const exampleExamSubmitions: TFormSchemaExamSubmition[] = [
+  {
+    solved_exam_id: "3317820c-e2dd-4d02-8c1b-d5dba94935ac",
+    total_score: 2,
+    evaluation: [
+      {
+        question_id: "df6c03d1-ef63-4a92-99af-2e383e79868f",
+        student_answer: "5",
+        correct_answer: "4",
+        is_correct: false,
+        score: 0,
+        status: "evaluated",
+      },
+      {
+        question_id: "34acee87-8fe1-4abc-b053-372064f21a70",
+        student_answer: "Madrid",
+        correct_answer: "Paris",
+        is_correct: false,
+        score: 0,
+        status: "evaluated",
+      },
+      {
+        question_id: "ac0f891c-3917-405c-929e-a29d77757034",
+        student_answer: "Water",
+        correct_answer: null,
+        is_correct: null,
+        score: null,
+        status: "pending",
+      },
+      {
+        question_id: "cc0c0d3f-d8df-4fa5-aa32-a3d0b5fd746d",
+        student_answer: "Relative",
+        correct_answer: null,
+        is_correct: null,
+        score: null,
+        status: "pending",
+      },
+      {
+        question_id: "90623ec8-6b08-4060-bbe9-004f6645d5dd",
+        student_answer: true,
+        correct_answer: true,
+        is_correct: true,
+        score: 1,
+        status: "evaluated",
+      },
+      {
+        question_id: "feb403b9-e85e-4b77-8f21-d05af4bdf681",
+        student_answer: true,
+        correct_answer: false,
+        is_correct: true,
+        score: 1,
+        status: "evaluated",
+      },
+    ],
   },
 ];
 
@@ -454,7 +518,6 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
     quizname: "Midterm A",
     quiz_type: "Type B",
     class_field: "class1",
-    instructor_id: "instructor1",
     timestamp: new Date("2024-11-01T11:00:00Z"),
     questions: [
       {
@@ -464,6 +527,7 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
         options: ["Berlin", "Madrid", "Paris", "Rome"],
         correctAnswer: "Paris",
         studentAnswer: "Berlin",
+        score: 2,
       },
       {
         id: "q2",
@@ -471,6 +535,7 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
         questionText: "Explain the theory of relativity.",
         wordLimit: 500,
         studentAnswer: "Good morning 123",
+        score: 1,
       },
       {
         id: "q3",
@@ -478,12 +543,40 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
         questionText: "The Earth is flat.",
         correctAnswer: false,
         studentAnswer: false,
+        score: 2,
       },
     ],
+
+    evaluation: [
+      {
+        question_id: "q1",
+        student_answer: "Madrid",
+        correct_answer: "Paris",
+        is_correct: false,
+        score: 0,
+        status: "evaluated",
+      },
+      {
+        question_id: "q2",
+        student_answer: "Relativity theory is about relativity duh...",
+        correct_answer: null,
+        is_correct: null,
+        score: null,
+        status: "pending",
+      },
+      {
+        question_id: "q3",
+        student_answer: true, // yup the earth is actually flat don't let the government trick u
+        correct_answer: false,
+        is_correct: true,
+        score: 0,
+        status: "evaluated",
+      },
+    ],
+
     duration: 120,
     student_id: "123",
-    max_grade: 100,
-    student_grade: 58,
+    total_score: 0,
   },
 ];
 
@@ -542,21 +635,18 @@ export const exampleLogs: TFormSchemaAddLog[] = [
 
 export const exampleMaterials: TFormSchemaAddMaterial[] = [
   {
-    name: "Web development starter kit",
-    id: "material1",
-    attachment: [
-      { name: "example.js", size: 3000000 },
-      { name: "starter.py", size: 3000000 },
-    ], // Another valid file within 5MB limit
-    session_id: "session1",
+    name: "Material 1",
+    id: "material-1234-f67c-89a0",
+    attachment: [{ name: "lesson1.py", size: 4500000 }], // Example file within 5MB limit
+    session_id: "123e4567-e89b-12d3-a456-426614174000",
     class_field: "class1",
     instructor_id: "instructor1",
   },
   {
-    name: "Final course materials",
-    id: "material2",
+    name: "Material 2",
+    id: "material-1234-f67c-89a0",
     attachment: [{ name: "example.js", size: 3000000 }], // Another valid file within 5MB limit
-    session_id: "session2",
+    session_id: "123e4567-e89b-12d3-a456-426614174002",
     class_field: "class2",
     instructor_id: "instructor1",
   },
@@ -670,42 +760,24 @@ export const examplePendingFranchises: TFormSchemaPendingFranchise[] = [
   },
 ];
 
-export const exampleSessions: TFormSchemaAddSession[] = [
+export const exampleMeetings = [
   {
-    sessionid: "session1",
+    sessionid: "session123",
     playback_start_time: "2024-11-01T10:00:00Z",
     playback_end_timestamp: "2024-11-01T11:00:00Z",
     session_time: "2024-11-01T09:00:00Z",
     deviceid: "device456",
-    admin_id: "admin1",
-    user_id: "instructor1",
-    name: "Constants & Variables",
-    class_id: "class1",
-    program_id: "prog1",
+    admin_id: "admin789",
+    user_id: "user012",
   },
   {
-    sessionid: "session2",
+    sessionid: "session124",
     playback_start_time: "2024-12-02T10:00:00Z",
     playback_end_timestamp: "2024-12-02T10:00:00Z",
     session_time: "2024-11-02T15:30:00Z",
     deviceid: "device456",
-    admin_id: "admin1",
-    user_id: "instructor2",
-    name: "Loops (for, while)",
-    class_id: "class2",
-    program_id: "prog2",
-  },
-  {
-    sessionid: "session3",
-    playback_start_time: "2024-12-02T10:00:00Z",
-    playback_end_timestamp: "2024-12-02T10:00:00Z",
-    session_time: "2024-11-02T15:30:00Z",
-    deviceid: "device456",
-    admin_id: "admin1",
-    user_id: "instructor2",
-    name: "Web Development P1",
-    class_id: "class2",
-    program_id: "prog2",
+    admin_id: "admin789",
+    user_id: "user345",
   },
 ];
 
@@ -768,7 +840,7 @@ export const exampleScheduleEvents: TFormSchemaDisplayScheduleEvent[] = [
 
 export const examplePrograms: TFormSchemaAddProgram[] = [
   {
-    program_id: "prog1", // Optional, included
+    program_id: "program123", // Optional, included
     program_name: "Advanced Programming Bootcamp",
     program_levels: [
       {
@@ -812,7 +884,7 @@ export const examplePrograms: TFormSchemaAddProgram[] = [
     start_date: new Date("2024-11-01"),
   },
   {
-    program_id: "prog2", // Optional, included
+    program_id: "program456", // Optional, included
     program_name: "Data Science Essentials",
     program_levels: [
       {
@@ -892,6 +964,15 @@ export const exampleConversations = [
     conversation_id: "conv3",
     conversation_name: "Computer Fundamentals",
     host_id: "user789",
+  },
+];
+
+export const exampleConversationMapping = [
+  {
+    id: "1",
+    conversation_id: "conv1",
+    user_id: "user123",
+    class_id: "class1",
   },
 ];
 

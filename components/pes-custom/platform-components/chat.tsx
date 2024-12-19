@@ -22,7 +22,6 @@ export function Chat({ selectedUser, isMobile }: ChatProps) {
   return (
     <div className="flex flex-col justify-between w-full overflow-y-scroll h-full max-h-[100%]">
       <ChatTopbar selectedUser={selectedUser} />
-
       <ChatList
         messages={messagesState}
         selectedUser={selectedUser}
