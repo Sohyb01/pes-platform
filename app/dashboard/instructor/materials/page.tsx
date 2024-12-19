@@ -11,7 +11,7 @@ import { VariantSlideInUp } from "@/lib/motion-constants";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { PenIcon } from "@/components/pes-custom/icons/PenIcon";
-import { DownloadIcon } from "lucide-react";
+import { DownloadIcon, PlusIcon } from "lucide-react";
 import {
   HoverCard,
   HoverCardContent,
@@ -34,6 +34,16 @@ export default async function EmployeesPage() {
     <div className="dashboard-tab-wrapper">
       <div className="flex w-full justify-between">
         <h3 className="text-h3">Materials</h3>
+        <Link
+          href="materials/new"
+          className={`${buttonVariants({
+            variant: "outline",
+            size: "sm",
+          })} flex gap-1 items-center w-fit`}
+        >
+          <PlusIcon size={16} />
+          Add
+        </Link>
       </div>
       {/* Tabs */}
       <Tabs defaultValue="PES Materials" className="w-full">
