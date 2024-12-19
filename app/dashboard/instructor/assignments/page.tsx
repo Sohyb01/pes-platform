@@ -1,6 +1,6 @@
 import { ClassIcon } from "@/components/pes-custom/icons/ClassIcon";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
-import AssignmentAttachmentsBadge from "@/components/pes-custom/platform-components/AssignmentAttachmentsBadge";
+import AssignmentAttachmentsBadge from "@/components/pes-custom/platform-components/AttachmentsBadge";
 import PESInstructorAssignmentCard from "@/components/pes-custom/platform-components/PESInstructorAssignmentCard";
 import { buttonVariants } from "@/components/ui/button";
 import {
@@ -120,7 +120,9 @@ export default async function AssignmentsPage() {
                             </span>
                           </p>
                         </div>
-                        <AssignmentAttachmentsBadge assignment={assignment} />
+                        <AssignmentAttachmentsBadge
+                          attachment={assignment.assignment_attachment}
+                        />
                       </div>
                     </CardContent>
                     <CardFooter className="mt-auto">

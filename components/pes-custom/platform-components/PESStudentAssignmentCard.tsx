@@ -16,9 +16,10 @@ import {
   CheckCircle,
   Eye,
   TriangleAlert,
+  UploadIcon,
 } from "lucide-react";
 import Link from "next/link";
-import AssignmentAttachmentsBadge from "./AssignmentAttachmentsBadge";
+import AssignmentAttachmentsBadge from "./AttachmentsBadge";
 import { getNameById } from "@/lib/getNameById";
 import { XMarkIcon } from "../icons/XMarkIcon";
 import { DownloadIcon } from "../icons/DownloadIcon";
@@ -36,7 +37,7 @@ const PESStudentAssignmentCard = ({
       variants={VariantSlideInUp}
       initial="initial"
       animate="animate"
-      className="bg-background w-full rounded-[1rem]"
+      className="bg-background w-full rounded-[1rem] md:min-w-[300px] max-w-[480px]"
     >
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
@@ -58,7 +59,7 @@ const PESStudentAssignmentCard = ({
             assignment.status !== "missed" && (
               <Badge variant="outline" className="flex items-center gap-2">
                 <Eye size={16} />
-                <span className="text-nowrap">Under Review</span>
+                <span className="text-nowrap">Awaiting Review</span>
               </Badge>
             )
           )}
@@ -77,46 +78,77 @@ const PESStudentAssignmentCard = ({
           </p>
         </div>
 
-        <AssignmentAttachmentsBadge assignment={assignment} />
+        <AssignmentAttachmentsBadge
+          attachment={assignment.assignment_attachment}
+        />
 
-        {assignment.status == "missed" ? (
-          <Badge className="flex items-center gap-2 bg-destructive hover:bg-destructive w-fit">
-            <XMarkIcon className="stroke-destructive-foreground" />
-            Missed
+        <div className="flex gap-2 gap-y-1">
+          <Badge className="flex items-center gap-2">
+            <Calendar size={16} />
+            Due {format(assignment.assignment_duedate, "MMMM dd, hh:mm a")}
           </Badge>
-        ) : (
-          <div className="flex gap-2 gap-y-1">
-            <Badge className="flex items-center gap-2">
-              <Calendar size={16} />
-              Due {format(assignment.assignment_duedate, "dd-LL")}
+          {assignment.status == "due" && (
+            <Badge variant="secondary" className="flex items-center gap-2">
+              <TriangleAlert size={16} />2 days left
             </Badge>
-            {assignment.status == "due" ? (
-              <Badge variant="secondary" className="flex items-center gap-2">
-                <TriangleAlert size={16} />2 days left
-              </Badge>
-            ) : (
-              <Badge className="bg-green-500 hover:bg-green-500 flex items-center gap-2">
-                <CheckCircle size={16} />
-                Submitted
-              </Badge>
-            )}
-          </div>
-        )}
+          )}
+          {(assignment.status == "submitted" ||
+            assignment.status == "reviewed") && (
+            <Badge className="bg-green-500 hover:bg-green-500 flex items-center gap-2">
+              <CheckCircle size={16} />
+              Submitted
+            </Badge>
+          )}
+          {assignment.status == "missed" && (
+            <Badge className="flex items-center gap-2 bg-destructive hover:bg-destructive w-fit">
+              <XMarkIcon className="stroke-destructive-foreground" />
+              Missed
+            </Badge>
+          )}
+        </div>
       </CardContent>
-      {assignment.status !== "missed" && assignment.status !== "due" && (
-        <CardFooter className="mt-auto">
-          <Link
-            href={`#`}
-            className={cn(
-              buttonVariants({ variant: "outline", size: "sm" }),
-              "w-full"
+      <CardFooter className="mt-auto flex gap-2">
+        {/* Download submission */}
+        <Link
+          href={`#`}
+          className={cn(
+            buttonVariants({ variant: "outline", size: "sm" }),
+            "w-full"
+          )}
+        >
+          <DownloadIcon />
+          Download Submission
+        </Link>
+        {/* Submit */}
+        {assignment.assignment_duedate >= new Date() && (
+          <>
+            {assignment.status == "due" && (
+              <Link
+                href={`#`}
+                className={cn(
+                  buttonVariants({ variant: "default", size: "sm" }),
+                  "w-full"
+                )}
+              >
+                <UploadIcon size={16} />
+                Submit
+              </Link>
             )}
-          >
-            <DownloadIcon />
-            Download Submission
-          </Link>
-        </CardFooter>
-      )}
+            {assignment.status == "submitted" && (
+              <Link
+                href={`#`}
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "sm" }),
+                  "w-full"
+                )}
+              >
+                <UploadIcon size={16} />
+                Re-submit
+              </Link>
+            )}
+          </>
+        )}
+      </CardFooter>
     </M_Card>
   );
 };
