@@ -63,29 +63,29 @@ const ParentHome = async () => {
           </div>
         </div>
         {/* Schedule */}
-        <div className="flex w-full min-w-[300px] lg:max-w-[500px] flex-col gap-4 grow flex-1">
+        <div className="flex w-full min-w-[90%] md:min-w-[300px] lg:max-w-[400px] flex-col gap-4 grow flex-1">
           <h3 className="text-h3">Schedule</h3>
           <div className="flex-1">
             <PESCalendar />
           </div>
         </div>
         {/* Performance summary */}
-        <div className="flex-1 min-w-[300px] max-w-[700px] flex flex-col gap-4 w-full">
+        <div className="flex-1 md:min-w-[540px] max-w-[1000px] lg:max-w-[700px] flex flex-col gap-4 w-full">
           <h3 className="text-h3">Perfomance Summary</h3>
           <div className="grid grid-cols-2 grid-flow-row w-full gap-4">
-            <div className="w-full flex flex-col items-center gap-2 p-4 border-border border-[1px] bg-background rounded-[1rem] h-full aspect-video">
+            <div className="col-span-2 md:col-span-1 w-full flex flex-col items-center gap-2 p-4 border-border border-[1px] bg-background rounded-[1rem] h-full aspect-video">
               <h4 className="text-center text-p_ui text-foreground">
                 Grades history
               </h4>
               <GradesAreaChart className="w-full" />
             </div>
-            <div className="w-full flex flex-col items-center gap-2 p-4 border-border border-[1px] bg-background rounded-[1rem] h-full aspect-video">
+            <div className="col-span-2 md:col-span-1 w-full flex flex-col items-center gap-2 p-4 border-border border-[1px] bg-background rounded-[1rem] h-full aspect-video">
               <h4 className="text-center text-p_ui text-card-foreground">
                 Attendance
               </h4>
               <div className="aspect-square h-full grid place-items-center">
                 <CircleProgress
-                  className="aspect-square flex-1 grow"
+                  className="aspect-square w-full h-full"
                   value={87}
                 />
               </div>
