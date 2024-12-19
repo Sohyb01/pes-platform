@@ -27,16 +27,20 @@ const page = async () => {
         </TabsList>
         <TabsContent value="Active Classes">
           <div className="flex gap-4 flex-wrap">
-            {exampleClasses.map((pesClass, idx) => {
-              return <PESClassCard pesClass={pesClass} key={idx} />;
-            })}
+            {exampleClasses
+              .filter((c) => new Date() <= c.classenddate)
+              .map((pesClass, idx) => {
+                return <PESClassCard pesClass={pesClass} key={idx} />;
+              })}
           </div>
         </TabsContent>
         <TabsContent value="Past Classes">
           <div className="flex gap-4 flex-wrap">
-            {exampleClasses.map((pesClass, idx) => {
-              return <PESClassCard pesClass={pesClass} key={idx} />;
-            })}
+            {exampleClasses
+              .filter((c) => new Date() > c.classenddate)
+              .map((pesClass, idx) => {
+                return <PESClassCard pesClass={pesClass} key={idx} />;
+              })}
           </div>
         </TabsContent>
       </Tabs>
