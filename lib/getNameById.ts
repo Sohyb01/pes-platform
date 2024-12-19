@@ -5,12 +5,20 @@ import {
   exampleInstructors,
   exampleMaterials,
   examplePrograms,
+  exampleSessions,
   exampleStudents,
 } from "./data";
 
 export const getNameById = (
   id: string,
-  type: "Employee" | "Student" | "Material" | "Class" | "Program" | "Exam"
+  type:
+    | "Employee"
+    | "Student"
+    | "Material"
+    | "Class"
+    | "Program"
+    | "Exam"
+    | "Session"
 ) => {
   switch (type) {
     case "Employee":
@@ -27,5 +35,7 @@ export const getNameById = (
       return examplePrograms.find((obj) => obj.program_id == id)?.program_name;
     case "Exam":
       return exampleExams.find((obj) => obj.id == id)?.quizname;
+    case "Session":
+      return exampleSessions.find((obj) => obj.sessionid == id)?.name;
   }
 };

@@ -730,14 +730,18 @@ export type TFormSchemaAddProject = z.infer<typeof FormSchemaAddProject>;
 
 // Other
 
-export const FormSchemaAddMeeting = z.object({
+export const FormSchemaAddSession = z.object({
   sessionid: z.string(), // Optional as it’s auto-generated
-  playback_start_time: z.string().datetime(), // Nullable and optional timestamp
-  playback_end_timestamp: z.string().datetime(), // Nullable and optional timestamp
-  session_time: z.string().datetime(), // Required timestamp
-  deviceid: z.string(), // Nullable, optional field
-  admin_id: z.string(), // Nullable and optionaloreign key
-  user_id: z.string(), // Nullable and optional
+  playback_start_time: z.string().datetime(),
+  playback_end_timestamp: z.string().datetime(),
+  session_time: z.string().datetime(), // ???
+  deviceid: z.string(), // ???
+  admin_id: z.string(),
+  user_id: z.string(),
+  //
+  name: z.string().trim().min(1, "Required"),
+  class_id: z.string(),
+  program_id: z.string(),
 });
 
-export type TFormSchemaAddMeeting = z.infer<typeof FormSchemaAddMeeting>;
+export type TFormSchemaAddSession = z.infer<typeof FormSchemaAddSession>;

@@ -13,7 +13,7 @@ import { Calendar, Clock, PenIcon } from "lucide-react";
 import React from "react";
 import { ClassIcon } from "../icons/ClassIcon";
 import { M_Card } from "../motion/Shadcn-Motion-Components";
-import AssignmentAttachmentsBadge from "./AssignmentAttachmentsBadge";
+import AssignmentAttachmentsBadge from "./AttachmentsBadge";
 import { format } from "date-fns";
 import Link from "next/link";
 
@@ -53,7 +53,9 @@ const PESInstructorAssignmentCard = ({
               <span>{format(assignment.assignment_duedate, "h:mm bb")}</span>
             </p>
           </div>
-          <AssignmentAttachmentsBadge assignment={assignment} />
+          <AssignmentAttachmentsBadge
+            attachment={assignment.assignment_attachment}
+          />
         </div>
       </CardContent>
       <CardFooter className="mt-auto">

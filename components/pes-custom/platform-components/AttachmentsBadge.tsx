@@ -11,20 +11,25 @@ import { DownloadIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 
-const AssignmentAttachmentsBadge = ({
-  assignment,
+const AttachmentsBadge = ({
+  attachment,
 }: {
-  assignment: TFormSchemaAddAssignment;
+  attachment:
+    | {
+        name: "lesson1.py";
+        size: 4500000;
+      }[]
+    | undefined;
 }) => {
-  return assignment.assignment_attachment ? (
+  return attachment ? (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <div className="w-fit py-2 px-4 border-secondary/50 hover:border-secondary duration-100 border-[1px] rounded-[0.5rem] text-detail cursor-pointer">
+        <div className="w-fit text-foreground py-2 px-4 border-secondary/50 hover:border-secondary duration-100 border-[1px] rounded-[0.5rem] text-detail cursor-pointer">
           Attachments 📂
         </div>
       </HoverCardTrigger>
       <HoverCardContent className="w-60 text-subtle flex flex-col gap-2">
-        {assignment.assignment_attachment.map(
+        {attachment.map(
           (attachment: { name: string; size: number }, idx: number) => {
             return (
               <Link
@@ -40,7 +45,7 @@ const AssignmentAttachmentsBadge = ({
             );
           }
         )}
-        {assignment.assignment_attachment.length > 1 && (
+        {attachment.length > 1 && (
           <>
             <Separator className="my-1" />
             <Link
@@ -50,7 +55,7 @@ const AssignmentAttachmentsBadge = ({
                 size: "sm",
               })}`}
             >
-              Download all ({assignment.assignment_attachment.length})
+              Download all ({attachment.length})
             </Link>
           </>
         )}
@@ -63,4 +68,4 @@ const AssignmentAttachmentsBadge = ({
   );
 };
 
-export default AssignmentAttachmentsBadge;
+export default AttachmentsBadge;
