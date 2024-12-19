@@ -1,24 +1,8 @@
 import { exampleMaterials } from "@/lib/data";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
-import {
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { VariantSlideInUp } from "@/lib/motion-constants";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import { PenIcon } from "@/components/pes-custom/icons/PenIcon";
-import { DownloadIcon, PlusIcon } from "lucide-react";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
-import { BadgeLink } from "@/components/pes-custom/platform-components/BadgeLink";
-import { Separator } from "@/components/ui/separator";
+import { PlusIcon } from "lucide-react";
 import PESMaterialCard from "@/components/pes-custom/platform-components/PESMaterialCard";
 
 async function getData() {

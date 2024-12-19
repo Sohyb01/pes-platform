@@ -27,7 +27,9 @@ const page = () => {
             {exampleAssignments
               .filter((a) => new Date() <= a.assignment_duedate)
               .map((assignment, idx) => {
-                return <PESStudentAssignmentCard assignment={assignment} />;
+                return (
+                  <PESStudentAssignmentCard assignment={assignment} key={idx} />
+                );
               })}
           </div>
         </TabsContent>
@@ -36,7 +38,9 @@ const page = () => {
             {exampleAssignments
               .filter((a) => new Date() > a.assignment_duedate)
               .map((assignment, idx) => {
-                return <PESStudentAssignmentCard assignment={assignment} />;
+                return (
+                  <PESStudentAssignmentCard assignment={assignment} key={idx} />
+                );
               })}
           </div>
         </TabsContent>
