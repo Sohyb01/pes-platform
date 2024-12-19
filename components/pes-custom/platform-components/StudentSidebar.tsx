@@ -82,13 +82,13 @@ const StudentSidebar = () => {
                 🏅 Leaderboard
               </Button>
             </Link>
-            <Link href="/dashboard/student/certificates">
+            <Link href="/dashboard/student/achievements">
               <Button
                 className="sidebar-button"
-                variant={lastSegment == "certificates" ? "default" : "ghost"}
+                variant={lastSegment == "achievements" ? "default" : "ghost"}
                 size="lg"
               >
-                📜 My Certificates
+                ⭐ Achievements
               </Button>
             </Link>
           </div>

@@ -143,16 +143,16 @@ const StudentNavbar = () => {
                     </Link>
                     <Link
                       onClick={() => setOpen(false)}
-                      href="/dashboard/student/certificates"
+                      href="/dashboard/student/achievements"
                     >
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "certificates" ? "default" : "ghost"
+                          lastSegment == "achievements" ? "default" : "ghost"
                         }
                         size="lg"
                       >
-                        📜 My Certificates
+                        ⭐ Achievements
                       </Button>
                     </Link>
                   </div>
