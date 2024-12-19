@@ -27,9 +27,11 @@ import {
 export default function PESChatStudent({
   messagesData,
   conversationsData,
+  className,
 }: {
   messagesData: TFormSchemaSendMessage[];
   conversationsData: TFormSchemaAddConversation[];
+  className?: string;
 }) {
   const [conversationsDataState, setConversationsDataState] =
     useState(conversationsData);
@@ -95,6 +97,7 @@ export default function PESChatStudent({
       icon={<MessageCircle className="h-6 w-6" />}
       size="lg"
       position="bottom-right"
+      className={className}
     >
       <div className="flex gap-2 h-full max-h-[90vh]">
         <ChatSidebar

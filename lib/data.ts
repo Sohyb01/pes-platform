@@ -8,7 +8,7 @@ import {
   TFormSchemaAddInstructor,
   TFormSchemaAddLog,
   TFormSchemaAddMaterial,
-  TFormSchemaAddMeeting,
+  TFormSchemaAddSession,
   TFormSchemaAddParent,
   TFormSchemaAddProgram,
   TFormSchemaAddProject,
@@ -283,7 +283,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     id: "class1", // Optional field
     class_name: "Advanced Mathematics ➗", //
     class_fees: 150.0, //
-    program_id: "prog1234abcd5678", // Represents foreign key to Programs
+    program_id: "prog1", // Represents foreign key to Programs
     instructor_id: "instr9876efgh4321", // Optional UUID for instructor
     classbegindate: new Date("2024-01-10"),
     classenddate: new Date("2025-06-10"),
@@ -294,7 +294,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     id: "class2",
     class_name: "Introduction to Computer Science 🖥️",
     class_fees: 200.0,
-    program_id: "prog5678ijkl9012",
+    program_id: "prog2",
     instructor_id: "instr1234mnop5678",
     classbegindate: new Date("2024-02-01"),
     classenddate: new Date("2025-07-01"),
@@ -305,7 +305,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     id: "class3",
     class_name: "Creative Writing Workshop ✍️",
     class_fees: 75.5,
-    program_id: "prog3456qrst7890",
+    program_id: "prog2",
     // `instructor_id` is omitted as it's optional
     classbegindate: new Date("2024-03-15"),
     classenddate: new Date("2024-05-15"),
@@ -315,10 +315,10 @@ export const exampleClasses: TFormSchemaAddClass[] = [
 
 export const exampleAssignments: TFormSchemaAddAssignment[] = [
   {
-    name: "Homework 1",
+    name: "Homework X",
     assignment_id: "assignment1",
     assignment_url: "www.google.com",
-    assignment_duedate: new Date("2025-04-01"),
+    assignment_duedate: new Date("2024-04-01"),
     assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
     assignment_description:
       "Complete the essay on environmental sustainability.",
@@ -346,7 +346,7 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     name: "Project A",
     assignment_id: "assignment2",
     assignment_url: undefined, // Optional field left undefined
-    assignment_duedate: new Date("2024-12-18"),
+    assignment_duedate: new Date("2025-12-18"),
     assignment_attachment: [
       { name: "requirements.docx", size: 4500000 },
       { name: "assignment2.py", size: 4500000 },
@@ -361,7 +361,7 @@ export const exampleAssignments: TFormSchemaAddAssignment[] = [
     name: "Project BB",
     assignment_id: "assignment2",
     assignment_url: undefined, // Optional field left undefined
-    assignment_duedate: new Date("2024-1-15"),
+    assignment_duedate: new Date("2025-6-15"),
     assignment_attachment: [{ name: "assignment2.py", size: 4500000 }], // Valid file attachment under 5MB
     assignment_description: "Do homework.",
     class_id: "class1",
@@ -542,18 +542,21 @@ export const exampleLogs: TFormSchemaAddLog[] = [
 
 export const exampleMaterials: TFormSchemaAddMaterial[] = [
   {
-    name: "Material 1",
-    id: "material-1234-f67c-89a0",
-    attachment: [{ name: "lesson1.py", size: 4500000 }], // Example file within 5MB limit
-    session_id: "123e4567-e89b-12d3-a456-426614174000",
+    name: "Web development starter kit",
+    id: "material1",
+    attachment: [
+      { name: "example.js", size: 3000000 },
+      { name: "starter.py", size: 3000000 },
+    ], // Another valid file within 5MB limit
+    session_id: "session1",
     class_field: "class1",
     instructor_id: "instructor1",
   },
   {
-    name: "Material 2",
-    id: "material-1234-f67c-89a0",
+    name: "Final course materials",
+    id: "material2",
     attachment: [{ name: "example.js", size: 3000000 }], // Another valid file within 5MB limit
-    session_id: "123e4567-e89b-12d3-a456-426614174002",
+    session_id: "session2",
     class_field: "class2",
     instructor_id: "instructor1",
   },
@@ -667,24 +670,42 @@ export const examplePendingFranchises: TFormSchemaPendingFranchise[] = [
   },
 ];
 
-export const exampleMeetings: TFormSchemaAddMeeting[] = [
+export const exampleSessions: TFormSchemaAddSession[] = [
   {
-    sessionid: "session123",
+    sessionid: "session1",
     playback_start_time: "2024-11-01T10:00:00Z",
     playback_end_timestamp: "2024-11-01T11:00:00Z",
     session_time: "2024-11-01T09:00:00Z",
     deviceid: "device456",
-    admin_id: "admin789",
-    user_id: "user012",
+    admin_id: "admin1",
+    user_id: "instructor1",
+    name: "Constants & Variables",
+    class_id: "class1",
+    program_id: "prog1",
   },
   {
-    sessionid: "session124",
+    sessionid: "session2",
     playback_start_time: "2024-12-02T10:00:00Z",
     playback_end_timestamp: "2024-12-02T10:00:00Z",
     session_time: "2024-11-02T15:30:00Z",
     deviceid: "device456",
-    admin_id: "admin789",
-    user_id: "user345",
+    admin_id: "admin1",
+    user_id: "instructor2",
+    name: "Loops (for, while)",
+    class_id: "class2",
+    program_id: "prog2",
+  },
+  {
+    sessionid: "session3",
+    playback_start_time: "2024-12-02T10:00:00Z",
+    playback_end_timestamp: "2024-12-02T10:00:00Z",
+    session_time: "2024-11-02T15:30:00Z",
+    deviceid: "device456",
+    admin_id: "admin1",
+    user_id: "instructor2",
+    name: "Web Development P1",
+    class_id: "class2",
+    program_id: "prog2",
   },
 ];
 
@@ -747,7 +768,7 @@ export const exampleScheduleEvents: TFormSchemaDisplayScheduleEvent[] = [
 
 export const examplePrograms: TFormSchemaAddProgram[] = [
   {
-    program_id: "program123", // Optional, included
+    program_id: "prog1", // Optional, included
     program_name: "Advanced Programming Bootcamp",
     program_levels: [
       {
@@ -791,7 +812,7 @@ export const examplePrograms: TFormSchemaAddProgram[] = [
     start_date: new Date("2024-11-01"),
   },
   {
-    program_id: "program456", // Optional, included
+    program_id: "prog2", // Optional, included
     program_name: "Data Science Essentials",
     program_levels: [
       {

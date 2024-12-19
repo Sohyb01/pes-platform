@@ -18,7 +18,10 @@ const page = async () => {
       {/* Tabs */}
       <Tabs defaultValue="Active Classes" className="w-full">
         <TabsList className="flex gap-4 bg-transparent border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
-          <TabsTrigger className="tab-trigger" value="Active Classes">
+          <TabsTrigger
+            className="data-[state=active]:bg-transparent tab-trigger"
+            value="Active Classes"
+          >
             Active Classes
           </TabsTrigger>
           <TabsTrigger className="tab-trigger" value="Past Classes">
