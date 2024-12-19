@@ -29,9 +29,9 @@ const PESExamCard = ({ exam }: { exam: TFormSchemaAddExam }) => {
       </CardHeader>
       <CardContent>
         <div className="text-muted-foreground text-subtle">
-          <div className="flex gap-2 items-center stroke-muted-foreground text-muted-foreground pb-2">
+          <div className="items-center stroke-muted-foreground text-muted-foreground pb-2">
             <div>{getNameById(exam.class_field, "Class")}</div>
-            {exampleClasses[0].class_times}
+            <div>{exampleClasses[0].class_times}</div>
           </div>
           <div>
             {exam.questions.length} questions - {exam.duration} minutes
