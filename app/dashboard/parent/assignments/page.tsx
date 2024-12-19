@@ -1,11 +1,7 @@
 import PESAssignmentCard from "@/components/pes-custom/platform-components/PESStudentAssignmentCard";
-import { buttonVariants } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { exampleAssignments } from "@/lib/data";
 import { TFormSchemaAddAssignment } from "@/lib/types-forms";
-import { cn } from "@/lib/utils";
-import { PlusIcon } from "lucide-react";
-import Link from "next/link";
 
 async function getData(): Promise<TFormSchemaAddAssignment[]> {
   // Fetch data from your API here.
@@ -21,13 +17,6 @@ export default async function AssignmentsPage() {
     <div className="dashboard-tab-wrapper">
       <div className="flex justify-between">
         <h3 className="text-h3">Assignments</h3>
-        <Link
-          className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
-          href="/dashboard/instructor/assignments/new"
-        >
-          <PlusIcon className="size-4" />
-          Add Assignment
-        </Link>
       </div>
       <Tabs defaultValue="submitted" className="">
         <TabsList className="flex justify-between bg-transparent border-b-[1px] border-b-muted rounded-none mb-4 h-fit">
