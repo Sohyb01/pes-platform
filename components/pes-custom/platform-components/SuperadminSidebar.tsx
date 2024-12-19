@@ -15,17 +15,28 @@ import { ProgramIcon } from "@/components/pes-custom/icons/ProgramIcon";
 import { ProjectIcon } from "@/components/pes-custom/icons/ProjectIcon";
 import { QuizIcon } from "@/components/pes-custom/icons/QuizIcon";
 import { ReviewIcon } from "@/components/pes-custom/icons/ReviewIcon";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { PersonIcon } from "../icons/PersonIcon";
 import { StudentIcon } from "../icons/StudentIcon";
+import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { CollapsibleContent } from "@radix-ui/react-collapsible";
+import {
+  ChartSpline,
+  ChevronRight,
+  HandCoins,
+  ReceiptText,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const SuperadminSidebar = () => {
   // Get the current pathname
   const pathname = usePathname();
   // Split the pathname and get the last segment
   const lastSegment = pathname.split("/").filter(Boolean)[2];
+  const lastSubSegment = pathname.split("/").filter(Boolean)[3];
+
   return (
     <nav className="hidden lg:flex p-8 gap-8 flex-col items-start w-full max-w-[280px] dashboard-sizing border-r border-border overflow-scroll">
       <p className="text-lead">Superadmin Dashboard</p>
@@ -36,15 +47,60 @@ const SuperadminSidebar = () => {
           <p>Company</p>
           {/* Links */}
           <div className="sidebar-links-container">
-            <Link href="/dashboard/superadmin/finances">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "finances" ? "default" : "outline"}
-                size="sm"
+            <Collapsible defaultOpen className="group/collapsible">
+              <CollapsibleTrigger
+                className={cn(
+                  buttonVariants({
+                    variant: lastSegment === "finances" ? "default" : "outline",
+                    size: "sm",
+                  }),
+                  "group w-full justify-between"
+                )}
               >
-                <FinancesIcon /> Finances
-              </Button>
-            </Link>
+                <div className="flex gap-2 items-center">
+                  <FinancesIcon /> Finances
+                </div>
+                <ChevronRight
+                  className="group-data-[state=open]/collapsible:rotate-90 transition-transform"
+                  size={16}
+                />
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <div className="flex flex-col gap-4 ml-4 mt-2 border-l border-muted p-2 ">
+                  <Link href="/dashboard/superadmin/finances/overview">
+                    <Button
+                      className="sidebar-button"
+                      variant={
+                        lastSubSegment == "overview" ? "reversed" : "ghost"
+                      }
+                      size="sm"
+                    >
+                      <ChartSpline size={16} /> Overview
+                    </Button>
+                  </Link>
+                  <Link href="/dashboard/superadmin/finances/bills">
+                    <Button
+                      className="sidebar-button"
+                      variant={lastSubSegment == "bills" ? "reversed" : "ghost"}
+                      size="sm"
+                    >
+                      <ReceiptText size={16} /> Bills
+                    </Button>
+                  </Link>
+                  <Link href="/dashboard/superadmin/finances/transactions">
+                    <Button
+                      className="sidebar-button"
+                      variant={
+                        lastSubSegment == "transactions" ? "reversed" : "ghost"
+                      }
+                      size="sm"
+                    >
+                      <HandCoins size={16} /> Transactions
+                    </Button>
+                  </Link>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
             <Link href="/dashboard/superadmin/franchises">
               <Button
                 className="sidebar-button"

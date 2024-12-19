@@ -737,3 +737,22 @@ export const FormSchemaAddMeeting = z.object({
 });
 
 export type TFormSchemaAddMeeting = z.infer<typeof FormSchemaAddMeeting>;
+
+export const FormSchemaAddBill = z.object({
+  name: z.string().min(2, { message: "A bill name is required" }),
+  type: z.enum(["Expense"]),
+});
+
+export type TFormSchemaAddBill = z.infer<typeof FormSchemaAddBill>;
+
+export const FormSchemaAddTransaction = z.object({
+  date: z.date(),
+  type: z.enum(["Expense"]),
+  amount: z.number(),
+  description: z.string().min(2, { message: "Description is required" }),
+  chart_id: z.string().min(2, { message: "Bill is required" }),
+});
+
+export type TFormSchemaAddTransaction = z.infer<
+  typeof FormSchemaAddTransaction
+>;
