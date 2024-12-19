@@ -86,7 +86,7 @@ const Leaderboard = ({
           </div>
         </div>
         {/* 3rd */}
-        <div className="md:min-w-[280px] grow flex items-center px-4 py-3 rounded-[0.5rem] border-primary border-[1px] bg-background w-full h-fit">
+        <div className="md:min-w-[280px] grow flex items-center px-4 py-3 rounded-[0.5rem] border-border border-[1px] bg-success text-success-foreground w-full h-fit">
           <span className="w-[3ch]">3</span>
           <div className="flex items-center justify-between gap-2 w-full">
             <div className="flex items-center">
@@ -156,7 +156,7 @@ const Leaderboard = ({
           </div>
         </div>
         {/* 3rd */}
-        <div className="md:min-w-[280px] grow flex items-center px-4 py-3 rounded-[0.5rem] border-primary border-[1px] bg-background w-full h-fit">
+        <div className="md:min-w-[280px] grow flex items-center px-4 py-3 rounded-[0.5rem] border-border border-[1px] bg-success text-success-foreground w-full h-fit">
           <span className="w-[3ch]">3</span>
           <div className="flex items-center justify-between gap-2 w-full">
             <div className="flex items-center">
