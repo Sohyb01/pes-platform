@@ -38,18 +38,70 @@ const page = () => {
         </TabsList>
         <TabsContent value="Due Assignments">
           <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
-            {exampleAssignments.map((assignment, idx) => {
-              return (
-                <Link
-                  key={idx}
-                  href={`assignments/${assignment.assignment_id}`}
-                >
+            {exampleAssignments
+              .filter((a) => new Date() <= a.assignment_duedate)
+              .map((assignment, idx) => {
+                return (
+                  <Link
+                    key={idx}
+                    href={`assignments/${assignment.assignment_id}`}
+                  >
+                    <M_Card
+                      variants={VariantSlideInUp}
+                      initial="initial"
+                      animate="animate"
+                      transition={{ delay: idx * 0.05 }} // Custom delay for each item
+                      className="w-full md:max-w-[352px] border-primary/50 duration-100 border-[1px] hover:border-primary"
+                    >
+                      <CardHeader>
+                        <CardTitle>Robotics Class B Assignment ⏱️</CardTitle>
+                        <Link href="#">
+                          <span className="max-w-[12ch] overflow-hidden text-subtle text-muted-foreground">
+                            ENG. Ahmed Reda 👨‍🏫
+                            {/* {assignment.sent_by} */}
+                          </span>
+                        </Link>
+                      </CardHeader>
+                      <CardContent className="text-subtle">
+                        <p>Task Description</p>
+                        <p className="text-muted-foreground line-clamp-2 h-[40px]">
+                          {assignment.assignment_description ||
+                            "No description"}
+                        </p>
+                      </CardContent>
+                      <CardContent>
+                        <div className="flex justify-between items-center">
+                          <AssignmentAttachmentsBadge assignment={assignment} />
+                          <div className="flex w-fit gap-1 items-center stroke-secondary text-secondary">
+                            ⚠️<span className="text-detail">Due in 2d 4h</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                      <CardFooter>
+                        <Button variant="default" size="sm" className="w-full">
+                          <UploadIcon />
+                          Submit
+                        </Button>
+                      </CardFooter>
+                    </M_Card>
+                  </Link>
+                );
+              })}
+          </div>
+        </TabsContent>
+        <TabsContent value="Past Assignments">
+          <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
+            {exampleAssignments
+              .filter((a) => new Date() > a.assignment_duedate)
+              .map((assignment, idx) => {
+                return (
                   <M_Card
                     variants={VariantSlideInUp}
                     initial="initial"
                     animate="animate"
                     transition={{ delay: idx * 0.05 }} // Custom delay for each item
-                    className="w-full md:max-w-[352px] border-primary/50 duration-100 border-[1px] hover:border-primary"
+                    key={idx}
+                    className="w-full md:max-w-[352px]"
                   >
                     <CardHeader>
                       <CardTitle>Robotics Class B Assignment ⏱️</CardTitle>
@@ -67,65 +119,18 @@ const page = () => {
                       </p>
                     </CardContent>
                     <CardContent>
-                      <div className="flex justify-between items-center">
-                        <AssignmentAttachmentsBadge assignment={assignment} />
-                        <div className="flex w-fit gap-1 items-center stroke-secondary text-secondary">
-                          ⚠️<span className="text-detail">Due in 2d 4h</span>
-                        </div>
-                      </div>
+                      <span className="text-success text-detail">
+                        Submission Accepted
+                      </span>
                     </CardContent>
                     <CardFooter>
-                      <Button variant="default" size="sm" className="w-full">
-                        <UploadIcon />
-                        Submit
+                      <Button variant="outline" size="sm" className="w-full">
+                        View feedback
                       </Button>
                     </CardFooter>
                   </M_Card>
-                </Link>
-              );
-            })}
-          </div>
-        </TabsContent>
-        <TabsContent value="Past Assignments">
-          <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
-            {exampleAssignments.map((assignment, idx) => {
-              return (
-                <M_Card
-                  variants={VariantSlideInUp}
-                  initial="initial"
-                  animate="animate"
-                  transition={{ delay: idx * 0.05 }} // Custom delay for each item
-                  key={idx}
-                  className="w-full md:max-w-[352px]"
-                >
-                  <CardHeader>
-                    <CardTitle>Robotics Class B Assignment ⏱️</CardTitle>
-                    <Link href="#">
-                      <span className="max-w-[12ch] overflow-hidden text-subtle text-muted-foreground">
-                        ENG. Ahmed Reda 👨‍🏫
-                        {/* {assignment.sent_by} */}
-                      </span>
-                    </Link>
-                  </CardHeader>
-                  <CardContent className="text-subtle">
-                    <p>Task Description</p>
-                    <p className="text-muted-foreground line-clamp-2 h-[40px]">
-                      {assignment.assignment_description || "No description"}
-                    </p>
-                  </CardContent>
-                  <CardContent>
-                    <span className="text-success text-detail">
-                      Submission Accepted
-                    </span>
-                  </CardContent>
-                  <CardFooter>
-                    <Button variant="outline" size="sm" className="w-full">
-                      View feedback
-                    </Button>
-                  </CardFooter>
-                </M_Card>
-              );
-            })}
+                );
+              })}
           </div>
         </TabsContent>
       </Tabs>

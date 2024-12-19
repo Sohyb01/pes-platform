@@ -10,7 +10,10 @@ import { Button, buttonVariants } from "@/components/ui/button";
 
 const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
   return (
-    <Link className="flex-1 min-w-[340px] grow" href={`classes/${pesClass.id}`}>
+    <Link
+      className="flex-1 min-w-[340px] max-w-[480px]"
+      href={`classes/${pesClass.id}`}
+    >
       <M_Card
         variants={VariantSlideInUp}
         initial="initial"
