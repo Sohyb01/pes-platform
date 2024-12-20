@@ -118,7 +118,7 @@ const PESExamCard = (props: PESExamCardProps) => {
       variants={VariantSlideInUp}
       initial="initial"
       animate="animate"
-      className="w-full md:max-w-[352px] bg-background rounded-[1rem]"
+      className="w-full md:min-w-[300px] md:max-w-[480px] bg-background rounded-[1rem]"
     >
       <CardHeader>
         <CardTitle className="flex justify-between items-center flex-wrap gap-2">

@@ -22,7 +22,7 @@ const PESSolvedExamCard = ({ exam }: { exam: TFormSchemaSolvedExam }) => {
       variants={VariantSlideInUp}
       initial="initial"
       animate="animate"
-      className="w-full md:max-w-[352px] bg-background rounded-[1rem]"
+      className="w-full md:min-w-[300px] md:max-w-[480px] bg-background rounded-[1rem]"
     >
       <CardHeader className="pb-2">
         <CardTitle className="flex justify-between items-center">
@@ -51,7 +51,7 @@ const PESSolvedExamCard = ({ exam }: { exam: TFormSchemaSolvedExam }) => {
       <CardContent>
         <Badge className="flex items-center gap-2 w-fit" variant="outline">
           <Calendar size={16} />
-          {format(new Date(), "MM / dd")}
+          {format(new Date(), "MMMM dd, hh:mm a")}
         </Badge>
         <div className="text-muted-foreground text-subtle pt-4">
           <div>{getNameById(exam.class_field, "Class")}</div>
