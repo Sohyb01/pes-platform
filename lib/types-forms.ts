@@ -734,8 +734,6 @@ export const FormSchemaAddSession = z.object({
   sessionid: z.string(), // Optional as it’s auto-generated
   playback_start_time: z.string().datetime(),
   playback_end_timestamp: z.string().datetime(),
-  session_time: z.string().datetime(), // ???
-  deviceid: z.string(), // ???
   admin_id: z.string(),
   user_id: z.string(),
   //

@@ -9,17 +9,16 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { TFormSchemaAddScheduleEvent } from "@/lib/types-forms";
+import { format } from "date-fns";
+import { usePathname } from "next/navigation";
 
 type props = {
-  calendarEvent: {
-    id: string | number;
-    title: string;
-    start: string;
-    end: string;
-  };
+  calendarEvent: TFormSchemaAddScheduleEvent;
 };
 
 export default function CustomMonthGridEvent({ calendarEvent }: props) {
+  const pathname = usePathname();
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -32,7 +31,8 @@ export default function CustomMonthGridEvent({ calendarEvent }: props) {
           <SheetTitle className="text-h4">{calendarEvent.title}</SheetTitle>
           <SheetDescription>
             <span className="block text-p_ui">
-              {calendarEvent.start} - {calendarEvent.end}
+              {format(calendarEvent.start, "MMMM dd, hh:mm a")} -<br />
+              {format(calendarEvent.end, "MMMM dd, hh:mm a")}
             </span>
             <span className="block py-8 text-p_ui text-foreground">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. A natus
@@ -43,9 +43,12 @@ export default function CustomMonthGridEvent({ calendarEvent }: props) {
         </SheetHeader>
         <SheetFooter className="gap-2">
           <SheetClose asChild>
-            <Button size="sm" variant="destructive">
-              Delete Event
-            </Button>
+            {(pathname.split("/").filter(Boolean)[1] == "instructor" ||
+              pathname.split("/").filter(Boolean)[1] == "superadmin") && (
+              <Button size="sm" variant="destructive">
+                Delete Event
+              </Button>
+            )}
           </SheetClose>
         </SheetFooter>
       </SheetContent>
