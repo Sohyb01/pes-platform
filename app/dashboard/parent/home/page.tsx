@@ -9,17 +9,13 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { CircleProgress } from "@/components/ui/progress";
-import { exampleExams, exampleParents, exampleSolvedExams } from "@/lib/data";
+import { exampleParents, exampleSolvedExams } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { ChevronRight, Phone } from "lucide-react";
 import Link from "next/link";
 
 const getParents = async () => {
   return exampleParents;
-};
-
-const getQuizzes = async () => {
-  return exampleExams;
 };
 
 const ParentHome = async () => {
