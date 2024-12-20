@@ -10,7 +10,6 @@ import {
   ChatBubbleMessage,
   ChatBubbleTimestamp,
 } from "@/components/pes-custom/platform-components/chat-bubble";
-import ChatBottombar from "./chat-bottombar";
 
 interface ChatListProps {
   messages: Message[];

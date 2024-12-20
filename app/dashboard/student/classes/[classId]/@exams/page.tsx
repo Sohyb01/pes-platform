@@ -10,6 +10,7 @@ const getExams = async () => {
   return exampleExams;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getActiveExams = async () => {
   return exampleExams.filter((exam) => isSameHour(exam.timestamp, new Date()));
 };
@@ -41,7 +42,7 @@ const Exams = async ({ params: { classId } }: ExamsProps) => {
     <div className="px-4 h-[68vh] overflow-y-scroll flex flex-col gap-8">
       {/* Active Exams */}
       <Collapsible defaultOpen>
-        <div className="flex item-center justify-between">
+        <div className="flex item-center justify-between mb-4">
           <h3 className="text-h3">Active Exams</h3>
           <CollapsibleTrigger asChild>
             <Button size="icon">
@@ -68,7 +69,7 @@ const Exams = async ({ params: { classId } }: ExamsProps) => {
 
       {/* Upcoming Exams */}
       <Collapsible defaultOpen>
-        <div className="flex item-center justify-between">
+        <div className="flex item-center justify-between mb-4">
           <h3 className="text-h3">Upcoming Exams</h3>
           <CollapsibleTrigger asChild>
             <Button size="icon">
@@ -88,7 +89,7 @@ const Exams = async ({ params: { classId } }: ExamsProps) => {
 
       {/* Past Exams */}
       <Collapsible defaultOpen>
-        <div className="flex item-center justify-between">
+        <div className="flex item-center justify-between mb-4">
           <h3 className="text-h3">Past Exams</h3>
           <CollapsibleTrigger asChild>
             <Button size="icon">

@@ -81,7 +81,7 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
     <div className="grid gap-8 md:grid-cols-2">
       {/* Announcements */}
       <div className="md:col-span-2 space-y-4 ">
-        <h3 className="text-h3">Announcements</h3>
+        <h3 className="text-h3">Announcements 📢</h3>
         <Card>
           <CardContent className="pt-2 divide-y space-y-4 h-[18rem] overflow-y-scroll">
             {[...new Array(4)].fill(0).map((_, idx) => (
@@ -186,10 +186,7 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
                     </Badge>
                     <Badge variant="secondary" className="gap-2">
                       <TriangleAlert size={16} />
-                      Due {differenceInDays(
-                        exam.timestamp,
-                        new Date()
-                      )} Days
+                      Due {differenceInDays(exam.timestamp, new Date())} Days
                     </Badge>
                   </div>
                 </div>

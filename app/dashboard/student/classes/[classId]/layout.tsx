@@ -27,27 +27,30 @@ const ClassLayout = ({
       {/* Should be overview if I forgot to reset it */}
       <Tabs defaultValue="assignments" className="md:block">
         {/* Medium Screens TabList */}
-        <TabsList className="hidden md:flex bg-transparent gap-4 pb-2 border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
+        <TabsList className="hidden md:flex bg-transparent gap-4 pb-2 border-b-[1px] border-muted-foreground/50 rounded-none mb-4 justify-start flex-wrap h-fit">
           <TabsTrigger
-            className="bg-transparent data-[state=active]:bg-primary gap-2"
+            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
             value="overview"
           >
             <SquareChartGantt size={16} />
             Overview
           </TabsTrigger>
           <TabsTrigger
-            className="bg-transparent data-[state=active]:bg-primary gap-2"
+            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
             value="chat"
           >
             <MessagesSquare size={16} />
             Chat
           </TabsTrigger>
-          <TabsTrigger className="data-[state=active]:bg-primary" value="exams">
+          <TabsTrigger
+            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
+            value="exams"
+          >
             <ClipboardPen size={16} />
             Exams
           </TabsTrigger>
           <TabsTrigger
-            className="data-[state=active]:bg-primary"
+            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
             value="assignments"
           >
             <NotepadText size={16} />
@@ -63,10 +66,16 @@ const ClassLayout = ({
           >
             <SquareChartGantt size={24} />
           </TabsTrigger>
-          <TabsTrigger className="data-[state=active]:bg-primary" value="chat">
+          <TabsTrigger
+            className="data-[state=active]:bg-primary data-[state=active]:text-white"
+            value="chat"
+          >
             <MessagesSquare size={24} />
           </TabsTrigger>
-          <TabsTrigger className="data-[state=active]:bg-primary" value="exams">
+          <TabsTrigger
+            className="data-[state=active]:bg-primary data-[state=active]:text-white"
+            value="exams"
+          >
             <ClipboardPen size={24} />
           </TabsTrigger>
         </TabsList>

@@ -11,7 +11,7 @@ import { TFormSchemaAddExam } from "@/lib/types-forms";
 import { getNameById } from "@/lib/getNameById";
 import { exampleClasses, examplePrograms } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import { format } from "date-fns";
 import Link from "next/link";
@@ -61,7 +61,7 @@ type PESExamCardProps = ActiveExamProps | UpcomingExamProps | PastExamProps;
 const getDateBadgeVariant = (status: ExamStatus) => {
   switch (status) {
     case "active":
-      return "destructive";
+      return "success";
     case "upcoming":
       return "default";
     case "past":
