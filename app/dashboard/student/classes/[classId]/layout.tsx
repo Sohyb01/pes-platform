@@ -1,13 +1,16 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { MessagesSquare, SquareChartGantt } from "lucide-react";
+import {
+  ClipboardPen,
+  MessagesSquare,
+  NotepadText,
+  SquareChartGantt,
+} from "lucide-react";
 import { ReactNode } from "react";
 
 const ClassLayout = ({
   overview,
   chat,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   exams,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   assignments,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   material,
@@ -21,22 +24,34 @@ const ClassLayout = ({
   return (
     <section className="relative dashboard-tab-wrapper">
       <h2 className="text-h2">Your Classes 📚</h2>
-      <Tabs defaultValue="chat" className="md:block">
+      {/* Should be overview if I forgot to reset it */}
+      <Tabs defaultValue="assignments" className="md:block">
         {/* Medium Screens TabList */}
-        <TabsList className="hidden md:flex bg-transparent gap-4 border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
+        <TabsList className="hidden md:flex bg-transparent gap-4 pb-2 border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
           <TabsTrigger
-            className="bg-transparent data-[state=active]:bg-transparent gap-2 tab-trigger"
+            className="bg-transparent data-[state=active]:bg-primary gap-2"
             value="overview"
           >
             <SquareChartGantt size={16} />
             Overview
           </TabsTrigger>
           <TabsTrigger
-            className="bg-transparent data-[state=active]:bg-transparent gap-2 tab-trigger"
+            className="bg-transparent data-[state=active]:bg-primary gap-2"
             value="chat"
           >
             <MessagesSquare size={16} />
             Chat
+          </TabsTrigger>
+          <TabsTrigger className="data-[state=active]:bg-primary" value="exams">
+            <ClipboardPen size={16} />
+            Exams
+          </TabsTrigger>
+          <TabsTrigger
+            className="data-[state=active]:bg-primary"
+            value="assignments"
+          >
+            <NotepadText size={16} />
+            Assignments
           </TabsTrigger>
         </TabsList>
 
@@ -51,9 +66,16 @@ const ClassLayout = ({
           <TabsTrigger className="data-[state=active]:bg-primary" value="chat">
             <MessagesSquare size={24} />
           </TabsTrigger>
+          <TabsTrigger className="data-[state=active]:bg-primary" value="exams">
+            <ClipboardPen size={24} />
+          </TabsTrigger>
         </TabsList>
+
+        {/* Tabs Content */}
         <TabsContent value="overview">{overview}</TabsContent>
         <TabsContent value="chat">{chat}</TabsContent>
+        <TabsContent value="exams">{exams}</TabsContent>
+        <TabsContent value="exams">{assignments}</TabsContent>
       </Tabs>
     </section>
   );

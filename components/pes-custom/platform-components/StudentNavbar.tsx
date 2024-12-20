@@ -26,7 +26,6 @@ const StudentNavbar = () => {
     <nav className="nav">
       <div className="nav-internal">
         <div className="flex gap-4">
-          <PESLogo />
           {/* Sheet */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
@@ -160,6 +159,7 @@ const StudentNavbar = () => {
               </div>
             </SheetContent>
           </Sheet>
+          <PESLogo />
         </div>
 
         <div className="flex gap-2">

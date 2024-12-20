@@ -33,6 +33,7 @@ const buttonVariants = cva(
         sorting: "p-0",
         link: "p-0 bg-transparent hover:bg-transparent border-transparent",
         input: "h-10 rounded-md px-4 py-2 gap-2",
+        xl: "h-16 rounded-md px-5 ",
       },
     },
     defaultVariants: {
