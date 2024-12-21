@@ -20,7 +20,10 @@ const page = async () => {
     <div className="dashboard-tab-wrapper">
       <h3 className="text-h3">Students by Class</h3>
       {/* Tabs */}
-      <Tabs defaultValue="Group A" className="w-full flex flex-wrap gap-8">
+      <Tabs
+        defaultValue={exampleClasses[0].class_name}
+        className="w-full flex flex-wrap gap-8"
+      >
         <TabsList className="flex gap-2 bg-background rounded-none items-start h-fit flex-col">
           {exampleClasses.map((pesClass, idx) => {
             return (

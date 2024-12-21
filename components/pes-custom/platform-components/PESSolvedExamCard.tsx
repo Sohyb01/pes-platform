@@ -22,7 +22,7 @@ const PESSolvedExamCard = ({ exam }: { exam: TFormSchemaSolvedExam }) => {
       variants={VariantSlideInUp}
       initial="initial"
       animate="animate"
-      className="w-full md:min-w-[300px] md:max-w-[480px] bg-background rounded-[1rem]"
+      className="w-full md:min-w-[300px] md:max-w-[480px] bg-card rounded-[1rem]"
     >
       <CardHeader className="pb-2">
         <CardTitle className="flex justify-between items-center">

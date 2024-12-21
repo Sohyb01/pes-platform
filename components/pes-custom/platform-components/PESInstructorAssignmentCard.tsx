@@ -27,7 +27,7 @@ const PESInstructorAssignmentCard = ({
       variants={VariantSlideInUp}
       initial="initial"
       animate="animate"
-      className="w-full"
+      className="w-full min-w-[300px] lg:min-w-[480px] md:max-w-[480px]"
     >
       <CardHeader>
         <CardTitle className="flex justify-between">

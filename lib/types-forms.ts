@@ -783,3 +783,13 @@ export type TFormSchemaAddTransaction = z.infer<
 >;
 
 export type TFormSchemaAddSession = z.infer<typeof FormSchemaAddSession>;
+
+export const FormSchemaClassMapping = z.object({
+  id: z.string().optional(),
+  student_id: z.string(),
+  class_id: z.string().optional(),
+  program_id: z.string().optional(),
+  instructor_id: z.string().optional(),
+});
+
+export type TFormSchemaClassMapping = z.infer<typeof FormSchemaClassMapping>;

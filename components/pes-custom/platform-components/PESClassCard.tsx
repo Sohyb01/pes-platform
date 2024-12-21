@@ -1,3 +1,5 @@
+"use client";
+
 import { TFormSchemaAddClass } from "@/lib/types-forms";
 import React from "react";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
@@ -7,12 +9,16 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, X } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 
 const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
+  const pathname = usePathname();
   return (
     <Link
       className="flex-1 min-w-[340px] max-w-[480px]"
-      href={`classes/${pesClass.id}`}
+      href={`/dashboard/${pathname.split("/").filter(Boolean)[1]}/classes/${
+        pesClass.id
+      }`}
     >
       <M_Card
         variants={VariantSlideInUp}

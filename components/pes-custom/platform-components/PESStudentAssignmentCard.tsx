@@ -41,7 +41,7 @@ const PESStudentAssignmentCard = ({
       variants={VariantSlideInUp}
       initial="initial"
       animate="animate"
-      className="bg-background w-full rounded-[1rem] md:min-w-[300px] max-w-[480px]"
+      className="bg-background w-full rounded-[1rem] md:min-w-[300px] lg:min-w-[480px] max-w-[480px]"
     >
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
@@ -125,7 +125,7 @@ const PESStudentAssignmentCard = ({
         </Link>
         {/* Submit */}
         {assignment.assignment_duedate >= new Date() &&
-          pathname.split("/").filter(Boolean)[1] !== "parent" && (
+          pathname.split("/").filter(Boolean)[1] == "student" && (
             <>
               {assignment.status == "due" && (
                 <Link
@@ -140,7 +140,7 @@ const PESStudentAssignmentCard = ({
                 </Link>
               )}
               {assignment.status == "submitted" &&
-                pathname.split("/").filter(Boolean)[1] !== "parent" && (
+                pathname.split("/").filter(Boolean)[1] == "student" && (
                   <Link
                     href={`#`}
                     className={cn(
