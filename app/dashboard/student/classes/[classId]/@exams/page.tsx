@@ -4,7 +4,7 @@ import { Collapsible, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { exampleExams } from "@/lib/data";
 import { CollapsibleContent } from "@radix-ui/react-collapsible";
 import { compareAsc, compareDesc, isSameHour } from "date-fns";
-import { ChevronsUpDown } from "lucide-react";
+import { ChevronsUpDown, ChevronUp } from "lucide-react";
 
 const getExams = async () => {
   return exampleExams;
@@ -41,12 +41,15 @@ const Exams = async ({ params: { classId } }: ExamsProps) => {
   return (
     <div className="px-4 h-[68vh] overflow-y-scroll flex flex-col gap-8">
       {/* Active Exams */}
-      <Collapsible defaultOpen>
+      <Collapsible className="group" defaultOpen>
         <div className="flex item-center justify-between mb-4">
           <h3 className="text-h3">Active Exams</h3>
           <CollapsibleTrigger asChild>
             <Button size="icon">
-              <ChevronsUpDown size={24} />
+              <ChevronUp
+                className="group-data-[state=open]:rotate-180 transition-all"
+                size={24}
+              />
               <span className="sr-only">Toggle</span>
             </Button>
           </CollapsibleTrigger>
@@ -73,7 +76,10 @@ const Exams = async ({ params: { classId } }: ExamsProps) => {
           <h3 className="text-h3">Upcoming Exams</h3>
           <CollapsibleTrigger asChild>
             <Button size="icon">
-              <ChevronsUpDown size={24} />
+              <ChevronUp
+                className="group-data-[state=open]:rotate-180 transition-all"
+                size={24}
+              />
               <span className="sr-only">Toggle</span>
             </Button>
           </CollapsibleTrigger>
@@ -93,7 +99,10 @@ const Exams = async ({ params: { classId } }: ExamsProps) => {
           <h3 className="text-h3">Past Exams</h3>
           <CollapsibleTrigger asChild>
             <Button size="icon">
-              <ChevronsUpDown size={24} />
+              <ChevronUp
+                className="group-data-[state=open]:rotate-180 transition-all"
+                size={24}
+              />
               <span className="sr-only">Toggle</span>
             </Button>
           </CollapsibleTrigger>

@@ -42,9 +42,12 @@ const Materials = async () => {
           >
             <CardHeader>
               <CardTitle>{material.name}</CardTitle>
-              <CardDescription className="pt-2">
-                <div>{getNameById(material.class_field, "Class")}</div>
-                <div>{getNameById(material.instructor_id, "Employee")} 👨‍🏫</div>
+              <CardDescription className="gap-2 pt-2">
+                <span>{getNameById(material.class_field, "Class")}</span>
+                <br />
+                <span>
+                  {getNameById(material.instructor_id, "Employee")} 👨‍🏫
+                </span>
               </CardDescription>
             </CardHeader>
             <CardContent>

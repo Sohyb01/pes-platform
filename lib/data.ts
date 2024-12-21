@@ -17,6 +17,7 @@ import {
   TFormSchemaExamSubmition,
   TFormSchemaPendingFranchise,
   TFormSchemaPendingPartnership,
+  TFormSchemaSendMessage,
   TFormSchemaSolvedExam,
 } from "./types-forms";
 
@@ -988,7 +989,7 @@ export const exampleConversationMapping = [
   },
 ];
 
-export const exampleMessages = [
+export const exampleMessages: TFormSchemaSendMessage[] = [
   {
     message_id: "msg1",
     message_text: "Hello, how are you?",

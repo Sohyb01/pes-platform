@@ -37,7 +37,7 @@ const ClassLayout = async ({
     <section className="relative dashboard-tab-wrapper">
       <h2 className="text-h2">{class_name}</h2>
       {/* Should be overview incase I forgot to reset it */}
-      <Tabs defaultValue="materials" className="md:block">
+      <Tabs defaultValue="overview" className="md:block">
         {/* Medium Screens TabList */}
         <TabsList className="hidden md:flex bg-transparent gap-4 pb-2 border-b-[1px] border-muted-foreground/50 rounded-none mb-4 justify-start flex-wrap h-fit">
           <TabsTrigger
