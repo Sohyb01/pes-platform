@@ -5,7 +5,6 @@ import { Message } from "../data";
 import Link from "next/link";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
-import { motion } from "motion/react";
 
 interface ClassChatSidebarProps {
   className?: string;

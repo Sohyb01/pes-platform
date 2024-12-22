@@ -5,6 +5,34 @@ import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+export const STUDENT_SIDE_BAR_ITEMS = [
+  {
+    title: "Home",
+    url: "home",
+    icon: "🏠",
+  },
+  {
+    title: "Schedule",
+    url: "schedule",
+    icon: "📅",
+  },
+  {
+    title: "Classes",
+    url: "classes",
+    icon: "📚",
+  },
+  {
+    title: "Achievements",
+    url: "achievements",
+    icon: "🏆",
+  },
+  {
+    title: "Leaderboard",
+    url: "leaderboard",
+    icon: "🏅",
+  },
+];
+
 const StudentSidebar = () => {
   // Get the current pathname
   const pathname = usePathname();
@@ -12,85 +40,24 @@ const StudentSidebar = () => {
   const lastSegment = pathname.split("/").filter(Boolean)[2];
   return (
     <nav className="hidden lg:flex rounded-[1rem] p-4 md:p-6 gap-8 flex-col items-start w-full max-w-[280px] h-full bg-background">
-      <p className="text-h3">Hello, Omar!</p>
+      <h3 className="text-h3">Student Dashboard</h3>
       {/* All Platform Link Groups */}
       <div className="sidebar-groups-container">
         {/* Platform Group Title & Links */}
         <div className="sidebar-group">
           {/* Links */}
           <div className="sidebar-links-container">
-            <Link href="/dashboard/student/home">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "home" ? "default" : "ghost"}
-                size="lg"
-              >
-                🏠 Home
-              </Button>
-            </Link>
-            <Link href="/dashboard/student/schedule">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "schedule" ? "default" : "ghost"}
-                size="lg"
-              >
-                📆 Schedule
-              </Button>
-            </Link>
-            <Link href="/dashboard/student/classes">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "classes" ? "default" : "ghost"}
-                size="lg"
-              >
-                📚 Classes
-              </Button>
-            </Link>
-            <Link href="/dashboard/student/assignments">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "assignments" ? "default" : "ghost"}
-                size="lg"
-              >
-                ⏰ Assignments
-              </Button>
-            </Link>
-            <Link href="/dashboard/student/quizzes">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "quizzes" ? "default" : "ghost"}
-                size="lg"
-              >
-                💯 Quizzes
-              </Button>
-            </Link>
-            <Link href="/dashboard/student/materials">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "materials" ? "default" : "ghost"}
-                size="lg"
-              >
-                🧊 Materials
-              </Button>
-            </Link>
-            <Link href="/dashboard/student/leaderboard">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "leaderboard" ? "default" : "ghost"}
-                size="lg"
-              >
-                🏅 Leaderboard
-              </Button>
-            </Link>
-            <Link href="/dashboard/student/achievements">
-              <Button
-                className="sidebar-button"
-                variant={lastSegment == "achievements" ? "default" : "ghost"}
-                size="lg"
-              >
-                ⭐ Achievements
-              </Button>
-            </Link>
+            {STUDENT_SIDE_BAR_ITEMS.map((item) => (
+              <Link key={item.title} href={`/dashboard/student/${item.url}`}>
+                <Button
+                  className="sidebar-button"
+                  variant={lastSegment == item.url ? "default" : "ghost"}
+                  size="lg"
+                >
+                  {item.icon} {item.title}
+                </Button>
+              </Link>
+            ))}
           </div>
         </div>
       </div>

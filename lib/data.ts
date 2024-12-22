@@ -361,7 +361,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     id: "class1", // Optional field
     class_name: "Advanced Mathematics ➗", //
     class_fees: 150.0, //
-    program_id: "prog1234abcd5678", // Represents foreign key to Programs
+    program_id: "prog1", // Represents foreign key to Programs
     instructor_id: "instr9876efgh4321", // Optional UUID for instructor
     classbegindate: new Date("2024-01-10"),
     classenddate: new Date("2025-06-10"),
@@ -372,7 +372,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     id: "class2",
     class_name: "Introduction to Computer Science 🖥️",
     class_fees: 200.0,
-    program_id: "prog5678ijkl9012",
+    program_id: "prog2",
     instructor_id: "instr1234mnop5678",
     classbegindate: new Date("2024-02-01"),
     classenddate: new Date("2025-07-01"),
@@ -383,7 +383,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     id: "class3",
     class_name: "Creative Writing Workshop ✍️",
     class_fees: 75.5,
-    program_id: "prog3456qrst7890",
+    program_id: "prog2",
     // `instructor_id` is omitted as it's optional
     classbegindate: new Date("2024-03-15"),
     classenddate: new Date("2024-05-15"),
@@ -391,74 +391,77 @@ export const exampleClasses: TFormSchemaAddClass[] = [
   },
 ];
 
-export const exampleAssignments: TFormSchemaAddAssignment[] = [
+export const examplePrograms: TFormSchemaAddProgram[] = [
   {
-    name: "Homework 1",
-    assignment_id: "assignment1",
-    assignment_url: "www.google.com",
-    assignment_duedate: new Date("2025-04-01"),
-    assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
-    assignment_description:
-      "Complete the essay on environmental sustainability.",
-    class_id: "class1",
-    sent_by: "instructor1",
-    max_grade: 20,
-    student_grade: 15,
-    status: "reviewed",
+    program_id: "prog1", // Optional, included
+    program_name: "Advanced Programming Bootcamp",
+    program_levels: [
+      {
+        level_id: "level1", // Optional, included
+        level_name: "Beginner Level",
+        description: "Introduction to programming fundamentals",
+        subjects: ["Variables", "Loops", "Conditionals"],
+        // sessions: [
+        //   {
+        //     id: "schedule1",
+        //     schedule_name: "Introduction to Variables",
+        //     schedule_type: "Classroom",
+        //     url: "https://example.com/schedules/variables",
+        //     timestamp: new Date("2024-11-01T10:00:00"), // Valid date object
+        //     instructor_id: "instructor456",
+        //     class_field: "class123",
+        //   },
+        // ],
+      },
+      {
+        level_id: "level2",
+        level_name: "Intermediate Level",
+        description: "In-depth exploration of data structures",
+        subjects: ["Arrays", "Linked Lists", "Trees"],
+        // sessions: [
+        //   {
+        //     id: "schedule2",
+        //     schedule_name: "Data Structures Workshop",
+        //     schedule_type: "Online",
+        //     url: "https://example.com/schedules/ds-workshop",
+        //     timestamp: new Date("2024-12-01T15:00:00"),
+        //     instructor_id: "instructor789",
+        //     class_field: "class456",
+        //   },
+        // ],
+      },
+    ],
+    program_price: "500 USD",
+    description: "A comprehensive bootcamp for aspiring developers.",
+    duration: "6 months",
+    start_date: new Date("2024-11-01"),
   },
   {
-    name: "Homework 1",
-    assignment_id: "assignment1",
-    assignment_url: "www.google.com",
-    assignment_duedate: new Date("2025-04-01"),
-    assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
-    assignment_description:
-      "Complete the essay on environmental sustainability.",
-    class_id: "class1",
-    sent_by: "instructor1",
-    max_grade: 40,
-    student_grade: 18,
-    status: "reviewed",
-  },
-  {
-    name: "Project A",
-    assignment_id: "assignment2",
-    assignment_url: undefined, // Optional field left undefined
-    assignment_duedate: new Date("2024-12-18"),
-    assignment_attachment: [
-      { name: "requirements.docx", size: 4500000 },
-      { name: "assignment2.py", size: 4500000 },
-    ], // Valid file attachment under 5MB
-    assignment_description: "Prepare a presentation on renewable energy.",
-    class_id: "class2",
-    sent_by: "instructor1",
-    max_grade: 20,
-    status: "submitted",
-  },
-  {
-    name: "Project BB",
-    assignment_id: "assignment2",
-    assignment_url: undefined, // Optional field left undefined
-    assignment_duedate: new Date("2024-1-15"),
-    assignment_attachment: [{ name: "assignment2.py", size: 4500000 }], // Valid file attachment under 5MB
-    assignment_description: "Do homework.",
-    class_id: "class1",
-    sent_by: "instructor1",
-    max_grade: 20,
-    status: "due",
-  },
-  {
-    name: "Assignment C",
-    assignment_id: "assignment3",
-    assignment_url: "www.google.com",
-    assignment_duedate: new Date("2024-06-10"),
-    assignment_attachment: null, // No file attached
-    assignment_description: "Solve all exercises from Chapter 3.",
-    class_id: "class3",
-    sent_by: "instructor2",
-    max_grade: 20,
-    student_grade: 5,
-    status: "missed",
+    program_id: "prog2", // Optional, included
+    program_name: "Data Science Essentials",
+    program_levels: [
+      {
+        // level_id is optional and omitted
+        level_name: "Fundamentals of Data Science",
+        description: "Learn the basics of data analysis and visualization",
+        subjects: ["Statistics", "Data Cleaning", "Visualization"],
+        // sessions: [
+        //   {
+        //     id: "schedule3",
+        //     schedule_name: "Statistics Introduction",
+        //     schedule_type: "Classroom",
+        //     url: "https://example.com/schedules/stats",
+        //     timestamp: new Date("2024-11-05T09:00:00"),
+        //     instructor_id: "instructor321",
+        //     class_field: "class789",
+        //   },
+        // ],
+      },
+    ],
+    program_price: "3000 EGP",
+    description: "A beginner-friendly introduction to data science concepts.",
+    duration: "3 months",
+    start_date: new Date("2024-11-05"),
   },
 ];
 
@@ -590,6 +593,8 @@ export const exampleExamSubmitions: TFormSchemaExamSubmition[] = [
 ];
 
 // Exam solutions
+// how can I refrence that exact exam ? and why's everything stupidly complicated
+// why seperate the evaluation from each question?
 export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
   {
     id: "solvedexam1",
@@ -605,7 +610,7 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
         options: ["Berlin", "Madrid", "Paris", "Rome"],
         correctAnswer: "Paris",
         studentAnswer: "Berlin",
-        score: 2,
+        score: 2, // question's score
       },
       {
         id: "q2",
@@ -613,7 +618,7 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
         questionText: "Explain the theory of relativity.",
         wordLimit: 500,
         studentAnswer: "Good morning 123",
-        score: 1,
+        score: 1, // question's score
       },
       {
         id: "q3",
@@ -621,7 +626,7 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
         questionText: "The Earth is flat.",
         correctAnswer: false,
         studentAnswer: false,
-        score: 2,
+        score: 2, // question's score
       },
     ],
 
@@ -631,23 +636,23 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
         student_answer: "Madrid",
         correct_answer: "Paris",
         is_correct: false,
-        score: 0,
+        score: 0, // student's score
         status: "evaluated",
       },
       {
         question_id: "q2",
         student_answer: "Relativity theory is about relativity duh...",
-        correct_answer: null,
-        is_correct: null,
-        score: null,
-        status: "pending",
+        correct_answer: "Relativity is relative duh...",
+        is_correct: false,
+        score: 0, // student's score
+        status: "evaluated",
       },
       {
         question_id: "q3",
         student_answer: true, // yup the earth is actually flat don't let the government trick u
         correct_answer: false,
-        is_correct: true,
-        score: 0,
+        is_correct: false,
+        score: 0, // student's score
         status: "evaluated",
       },
     ],
@@ -708,6 +713,39 @@ export const exampleLogs: TFormSchemaAddLog[] = [
     timestamp: new Date("2024-10-30T14:30:00Z"),
     user_id: "123e4567-e89b-12d3-a456-426614174002",
     victim_id: "123e4567-e89b-12d3-a456-426614174003",
+  },
+];
+
+export const exampleSessions = [
+  {
+    sessionid: "session1",
+    playback_start_time: "2024-11-01T10:00:00Z",
+    playback_end_timestamp: "2024-11-01T11:00:00Z",
+    admin_id: "admin1",
+    user_id: "instructor1",
+    name: "Constants & Variables",
+    class_id: "class1",
+    program_id: "prog1",
+  },
+  {
+    sessionid: "session2",
+    playback_start_time: "2024-12-02T10:00:00Z",
+    playback_end_timestamp: "2024-12-02T10:00:00Z",
+    admin_id: "admin1",
+    user_id: "instructor2",
+    name: "Loops (for, while)",
+    class_id: "class2",
+    program_id: "prog2",
+  },
+  {
+    sessionid: "session3",
+    playback_start_time: "2024-12-02T10:00:00Z",
+    playback_end_timestamp: "2024-12-02T10:00:00Z",
+    admin_id: "admin1",
+    user_id: "instructor2",
+    name: "Web Development P1",
+    class_id: "class2",
+    program_id: "prog2",
   },
 ];
 
@@ -928,77 +966,74 @@ export const exampleScheduleEvents: TFormSchemaDisplayScheduleEvent[] = [
   },
 ];
 
-export const examplePrograms: TFormSchemaAddProgram[] = [
+export const exampleAssignments: TFormSchemaAddAssignment[] = [
   {
-    program_id: "program123", // Optional, included
-    program_name: "Advanced Programming Bootcamp",
-    program_levels: [
-      {
-        level_id: "level1", // Optional, included
-        level_name: "Beginner Level",
-        description: "Introduction to programming fundamentals",
-        subjects: ["Variables", "Loops", "Conditionals"],
-        // sessions: [
-        //   {
-        //     id: "schedule1",
-        //     schedule_name: "Introduction to Variables",
-        //     schedule_type: "Classroom",
-        //     url: "https://example.com/schedules/variables",
-        //     timestamp: new Date("2024-11-01T10:00:00"), // Valid date object
-        //     instructor_id: "instructor456",
-        //     class_field: "class123",
-        //   },
-        // ],
-      },
-      {
-        level_id: "level2",
-        level_name: "Intermediate Level",
-        description: "In-depth exploration of data structures",
-        subjects: ["Arrays", "Linked Lists", "Trees"],
-        // sessions: [
-        //   {
-        //     id: "schedule2",
-        //     schedule_name: "Data Structures Workshop",
-        //     schedule_type: "Online",
-        //     url: "https://example.com/schedules/ds-workshop",
-        //     timestamp: new Date("2024-12-01T15:00:00"),
-        //     instructor_id: "instructor789",
-        //     class_field: "class456",
-        //   },
-        // ],
-      },
-    ],
-    program_price: "500 USD",
-    description: "A comprehensive bootcamp for aspiring developers.",
-    duration: "6 months",
-    start_date: new Date("2024-11-01"),
+    name: "Homework X",
+    assignment_id: "assignment1",
+    assignment_url: "www.google.com",
+    assignment_duedate: new Date("2024-04-01"),
+    assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
+    assignment_description:
+      "Complete the essay on environmental sustainability.",
+    class_id: "class1",
+    sent_by: "instructor1",
+    max_grade: 20,
+    student_grade: 15,
+    status: "reviewed",
   },
   {
-    program_id: "program456", // Optional, included
-    program_name: "Data Science Essentials",
-    program_levels: [
-      {
-        // level_id is optional and omitted
-        level_name: "Fundamentals of Data Science",
-        description: "Learn the basics of data analysis and visualization",
-        subjects: ["Statistics", "Data Cleaning", "Visualization"],
-        // sessions: [
-        //   {
-        //     id: "schedule3",
-        //     schedule_name: "Statistics Introduction",
-        //     schedule_type: "Classroom",
-        //     url: "https://example.com/schedules/stats",
-        //     timestamp: new Date("2024-11-05T09:00:00"),
-        //     instructor_id: "instructor321",
-        //     class_field: "class789",
-        //   },
-        // ],
-      },
-    ],
-    program_price: "3000 EGP",
-    description: "A beginner-friendly introduction to data science concepts.",
-    duration: "3 months",
-    start_date: new Date("2024-11-05"),
+    name: "Homework 1",
+    assignment_id: "assignment1",
+    assignment_url: "www.google.com",
+    assignment_duedate: new Date("2025-04-01"),
+    assignment_attachment: [{ name: "requirements.docx", size: 4500000 }], // Valid file attachment under 5MB
+    assignment_description:
+      "Complete the essay on environmental sustainability.",
+    class_id: "class1",
+    sent_by: "instructor1",
+    max_grade: 40,
+    student_grade: 18,
+    status: "reviewed",
+  },
+  {
+    name: "Project A",
+    assignment_id: "assignment2",
+    assignment_url: undefined, // Optional field left undefined
+    assignment_duedate: new Date("2025-12-18"),
+    assignment_attachment: [
+      { name: "requirements.docx", size: 4500000 },
+      { name: "assignment2.py", size: 4500000 },
+    ], // Valid file attachment under 5MB
+    assignment_description: "Prepare a presentation on renewable energy.",
+    class_id: "class2",
+    sent_by: "instructor1",
+    max_grade: 20,
+    status: "submitted",
+  },
+  {
+    name: "Project BB",
+    assignment_id: "assignment2",
+    assignment_url: undefined, // Optional field left undefined
+    assignment_duedate: new Date("2025-6-15"),
+    assignment_attachment: [{ name: "assignment2.py", size: 4500000 }], // Valid file attachment under 5MB
+    assignment_description: "Do homework.",
+    class_id: "class1",
+    sent_by: "instructor1",
+    max_grade: 20,
+    status: "due",
+  },
+  {
+    name: "Assignment C",
+    assignment_id: "assignment3",
+    assignment_url: "www.google.com",
+    assignment_duedate: new Date("2024-06-10"),
+    assignment_attachment: null, // No file attached
+    assignment_description: "Solve all exercises from Chapter 3.",
+    class_id: "class3",
+    sent_by: "instructor2",
+    max_grade: 20,
+    student_grade: 5,
+    status: "missed",
   },
 ];
 

@@ -3,11 +3,11 @@ import StudentNavbar from "@/components/pes-custom/platform-components/StudentNa
 import StudentSidebar from "@/components/pes-custom/platform-components/StudentSidebar";
 import { exampleConversations, exampleMessages } from "@/lib/data";
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <div
       className={`antialiased flex flex-col w-full h-[100vh] overflow-hidden bg-shade`}
@@ -20,10 +20,13 @@ export default function RootLayout({
           <PESChatStudent
             messagesData={exampleMessages}
             conversationsData={exampleConversations}
+            className="hidden md:block"
           />
           {children}
         </main>
       </div>
     </div>
   );
-}
+};
+
+export default RootLayout;

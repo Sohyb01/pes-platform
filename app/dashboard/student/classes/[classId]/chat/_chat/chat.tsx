@@ -17,7 +17,7 @@ const ClassChat = ({ selectedUser, className }: ClassChatProps) => {
   return (
     <div
       className={cn(
-        "flex flex-col justify-between w-full h-[70vh] md:h-[65vh]",
+        "flex flex-col justify-between w-full h-[75vh] md:h-[65vh]",
         className
       )}
     >

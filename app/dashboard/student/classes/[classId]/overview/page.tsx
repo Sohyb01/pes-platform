@@ -1,75 +1,44 @@
+import {
+  getAssignments,
+  getCompletedAssignments,
+  getDueAssignments,
+} from "@/api/assignments";
+import { getExams, getUpcomingExams } from "@/api/exams";
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import {
-  exampleAssignments,
-  exampleExams,
-  exampleSolvedExams,
-  selectClassExampleData,
-} from "@/lib/data";
-import { TFormSchemaAddExam } from "@/lib/types-forms";
-import { compareAsc, differenceInDays, format } from "date-fns";
+import { exampleSolvedExams, selectClassExampleData } from "@/lib/data";
+import { cn } from "@/lib/utils";
+import { differenceInDays, format } from "date-fns";
 import {
   Calendar,
+  ChevronRight,
   NotebookPen,
   NotebookText,
   TriangleAlert,
   User,
 } from "lucide-react";
-
-const getDueAssignments = async () => {
-  return exampleAssignments.filter((assignment) => assignment.status === "due");
-};
-
-const getAssignments = async () => {
-  return exampleAssignments;
-};
-
-const getDueExams = async () => {
-  return exampleExams.filter(
-    (exam) => compareAsc(exam.timestamp, new Date()) === 1
-  );
-};
-
-const getExams = async () => {
-  return exampleExams;
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getCompletedExams = async () => {
-  return exampleExams;
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getExamClass = async (exam: TFormSchemaAddExam) => {
-  const examClass = selectClassExampleData.find(
-    (select_class) => select_class.id === exam.class_field
-  );
-
-  return examClass?.name;
-};
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getExamSubmissions = async () => {};
+import Link from "next/link";
+import { Dispatch, SetStateAction } from "react";
 
 interface ClassOverviewProps {
   params: {
     classId: string;
   };
+  setTabValue: Dispatch<SetStateAction<string>>;
 }
 
 const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
   const assignments = await getAssignments();
   const dueAssignments = await getDueAssignments();
-  const completedAssignments = assignments.filter(
-    (assignment) => assignment.status === "submitted"
-  );
+  const completedAssignments = await getCompletedAssignments();
   const assignmentsCompletionPercentage = Math.ceil(
     (completedAssignments.length / assignments.length) * 100
   );
 
   const exams = await getExams();
-  const dueExams = await getDueExams();
+  const upcomingExams = await getUpcomingExams();
   const class_name = selectClassExampleData.find(
     (select_class) => select_class.id === classId
   )?.name;
@@ -103,7 +72,19 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
 
       {/* Assignments Overview */}
       <div className="space-y-4">
-        <h3 className="text-h3">Assignments ⏰</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="text-h3">Assignments ⏰</h3>
+          <Link
+            href="assignments"
+            className={cn("group", buttonVariants({ size: "sm" }))}
+          >
+            View All
+            <ChevronRight
+              size={16}
+              className="group-hover:translate-x-1 transition-transform"
+            />
+          </Link>
+        </div>
         <p className="text-muted-foreground">Completed Assignments</p>
         <div className="flex items-center gap-4">
           <Progress
@@ -118,9 +99,10 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
           <CardHeader className="text-h3">Due Assignments</CardHeader>
           <CardContent className="divide-y space-y-4 h-[18rem] overflow-y-scroll">
             {dueAssignments.map((assignment) => (
-              <div
+              <Link
                 key={assignment.assignment_id}
-                className="py-2 flex items-center gap-4"
+                className="border transition p-4 hover:border-primary rounded-xl cursor-pointer flex items-center gap-4"
+                href={`assignments`}
               >
                 <div className="hidden md:block shrink-0 size-12 p-2 rounded-full bg-muted">
                   <NotebookPen className="size-full object-contain" />
@@ -147,7 +129,7 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
                     </Badge>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </CardContent>
         </Card>
@@ -155,7 +137,19 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
 
       {/* Exams Overview */}
       <div className="space-y-4">
-        <h3 className="text-h3">Exams 💯</h3>
+        <div className="flex items-center justify-between">
+          <h3 className="text-h3">Exams 💯</h3>
+          <Link
+            href="exams"
+            className={cn("group", buttonVariants({ size: "sm" }))}
+          >
+            View All
+            <ChevronRight
+              size={16}
+              className="group-hover:translate-x-1 transition-transform"
+            />
+          </Link>
+        </div>
         <p className="text-muted-foreground">Completed Exams</p>
         <div className="flex items-center gap-4">
           <Progress
@@ -167,10 +161,14 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
           </span>
         </div>
         <Card>
-          <CardHeader className="text-h3">Due Exams</CardHeader>
+          <CardHeader className="text-h3">Upcoming Exams</CardHeader>
           <CardContent className="divide-y space-y-4 h-[18rem] overflow-y-scroll">
-            {dueExams.map((exam) => (
-              <div key={exam.id} className="py-2 flex items-center gap-4">
+            {upcomingExams.map((exam) => (
+              <Link
+                key={exam.id}
+                className="border transition p-4 hover:border-primary rounded-xl cursor-pointer flex items-center gap-4"
+                href={`exams`}
+              >
                 <div className="hidden md:block shrink-0 size-12 p-2 rounded-full bg-muted">
                   <NotebookText className="size-full object-contain" />
                 </div>
@@ -182,15 +180,11 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
                   <div className="flex flex-col md:flex-row gap-4">
                     <Badge className="gap-2">
                       <Calendar size={16} />
-                      Due {format(exam.timestamp, "MMM dd, hh:mm a")}
-                    </Badge>
-                    <Badge variant="secondary" className="gap-2">
-                      <TriangleAlert size={16} />
-                      Due {differenceInDays(exam.timestamp, new Date())} Days
+                      {format(exam.timestamp, "MMM dd, hh:mm a")}
                     </Badge>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </CardContent>
         </Card>

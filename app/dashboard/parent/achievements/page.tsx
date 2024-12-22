@@ -37,7 +37,7 @@ const Achievements = async () => {
       <div className="grid gap-8 lg:grid-cols-2">
         <div className="flex flex-col gap-4">
           <div className="justify-between items-center flex gap-4">
-            <h4 className="text-h4">Achievements 🏆</h4>
+            <h3 className="text-h3">Achievements 🏆</h3>
             <Link
               href="achievements/all-achievements"
               className={cn(
@@ -75,9 +75,11 @@ const Achievements = async () => {
             ))}
           </div>
         </div>
+
+        {/* Badges */}
         <div className="flex flex-col gap-4">
           <div className="justify-between items-center flex gap-4">
-            <h4 className="text-h4">Badges 🥇 </h4>
+            <h3 className="text-h3">Badges 🥇 </h3>
             <Link
               href="achievements/all-badges"
               className={cn(
@@ -92,6 +94,7 @@ const Achievements = async () => {
               />
             </Link>
           </div>
+
           <Card className="bg-background flex-1">
             <CardContent>
               <div className="max-w-[75vw] sm:max-w-[80vw] md:w-full p-4 flex gap-6 overflow-x-scroll [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
@@ -100,16 +103,18 @@ const Achievements = async () => {
                     <div className="flex items-center justify-center bg-shade border rounded-full p-4">
                       <Award size={64} />
                     </div>
-                    <h4 className="text-p_ui text-card-foreground">Badge</h4>
+                    <p className="text-p_ui text-card-foreground">Badge</p>
                   </div>
                 ))}
               </div>
             </CardContent>
           </Card>
         </div>
+
+        {/* Certificates */}
         <div className="lg:col-span-2 flex flex-col gap-4">
           <div className="justify-between items-center flex gap-4 max-w-[300px]">
-            <h4 className="text-h4">Recent Certificates</h4>
+            <h3 className="text-h3">Recent Certificates</h3>
             <Link
               href="achievements/all-certificates"
               className={cn(
@@ -124,6 +129,7 @@ const Achievements = async () => {
               />
             </Link>
           </div>
+
           <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
             {exampleCertificates.map((certificate, idx) => {
               return <PESCertificateCard certificate={certificate} key={idx} />;

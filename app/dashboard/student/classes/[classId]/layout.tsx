@@ -1,117 +1,22 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { exampleClasses } from "@/lib/data";
-import {
-  Book,
-  ClipboardPen,
-  MessagesSquare,
-  NotepadText,
-  SquareChartGantt,
-} from "lucide-react";
+import ClassNavMenu from "@/components/pes-custom/platform-components/ClassNavMenu";
+import { getNameById } from "@/lib/getNameById";
 import { ReactNode } from "react";
 
-const getClassNameById = async (classId: string) => {
-  return exampleClasses.find((exampleClass) => exampleClass.id === classId)
-    ?.class_name;
-};
-
-const ClassLayout = async ({
-  overview,
-  chat,
-  exams,
-  assignments,
-  materials,
-  params: { classId },
-}: {
-  overview: ReactNode;
-  chat: ReactNode;
-  exams: ReactNode;
-  assignments: ReactNode;
-  materials: ReactNode;
+interface ClassLayoutProps {
   params: {
     classId: string;
   };
-}) => {
-  const class_name = await getClassNameById(classId);
+  children: ReactNode;
+}
+
+const ClassLayout = ({ params: { classId }, children }: ClassLayoutProps) => {
+  const class_name = getNameById(classId, "Class");
 
   return (
-    <section className="relative dashboard-tab-wrapper">
-      <h2 className="text-h2">{class_name}</h2>
-      {/* Should be overview incase I forgot to reset it */}
-      <Tabs defaultValue="overview" className="md:block">
-        {/* Medium Screens TabList */}
-        <TabsList className="hidden md:flex bg-transparent gap-4 pb-2 border-b-[1px] border-muted-foreground/50 rounded-none mb-4 justify-start flex-wrap h-fit">
-          <TabsTrigger
-            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
-            value="overview"
-          >
-            <SquareChartGantt size={16} />
-            Overview
-          </TabsTrigger>
-          <TabsTrigger
-            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
-            value="chat"
-          >
-            <MessagesSquare size={16} />
-            Chat
-          </TabsTrigger>
-          <TabsTrigger
-            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
-            value="exams"
-          >
-            <ClipboardPen size={16} />
-            Exams
-          </TabsTrigger>
-          <TabsTrigger
-            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
-            value="assignments"
-          >
-            <NotepadText size={16} />
-            Assignments
-          </TabsTrigger>
-          <TabsTrigger
-            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
-            value="materials"
-          >
-            <Book size={16} />
-            Materials
-          </TabsTrigger>
-        </TabsList>
-
-        {/* Mobile Tabs */}
-        <TabsList className="md:hidden fixed mb-4 bottom-0 left-1/2 -translate-x-1/2 gap-4 bg-background px-4">
-          <TabsTrigger
-            className="data-[state=active]:bg-primary"
-            value="overview"
-          >
-            <SquareChartGantt size={24} />
-          </TabsTrigger>
-          <TabsTrigger
-            className="data-[state=active]:bg-primary data-[state=active]:text-white"
-            value="chat"
-          >
-            <MessagesSquare size={24} />
-          </TabsTrigger>
-          <TabsTrigger
-            className="data-[state=active]:bg-primary data-[state=active]:text-white"
-            value="exams"
-          >
-            <ClipboardPen size={24} />
-          </TabsTrigger>
-          <TabsTrigger
-            className="data-[state=active]:bg-primary data-[state=active]:text-white"
-            value="materials"
-          >
-            <Book size={24} />
-          </TabsTrigger>
-        </TabsList>
-
-        {/* Tabs Content */}
-        <TabsContent value="overview">{overview}</TabsContent>
-        <TabsContent value="chat">{chat}</TabsContent>
-        <TabsContent value="exams">{exams}</TabsContent>
-        <TabsContent value="assignments">{assignments}</TabsContent>
-        <TabsContent value="materials">{materials}</TabsContent>
-      </Tabs>
+    <section className="dashboard-tab-wrapper">
+      <h2 className="hidden md:block text-h2">{class_name}</h2>
+      <ClassNavMenu classId={classId} />
+      {children}
     </section>
   );
 };
