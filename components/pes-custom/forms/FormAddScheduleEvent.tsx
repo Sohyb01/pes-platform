@@ -1,6 +1,14 @@
 "use client";
 
-import React from "react";
+import {
+  FormSchemaAddScheduleEvent,
+  TFormSchemaAddClass,
+  TFormSchemaAddScheduleEvent,
+} from "@/lib/types-forms";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -10,34 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/hooks/use-toast";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  FormSchemaAddScheduleEvent,
-  TFormSchemaAddScheduleEvent,
-} from "@/lib/types-forms";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { X } from "lucide-react";
-import { format } from "date-fns";
-import { Calendar } from "@/components/ui/calendar";
-import { TimePickerDemo } from "@/components/ui/time-picker-demo";
-import { cn } from "@/lib/utils";
-
-import {
-  Command,
-  CommandGroup,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-import { Command as CommandPrimitive } from "cmdk";
-import { Badge } from "@/components/ui/badge";
+import { addMinutes, format } from "date-fns";
 
 import {
   Select,
@@ -46,154 +27,249 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { PersonIcon } from "../icons/PersonIcon";
-import { ClassIcon } from "../icons/ClassIcon";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { CalendarIcon, ChevronLeft, ChevronRight, User } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
+import { TimePicker12Demo } from "@/components/ui/time-picker-12h-demo";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getClasses, getClassStudents } from "@/api/classes";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator";
 
-// Later change this to get an array of objects of {name, id} from backend to display choices of who to add to meeting
-// Combined object
-
-const selectOptions = [
-  {
-    id: "employee1",
-    type: "person",
-    name: "John Doe",
-  },
-  {
-    id: "admin1",
-    type: "person",
-    name: "Jane Smith",
-  },
-  {
-    id: "instructor1",
-    type: "person",
-    name: "Alice Johnson",
-  },
-  {
-    id: "student1",
-    type: "person",
-    name: "Tom Brown",
-  },
-  {
-    id: "class1",
-    type: "class",
-    name: "Advanced Mathematics ➗",
-  },
-  {
-    id: "class2",
-    type: "class",
-    name: "Introduction to Computer Science 🖥️",
-  },
-  {
-    id: "class3",
-    type: "class",
-    name: "Creative Writing Workshop ✍️",
-  },
-];
+interface FormAddEventProps {
+  editObj?: Omit<TFormSchemaAddScheduleEvent, "id" | "scheduler_id">;
+}
 
 const FormAddScheduleEvent = ({
-  editObj,
-}: {
-  editObj?: TFormSchemaAddScheduleEvent | undefined;
-}) => {
-  const inputRef = React.useRef<HTMLInputElement>(null);
-  const [open, setOpen] = React.useState(false);
-  const [selected, setSelected] = React.useState<typeof selectOptions>([]);
-  const [inputValue, setInputValue] = React.useState("");
-
-  const handleUnselect = React.useCallback(
-    (person: { id: string; name: string }) => {
-      setSelected((prev) => prev.filter((s) => s.id !== person.id));
-    },
-    []
-  );
-
-  const handleKeyDown = React.useCallback(
-    (e: React.KeyboardEvent<HTMLDivElement>) => {
-      const input = inputRef.current;
-      if (input) {
-        if (e.key === "Delete" || e.key === "Backspace") {
-          if (input.value === "") {
-            setSelected((prev) => {
-              const newSelected = [...prev];
-              newSelected.pop();
-              return newSelected;
-            });
-          }
-        }
-        // This is not a default behaviour of the <input /> field
-        if (e.key === "Escape") {
-          input.blur();
-        }
-      }
-    },
-    []
-  );
-
-  const selectables = selectOptions.filter((user) => !selected.includes(user));
-
-  const { toast } = useToast();
-
-  const defaultValues = editObj
-    ? editObj
-    : {
-        title: "",
-        type: "",
-        start: undefined,
-        end: undefined,
-        people_invited: undefined,
-        description: "",
-        scheduler_id: "",
-      };
-  // 1. Define your form.
-
+  editObj = {
+    title: "",
+    type: "Call Availability",
+    start: addMinutes(new Date(), 5),
+    end: addMinutes(new Date(), 20),
+    people_invited: [],
+    description: "",
+  },
+}: FormAddEventProps) => {
   const form = useForm<TFormSchemaAddScheduleEvent>({
     resolver: zodResolver(FormSchemaAddScheduleEvent),
-    defaultValues,
+    defaultValues: {
+      ...editObj,
+      scheduler_id: "schedule_id_1",
+    },
   });
 
-  const onSubmit = async (data: TFormSchemaAddScheduleEvent) => {
-    // handle form submission
-    console.log(data);
-    toast({
-      title: "Event scheduled successfully!",
-    });
-    form.reset(defaultValues);
-    setSelected([]);
+  const { data: classes } = useQuery({
+    queryKey: ["classes"],
+    queryFn: getClasses,
+  });
+
+  const eventType = form.watch("type");
+  const startTimestamp = form.watch("start");
+  const peopleInvited = form.watch("people_invited");
+
+  const [inviteStep, setInviteStep] = useState(1);
+  const [chosenClass, setChosenClass] = useState<
+    TFormSchemaAddClass | undefined
+  >();
+
+  const { data: chosenClassStudents } = useQuery({
+    queryKey: ["chosen-class-students", chosenClass?.id],
+    queryFn: () => getClassStudents(chosenClass?.id as string),
+  });
+  const [selectAll, setSelectAll] = useState(false);
+
+  useEffect(() => {
+    // Validate people_invited when type changes to Session
+    if (eventType === "Session") {
+      form.trigger("people_invited");
+    }
+  }, [eventType, form]);
+
+  useEffect(() => {
+    if (eventType === "Call Availability") {
+      form.setValue("end", addMinutes(startTimestamp, 15));
+    }
+  }, [eventType, startTimestamp, form]);
+
+  const onSubmit = (values: TFormSchemaAddScheduleEvent) => {
+    console.log(values);
+  };
+
+  const renderInviteSteps = (
+    step: number,
+    field: { value: string[]; onChange: (value: string[]) => void }
+  ) => {
+    const nextStep = () => {
+      setInviteStep((prev) => prev + 1);
+    };
+
+    const prevStep = () => {
+      setInviteStep((prev) => (prev > 1 ? prev - 1 : prev));
+      form.setValue("people_invited", []);
+      setSelectAll(false);
+    };
+
+    switch (step) {
+      case 1: {
+        return (
+          <div className="space-y-4">
+            <h4 className="text-h4">Choose a class</h4>
+
+            <div className="flex flex-col gap-2">
+              {classes?.map((_class) => (
+                <Button
+                  className="group justify-between"
+                  variant="ghost"
+                  size="sm"
+                  key={_class.id}
+                  onClick={() => {
+                    setChosenClass(_class);
+                    nextStep();
+                  }}
+                >
+                  {_class.class_name.length > 25
+                    ? `${_class.class_name.slice(0, 24)}...`
+                    : _class.class_name}
+                  <ChevronRight
+                    className="group-hover:translate-x-1 transition-transform"
+                    size={24}
+                  />
+                </Button>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+      case 2: {
+        return (
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <button className="group cursor-pointer" onClick={prevStep}>
+                <ChevronLeft className="group-hover:-translate-x-1 transition-transform" />
+              </button>
+              <div>
+                <h4 className="text-h4">Invite</h4>
+                <p className="text-small leading-none tracking-tight text-muted-foreground">
+                  Choose whether you want to invite whole classes or specific
+                  students
+                </p>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <div className="flex items-center space-x-2">
+                <Checkbox
+                  checked={selectAll}
+                  onCheckedChange={(checked) => {
+                    setSelectAll(!!checked);
+                    const selectedPeople = checked
+                      ? chosenClassStudents?.map(
+                          (student) => student?.student_name as string
+                        ) || []
+                      : [];
+                    field.onChange(selectedPeople);
+
+                    // Trigger validation after change
+                    form.trigger("people_invited");
+                  }}
+                />
+                <label>Select All Students</label>
+              </div>
+
+              <Separator />
+
+              <div className="space-y-2 ">
+                {chosenClassStudents?.map((student) => (
+                  <div
+                    key={student?.id}
+                    className="flex items-center space-x-2"
+                  >
+                    <Checkbox
+                      checked={field.value?.includes(
+                        student?.student_name as string
+                      )}
+                      disabled={selectAll}
+                      onCheckedChange={(checked) => {
+                        const currentInvites = field.value || [];
+                        if (checked) {
+                          field.onChange([
+                            ...currentInvites,
+                            student?.student_name as string,
+                          ]);
+                        } else {
+                          field.onChange(
+                            currentInvites.filter(
+                              (name) =>
+                                name !== (student?.student_name as string)
+                            )
+                          );
+
+                          setSelectAll(false);
+                        }
+
+                        // Trigger validation after change
+                        form.trigger("people_invited");
+                      }}
+                    />
+                    <label>{student?.student_name}</label>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Add validation message for Session type */}
+            {eventType === "Session" && peopleInvited?.length === 0 && (
+              <p className="text-sm text-destructive">
+                Sessions must include at least one invitee
+              </p>
+            )}
+          </div>
+        );
+      }
+    }
   };
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="pes-grid-form px-2 pr-4"
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} className="pes-grid-form">
+        {/* Event Title */}
         <FormField
           control={form.control}
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Event Title</FormLabel>
+              <FormLabel>Title</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input placeholder="" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+
+        {/* Event Type */}
         <FormField
           control={form.control}
           name="type"
-          render={({ field }) => (
+          render={({ field: { onChange, value } }) => (
             <FormItem>
-              <FormLabel>Event Type</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
+              <FormLabel>Type</FormLabel>
+              <Select onValueChange={onChange} defaultValue={value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select the event type" />
+                    <SelectValue placeholder="Select an event type" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="Meeting">Call Availability</SelectItem>
+                  <SelectItem value="Call Availability">
+                    Call Availability
+                  </SelectItem>
                   <SelectItem value="Session">Session</SelectItem>
                 </SelectContent>
               </Select>
@@ -201,220 +277,147 @@ const FormAddScheduleEvent = ({
             </FormItem>
           )}
         />
+
+        {/* Event Start Date */}
         <FormField
           control={form.control}
           name="start"
           render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel className="text-left">Start</FormLabel>
+            <FormItem className="col-span-2 flex flex-col">
+              <FormLabel>Start</FormLabel>
               <Popover>
-                <FormControl>
-                  <PopoverTrigger asChild>
+                <PopoverTrigger asChild>
+                  <FormControl>
                     <Button
-                      variant="outline"
+                      variant={"outline"}
                       className={cn(
-                        "w-full justify-start text-left font-normal overflow-hidden",
+                        "pl-3 text-left font-normal",
                         !field.value && "text-muted-foreground"
                       )}
                     >
                       {field.value ? (
-                        format(field.value, "PPP HH:mm:ss")
+                        format(field.value, "PPP - hh:mm a")
                       ) : (
-                        <span>Set timestamp</span>
+                        <span>Start Timestamp</span>
                       )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                     </Button>
-                  </PopoverTrigger>
-                </FormControl>
-                <PopoverContent className="w-auto p-0 pointer-events-auto">
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent
+                  className="w-auto flex flex-col items-center p-4"
+                  align="start"
+                >
                   <Calendar
                     mode="single"
                     selected={field.value}
-                    onSelect={field.onChange}
-                    initialFocus
+                    onSelect={(value) => {
+                      if (eventType === "Call Availability" && value) {
+                        form.setValue("end", addMinutes(value, 15));
+                      }
+                      field.onChange(value);
+                    }}
+                    disabled={(date) => date < new Date()}
                   />
-                  <div className="p-3 border-t border-border">
-                    <TimePickerDemo
-                      setDate={field.onChange}
-                      date={field.value}
-                    />
-                  </div>
+                  <TimePicker12Demo
+                    setDate={(value) => {
+                      if (eventType === "Call Availability" && value) {
+                        form.setValue("end", addMinutes(value, 15));
+                        console.log("dada");
+                      }
+                      field.onChange(value);
+                    }}
+                    date={field.value}
+                  />
                 </PopoverContent>
               </Popover>
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="end"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel className="text-left">End</FormLabel>
-              <Popover>
-                <FormControl>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn(
-                        "w-full justify-start text-left font-normal overflow-hidden",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP HH:mm:ss")
-                      ) : (
-                        <span>Set timestamp</span>
-                      )}
-                    </Button>
-                  </PopoverTrigger>
-                </FormControl>
-                <PopoverContent className="w-auto p-0 pointer-events-auto">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    onSelect={field.onChange}
-                    initialFocus
-                  />
-                  <div className="p-3 border-t border-border">
-                    <TimePickerDemo
-                      setDate={field.onChange}
-                      date={field.value}
-                    />
-                  </div>
-                </PopoverContent>
-              </Popover>
-              <span className="text-subtle text-destructive">
-                {form.formState.errors.end?.message}
-              </span>
-            </FormItem>
-          )}
-        />
-        {/* Invite people */}
-        <Command
-          onKeyDown={handleKeyDown}
-          className="overflow-visible bg-transparent col-span-1 md:col-span-2 flex flex-col gap-2"
-        >
-          <p
-            className={`${
-              form.formState.errors.people_invited
-                ? `text-destructive text-subtle_medium`
-                : `text-subtle`
-            }`}
-          >
-            Invite People
-          </p>
-          <div className="group rounded-md border border-input px-3 py-2 text-sm ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
-            <div className="flex flex-wrap gap-1">
-              {selected.map((user) => {
-                return (
-                  <Badge key={user.id} variant="default">
-                    {user.name}
-                    <button
-                      className="ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          handleUnselect(user);
-                        }
-                      }}
-                      onMouseDown={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                      }}
-                      onClick={() => {
-                        handleUnselect(user);
-
-                        // Safely filter out users and map IDs
-                        const updatedSelectedIds = selected
-                          .filter((s) => s.id !== user.id) // Exclude the unselected user
-                          .map((u) => u.id as string); // Ensure IDs are strings
-
-                        // Update form only if array is non-empty
-                        form.setValue("people_invited", updatedSelectedIds);
-                      }}
-                    >
-                      <X className="h-3 w-3 text-muted-foreground hover:text-foreground" />
-                    </button>
-                  </Badge>
-                );
-              })}
-              <CommandPrimitive.Input
-                ref={inputRef}
-                value={inputValue}
-                onValueChange={setInputValue}
-                onBlur={() => setOpen(false)}
-                onFocus={() => setOpen(true)}
-                placeholder="Invite people..."
-                className="ml-2 flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
-              />
-            </div>
-          </div>
-          <div className="relative mt-2">
-            <CommandList>
-              {open && selectables.length > 0 ? (
-                <div className="absolute top-0 z-10 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in">
-                  <CommandGroup className="h-full overflow-auto border-border border-[1px] bg-background max-h-[200px] overflow-y-scroll">
-                    {selectables.map((user) => {
-                      return (
-                        <CommandItem
-                          key={user.id}
-                          onMouseDown={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                          }}
-                          onSelect={() => {
-                            setInputValue("");
-
-                            // Safely add the selected user
-                            const newSelected = [...selected, user];
-                            setSelected(newSelected);
-
-                            // Safely map IDs and update form
-                            const updatedSelectedIds = newSelected
-                              .filter((u) => u.id) // Exclude users without IDs
-                              .map((u) => u.id as string); // Ensure IDs are strings
-
-                            // Update form with valid IDs
-                            form.setValue("people_invited", updatedSelectedIds);
-                          }}
-                          className={"cursor-pointer"}
-                        >
-                          {user.type == "person" && (
-                            <PersonIcon className="w-4 stroke-foreground mr-2" />
-                          )}
-                          {user.type == "class" && (
-                            <ClassIcon className="w-4 stroke-foreground mr-2" />
-                          )}
-                          {user.name}
-                        </CommandItem>
-                      );
-                    })}
-                  </CommandGroup>
-                </div>
-              ) : null}
-            </CommandList>
-            <FormMessage>
-              {form.formState.errors.people_invited?.message}
-            </FormMessage>
-          </div>
-        </Command>
-        {/* Desc */}
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem className="col-span-1 md:col-span-2">
-              <FormLabel>Description</FormLabel>
-              <FormControl>
-                <Textarea {...field} />
-              </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <div className="md:col-span-2 pt-4 ">
-          <Button type="submit" className="">
-            {editObj ? "Save changes" : "Add Event"}
-          </Button>
-        </div>
+
+        {/* Event End Date */}
+        <FormField
+          control={form.control}
+          name="end"
+          render={({ field }) => (
+            <FormItem className="col-span-2 flex flex-col">
+              <FormLabel>End</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant={"outline"}
+                      className={cn(
+                        "pl-3 text-left font-normal",
+                        !field.value && "text-muted-foreground"
+                      )}
+                      disabled={eventType === "Call Availability"}
+                    >
+                      {field.value ? (
+                        format(field.value, "PPP - hh:mm a")
+                      ) : (
+                        <span>End Timestamp</span>
+                      )}
+                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent
+                  className="w-auto flex flex-col items-center p-4"
+                  align="start"
+                >
+                  <Calendar
+                    mode="single"
+                    selected={field.value}
+                    onSelect={field.onChange}
+                    disabled={(date) => date < new Date()}
+                  />
+                  <TimePicker12Demo
+                    setDate={field.onChange}
+                    date={field.value}
+                  />
+                </PopoverContent>
+              </Popover>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* Select Which Get invited to an event */}
+        <FormField
+          control={form.control}
+          name="people_invited"
+          render={({ field }) => (
+            <FormItem className="col-span-2 flex flex-col">
+              <FormLabel>Invite</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      className="text-muted-foreground justify-start"
+                      variant={"outline"}
+                    >
+                      <User />
+                      {Array.isArray(field.value) && field.value.length > 0
+                        ? `${field.value.length} Students selected`
+                        : "Invite Students"}
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent align="start">
+                  {renderInviteSteps(inviteStep, {
+                    value: field.value || [],
+                    onChange: field.onChange,
+                  })}
+                </PopoverContent>
+              </Popover>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button type="submit">Submit</Button>
       </form>
     </Form>
   );

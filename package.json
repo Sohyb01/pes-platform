@@ -44,6 +44,8 @@
     "@schedule-x/events-service": "^2.7.0",
     "@schedule-x/react": "^2.5.0",
     "@schedule-x/theme-default": "^2.7.0",
+    "@tanstack/react-query": "^5.62.8",
+    "@tanstack/react-query-devtools": "^5.62.8",
     "@tanstack/react-table": "^8.20.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

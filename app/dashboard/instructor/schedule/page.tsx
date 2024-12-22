@@ -1,21 +1,16 @@
 import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar";
-import { exampleScheduleEvents } from "@/lib/data";
 import { PlusIcon } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import FormAddScheduleEvent from "@/components/pes-custom/forms/FormAddScheduleEvent";
 
-async function getData() {
-  // Fetch data from your API here.
-  // Must fit the type definition to be inserted into the table
-  return exampleScheduleEvents;
-}
-
-const page = async () => {
-  const data = await getData();
-  console.log(data);
-
+const Schedule = async () => {
   return (
     <div className="dashboard-tab-wrapper">
       <div className="flex justify-between w-full items-center">
@@ -33,8 +28,9 @@ const page = async () => {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="w-[100vw] md:max-w-[540px] px-2 overflow-y-scroll"
+            className="w-[100vw] md:max-w-[540px] px-4 overflow-y-scroll"
           >
+            <SheetTitle className="text-h2">Add Event</SheetTitle>
             <FormAddScheduleEvent />
           </SheetContent>
         </Sheet>
@@ -47,4 +43,4 @@ const page = async () => {
   );
 };
 
-export default page;
+export default Schedule;

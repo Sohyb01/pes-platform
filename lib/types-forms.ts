@@ -636,11 +636,9 @@ export const FormSchemaAddScheduleEvent = z
       .trim()
       .min(1, "Required")
       .max(100, "Event name must be less than 100 characters"),
-    type: z
-      .string()
-      .trim()
-      .min(1, "Required")
-      .max(50, "Event type must be less than 50 characters"),
+    type: z.enum(["Call Availability", "Session"], {
+      message: "Type is required",
+    }),
     start: z
       .date()
       .refine((date) => date > new Date(), "Timestamp must be a future date"),

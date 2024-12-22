@@ -277,8 +277,41 @@ export const exampleClassMapping: TFormSchemaClassMapping[] = [
     id: "classmapping1",
     student_id: "student1",
     class_id: "class1",
-    program_id: "program1",
-    instructor_id: "instructor1",
+  },
+  {
+    id: "classmapping1",
+    student_id: "student2",
+    class_id: "class1",
+  },
+  {
+    id: "classmapping1",
+    student_id: "student3",
+    class_id: "class1",
+  },
+  {
+    id: "classmapping1",
+    student_id: "student1",
+    class_id: "class2",
+  },
+  {
+    id: "classmapping1",
+    student_id: "student2",
+    class_id: "class2",
+  },
+  {
+    id: "classmapping1",
+    student_id: "student3",
+    class_id: "class2",
+  },
+  {
+    id: "classmapping1",
+    student_id: "student1",
+    class_id: "class3",
+  },
+  {
+    id: "classmapping1",
+    student_id: "student2",
+    class_id: "class3",
   },
 ];
 

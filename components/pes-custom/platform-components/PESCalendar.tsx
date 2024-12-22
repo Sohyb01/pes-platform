@@ -3,10 +3,8 @@
 import { useNextCalendarApp, ScheduleXCalendar } from "@schedule-x/react";
 import { createEventModalPlugin } from "@schedule-x/event-modal";
 import {
-  // createViewDay,
   createViewMonthAgenda,
   createViewMonthGrid,
-  // createViewWeek,
 } from "@schedule-x/calendar";
 import { createEventsServicePlugin } from "@schedule-x/events-service";
 
@@ -14,7 +12,6 @@ import { useEffect } from "react";
 import CustomEventModal from "./CustomEventModal";
 import CustomMonthGridEvent from "./CustomMonthGridEvent";
 import { exampleScheduleEvents } from "@/lib/data";
-// import { useEffect } from "react";
 
 function PESCalendar() {
   const plugins = [createEventsServicePlugin(), createEventModalPlugin()];

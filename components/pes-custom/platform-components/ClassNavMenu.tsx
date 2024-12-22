@@ -79,7 +79,7 @@ const ClassNavMenu = ({
             key={item.title}
             href={`/dashboard/student/classes/${classId}/${item.url}`}
             className={cn(
-              "",
+              "font-bold",
               buttonVariants({
                 variant: lastSegment === item.url ? "default" : "ghost",
                 size: "sm",
@@ -103,11 +103,12 @@ const ClassNavMenu = ({
             key={item.title}
             href={`/dashboard/student/classes/${classId}/${item.url}`}
             className={cn(
-              lastSegment !== item.url && "text-muted-foreground",
+              "font-medium",
               buttonVariants({
                 variant: lastSegment === item.url ? "default" : "ghost",
                 size: "sm",
-              })
+              }),
+              lastSegment !== item.url && "text-muted-foreground"
             )}
           >
             <item.icon size={16} />
