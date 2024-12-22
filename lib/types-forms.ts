@@ -393,6 +393,7 @@ export const FormSchemaAddClass = z.object({
   classbegindate: z.date(),
   classenddate: z.date(),
   class_level: z.string(),
+  students: z.array(z.string()).default([]),
 });
 
 export type TFormSchemaAddClass = z.infer<typeof FormSchemaAddClass>;
@@ -753,3 +754,15 @@ export const FormSchemaClassMapping = z.object({
 });
 
 export type TFormSchemaClassMapping = z.infer<typeof FormSchemaClassMapping>;
+
+export const FormSchemaBookCall = z.object({
+  class_id: z.string(),
+  call_reason: z.string().optional(),
+  call_time: z.date(),
+  // Gotten by default
+  instructor_id: z.string(),
+  student_id: z.string(),
+  parent_id: z.string(),
+});
+
+export type TFormSchemaBookCall = z.infer<typeof FormSchemaBookCall>;

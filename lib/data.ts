@@ -21,6 +21,8 @@ import {
   TFormSchemaClassMapping,
 } from "./types-forms";
 
+import { addDays, setHours, setMinutes } from "date-fns";
+
 export const exampleEmployees: TFormSchemaAddEmployee[] = [
   {
     user_type: "Employee",
@@ -365,6 +367,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     classbegindate: new Date("2024-01-10"),
     classenddate: new Date("2025-06-10"),
     class_level: "Beginner",
+    students: ["student1", "student3"],
   },
   {
     class_times: "Wed 7PM - Sat 7PM",
@@ -376,6 +379,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     classbegindate: new Date("2024-02-01"),
     classenddate: new Date("2025-07-01"),
     class_level: "Intermediate",
+    students: ["student1", "student2", "student3"],
   },
   {
     class_times: "Fri 5PM",
@@ -387,6 +391,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     classbegindate: new Date("2024-03-15"),
     classenddate: new Date("2024-05-15"),
     class_level: "Expert",
+    students: ["student2", "student3"],
   },
 ];
 
@@ -998,3 +1003,24 @@ export const exampleMessages = [
     contact_id: "admin1",
   },
 ];
+
+export const generateMeetingTimes = () => {
+  const meetingTimes: Date[] = [];
+  const today = new Date();
+
+  for (let i = 0; i < 14; i++) {
+    const day = addDays(today, i);
+
+    // Example meeting times for each day: 10:00 AM, 1:00 PM, 4:00 PM
+    const times = [
+      setMinutes(setHours(day, 10), 0), // 10:00 AM
+      setMinutes(setHours(day, 16), 0), // 4:00 PM
+    ];
+
+    times.forEach((time) => {
+      meetingTimes.push(time);
+    });
+  }
+
+  return meetingTimes;
+};

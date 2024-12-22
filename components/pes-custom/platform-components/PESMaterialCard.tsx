@@ -30,7 +30,9 @@ const PESMaterialCard = ({
             {material.name} 📝
           </CardTitle>
           <div className="text-muted-foreground">
-            <p>{pesClass?.class_name}</p>
+            <p>
+              {pesClass?.class_name} {pesClass?.class_times}
+            </p>
             <div>Session: {getNameById(material.session_id, "Session")}</div>
           </div>
         </CardHeader>
