@@ -1,16 +1,9 @@
+import ArrowLink from "@/components/pes-custom/platform-components/ArrowLink";
 import PESCertificateCard from "@/components/pes-custom/platform-components/PESCertificateCard";
-import { buttonVariants } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { exampleCertificates } from "@/lib/data";
-import { cn } from "@/lib/utils";
-import { Award, Calendar, ChevronRight } from "lucide-react";
-import Link from "next/link";
+import { Book, Calendar, Medal, Trophy } from "lucide-react";
 
 export const ACHIEVEMENTS = [
   {
@@ -30,101 +23,102 @@ export const ACHIEVEMENTS = [
 ];
 
 const Achievements = async () => {
-  const recentAchievements = ACHIEVEMENTS.splice(0, 6);
+  const recentAchievement = ACHIEVEMENTS[0];
 
   return (
     <section className="dashboard-tab-wrapper">
-      <div className="grid gap-8 lg:grid-cols-2">
-        <div className="flex flex-col gap-4">
+      {/* Hero */}
+      <h2 className="mb-4 text-h2">
+        Great job, Omar! Here&apos;s what you&apos;ve accomplished! 🎊
+      </h2>
+
+      {/* Achievements */}
+      <div className="grid gap-12 md:grid-cols-2">
+        <div className="space-y-4">
           <div className="justify-between items-center flex gap-4">
-            <h4 className="text-h4">Achievements 🏆</h4>
-            <Link
-              href="achievements/all-achievements"
-              className={cn(
-                buttonVariants({ size: "sm", variant: "outline" }),
-                "group"
-              )}
-            >
-              View All
-              <ChevronRight
-                size={16}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </Link>
+            <h3 className="text-h3">Achievements 🏆</h3>
+            <ArrowLink href="achievements/all-achievements">View All</ArrowLink>
           </div>
-          <div className="w-full flex flex-col md:flex-row overflow-x-scroll gap-4">
-            {recentAchievements.map((achievement) => (
-              <Card
-                className="bg-background w-fulll max-w-[300px] h-full"
-                key={achievement.id}
-              >
-                <CardHeader>
-                  <CardTitle>{achievement.title}</CardTitle>
-                  <span className="text-muted-foreground">
-                    {achievement.description}
-                  </span>
-                </CardHeader>
-                <CardFooter className="flex flex-col text-start gap-1 text-muted-foreground text-subtle items-start">
+
+          <div className="space-y-2">
+            <p className="text-muted-foreground">
+              12 of 34 Achievements Earned
+            </p>
+            <div className="flex items-center gap-2">
+              <Progress className="h-2 bg-muted" value={(12 / 34) * 100} />
+              <p>{Math.floor((12 / 34) * 100)}%</p>
+            </div>
+          </div>
+
+          {/* Latest Achievement */}
+          <Card className="w-full">
+            <CardHeader className="text-h3">Recent Achievement</CardHeader>
+            <CardContent className="flex flex-col md:flex-row items-center gap-4">
+              <div className="p-8 size-40">
+                <Trophy className="stroke-secondary size-full" />
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-h4">{recentAchievement.title}</h4>
+                <div className="space-y-2 text-muted-foreground">
+                  <p>{recentAchievement.description}</p>
                   <p className="flex items-center gap-2">
                     <Calendar size={16} />
-                    {achievement.date}
+                    {recentAchievement.date}
                   </p>
-                  <p>{achievement.subject}</p>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-col gap-4">
-          <div className="justify-between items-center flex gap-4">
-            <h4 className="text-h4">Badges 🥇 </h4>
-            <Link
-              href="achievements/all-badges"
-              className={cn(
-                buttonVariants({ size: "sm", variant: "outline" }),
-                "group"
-              )}
-            >
-              View All
-              <ChevronRight
-                size={16}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </Link>
-          </div>
-          <Card className="bg-background flex-1">
-            <CardContent>
-              <div className="max-w-[75vw] sm:max-w-[80vw] md:w-full p-4 flex gap-6 overflow-x-scroll [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
-                {[...new Array(6)].fill(0).map((_, idx) => (
-                  <div key={idx} className="flex flex-col items-center gap-4">
-                    <div className="flex items-center justify-center bg-shade border rounded-full p-4">
-                      <Award size={64} />
-                    </div>
-                    <h4 className="text-p_ui text-card-foreground">Badge</h4>
-                  </div>
-                ))}
+                  <p className="flex items-center gap-2">
+                    <Book size={16} />
+                    {recentAchievement.subject}
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
         </div>
-        <div className="lg:col-span-2 flex flex-col gap-4">
-          <div className="justify-between items-center flex gap-4 max-w-[300px]">
-            <h4 className="text-h4">Recent Certificates</h4>
-            <Link
-              href="achievements/all-certificates"
-              className={cn(
-                buttonVariants({ size: "sm", variant: "outline" }),
-                "group"
-              )}
-            >
-              View All
-              <ChevronRight
-                size={16}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </Link>
+
+        {/* Badges */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <h3 className="text-h3">Badges 🏅</h3>
+            <ArrowLink href="achievements/all-badges">View All</ArrowLink>
           </div>
-          <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-4">
+
+          <div className="space-y-2">
+            <p className="text-muted-foreground">10 of 24 Badges Unlocked</p>
+            <div className="flex items-center gap-2">
+              <Progress className="h-2 bg-muted" value={(12 / 34) * 100} />
+              <p>{Math.floor((12 / 34) * 100)}%</p>
+            </div>
+          </div>
+
+          {/* Latest Badge */}
+          <Card className="w-full">
+            <CardHeader className="text-h3">Latest Unlocked Badge</CardHeader>
+            <CardContent className="flex flex-col md:flex-row items-center gap-4">
+              <div className="p-8 size-40">
+                <Medal className="stroke-secondary size-full" />
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-h4">The Perfect Student</h4>
+                <div className="space-y-2 text-muted-foreground">
+                  <p>Didn&apos;t miss a lesson in Intro to Computers</p>
+                  <p className="flex items-center gap-2">
+                    <Calendar size={16} />
+                    {recentAchievement.date}
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <Book size={16} />
+                    Intro to Computers
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Certificates */}
+        <div className="md:col-span-2 space-y-4">
+          <h3 className="text-h3">Certificates 📜</h3>
+          <div className="w-full grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {exampleCertificates.map((certificate, idx) => {
               return <PESCertificateCard certificate={certificate} key={idx} />;
             })}

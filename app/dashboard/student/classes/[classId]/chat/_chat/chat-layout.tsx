@@ -15,7 +15,7 @@ const ClassChatLayout = () => {
   );
 
   return (
-    <div className="relative grid md:grid-cols-4 bg-background border rounded-lg overflow-hidden">
+    <div className="relative grid md:grid-cols-4 bg-shade border rounded-lg overflow-hidden">
       {!isMobile && (
         <ClassChatSidebar
           conversations={userData.map((user) => ({
@@ -63,7 +63,10 @@ const ClassChatLayout = () => {
         )}
       </AnimatePresence>
 
-      <ClassChat selectedUser={selectedUser} className="md:col-span-3" />
+      <ClassChat
+        selectedUser={selectedUser}
+        className="h-[calc(80dvh)] md:h-[calc(72dvh)] md:col-span-3"
+      />
     </div>
   );
 };

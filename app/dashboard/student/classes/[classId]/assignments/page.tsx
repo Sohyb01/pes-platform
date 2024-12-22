@@ -28,7 +28,7 @@ const Assignments = async () => {
   const pastAssignments = await getPastAssignments();
 
   return (
-    <div className="px-4 h-[68vh] overflow-y-scroll flex flex-col gap-8">
+    <div className="px-4 overflow-y-scroll flex flex-col gap-8">
       {/* Due Assignments */}
       <Collapsible defaultOpen>
         <div className="flex item-center justify-between mb-4">

@@ -16,10 +16,7 @@ const ClassChat = ({ selectedUser, className }: ClassChatProps) => {
 
   return (
     <div
-      className={cn(
-        "flex flex-col justify-between w-full h-[75vh] md:h-[65vh]",
-        className
-      )}
+      className={cn("flex flex-col justify-between w-full h-full", className)}
     >
       <ClassChatTopbar selectedUser={selectedUser} />
       <ClassChatList selectedUser={selectedUser} messages={messagesState} />

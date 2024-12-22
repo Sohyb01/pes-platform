@@ -6,15 +6,25 @@ import { ReactNode } from "react";
 
 interface ArrowLinkProps {
   children: ReactNode;
+  variant?: "default" | "outline";
   className?: string;
   href: string;
 }
 
-const ArrowLink = ({ children, className, href }: ArrowLinkProps) => {
+const ArrowLink = ({
+  children,
+  variant = "default",
+  className,
+  href,
+}: ArrowLinkProps) => {
   return (
     <Link
       href={href}
-      className={cn("group", buttonVariants({ size: "sm" }), className)}
+      className={cn(
+        "group",
+        buttonVariants({ variant, size: "sm" }),
+        className
+      )}
     >
       {children}
       <ChevronRight

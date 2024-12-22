@@ -48,9 +48,9 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
 
   return (
     <div className="grid gap-8 md:grid-cols-2">
-      {/* Announcements */}
+      {/* Recent Feedbacks */}
       <div className="md:col-span-2 space-y-4 ">
-        <h3 className="text-h3">Announcements 📢</h3>
+        <h3 className="text-h3">Recent Feedbacks 💬</h3>
         <Card>
           <CardContent className="pt-2 divide-y space-y-4 h-[18rem] overflow-y-scroll">
             {[...new Array(4)].fill(0).map((_, idx) => (
@@ -112,13 +112,13 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
                   <p className="text-muted-foreground">
                     {assignment.assignment_description}
                   </p>
-                  <div className="flex flex-col md:flex-row gap-4">
-                    <Badge className="gap-2">
+                  <div className="flex flex-col lg:flex-row gap-4">
+                    <Badge className="gap-2 w-fit">
                       <Calendar size={16} />
                       Due{" "}
                       {format(assignment.assignment_duedate, "MMM dd, hh:mm a")}
                     </Badge>
-                    <Badge variant="secondary" className="gap-2">
+                    <Badge variant="secondary" className="gap-2 w-fit">
                       <TriangleAlert size={16} />
                       Due{" "}
                       {differenceInDays(
@@ -177,8 +177,8 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
                   <p className="text-muted-foreground">
                     {class_name || "Class Name"}
                   </p>
-                  <div className="flex flex-col md:flex-row gap-4">
-                    <Badge className="gap-2">
+                  <div className="flex flex-col lg:flex-row gap-4">
+                    <Badge className="gap-2 w-fit">
                       <Calendar size={16} />
                       {format(exam.timestamp, "MMM dd, hh:mm a")}
                     </Badge>

@@ -17,7 +17,7 @@ const Exams = async ({}: ExamsProps) => {
   const upcomingExams = await getUpcomingExams();
 
   return (
-    <div className="px-4 h-[68vh] overflow-y-scroll flex flex-col gap-8">
+    <div className="px-4 overflow-y-scroll flex flex-col gap-8">
       {/* Active Exams */}
       <Collapsible className="group" defaultOpen>
         <div className="flex item-center justify-between mb-4">

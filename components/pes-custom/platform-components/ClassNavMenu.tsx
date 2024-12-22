@@ -40,15 +40,21 @@ const CLASS_ITEMS = [
   },
 ];
 
-const ClassNavMenu = ({ classId }: { classId: string }) => {
+const ClassNavMenu = ({
+  classId,
+  className,
+}: {
+  classId: string;
+  className?: string;
+}) => {
   const pathname = usePathname();
   const lastSegment = pathname.split("/").filter(Boolean)[4];
   console.log(lastSegment);
-  const [isMobile, setIsMobile] = useState(window && window.innerWidth <= 468);
+  const [isMobile, setIsMobile] = useState(window && window.innerWidth <= 635);
 
   useEffect(() => {
     const handleWindowResize = () => {
-      if (window && window.innerWidth <= 468) {
+      if (window && window.innerWidth <= 635) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
@@ -62,7 +68,12 @@ const ClassNavMenu = ({ classId }: { classId: string }) => {
 
   if (isMobile) {
     return (
-      <div className="w-full h-12 bg-background shadow shadow-black/60 absolute bottom-0 left-0 z-20 flex items-center justify-center gap-4">
+      <div
+        className={cn(
+          "w-full h-12 bg-background shadow shadow-black/60 absolute bottom-0 left-0 z-20 flex items-center justify-center gap-4",
+          className
+        )}
+      >
         {CLASS_ITEMS.map((item) => (
           <Link
             key={item.title}
@@ -83,8 +94,10 @@ const ClassNavMenu = ({ classId }: { classId: string }) => {
   }
 
   return (
-    <div className="border-b  border-muted-foreground/60 py-2">
-      <div className="hidden md:flex gap-4">
+    <div
+      className={cn("mb-4 border-b border-muted-foreground/60 py-2", className)}
+    >
+      <div className="flex gap-4">
         {CLASS_ITEMS.map((item) => (
           <Link
             key={item.title}
