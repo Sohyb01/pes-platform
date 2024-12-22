@@ -41,7 +41,7 @@ export default async function AssignmentsPage() {
           </div>
         </TabsList>
         <TabsContent value="active">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="flex gap-8 overflow-x-scroll w-full">
             {data
               .filter((a) => a.assignment_duedate > new Date())
               .map((assignment, idx) => {
@@ -55,7 +55,7 @@ export default async function AssignmentsPage() {
           </div>
         </TabsContent>
         <TabsContent value="history">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="flex gap-8 overflow-x-scroll w-full">
             {data
               .filter((a) => a.assignment_duedate <= new Date())
               .map((assignment, idx) => {
