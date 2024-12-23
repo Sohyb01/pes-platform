@@ -1,17 +1,23 @@
 import PESCertificateCard from "@/components/pes-custom/platform-components/PESCertificateCard";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { exampleCertificates, exampleStudents } from "@/lib/data";
 import { format } from "date-fns";
 import { Award, CalendarFold, Globe, Mail, Phone, User } from "lucide-react";
 import Image from "next/image";
 import PortfolioAbout from "./PortfolioAbout";
+import PortfolioProjects from "./PortfolioProjects";
+import DownloadAsPdfButton from "./DownloadAsPdfButton";
 
 const Portfolio = () => {
   const student = exampleStudents[0];
 
   return (
-    <section className="dashboard-tab-wrapper">
+    <section className="flex flex-col gap-8" id="portfolio">
       {/* Hero */}
+      <div className="flex items-center justify-between">
+        <h2 className="text-h2">Portfolio</h2>
+        <DownloadAsPdfButton />
+      </div>
       <Card className="overflow-hidden relative bg-background/60 p-4 flex flex-col md:flex-row items-center gap-4">
         <CardHeader>
           <div className="p-4 size-32 rounded-full bg-background">
@@ -79,11 +85,9 @@ const Portfolio = () => {
       <PortfolioAbout />
 
       {/* Achievements */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-center text-h2">Achievements 🏆</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-8">
+      <div className="space-y-4">
+        <h2 className="text-h2">Achievements 🏆</h2>
+        <div className="space-y-8">
           <div className="space-y-4">
             <h3 className="text-h3">Badges Earned 🏅</h3>
             <div className="flex flex-wrap gap-8">
@@ -109,16 +113,11 @@ const Portfolio = () => {
               })}
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Projects */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-center text-h2">Projects</CardTitle>
-        </CardHeader>
-        <CardContent></CardContent>
-      </Card>
+      <PortfolioProjects />
     </section>
   );
 };

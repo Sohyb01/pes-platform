@@ -21,7 +21,7 @@ const ClassChatTopbar = ({ selectedUser }: ClassChatTopbarProps) => {
 
   useEffect(() => {
     const handleWindowResize = () => {
-      if (window.innerWidth <= 468) {
+      if (window.innerWidth <= 744) {
         setIsMobile(true);
       } else {
         setIsMobile(false);

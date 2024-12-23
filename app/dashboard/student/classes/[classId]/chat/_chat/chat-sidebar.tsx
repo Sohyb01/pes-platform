@@ -39,7 +39,7 @@ const ClassChatSidebar = ({
             className="justify-start items-center gap-2"
             onClick={() => setSelectedConvo(conv)}
           >
-            <MessageSquare className="shrink-0" />
+            <MessageSquare className="hidden lg:block shrink-0" />
             <span>{conv.conversation_name}</span>
           </Button>
         ))}

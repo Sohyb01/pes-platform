@@ -31,7 +31,7 @@ const ClassChatLayout = ({ classId }: ClassChatLayoutProps) => {
       {!isMobile && (
         <ClassChatSidebar
           conversations={[classConvo, instructorConvo]}
-          className="hidden md:flex col-span-1 "
+          className="flex col-span-1 "
         />
       )}
 

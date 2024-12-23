@@ -20,11 +20,14 @@ const ClassChatMobileSidebar = ({
 }: ClassChatSidebarProps) => {
   const setSelectedConvo = useChatStore((store) => store.setSelectedConvo);
   const selectedConvo = useChatStore((store) => store.selectedConversation);
+  const setShowMobileSidebar = useChatStore(
+    (state) => state.setShowMobileSidebar
+  );
 
   return (
     <div
       className={cn(
-        "flex flex-col gap-8 p-4 border-r bg-background transition-all",
+        "min-w-[275px] h-full flex flex-col gap-8 p-4 border-r bg-background transition-all",
         className
       )}
     >
@@ -40,7 +43,10 @@ const ClassChatMobileSidebar = ({
             }
             size="xl"
             className="justify-start items-center gap-2"
-            onClick={() => setSelectedConvo(conv)}
+            onClick={() => {
+              setSelectedConvo(conv);
+              setShowMobileSidebar(false);
+            }}
           >
             <MessageSquare className="shrink-0" />
             <span>{conv.conversation_name}</span>

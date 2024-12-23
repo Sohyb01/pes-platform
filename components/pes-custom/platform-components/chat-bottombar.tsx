@@ -27,7 +27,7 @@ interface ChatBottombarProps {
 
 export const BottombarIcons = [{ icon: FileImage }, { icon: Paperclip }];
 
-export default function ChatBottombar({ isMobile }: ChatBottombarProps) {
+const ChatBottombar = ({ isMobile }: ChatBottombarProps) => {
   const [message, setMessage] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const setMessages = useChatStore((state) => state.setMessages);
@@ -255,4 +255,6 @@ export default function ChatBottombar({ isMobile }: ChatBottombarProps) {
       </AnimatePresence>
     </div>
   );
-}
+};
+
+export default ChatBottombar;

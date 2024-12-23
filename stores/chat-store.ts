@@ -51,12 +51,13 @@ export const createChatStore = () => {
 
     // Responsivness States
     showMobileSidebar: false,
-    isMobile: window.innerWidth <= 468 ? true : false,
+    isMobile: window.innerWidth <= 744 ? true : false,
 
     // Chat Actions
     sendMessage: async (message) =>
       set((state) => ({ messages: [...state.messages, message] })),
-    getMessages: async (conversationId) => exampleMessages,
+    getMessages: async (conversationId) =>
+      getConversationMessages(conversationId),
 
     // Sidebar
     setShowMobileSidebar: (showMobileSidebar) => set({ showMobileSidebar }),

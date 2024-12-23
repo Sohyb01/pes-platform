@@ -19,7 +19,6 @@ export const getClassConversation = (classId: string) => {
 
 export const getInstructorConversation = (classId: string) => {
   const _class = exampleClasses.find((_class) => _class.id === classId);
-  console.log(_class?.instructor_id);
   const instructorConvoId = exampleConversationMapping.find(
     (map) => map.user_id == _class?.instructor_id
   )?.conversation_id;

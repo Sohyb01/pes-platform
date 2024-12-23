@@ -5,26 +5,21 @@ import React, { useEffect, useRef, useState } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { Message, loggedInUserData } from "@/lib/shadcn-chat-data";
 import { EmojiPicker } from "@/components/pes-custom/platform-components/emoji-picker";
 import { ChatInput } from "@/components/pes-custom/platform-components/chat-input";
 
 // Remember to use the new use Chat Store once u get to know how this actually works in the backend
-import useChatStore from "@/components/hooks/useChatStore";
 import { TFormSchemaSendMessage } from "@/lib/types-forms";
+import { useChatStore } from "@/components/pes-custom/platform-components/providers/ChatStoreProvider";
 
 export const BottombarIcons = [{ icon: FileImage }, { icon: Paperclip }];
 
 const ChatBottombar = () => {
   const [message, setMessage] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const setMessages = useChatStore((state) => state.setMessages);
-  const hasInitialResponse = useChatStore((state) => state.hasInitialResponse);
-  const setHasInitialResponse = useChatStore(
-    (state) => state.setHasInitialResponse
-  );
   const [isLoading, setisLoading] = useState(false);
-
+  const sendMessage = useChatStore((state) => state.sendMessage);
+  const selectedConvo = useChatStore((state) => state.selectedConversation);
 
   // temp till auth
   const curUserId = "student1";
@@ -33,19 +28,17 @@ const ChatBottombar = () => {
     setMessage(event.target.value);
   };
 
-  const sendMessage = (newMessage: Message) => {
-    useChatStore.setState((state) => ({
-      messages: [...state.messages, newMessage],
-    }));
-  };
-
   const handleThumbsUp = () => {
-    const newMessage: Message = {
-      id: message.length + 1,
-      name: loggedInUserData.name,
-      avatar: loggedInUserData.avatar,
-      message: "👍",
+    const newMessage: TFormSchemaSendMessage = {
+      message_text: "👍",
+      sent_datetime: new Date(),
+      received_datetime: new Date(),
+      from_id: curUserId,
+      to_id: "user1",
+      conversation_id: selectedConvo.conversation_id,
+      contact_id: selectedConvo.conversation_id,
     };
+
     sendMessage(newMessage);
     setMessage("");
   };
@@ -53,8 +46,15 @@ const ChatBottombar = () => {
   const handleSend = () => {
     if (message.trim()) {
       const newMessage: TFormSchemaSendMessage = {
-        conversation_id: ,
+        message_text: message,
+        sent_datetime: new Date(),
+        received_datetime: new Date(),
+        from_id: curUserId,
+        to_id: "user1",
+        conversation_id: selectedConvo.conversation_id,
+        contact_id: selectedConvo.conversation_id,
       };
+
       sendMessage(newMessage);
       setMessage("");
 
@@ -64,34 +64,9 @@ const ChatBottombar = () => {
     }
   };
 
-  const formattedTime = new Date().toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  });
-
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
-    }
-
-    if (!hasInitialResponse) {
-      setisLoading(true);
-      setTimeout(() => {
-        setMessages((messages) => [
-          ...messages.slice(0, messages.length - 1),
-          {
-            id: messages.length + 1,
-            avatar:
-              "https://images.freeimages.com/images/large-previews/971/basic-shape-avatar-1632968.jpg?fmt=webp&h=350",
-            name: "Jane Doe",
-            message: "Awesome! I am just chilling outside.",
-            timestamp: formattedTime,
-          },
-        ]);
-        setisLoading(false);
-        setHasInitialResponse(true);
-      }, 2500);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

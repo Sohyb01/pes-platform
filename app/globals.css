@@ -111,6 +111,10 @@ body {
     --sidebar-primary: hsl(var(--primary));
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  img {
+    display: initial;
+  }
 }
 
 /* This is what actually applies styles to dark mode */
