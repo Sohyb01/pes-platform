@@ -1,20 +1,14 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Message } from "../data";
-import Link from "next/link";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { useChatStore } from "@/components/pes-custom/platform-components/providers/ChatStoreProvider";
+import { Conversation } from "@/stores/chat-store";
+import { MessageSquare } from "lucide-react";
 
 interface ClassChatSidebarProps {
   className?: string;
-  conversations: {
-    name: string;
-    messages: Message[];
-    avatar: string;
-    variant: "default" | "ghost";
-  }[];
+  conversations: Conversation[];
 }
 
 // all the data are just for testing I'm waiting for the backend to get me a clear picture of how does the conversations system works
@@ -26,37 +20,28 @@ const ClassChatSidebar = ({
 }: ClassChatSidebarProps) => {
   // can't do it rn cuz of wrong types ( once I know the exact type of each convo I'll implement it )
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const selectedConvo = useChatStore((state) => state.selectedConversation);
   const setSelectedConvo = useChatStore((state) => state.setSelectedConvo);
 
   return (
     <div className={cn("flex flex-col gap-8 p-4 border-r", className)}>
       <h3 className="text-h3">Chats</h3>
       <div className="flex flex-col gap-4">
-        {conversations.map((conv, index) => (
-          <Link
+        {conversations?.map((conv, index) => (
+          <Button
             key={index}
-            href="#"
-            className={cn(
-              buttonVariants({ variant: conv.variant, size: "xl" }),
-              conv.variant === "default" &&
-                "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white shrink",
-              "justify-start gap-4"
-            )}
-            onClick={() => console.log("active")}
+            variant={
+              selectedConvo.conversation_id === conv.conversation_id
+                ? "default"
+                : "ghost"
+            }
+            size="xl"
+            className="justify-start items-center gap-2"
+            onClick={() => setSelectedConvo(conv)}
           >
-            <Avatar className="flex justify-center items-center">
-              <AvatarImage
-                src={conv.avatar}
-                alt={conv.avatar}
-                width={6}
-                height={6}
-                className="w-10 h-10 "
-              />
-            </Avatar>
-            <div className="flex flex-col max-w-28">
-              <span>{conv.name}</span>
-            </div>
-          </Link>
+            <MessageSquare className="shrink-0" />
+            <span>{conv.conversation_name}</span>
+          </Button>
         ))}
       </div>
     </div>

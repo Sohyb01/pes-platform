@@ -1,27 +1,31 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import Image from "next/image";
 import CopyReferralCard from "./CopyReferralCard";
 
 const INVITE_STEPS = [
   {
     title: "You Invite",
-    description: "Send personalized invitations to friends and family",
+    description:
+      "Book a free demo for your friend or share your unique referral link to your friends.",
   },
   {
     title: "They Join",
-    description: "Simple registration process",
+    description: "Friends register via invite link and join!",
   },
   {
     title: "You Earn",
-    description: "Receive points for each successful referral",
+    description: "You earn an Gift Voucher worth on 2 successful referrals",
   },
   {
     title: "Your Friends Earn",
-    description: "New members get welcome bonuses",
-  },
-  {
-    title: "Mega Reward",
-    description: "Access premium tier rewards",
+    description:
+      "Friends receive a 20% discount on the course fee when they join!",
   },
 ];
 
@@ -64,9 +68,9 @@ const InviteAndEarn = () => {
 
       {/* How it works */}
       <h2 className="text-center mt-8 text-h2">How It Works ❓</h2>
-      <div className="grid gap-4 lg:grid-cols-5">
+      <div className="grid gap-4 lg:grid-cols-4">
         {INVITE_STEPS.map((step, idx) => (
-          <Card key={idx} className="text-center">
+          <Card key={idx} className="rounded-[1rem] text-center">
             <CardHeader>
               <CardTitle className="text-h1">{idx + 1}</CardTitle>
               <h3 className="text-h3">{step.title}</h3>
@@ -77,6 +81,14 @@ const InviteAndEarn = () => {
           </Card>
         ))}
       </div>
+      <Card className="border-primary">
+        <CardHeader>
+          <CardTitle className="text-h3">Note</CardTitle>
+          <CardDescription>
+            Applicable only if your friends purchase at least the basic level.
+          </CardDescription>
+        </CardHeader>
+      </Card>
     </section>
   );
 };

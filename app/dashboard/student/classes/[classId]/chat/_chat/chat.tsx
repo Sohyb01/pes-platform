@@ -4,7 +4,7 @@ import { UserData } from "../data";
 import ClassChatTopbar from "./chat-topbar";
 import ClassChatList from "./chat-list";
 import ClassChatBottomBar from "./chat-bottombar";
-import useChatStore from "@/components/hooks/useChatStore";
+import { useChatStore } from "@/components/pes-custom/platform-components/providers/ChatStoreProvider";
 
 interface ClassChatProps {
   selectedUser: UserData;
@@ -12,14 +12,14 @@ interface ClassChatProps {
 }
 
 const ClassChat = ({ selectedUser, className }: ClassChatProps) => {
-  const messagesState = useChatStore((state) => state.messages);
+  const messages = useChatStore((state) => state.messages);
 
   return (
     <div
       className={cn("flex flex-col justify-between w-full h-full", className)}
     >
       <ClassChatTopbar selectedUser={selectedUser} />
-      <ClassChatList selectedUser={selectedUser} messages={messagesState} />
+      <ClassChatList messages={messages} />
       <ClassChatBottomBar />
     </div>
   );

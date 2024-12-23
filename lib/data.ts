@@ -395,7 +395,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     class_name: "Advanced Mathematics ➗", //
     class_fees: 150.0, //
     program_id: "prog1", // Represents foreign key to Programs
-    instructor_id: "instr9876efgh4321", // Optional UUID for instructor
+    instructor_id: "instructor1", // Optional UUID for instructor
     classbegindate: new Date("2024-01-10"),
     classenddate: new Date("2025-06-10"),
     class_level: "Beginner",
@@ -1115,7 +1115,7 @@ export const exampleConversations = [
   },
   {
     conversation_id: "conv2",
-    conversation_name: "AI Advanced",
+    conversation_name: "Instructor",
     host_id: "user456",
   },
   {
@@ -1129,7 +1129,13 @@ export const exampleConversationMapping = [
   {
     id: "1",
     conversation_id: "conv1",
-    user_id: "user123",
+    user_id: "student1",
+    class_id: "class1",
+  },
+  {
+    id: "1",
+    conversation_id: "conv2",
+    user_id: "instructor1",
     class_id: "class1",
   },
 ];
@@ -1140,7 +1146,7 @@ export const exampleMessages: TFormSchemaSendMessage[] = [
     message_text: "Hello, how are you?",
     sent_datetime: new Date("2024-12-14T15:30:00Z"),
     received_datetime: new Date("2024-12-14T15:31:00Z"),
-    from_id: "user123",
+    from_id: "student1",
     to_id: "user456",
     conversation_id: "conv1",
     contact_id: "instructor1",

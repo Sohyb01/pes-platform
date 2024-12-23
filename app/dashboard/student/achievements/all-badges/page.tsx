@@ -32,22 +32,24 @@ const AllBadges = () => {
         <CollapsibleContent>
           <div className="flex gap-8 flex-wrap">
             {[...new Array(6)].fill(0).map((_, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-4">
-                <div className="flex flex-col items-center justify-center bg-shade border rounded-full px-7 py-4">
-                  <Award size={64} />
-                  <h4 className="text-h4 text-card-foreground">Badge</h4>
-                </div>
+              <div
+                key={idx}
+                className="flex gap-2 flex-col items-center justify-center bg-shade border rounded-[1rem] px-8 py-4"
+              >
+                <Award size={64} />
+                <h4 className="text-h4 text-card-foreground">Badge</h4>
               </div>
             ))}
             {[...new Array(6)].fill(0).map((_, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-4">
-                <div className="overflow-hidden relative flex flex-col items-center justify-center bg-shade border rounded-full px-7 py-4">
-                  <Award size={64} />
-                  <h4 className="text-h4 text-card-foreground">Badge</h4>
-                  <div className="absolute inset-0 bg-background opacity-60"></div>
-                  <div className="absolute inset-0 z-10">
-                    <CircleHelp className="shadow shadow-black p-8 size-full object-center" />
-                  </div>
+              <div
+                key={idx}
+                className="overflow-hidden relative flex gap-2 flex-col items-center justify-center bg-shade border rounded-[1rem] px-8 py-4"
+              >
+                <Award size={64} />
+                <h4 className="text-h4 text-card-foreground">Badge</h4>
+                <div className="absolute inset-0 bg-background opacity-60"></div>
+                <div className="absolute inset-0 z-10">
+                  <CircleHelp className="shadow shadow-black p-8 size-full object-center" />
                 </div>
               </div>
             ))}
@@ -77,22 +79,24 @@ const AllBadges = () => {
         <CollapsibleContent>
           <div className="flex gap-8 flex-wrap">
             {[...new Array(6)].fill(0).map((_, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-4">
-                <div className="flex flex-col items-center justify-center bg-shade border rounded-full px-7 py-4">
-                  <Award size={64} />
-                  <h4 className="text-h4 text-card-foreground">Badge</h4>
-                </div>
+              <div
+                key={idx}
+                className="flex gap-2 flex-col items-center justify-center bg-shade border rounded-[1rem] px-8 py-4"
+              >
+                <Award size={64} />
+                <h4 className="text-h4 text-card-foreground">Badge</h4>
               </div>
             ))}
             {[...new Array(6)].fill(0).map((_, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-4">
-                <div className="overflow-hidden relative flex flex-col items-center justify-center bg-shade border rounded-full px-7 py-4">
-                  <Award size={64} />
-                  <h4 className="text-h4 text-card-foreground">Badge</h4>
-                  <div className="absolute inset-0 bg-background opacity-60"></div>
-                  <div className="absolute inset-0 z-10">
-                    <CircleHelp className="shadow shadow-black p-8 size-full object-center" />
-                  </div>
+              <div
+                key={idx}
+                className="overflow-hidden relative flex gap-2 flex-col items-center justify-center bg-shade border rounded-[1rem] px-8 py-4"
+              >
+                <Award size={64} />
+                <h4 className="text-h4 text-card-foreground">Badge</h4>
+                <div className="absolute inset-0 bg-background opacity-60"></div>
+                <div className="absolute inset-0 z-10">
+                  <CircleHelp className="shadow shadow-black p-8 size-full object-center" />
                 </div>
               </div>
             ))}

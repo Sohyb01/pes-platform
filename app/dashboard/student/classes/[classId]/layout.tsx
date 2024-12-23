@@ -14,9 +14,9 @@ const ClassLayout = ({ params: { classId }, children }: ClassLayoutProps) => {
 
   return (
     <>
-      <ClassNavMenu classId={classId} />
       <section className="dashboard-tab-wrapper">
         <h2 className="hidden md:block text-h2">{class_name}</h2>
+        <ClassNavMenu classId={classId} />
         {children}
       </section>
     </>

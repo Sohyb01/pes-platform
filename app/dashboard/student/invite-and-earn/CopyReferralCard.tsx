@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Copy } from "lucide-react";
-import { useRef } from "react";
+import { CheckCircle, CheckIcon, Copy } from "lucide-react";
+import { useRef, useState } from "react";
 
 import {
   Tooltip,
@@ -17,10 +17,12 @@ import {
 
 const CopyReferralCard = () => {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [isCopied, setisCopied] = useState(false);
   const { toast } = useToast();
 
   const handleCopy = () => {
     navigator.clipboard.writeText(inputRef.current?.value as string);
+    setisCopied(true);
     toast({
       title: "Referral Code Copied!",
       description: "Share it with your friends and familly",
@@ -51,11 +53,12 @@ const CopyReferralCard = () => {
                 <Button
                   onClick={handleCopy}
                   type="submit"
+                  variant={isCopied ? "reversed" : "default"}
                   size="sm"
                   className="px-3"
                 >
                   <span className="sr-only">Copy</span>
-                  <Copy />
+                  {isCopied ? <CheckIcon /> : <Copy />}
                 </Button>
               </TooltipTrigger>
               <TooltipContent>

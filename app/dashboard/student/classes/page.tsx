@@ -32,7 +32,7 @@ const page = async () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="Active Classes">
-          <div className="flex gap-4 flex-wrap">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {exampleClasses
               .filter((c) => new Date() <= c.classenddate)
               .map((pesClass, idx) => {
@@ -41,7 +41,7 @@ const page = async () => {
           </div>
         </TabsContent>
         <TabsContent value="Past Classes">
-          <div className="flex gap-4 flex-wrap">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {exampleClasses
               .filter((c) => new Date() > c.classenddate)
               .map((pesClass, idx) => {

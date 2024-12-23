@@ -49,7 +49,6 @@ const ClassNavMenu = ({
 }) => {
   const pathname = usePathname();
   const lastSegment = pathname.split("/").filter(Boolean)[4];
-  console.log(lastSegment);
   const [isMobile, setIsMobile] = useState(window && window.innerWidth <= 635);
 
   useEffect(() => {

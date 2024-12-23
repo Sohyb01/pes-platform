@@ -1,7 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { exampleClasses, leaderboardData } from "@/lib/data";
-import { ArrowRightCircle, ShieldCheck, Trophy } from "lucide-react";
+import {
+  ArrowRightCircle,
+  CalendarFold,
+  ShieldCheck,
+  Trophy,
+} from "lucide-react";
 import * as React from "react";
 import Link from "next/link";
 import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar";
@@ -11,6 +16,7 @@ import { TFormSchemaAddClass } from "@/lib/types-forms";
 import RequiredActionWidget from "@/components/pes-custom/platform-components/RequiredActionWidget";
 import ArrowLink from "@/components/pes-custom/platform-components/ArrowLink";
 import Image from "next/image";
+import { format } from "date-fns";
 
 const MOTIVATIONAL_STATEMENTS = [
   "Every small step you take today brings you closer to the person you want to be tomorrow.",
@@ -33,16 +39,58 @@ const Home = () => {
 
   return (
     <div className="flex flex-col gap-8 w-full">
-      <div>
-        <h3 className="text-h2">Hello, Omar! 👋</h3>
-        <p className="text-muted-foreground">{randomMotivationalStatement}</p>
+      <div className="flex flex-col md:flex-row justify-between items-center rounded-[1rem] bg-gradient-to-r from-primary to-primary/50">
+        <div className="flex-1 p-4">
+          <p className="mb-4 flex items-center gap-2">
+            <CalendarFold size={16} />
+            {format(new Date(), "MMMM d, yyyy")}
+          </p>
+          <div>
+            <h3 className="text-h2">Hello, Omar! 👋</h3>
+            <p className="">{randomMotivationalStatement}</p>
+          </div>
+        </div>
+        <div className="flex-1 relative overflow-hidden size-52">
+          <div className="absolute right-32 bottom-0 size-52">
+            <Image
+              src="/stock/student.png"
+              alt="Student"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="size-full object-cover"
+            />
+          </div>
+
+          <div className="absolute bottom-10 right-10 size-32">
+            <Image
+              src="/stock/backpack.png"
+              alt="Student"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="size-full object-cover"
+            />
+          </div>
+
+          <div className="hidden lg:block absolute top-10 left-10 size-40">
+            <Image
+              src="/stock/scholarcap.png"
+              alt="Student"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="size-full object-cover"
+            />
+          </div>
+        </div>
       </div>
       <div className="flex flex-wrap gap-8">
-        <div className="flex-1 min-w-[340px] max-w-[580px] grow h-fit">
+        <div className="flex-1 lg:min-w-[340px] lg:max-w-[580px] grow h-fit">
           <p className="text-h3 pb-4">Schedule</p>
           <PESCalendar />
         </div>
-        <div className="flex-1 min-w-[300px] max-w-[580px] grow h-fit flex flex-col gap-4">
+        <div className="flex-1 lg:min-w-[300px] lg:max-w-[580px] grow h-fit flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <h3 className="text-h3">Classes</h3>
             <ArrowLink href="classes">View All</ArrowLink>
@@ -121,14 +169,16 @@ const Home = () => {
           </Tabs>
         </div>
 
-        <div className="flex-1 min-w-[340px] max-w-[580px] grow h-fit flex flex-col gap-4">
+        <div className="flex-1 grow h-fit flex flex-col lg:flex-col gap-4">
           {/* Alert widget (current action: exam, submit homework, etc) */}
-          <div className="flex items-center justify-between">
-            <h3 className="text-h3">Next Event</h3>
-            <ArrowLink href="schedule">View All</ArrowLink>
+          <div className="flex-1 space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="text-h3">Next Event</h3>
+              <ArrowLink href="schedule">View All</ArrowLink>
+            </div>
+            <RequiredActionWidget label="Final Exam: Robotics" link="#" />
           </div>
-          <RequiredActionWidget label="Final Exam: Robotics" link="#" />
-          <div className="relative flex flex-col rounded-[1rem] bg-background border-border border-[1px]">
+          <div className="flex-1 relative flex flex-col rounded-[1rem] bg-background border-border border-[1px]">
             <div className="px-4 pt-4">
               <div className="text-p_ui">Omar Mohamed</div>
               <span className="flex gap-1 text-muted-foreground text-subtle items-center">
@@ -136,7 +186,7 @@ const Home = () => {
               </span>
             </div>
 
-            <div className="flex flex-col gap-4 p-4 pt-4 flex-wrap lg:flex-nowrap">
+            <div className="flex-1 flex flex-col gap-4 p-4 pt-4 flex-wrap lg:flex-nowrap">
               {/* Certificates */}
               <Link
                 href="achievments/certificates"

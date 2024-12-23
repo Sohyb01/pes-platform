@@ -3,7 +3,7 @@
 
 import React from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { AlignLeft, Search } from "lucide-react";
+import { AlignLeft, Search, User } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -45,10 +45,9 @@ const StudentNavbar = () => {
             >
               {/* <p className="text-lead">Student Dashboard</p> */}
               {/* All Platform Link Groups */}
-              <div className="sidebar-groups-container">
+              <div className="flex-1 justify-between sidebar-groups-container">
                 {/* Platform Group Title & Links */}
-                <div className="sidebar-group">
-                  {/* <p>Platform</p> */}
+                <div className="sidebar-group justify-between">
                   {/* Links */}
                   <div className="sidebar-links-container">
                     {STUDENT_SIDE_BAR_ITEMS.map((item) => (
@@ -67,6 +66,22 @@ const StudentNavbar = () => {
                         </Button>
                       </Link>
                     ))}
+                  </div>
+                </div>
+                <div className="sidebar-group">
+                  <div className="sidebar-links-container">
+                    <Link href={`/dashboard/student/portfolio`}>
+                      <Button
+                        className="sidebar-button"
+                        variant={
+                          lastSegment == "portfolio" ? "default" : "ghost"
+                        }
+                        size="lg"
+                      >
+                        <User />
+                        Portfolio
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>

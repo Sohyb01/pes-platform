@@ -1,26 +1,28 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Message, UserData } from "../data";
 import { ChatMessageList } from "@/components/pes-custom/platform-components/chat-message-list";
 import { AnimatePresence, motion } from "motion/react";
 import {
   ChatBubble,
-  ChatBubbleAvatar,
   ChatBubbleMessage,
   ChatBubbleTimestamp,
 } from "@/components/pes-custom/platform-components/chat-bubble";
+import { TFormSchemaSendMessage } from "@/lib/types-forms";
+import { format } from "date-fns";
 
 interface ChatListProps {
-  messages: Message[];
-  selectedUser: UserData;
+  messages: TFormSchemaSendMessage[];
 }
 
-const getMessageVariant = (messageName: string, selectedUserName: string) =>
-  messageName !== selectedUserName ? "sent" : "received";
+const getMessageVariant = (messageSender: string, curUserId: string) =>
+  messageSender === curUserId ? "sent" : "received";
 
-const ClassChatList = ({ messages, selectedUser }: ChatListProps) => {
+const ClassChatList = ({ messages }: ChatListProps) => {
   const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  // temp until we get the auth api
+  const curUserId = "student1";
 
   useEffect(() => {
     if (messagesContainerRef.current) {
@@ -34,7 +36,7 @@ const ClassChatList = ({ messages, selectedUser }: ChatListProps) => {
       <ChatMessageList ref={messagesContainerRef}>
         <AnimatePresence>
           {messages.map((message, index) => {
-            const variant = getMessageVariant(message.name, selectedUser.name);
+            const variant = getMessageVariant(message.from_id, curUserId);
             return (
               <motion.div
                 key={index}
@@ -55,11 +57,12 @@ const ClassChatList = ({ messages, selectedUser }: ChatListProps) => {
               >
                 {/* Usage of ChatBubble component */}
                 <ChatBubble variant={variant}>
-                  <ChatBubbleAvatar src={message.avatar} />
-                  <ChatBubbleMessage isLoading={message.isLoading}>
-                    {message.message}
-                    {message.timestamp && (
-                      <ChatBubbleTimestamp timestamp={message.timestamp} />
+                  <ChatBubbleMessage>
+                    {message.message_text}
+                    {message.received_datetime && (
+                      <ChatBubbleTimestamp
+                        timestamp={format(message.received_datetime, "hh:mm a")}
+                      />
                     )}
                   </ChatBubbleMessage>
                 </ChatBubble>

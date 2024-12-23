@@ -11,10 +11,11 @@ import { ChatInput } from "@/components/pes-custom/platform-components/chat-inpu
 
 // Remember to use the new use Chat Store once u get to know how this actually works in the backend
 import useChatStore from "@/components/hooks/useChatStore";
+import { TFormSchemaSendMessage } from "@/lib/types-forms";
 
 export const BottombarIcons = [{ icon: FileImage }, { icon: Paperclip }];
 
-export default function ChatBottombar() {
+const ChatBottombar = () => {
   const [message, setMessage] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const setMessages = useChatStore((state) => state.setMessages);
@@ -23,6 +24,10 @@ export default function ChatBottombar() {
     (state) => state.setHasInitialResponse
   );
   const [isLoading, setisLoading] = useState(false);
+
+
+  // temp till auth
+  const curUserId = "student1";
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(event.target.value);
@@ -47,11 +52,8 @@ export default function ChatBottombar() {
 
   const handleSend = () => {
     if (message.trim()) {
-      const newMessage: Message = {
-        id: message.length + 1,
-        name: loggedInUserData.name,
-        avatar: loggedInUserData.avatar,
-        message: message.trim(),
+      const newMessage: TFormSchemaSendMessage = {
+        conversation_id: ,
       };
       sendMessage(newMessage);
       setMessage("");
@@ -185,4 +187,6 @@ export default function ChatBottombar() {
       </AnimatePresence>
     </div>
   );
-}
+};
+
+export default ChatBottombar;

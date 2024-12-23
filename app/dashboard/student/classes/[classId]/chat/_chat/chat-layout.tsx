@@ -5,8 +5,17 @@ import { userData } from "../data";
 import { useChatStore } from "@/components/pes-custom/platform-components/providers/ChatStoreProvider";
 import ClassChatMobileSidebar from "./chat-mobile-sidebar";
 import { AnimatePresence, motion } from "motion/react";
+import {
+  getClassConversation,
+  getInstructorConversation,
+} from "@/api/conversations";
+import { Conversation } from "@/stores/chat-store";
 
-const ClassChatLayout = () => {
+interface ClassChatLayoutProps {
+  classId: string;
+}
+
+const ClassChatLayout = ({ classId }: ClassChatLayoutProps) => {
   const selectedUser = userData[0];
   const showMobileSidebar = useChatStore((state) => state.showMobileSidebar);
   const isMobile = useChatStore((state) => state.isMobile);
@@ -14,16 +23,14 @@ const ClassChatLayout = () => {
     (state) => state.setShowMobileSidebar
   );
 
+  const classConvo = getClassConversation(classId) as Conversation;
+  const instructorConvo = getInstructorConversation(classId) as Conversation;
+
   return (
     <div className="relative grid md:grid-cols-4 bg-shade border rounded-lg overflow-hidden">
       {!isMobile && (
         <ClassChatSidebar
-          conversations={userData.map((user) => ({
-            name: user.name,
-            messages: user.messages ?? [],
-            avatar: user.avatar,
-            variant: selectedUser.name === user.name ? "default" : "ghost",
-          }))}
+          conversations={[classConvo, instructorConvo]}
           className="hidden md:flex col-span-1 "
         />
       )}
@@ -41,13 +48,7 @@ const ClassChatLayout = () => {
               className="absolute h-full left-0 top-0 bg-background z-20"
             >
               <ClassChatMobileSidebar
-                conversations={userData.map((user) => ({
-                  name: user.name,
-                  messages: user.messages ?? [],
-                  avatar: user.avatar,
-                  variant:
-                    selectedUser.name === user.name ? "default" : "ghost",
-                }))}
+                conversations={[classConvo, instructorConvo]}
               />
             </motion.div>
             <motion.div

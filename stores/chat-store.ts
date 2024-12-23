@@ -1,9 +1,13 @@
 import { createStore } from "zustand/vanilla";
-import {
-  type TFormSchemaAddConversation as Conversation,
-  type TFormSchemaSendMessage as Message,
-} from "@/lib/types-forms";
+import { type TFormSchemaSendMessage as Message } from "@/lib/types-forms";
 import { exampleConversations, exampleMessages } from "@/lib/data";
+import { getConversationMessages } from "@/api/conversations";
+
+export interface Conversation {
+  conversation_id: string;
+  conversation_name: string;
+  host_id: string;
+}
 
 export interface ChatState {
   // Chat States
@@ -59,8 +63,13 @@ export const createChatStore = () => {
     setIsMobile: (isMobile) => set({ isMobile }),
 
     getConversations: async () => exampleConversations,
-    setSelectedConvo: (selectedConversation: Conversation) =>
-      set({ selectedConversation }),
+    setSelectedConvo: (selectedConversation: Conversation) => {
+      const messages = getConversationMessages(
+        selectedConversation.conversation_id
+      );
+      set({ selectedConversation });
+      set({ messages });
+    },
     subscribeToConvo: () => console.log("Subscribed to Convo"),
     unsubscribeToConvo: () => console.log("Unsubscribed to Convo"),
   }));

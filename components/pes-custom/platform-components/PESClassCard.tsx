@@ -15,7 +15,6 @@ const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
   const pathname = usePathname();
   return (
     <Link
-      className="flex-1 min-w-[340px] max-w-[480px]"
       href={`/dashboard/${pathname.split("/").filter(Boolean)[1]}/classes/${
         pesClass.id
       }`}
