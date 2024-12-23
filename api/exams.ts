@@ -36,7 +36,7 @@ export const getExamEvaluationById = async (examId: string) => {
   return exampleExamSubmitions.find((exam) => exam.solved_exam_id === examId);
 };
 
-export const getSolvedExam = async (examId: string) => {
+export const getSolvedExamById = async (examId: string) => {
   return exampleSolvedExams.find((exam) => exam.id === examId);
 };
 

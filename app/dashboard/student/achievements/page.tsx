@@ -37,7 +37,6 @@ const Achievements = async () => {
         <div className="space-y-4">
           <div className="justify-between items-center flex gap-4">
             <h3 className="text-h3">Achievements 🏆</h3>
-            <ArrowLink href="achievements/all-achievements">View All</ArrowLink>
           </div>
 
           <div className="space-y-2">

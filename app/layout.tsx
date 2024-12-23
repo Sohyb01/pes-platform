@@ -37,7 +37,6 @@ export default function RootLayout({
           {children}
           <Toaster />
         </SidebarProvider>
-        {/* Chat support component */}
       </body>
     </html>
   );

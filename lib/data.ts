@@ -570,7 +570,7 @@ export const exampleExams: TFormSchemaAddExam[] = [
 // Exam Submition
 export const exampleExamSubmitions: TFormSchemaExamSubmition[] = [
   {
-    solved_exam_id: "3317820c-e2dd-4d02-8c1b-d5dba94935ac",
+    solved_exam_id: "exam2",
     total_score: 2,
     evaluation: [
       {
@@ -642,7 +642,7 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
         questionText: "What is the capital of France?",
         options: ["Berlin", "Madrid", "Paris", "Rome"],
         correctAnswer: "Paris",
-        studentAnswer: "Berlin",
+        studentAnswer: "Paris",
         score: 2, // question's score
       },
       {
@@ -666,10 +666,10 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
     evaluation: [
       {
         question_id: "q1",
-        student_answer: "Madrid",
+        student_answer: "Paris",
         correct_answer: "Paris",
-        is_correct: false,
-        score: 0, // student's score
+        is_correct: true,
+        score: 2, // student's score
         status: "evaluated",
       },
       {
@@ -692,7 +692,7 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
 
     duration: 120,
     student_id: "123",
-    total_score: 0,
+    total_score: 2,
   },
 ];
 

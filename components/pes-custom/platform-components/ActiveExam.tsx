@@ -39,7 +39,7 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
       title: "Submitted successfully!",
     });
     form.reset(defaultValues);
-    redirectOnServer("/dashboard/student/quizzes");
+    redirectOnServer("/dashboard/student/classes");
   };
 
   const { fields } = useFieldArray({
@@ -56,6 +56,7 @@ const ActiveExam = ({ exam }: { exam: TFormSchemaAddExam }) => {
             <Countdown date={Date.now() + exam.duration * 60 * 1000} />
           </span>
         </h3>
+
         {fields.map((field, index) =>
           field.type == "mcq" ? (
             <div key={index} className="col-span-1 md:col-span-2">

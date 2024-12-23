@@ -424,7 +424,7 @@ const TrueFalseQuestionSchema = BaseQuestionSchema.extend({
 });
 
 // Union schema for questions
-const QuestionSchema = z.union([
+export const QuestionSchema = z.union([
   MCQQuestionSchema,
   EssayQuestionSchema,
   TrueFalseQuestionSchema,
@@ -462,7 +462,7 @@ const AnswerSchema = z.union([
   TrueFalseAnswerSchema,
 ]);
 
-const EvaluationSchema = z.object({
+export const EvaluationSchema = z.object({
   question_id: z.string(),
   student_answer: z.string().or(z.boolean()),
   correct_answer: z.string().or(z.boolean()).nullish(),

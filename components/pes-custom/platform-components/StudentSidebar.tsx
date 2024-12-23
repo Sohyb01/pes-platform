@@ -31,6 +31,11 @@ export const STUDENT_SIDE_BAR_ITEMS = [
     url: "leaderboard",
     icon: "🏅",
   },
+  {
+    title: "Invite & Earn",
+    url: "invite-and-earn",
+    icon: "🪙",
+  },
 ];
 
 const StudentSidebar = () => {
