@@ -31,7 +31,7 @@ const PESMaterialCard = ({
           </CardTitle>
           <div className="text-muted-foreground">
             <p>
-              {pesClass?.class_name} {pesClass?.class_times}
+              {pesClass?.class_name} <br /> {pesClass?.class_times}
             </p>
             <div>Session: {getNameById(material.session_id, "Session")}</div>
           </div>

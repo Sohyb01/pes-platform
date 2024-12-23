@@ -36,11 +36,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, PlusIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { TimePickerDemo } from "@/components/ui/time-picker-demo";
+import { XMarkIcon } from "../icons/XMarkIcon";
 
 const FormAddExam = ({
   editObj,
@@ -115,15 +116,15 @@ const FormAddExam = ({
           control={form.control}
           name="timestamp"
           render={({ field }) => (
-            <FormItem className="flex flex-col mt-auto">
-              <FormLabel className="text-left">Timestamp</FormLabel>
+            <FormItem>
+              <FormLabel>Timestamp</FormLabel>
               <Popover>
                 <FormControl>
-                  <PopoverTrigger asChild>
+                  <PopoverTrigger className="block h-10" asChild>
                     <Button
                       variant="outline"
                       className={cn(
-                        "w-full justify-start text-left font-normal",
+                        "flex w-full justify-start text-left font-normal",
                         !field.value && "text-muted-foreground"
                       )}
                     >
@@ -151,6 +152,7 @@ const FormAddExam = ({
                   </div>
                 </PopoverContent>
               </Popover>
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -159,7 +161,7 @@ const FormAddExam = ({
           name="duration"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Duration (in seconds)</FormLabel>
+              <FormLabel>Duration (minutes)</FormLabel>
               <FormControl>
                 <Input type="number" {...field} />
               </FormControl>
@@ -177,7 +179,20 @@ const FormAddExam = ({
                 className="grid grid-cols-1 md:grid-cols-2 gap-4"
               >
                 <FormItem className="col-span-1 md:col-span-2">
-                  <FormLabel>Question {index + 1} (Multiple choice)</FormLabel>
+                  <div className="flex w-full justify-between items-center">
+                    <FormLabel>
+                      Question {index + 1} (Multiple choice)
+                    </FormLabel>
+                    <div className="flex gap-4 items-center">
+                      Points:
+                      <Input
+                        defaultValue={1}
+                        className="w-20"
+                        {...form.register(`questions.${index}.points`)}
+                        type="number"
+                      />
+                    </div>
+                  </div>
                   <FormControl>
                     <Textarea
                       {...form.register(`questions.${index}.questionText`)}
@@ -223,11 +238,12 @@ const FormAddExam = ({
                   </FormControl>
                 </FormItem>
                 <Button
-                  variant="ghost"
+                  variant="outline"
                   size="sm"
                   onClick={() => remove(index)}
-                  className="w-fit gap-2 p-0 hover:bg-transparent text-destructive"
+                  className="w-fit flex gap-2 items-center border-destructive"
                 >
+                  <XMarkIcon />
                   Remove Question
                 </Button>
               </div>
@@ -238,7 +254,18 @@ const FormAddExam = ({
                 className="grid grid-cols-1 md:grid-cols-2 gap-4"
               >
                 <FormItem>
-                  <FormLabel>Question {index + 1} (True/False)</FormLabel>
+                  <div className="flex w-full justify-between items-center">
+                    <FormLabel>Question {index + 1} (True or False)</FormLabel>
+                    <div className="flex gap-4 items-center">
+                      Points:
+                      <Input
+                        defaultValue={1}
+                        className="w-20"
+                        {...form.register(`questions.${index}.points`)}
+                        type="number"
+                      />
+                    </div>
+                  </div>
                   <FormControl>
                     <Input
                       {...form.register(`questions.${index}.questionText`)}
@@ -275,7 +302,18 @@ const FormAddExam = ({
               // Case 3: Essay
               <div key={field.id} className="flex flex-col gap-4">
                 <FormItem>
-                  <FormLabel>Question {index + 1} (Essay)</FormLabel>
+                  <div className="flex w-full justify-between items-center">
+                    <FormLabel>Question {index + 1} (Essay)</FormLabel>
+                    <div className="flex gap-4 items-center">
+                      Points:
+                      <Input
+                        defaultValue={1}
+                        className="w-20"
+                        {...form.register(`questions.${index}.points`)}
+                        type="number"
+                      />
+                    </div>
+                  </div>
                   <FormControl>
                     <Textarea
                       {...form.register(`questions.${index}.questionText`)}
@@ -298,7 +336,12 @@ const FormAddExam = ({
           )}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="secondary" className="w-fit">
+              <Button
+                variant="outline"
+                className="w-fit flex gap-2 border-primary"
+                size="sm"
+              >
+                <PlusIcon size={16} />
                 Add Question
               </Button>
             </DropdownMenuTrigger>
@@ -318,6 +361,7 @@ const FormAddExam = ({
                       questionText: "",
                       options: [],
                       correctAnswer: "",
+                      points: 1,
                     })
                   }
                 >
@@ -336,6 +380,7 @@ const FormAddExam = ({
                       type: "essay",
                       questionText: "",
                       wordLimit: 500,
+                      points: 1,
                     })
                   }
                 >
@@ -354,6 +399,7 @@ const FormAddExam = ({
                       type: "true_false",
                       questionText: "The Earth is flat.",
                       correctAnswer: true,
+                      points: 1,
                     })
                   }
                 >

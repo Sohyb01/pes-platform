@@ -406,6 +406,7 @@ const BaseQuestionSchema = z.object({
 
 // MCQ Question Schema
 const MCQQuestionSchema = BaseQuestionSchema.extend({
+  points: z.number().min(1),
   type: z.literal("mcq"),
   options: z.array(z.string()),
   correctAnswer: z.string(),
@@ -413,12 +414,14 @@ const MCQQuestionSchema = BaseQuestionSchema.extend({
 
 // Essay Question Schema
 const EssayQuestionSchema = BaseQuestionSchema.extend({
+  points: z.number().min(1),
   type: z.literal("essay"),
   wordLimit: z.number().int().positive().optional(),
 });
 
 // True/False Question Schema
 const TrueFalseQuestionSchema = BaseQuestionSchema.extend({
+  points: z.number().min(1),
   type: z.literal("true_false"),
   correctAnswer: z.boolean(),
 });

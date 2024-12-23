@@ -25,7 +25,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { exampleClasses, exampleInstructors } from "@/lib/data";
+import { exampleClasses, exampleSessions } from "@/lib/data";
+import { format } from "date-fns";
+import { getNameById } from "@/lib/getNameById";
 
 const FormAddMaterial = ({
   editObj,
@@ -41,7 +43,7 @@ const FormAddMaterial = ({
         attachment: undefined,
         session_id: "",
         class_field: "",
-        instructor_id: "",
+        instructor_id: "instructor1",
       };
   // 1. Define your form.
 
@@ -96,10 +98,31 @@ const FormAddMaterial = ({
           render={({ field }) => (
             <FormItem>
               <FormLabel>Session</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormMessage />
+              <Select onValueChange={field.onChange} value={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select session" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {exampleSessions.map((session) => {
+                    return (
+                      <SelectItem
+                        key={session.sessionid}
+                        value={session.sessionid}
+                      >
+                        {session.name}{" "}
+                        <span className="text-muted-foreground">
+                          {format(session.playback_start_time, "MMMM dd")}
+                        </span>
+                        <span className="block text-muted-foreground">
+                          {getNameById(session.class_id, "Class")}
+                        </span>
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
             </FormItem>
           )}
         />
@@ -123,32 +146,6 @@ const FormAddMaterial = ({
                         <span className="text-muted-foreground">
                           {pesClass.class_times}
                         </span>
-                      </SelectItem>
-                    );
-                  })}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="instructor_id"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Instructor</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select an option" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {exampleInstructors.map((instructor) => {
-                    return (
-                      <SelectItem key={instructor.id} value={instructor.id!}>
-                        {instructor.employee_name}
                       </SelectItem>
                     );
                   })}
