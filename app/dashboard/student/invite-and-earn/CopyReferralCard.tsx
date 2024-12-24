@@ -2,7 +2,13 @@
 
 import { useToast } from "@/components/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CheckIcon, Copy } from "lucide-react";
@@ -33,6 +39,7 @@ const CopyReferralCard = () => {
     <Card className="md:col-span-2">
       <CardHeader>
         <CardTitle className="text-h3">Share With Friends</CardTitle>
+        <CardDescription>Refer a friend and earn 100 points</CardDescription>
       </CardHeader>
       <CardContent className="">
         <div className="flex items-center space-x-2">
@@ -58,7 +65,7 @@ const CopyReferralCard = () => {
                   className="px-3"
                 >
                   <span className="sr-only">Copy</span>
-                  {isCopied ? <CheckIcon /> : <Copy />}
+                  {isCopied ? <CheckIcon size={16} /> : <Copy size={16} />}
                 </Button>
               </TooltipTrigger>
               <TooltipContent>

@@ -50,7 +50,7 @@ const Achievements = async () => {
           </div>
 
           {/* Latest Achievement */}
-          <Card className="w-full">
+          <Card className="bg-background w-full">
             <CardHeader className="text-h3">Recent Achievement</CardHeader>
             <CardContent className="flex flex-col md:flex-row items-center gap-4">
               <div className="p-8 size-40">
@@ -90,7 +90,7 @@ const Achievements = async () => {
           </div>
 
           {/* Latest Badge */}
-          <Card className="w-full">
+          <Card className="bg-background w-full">
             <CardHeader className="text-h3">Latest Unlocked Badge</CardHeader>
             <CardContent className="flex flex-col md:flex-row items-center gap-4">
               <div className="p-8 size-40">

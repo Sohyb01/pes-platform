@@ -7,6 +7,8 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import CopyReferralCard from "./CopyReferralCard";
+import { Badge } from "@/components/ui/badge";
+import { Coins } from "lucide-react";
 
 const INVITE_STEPS = [
   {
@@ -32,7 +34,13 @@ const INVITE_STEPS = [
 const InviteAndEarn = () => {
   return (
     <section className="dashboard-tab-wrapper">
-      <h2 className="text-h2">Invite & Earn 🪙</h2>
+      <div className="flex items-center gap-4">
+        <h2 className="text-h2">Invite & Earn 🪙</h2>
+        <Badge className="gap-2">
+          You have earned <span className="text-body_medium">244</span>points{" "}
+          <Coins size={16} />
+        </Badge>
+      </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <CopyReferralCard />
         <div className="relative bg-background border-primary/50 duration-100 hover:border-primary border-[2px] p-4 w-full text-center rounded-[1rem] flex flex-col justify-center items-center">

@@ -2,11 +2,23 @@ import PESCertificateCard from "@/components/pes-custom/platform-components/PESC
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { exampleCertificates, exampleStudents } from "@/lib/data";
 import { format } from "date-fns";
-import { Award, CalendarFold, Globe, Mail, Phone, User } from "lucide-react";
+import {
+  Award,
+  CalendarFold,
+  Download,
+  Github,
+  Globe,
+  Linkedin,
+  Mail,
+  Phone,
+  User,
+} from "lucide-react";
 import Image from "next/image";
 import PortfolioAbout from "./PortfolioAbout";
 import PortfolioProjects from "./PortfolioProjects";
-import DownloadAsPdfButton from "./DownloadAsPdfButton";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const Portfolio = () => {
   const student = exampleStudents[0];
@@ -16,73 +28,90 @@ const Portfolio = () => {
       {/* Hero */}
       <div className="flex items-center justify-between">
         <h2 className="text-h2">Portfolio</h2>
-        <DownloadAsPdfButton />
+        <Link href="/api/portfolio" className={buttonVariants({ size: "sm" })}>
+          <Download size={16} />
+          Download as PDF
+        </Link>
       </div>
-      <Card className="overflow-hidden relative bg-background/60 p-4 flex flex-col md:flex-row items-center gap-4">
-        <CardHeader>
-          <div className="p-4 size-32 rounded-full bg-background">
-            <User className="size-full object-center" />
-          </div>
-        </CardHeader>
-        <CardContent className="p-4 space-y-4">
-          <div>
-            <h3 className="text-h3">Student Name</h3>
-            <p className="text-p text-muted-foreground">
-              {student.student_name}
-            </p>
-          </div>
-          <div>
-            <h3 className="text-h3">Student Info</h3>
-            <div className="grid gap-4 md:grid-cols-2">
-              <p className="text-p inline-flex items-center gap-2">
-                <Mail size={16} />
-                Email:{" "}
-                <span className="text-muted-foreground">
-                  {student.student_email}
-                </span>
-              </p>
-              <p className="text-p inline-flex items-center gap-2">
-                <CalendarFold size={16} />
-                Date of Birth:{" "}
-                <span className="text-muted-foreground">
-                  {format(
-                    student.student_dateofbirth as Date,
-                    "yyyy - MM - dd"
-                  )}
-                </span>
-              </p>
-              <p className="text-p inline-flex items-center gap-2">
-                <Phone size={16} />
-                Phone Number:{" "}
-                <span className="text-muted-foreground">
-                  {student.student_whatsappnum}
-                </span>
-              </p>
-              <p className="text-p inline-flex items-center gap-2">
-                <Globe size={16} />
-                Timezone:{" "}
-                <span className="text-muted-foreground">
-                  {student.timezone}
-                </span>
+      <div className="grid gap-4 lg:grid-cols-3">
+        <Card className="lg:col-span-2 overflow-hidden relative bg-background p-4 flex flex-col md:flex-row items-center gap-4">
+          <CardHeader className="shrink-0">
+            <div className="p-4 size-32 rounded-full bg-background">
+              <User className="size-full object-center" />
+            </div>
+          </CardHeader>
+          <CardContent className="flex-1 p-4 space-y-4">
+            <div>
+              <h3 className="text-h3">Student Name</h3>
+              <p className="text-p text-muted-foreground">
+                {student.student_name}
               </p>
             </div>
-          </div>
-        </CardContent>
+            <div className="space-y-1">
+              <h3 className="text-h3">Student Info</h3>
+              <div className="grid gap-4 md:grid-cols-2">
+                <div>
+                  <p className="text-p inline-flex items-center gap-2">
+                    <Mail size={16} />
+                    Email
+                  </p>
+                  <p className="text-muted-foreground">
+                    {student.student_email}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-p inline-flex items-center gap-2">
+                    <CalendarFold size={16} />
+                    Date of Birth
+                  </p>
+                  <p className="text-muted-foreground">
+                    {format(
+                      student.student_dateofbirth as Date,
+                      "yyyy - MM - dd"
+                    )}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-p inline-flex items-center gap-2">
+                    <Phone size={16} />
+                    Phone Number
+                  </p>
+                  <p className="text-muted-foreground">
+                    {student.student_whatsappnum}
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-p inline-flex items-center gap-2">
+                    <Globe size={16} />
+                    Socials
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <Link
+                      href="#"
+                      className={cn(
+                        buttonVariants({ variant: "reversed", size: "sm" })
+                      )}
+                    >
+                      <Github size={16} />
+                    </Link>
+                    <Link
+                      href="#"
+                      className={cn(
+                        buttonVariants({ variant: "reversed", size: "sm" })
+                      )}
+                    >
+                      <Linkedin size={16} />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src="/backgrounds/grain.jpg"
-            alt="Grain Background"
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="size-full object-cover"
-          />
-        </div>
-      </Card>
-
-      {/* About */}
-      <PortfolioAbout />
+        {/* About */}
+        <PortfolioAbout className="bg-background" />
+      </div>
 
       {/* Achievements */}
       <div className="space-y-4">

@@ -12,7 +12,7 @@ export interface Conversation {
 export interface ChatState {
   // Chat States
   messages: Message[];
-  isMessagesLoading: boolean;
+  areMessagesLoading: boolean;
   conversations: Conversation[];
   selectedConversation: Conversation;
   isConversationLoading: boolean;
@@ -46,7 +46,7 @@ export const createChatStore = () => {
     messages: exampleMessages,
     conversations: exampleConversations,
     selectedConversation: exampleConversations[0],
-    isMessagesLoading: false,
+    areMessagesLoading: false,
     isConversationLoading: false,
 
     // Responsivness States

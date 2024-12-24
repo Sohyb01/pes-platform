@@ -11,9 +11,6 @@ interface ClassChatSidebarProps {
   conversations: Conversation[];
 }
 
-// all the data are just for testing I'm waiting for the backend to get me a clear picture of how does the conversations system works
-// NOTE: There're still changes that will be made to conversations to fit our needs
-
 const ClassChatMobileSidebar = ({
   conversations,
   className,

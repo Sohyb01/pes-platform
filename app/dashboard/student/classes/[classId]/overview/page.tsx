@@ -6,7 +6,7 @@ import {
 import { getExams, getUpcomingExams } from "@/api/exams";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { exampleSolvedExams, selectClassExampleData } from "@/lib/data";
 import { cn } from "@/lib/utils";
@@ -51,7 +51,7 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
       {/* Recent Feedbacks */}
       <div className="md:col-span-2 space-y-4 ">
         <h3 className="text-h3">Recent Feedbacks 💬</h3>
-        <Card>
+        <Card className="rouned-[1rem] bg-background">
           <CardContent className="pt-2 divide-y space-y-4 h-[18rem] overflow-y-scroll">
             {[...new Array(4)].fill(0).map((_, idx) => (
               <div key={idx} className="py-2 flex items-center gap-4">
@@ -95,13 +95,13 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
             {assignmentsCompletionPercentage} %
           </span>
         </div>
-        <Card>
-          <CardHeader className="text-h3">Due Assignments</CardHeader>
-          <CardContent className="divide-y space-y-4 h-[18rem] overflow-y-scroll">
+        <div className="space-y-4">
+          <h3 className="text-h3">Due Assignments</h3>
+          <div className="divide-y space-y-4 h-[18rem] overflow-y-scroll">
             {dueAssignments.map((assignment) => (
               <Link
                 key={assignment.assignment_id}
-                className="border transition p-4 hover:border-primary rounded-xl cursor-pointer flex items-center gap-4"
+                className="bg-background border transition p-4 hover:border-primary rounded-xl cursor-pointer flex items-center gap-4"
                 href={`assignments`}
               >
                 <div className="hidden md:block shrink-0 size-12 p-2 rounded-full bg-muted">
@@ -131,8 +131,8 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
                 </div>
               </Link>
             ))}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
 
       {/* Exams Overview */}
@@ -160,13 +160,13 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
             {examsCompletionPercentage} %
           </span>
         </div>
-        <Card>
-          <CardHeader className="text-h3">Upcoming Exams</CardHeader>
-          <CardContent className="divide-y space-y-4 h-[18rem] overflow-y-scroll">
+        <div className="space-y-4">
+          <h3 className="text-h3">Upcoming Exams</h3>
+          <div className="divide-y space-y-4 h-[18rem] overflow-y-scroll">
             {upcomingExams.map((exam) => (
               <Link
                 key={exam.id}
-                className="border transition p-4 hover:border-primary rounded-xl cursor-pointer flex items-center gap-4"
+                className="bg-background border transition p-4 hover:border-primary rounded-xl cursor-pointer flex items-center gap-4"
                 href={`exams`}
               >
                 <div className="hidden md:block shrink-0 size-12 p-2 rounded-full bg-muted">
@@ -186,8 +186,8 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
                 </div>
               </Link>
             ))}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -37,7 +37,6 @@ const FormAddProject = ({
     : {
         project_id: "",
         project_name: "",
-        level_id: "",
         project_url: "",
         description: "",
         student_id: "",
@@ -71,28 +70,6 @@ const FormAddProject = ({
               <FormControl>
                 <Input {...field} />
               </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="level_id"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Level</FormLabel>
-              <Select onValueChange={field.onChange} value={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select level" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  <SelectItem value="Level A">Level A</SelectItem>
-                  <SelectItem value="Level B">Level B</SelectItem>
-                  <SelectItem value="Level C">Level C</SelectItem>
-                </SelectContent>
-              </Select>
               <FormMessage />
             </FormItem>
           )}

@@ -8,7 +8,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { EmojiPicker } from "@/components/pes-custom/platform-components/emoji-picker";
 import { ChatInput } from "@/components/pes-custom/platform-components/chat-input";
 
-// Remember to use the new use Chat Store once u get to know how this actually works in the backend
 import { TFormSchemaSendMessage } from "@/lib/types-forms";
 import { useChatStore } from "@/components/pes-custom/platform-components/providers/ChatStoreProvider";
 

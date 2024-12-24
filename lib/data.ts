@@ -406,7 +406,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     class_name: "Introduction to Computer Science 🖥️",
     class_fees: 200.0,
     program_id: "prog2",
-    instructor_id: "instr1234mnop5678",
+    instructor_id: "instructor1",
     classbegindate: new Date("2024-02-01"),
     classenddate: new Date("2025-07-01"),
     class_level: "Intermediate",
@@ -417,7 +417,7 @@ export const exampleClasses: TFormSchemaAddClass[] = [
     class_name: "Creative Writing Workshop ✍️",
     class_fees: 75.5,
     program_id: "prog2",
-    // `instructor_id` is omitted as it's optional
+    instructor_id: "instructor1",
     classbegindate: new Date("2024-03-15"),
     classenddate: new Date("2024-05-15"),
     class_level: "Expert",
@@ -1133,10 +1133,34 @@ export const exampleConversationMapping = [
     class_id: "class1",
   },
   {
-    id: "1",
+    id: "2",
     conversation_id: "conv2",
     user_id: "instructor1",
     class_id: "class1",
+  },
+  {
+    id: "3",
+    conversation_id: "conv3",
+    user_id: "student1",
+    class_id: "class2",
+  },
+  {
+    id: "4",
+    conversation_id: "conv4",
+    user_id: "instructor1",
+    class_id: "class2",
+  },
+  {
+    id: "5",
+    conversation_id: "conv5",
+    user_id: "student1",
+    class_id: "class3",
+  },
+  {
+    id: "6",
+    conversation_id: "conv6",
+    user_id: "instructor1",
+    class_id: "class3",
   },
 ];
 
@@ -1172,3 +1196,6 @@ export const exampleMessages: TFormSchemaSendMessage[] = [
     contact_id: "admin1",
   },
 ];
+
+export const INITIAL_ABOUT =
+  "Hi! I'm Tom, a 14-year-old aspiring computer science developer with a big passion for technology and problem-solving. I love exploring the world of programming and creating cool projects that bring ideas to life. I'm currently learning languages like Python, JavaScript, and HTML/CSS, and I enjoy building fun websites, simple games, and tools that make life easier. I’m curious about artificial intelligence, app development, and how computers work behind the scenes.";

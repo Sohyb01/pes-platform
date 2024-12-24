@@ -731,14 +731,10 @@ export type TFormSchemaAddMaterial = z.infer<typeof FormSchemaAddMaterial>;
 export const FormSchemaAddProject = z.object({
   project_id: z.string().optional(),
   project_name: z.string().trim().min(1, "Required"),
-  //
-  level_id: z.string().optional(),
-  //
   project_url: z.string().trim().min(1, "Required"),
   description: z.string().trim().min(1, "Required"),
   student_id: z.string().trim().min(1, "Required"),
   track_id: z.string().trim().min(1, "Required"),
-  //
 });
 
 export type TFormSchemaAddProject = z.infer<typeof FormSchemaAddProject>;

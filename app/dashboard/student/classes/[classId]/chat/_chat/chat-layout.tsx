@@ -1,7 +1,6 @@
 "use client";
 import ClassChat from "./chat";
 import ClassChatSidebar from "./chat-sidebar";
-import { userData } from "../data";
 import { useChatStore } from "@/components/pes-custom/platform-components/providers/ChatStoreProvider";
 import ClassChatMobileSidebar from "./chat-mobile-sidebar";
 import { AnimatePresence, motion } from "motion/react";
@@ -16,7 +15,6 @@ interface ClassChatLayoutProps {
 }
 
 const ClassChatLayout = ({ classId }: ClassChatLayoutProps) => {
-  const selectedUser = userData[0];
   const showMobileSidebar = useChatStore((state) => state.showMobileSidebar);
   const isMobile = useChatStore((state) => state.isMobile);
   const setShowMobileSidebar = useChatStore(
@@ -27,7 +25,7 @@ const ClassChatLayout = ({ classId }: ClassChatLayoutProps) => {
   const instructorConvo = getInstructorConversation(classId) as Conversation;
 
   return (
-    <div className="relative grid md:grid-cols-4 bg-shade border rounded-lg overflow-hidden">
+    <div className="relative grid md:grid-cols-4 bg-background border rounded-lg overflow-hidden">
       {!isMobile && (
         <ClassChatSidebar
           conversations={[classConvo, instructorConvo]}
@@ -64,10 +62,7 @@ const ClassChatLayout = ({ classId }: ClassChatLayoutProps) => {
         )}
       </AnimatePresence>
 
-      <ClassChat
-        selectedUser={selectedUser}
-        className="h-[calc(80dvh)] md:h-[calc(72dvh)] md:col-span-3"
-      />
+      <ClassChat className="h-[calc(80dvh)] md:h-[calc(72dvh)] md:col-span-3" />
     </div>
   );
 };

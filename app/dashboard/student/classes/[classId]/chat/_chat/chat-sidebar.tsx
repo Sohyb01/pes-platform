@@ -11,15 +11,10 @@ interface ClassChatSidebarProps {
   conversations: Conversation[];
 }
 
-// all the data are just for testing I'm waiting for the backend to get me a clear picture of how does the conversations system works
-// NOTE: There're still changes that will be made to conversations to fit our needs
-
 const ClassChatSidebar = ({
   conversations,
   className,
 }: ClassChatSidebarProps) => {
-  // can't do it rn cuz of wrong types ( once I know the exact type of each convo I'll implement it )
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const selectedConvo = useChatStore((state) => state.selectedConversation);
   const setSelectedConvo = useChatStore((state) => state.setSelectedConvo);
 
