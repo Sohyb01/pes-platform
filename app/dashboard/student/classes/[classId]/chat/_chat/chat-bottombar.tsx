@@ -16,6 +16,7 @@ export const BottombarIcons = [{ icon: FileImage }, { icon: Paperclip }];
 const ChatBottombar = () => {
   const [message, setMessage] = useState("");
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isLoading, setisLoading] = useState(false);
   const sendMessage = useChatStore((state) => state.sendMessage);
   const selectedConvo = useChatStore((state) => state.selectedConversation);

@@ -13,7 +13,6 @@ import {
   Phone,
   User,
 } from "lucide-react";
-import Image from "next/image";
 import PortfolioAbout from "./PortfolioAbout";
 import PortfolioProjects from "./PortfolioProjects";
 import Link from "next/link";

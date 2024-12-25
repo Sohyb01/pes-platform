@@ -1,94 +1,71 @@
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
 import CopyReferralCard from "./CopyReferralCard";
-import { Badge } from "@/components/ui/badge";
 import { Coins } from "lucide-react";
-
-const INVITE_STEPS = [
-  {
-    title: "You Invite",
-    description:
-      "Book a free demo for your friend or share your unique referral link to your friends.",
-  },
-  {
-    title: "They Join",
-    description: "Friends register via invite link and join!",
-  },
-  {
-    title: "You Earn",
-    description: "You earn an Gift Voucher worth on 2 successful referrals",
-  },
-  {
-    title: "Your Friends Earn",
-    description:
-      "Friends receive a 20% discount on the course fee when they join!",
-  },
-];
+import PointsDropdown from "./PointsDropdown";
 
 const InviteAndEarn = () => {
   return (
     <section className="dashboard-tab-wrapper">
-      <div className="flex items-center gap-4">
+      <div className="flex justify-between items-center gap-4">
         <h2 className="text-h2">Invite & Earn 🪙</h2>
-        <Badge className="gap-2">
-          You have earned <span className="text-body_medium">244</span>points{" "}
-          <Coins size={16} />
-        </Badge>
-      </div>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <CopyReferralCard />
-        <div className="relative bg-background border-primary/50 duration-100 hover:border-primary border-[2px] p-4 w-full text-center rounded-[1rem] flex flex-col justify-center items-center">
-          <span className="text-h3 lg:text-h2">10</span>
-          <span className="text-detail">Total Referred</span>
-          <div className="absolute inset-0 opacity-5">
-            <Image
-              src="/backgrounds/grain.jpg"
-              alt="card bg"
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="size-full object-cover"
-            />
-          </div>
-        </div>
 
-        <div className="relative bg-background border-secondary/50 duration-100 hover:border-secondary border-[2px] p-4 w-full text-center rounded-[1rem] flex flex-col justify-center items-center">
-          <span className="text-h3 lg:text-h2">8</span>
-          <span className="text-detail">Total Joined</span>
-          <div className="absolute inset-0 opacity-5">
-            <Image
-              src="/backgrounds/grain.jpg"
-              alt="card bg"
-              width={0}
-              height={0}
-              sizes="100vw"
-              className="size-full object-cover"
-            />
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 pr-4 overflow-hidden rounded-lg bg-background border border-primary">
+            <div
+              className="inline-flex items-center bg-primary text-white pl-3 pr-6 py-1 gap-2"
+              style={{
+                clipPath: "polygon(0 0, 100% 0, 80% 100%, 0% 100%)",
+              }}
+            >
+              <span className="font-medium">0</span>
+            </div>
+            <Coins size={16} />
           </div>
+          <PointsDropdown />
         </div>
       </div>
+      <div className="flex gap-4">
+        <CopyReferralCard className="flex-1" />
 
-      {/* How it works */}
-      <h2 className="text-center mt-8 text-h2">How It Works ❓</h2>
-      <div className="grid gap-4 lg:grid-cols-4">
-        {INVITE_STEPS.map((step, idx) => (
-          <Card key={idx} className="rounded-[1rem] text-center">
-            <CardHeader>
-              <CardTitle className="text-h1">{idx + 1}</CardTitle>
-              <h3 className="text-h3">{step.title}</h3>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">{step.description}</p>
-            </CardContent>
-          </Card>
-        ))}
+        <div className="flex flex-col gap-4">
+          <div className="flex-1 relative bg-background border-primary/50 duration-100 hover:border-primary border-[2px] p-4 w-full text-center rounded-[1rem] flex flex-col justify-center items-center">
+            <span className="text-h3 lg:text-h2">10</span>
+            <span className="text-detail">Total Referred</span>
+            <div className="absolute inset-0 opacity-5">
+              <Image
+                src="/backgrounds/grain.jpg"
+                alt="card bg"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="size-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div className="flex-1 relative bg-background border-secondary/50 duration-100 hover:border-secondary border-[2px] p-4 w-full text-center rounded-[1rem] flex flex-col justify-center items-center">
+            <span className="text-h3 lg:text-h2">8</span>
+            <span className="text-detail">Total Joined</span>
+            <div className="absolute inset-0 opacity-5">
+              <Image
+                src="/backgrounds/grain.jpg"
+                alt="card bg"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="size-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
       </div>
+
       <Card className="border-primary">
         <CardHeader>
           <CardTitle className="text-h3">Note</CardTitle>
