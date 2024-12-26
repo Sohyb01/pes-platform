@@ -3,13 +3,16 @@
 
 import React from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { AlignLeft, Search } from "lucide-react";
+import { AlignLeft, Search, User } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { UserNav } from "./UserNav";
 import PESLogo from "@/components/pes-custom/PESLogo";
+import { STUDENT_SIDE_BAR_ITEMS } from "./StudentSidebar";
+
+const NAVBAR_ITEMS = [{}];
 
 const StudentNavbar = () => {
   // Search functionality
@@ -26,7 +29,6 @@ const StudentNavbar = () => {
     <nav className="nav">
       <div className="nav-internal">
         <div className="flex gap-4">
-          <PESLogo />
           {/* Sheet */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
@@ -43,116 +45,41 @@ const StudentNavbar = () => {
             >
               {/* <p className="text-lead">Student Dashboard</p> */}
               {/* All Platform Link Groups */}
-              <div className="sidebar-groups-container">
+              <div className="flex-1 justify-between sidebar-groups-container">
                 {/* Platform Group Title & Links */}
-                <div className="sidebar-group">
-                  {/* <p>Platform</p> */}
+                <div className="sidebar-group justify-between">
                   {/* Links */}
                   <div className="sidebar-links-container">
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/student/home"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={lastSegment == "home" ? "default" : "ghost"}
-                        size="lg"
+                    {STUDENT_SIDE_BAR_ITEMS.map((item) => (
+                      <Link
+                        key={item.title}
+                        href={`/dashboard/student/${item.url}`}
                       >
-                        🏠 Home
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/student/schedule"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "schedule" ? "default" : "ghost"
-                        }
-                        size="lg"
-                      >
-                        📆 Schedule
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/student/classes"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={lastSegment == "classes" ? "default" : "ghost"}
-                        size="lg"
-                      >
-                        📚 Classes
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/student/assignments"
-                    >
+                        <Button
+                          className="sidebar-button"
+                          variant={
+                            lastSegment == item.url ? "default" : "ghost"
+                          }
+                          size="lg"
+                        >
+                          {item.icon} {item.title}
+                        </Button>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                <div className="sidebar-group">
+                  <div className="sidebar-links-container">
+                    <Link href={`/dashboard/student/portfolio`}>
                       <Button
                         className="sidebar-button"
                         variant={
-                          lastSegment == "assignments" ? "default" : "ghost"
+                          lastSegment == "portfolio" ? "default" : "ghost"
                         }
                         size="lg"
                       >
-                        ⏰ Assignments
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/student/quizzes"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={lastSegment == "quizzes" ? "default" : "ghost"}
-                        size="lg"
-                      >
-                        💯 Quizzes
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/student/materials"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "materials" ? "default" : "ghost"
-                        }
-                        size="lg"
-                      >
-                        🧊 Materials
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/student/leaderboard"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "leaderboard" ? "default" : "ghost"
-                        }
-                        size="lg"
-                      >
-                        🏅 Leaderboard
-                      </Button>
-                    </Link>
-                    <Link
-                      onClick={() => setOpen(false)}
-                      href="/dashboard/student/achievements"
-                    >
-                      <Button
-                        className="sidebar-button"
-                        variant={
-                          lastSegment == "achievements" ? "default" : "ghost"
-                        }
-                        size="lg"
-                      >
-                        ⭐ Achievements
+                        <User />
+                        Portfolio
                       </Button>
                     </Link>
                   </div>
@@ -160,6 +87,7 @@ const StudentNavbar = () => {
               </div>
             </SheetContent>
           </Sheet>
+          <PESLogo />
         </div>
 
         <div className="flex gap-2">

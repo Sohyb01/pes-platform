@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function SuperAdminPage() {
-  // Redirect to the 'finances' subpage
+export default function Student() {
   redirect("/dashboard/student/home");
 }

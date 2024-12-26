@@ -17,16 +17,22 @@ const page = async () => {
       <h3 className="text-h3">Your Classes 📚</h3>
       {/* Tabs */}
       <Tabs defaultValue="Active Classes" className="w-full">
-        <TabsList className="flex gap-4 bg-transparent border-b-[1px] border-b-muted rounded-none mb-4 justify-start flex-wrap h-fit">
-          <TabsTrigger className="tab-trigger" value="Active Classes">
+        <TabsList className="hidden md:flex bg-transparent gap-4 pb-2 border-b-[1px] border-muted-foreground/50 rounded-none mb-4 justify-start flex-wrap h-fit">
+          <TabsTrigger
+            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
+            value="Active Classes"
+          >
             Active Classes
           </TabsTrigger>
-          <TabsTrigger className="tab-trigger" value="Past Classes">
+          <TabsTrigger
+            className="bg-transparent data-[state=active]:bg-primary data-[state=active]:text-white text-muted-foreground gap-2"
+            value="Past Classes"
+          >
             Past Classes
           </TabsTrigger>
         </TabsList>
         <TabsContent value="Active Classes">
-          <div className="flex gap-4 flex-wrap">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {exampleClasses
               .filter((c) => new Date() <= c.classenddate)
               .map((pesClass, idx) => {
@@ -35,7 +41,7 @@ const page = async () => {
           </div>
         </TabsContent>
         <TabsContent value="Past Classes">
-          <div className="flex gap-4 flex-wrap">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {exampleClasses
               .filter((c) => new Date() > c.classenddate)
               .map((pesClass, idx) => {

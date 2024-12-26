@@ -19,6 +19,7 @@ import {
   TFormSchemaPendingPartnership,
   TFormSchemaSolvedExam,
   TFormSchemaClassMapping,
+  TFormSchemaExamSubmition,
 } from "./types-forms";
 
 import { addDays, setHours, setMinutes } from "date-fns";
@@ -536,47 +537,47 @@ export const exampleExams: TFormSchemaAddExam[] = [
 ];
 
 // Exam solutions
-export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
-  {
-    id: "solvedexam1",
-    quizname: "Midterm A",
-    quiz_type: "Type B",
-    class_field: "class1",
-    instructor_id: "instructor1",
-    timestamp: new Date("2024-11-01T11:00:00Z"),
-    questions: [
-      {
-        id: "q1",
-        type: "mcq",
-        questionText: "What is the capital of France?",
-        options: ["Berlin", "Madrid", "Paris", "Rome"],
-        correctAnswer: "Paris",
-        studentAnswer: "Berlin",
-        points: 1,
-      },
-      {
-        id: "q2",
-        type: "essay",
-        questionText: "Explain the theory of relativity.",
-        wordLimit: 500,
-        studentAnswer: "Good morning 123",
-        points: 1,
-      },
-      {
-        id: "q3",
-        type: "true_false",
-        questionText: "The Earth is flat.",
-        correctAnswer: false,
-        studentAnswer: false,
-        points: 1,
-      },
-    ],
-    duration: 120,
-    student_id: "123",
-    max_grade: 100,
-    student_grade: 58,
-  },
-];
+// export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
+//   {
+//     id: "solvedexam1",
+//     quizname: "Midterm A",
+//     quiz_type: "Type B",
+//     class_field: "class1",
+//     instructor_id: "instructor1",
+//     timestamp: new Date("2024-11-01T11:00:00Z"),
+//     questions: [
+//       {
+//         id: "q1",
+//         type: "mcq",
+//         questionText: "What is the capital of France?",
+//         options: ["Berlin", "Madrid", "Paris", "Rome"],
+//         correctAnswer: "Paris",
+//         studentAnswer: "Berlin",
+//         score: 1,
+//       },
+//       {
+//         id: "q2",
+//         type: "essay",
+//         questionText: "Explain the theory of relativity.",
+//         wordLimit: 500,
+//         studentAnswer: "Good morning 123",
+//         score: 1,
+//       },
+//       {
+//         id: "q3",
+//         type: "true_false",
+//         questionText: "The Earth is flat.",
+//         correctAnswer: false,
+//         studentAnswer: false,
+//         score: 1,
+//       },
+//     ],
+//     duration: 120,
+//     student_id: "123",
+//     max_grade: 100,
+//     student_grade: 58,
+//   },
+// ];
 
 export const exampleCertificates: TFormSchemaAddCertificate[] = [
   {
@@ -1033,3 +1034,173 @@ export const generateMeetingTimes = () => {
 
   return meetingTimes;
 };
+
+export const exampleConversationMapping = [
+  {
+    id: "1",
+    conversation_id: "conv1",
+    user_id: "student1",
+    class_id: "class1",
+  },
+  {
+    id: "2",
+    conversation_id: "conv2",
+    user_id: "instructor1",
+    class_id: "class1",
+  },
+  {
+    id: "3",
+    conversation_id: "conv3",
+    user_id: "student1",
+    class_id: "class2",
+  },
+  {
+    id: "4",
+    conversation_id: "conv4",
+    user_id: "instructor1",
+    class_id: "class2",
+  },
+  {
+    id: "5",
+    conversation_id: "conv5",
+    user_id: "student1",
+    class_id: "class3",
+  },
+  {
+    id: "6",
+    conversation_id: "conv6",
+    user_id: "instructor1",
+    class_id: "class3",
+  },
+];
+
+export const INITIAL_ABOUT =
+  "Hi! I'm Tom, a 14-year-old aspiring computer science developer with a big passion for technology and problem-solving. I love exploring the world of programming and creating cool projects that bring ideas to life. I'm currently learning languages like Python, JavaScript, and HTML/CSS, and I enjoy building fun websites, simple games, and tools that make life easier. I’m curious about artificial intelligence, app development, and how computers work behind the scenes.";
+
+// Exam Submition
+export const exampleExamSubmitions: TFormSchemaExamSubmition[] = [
+  {
+    solved_exam_id: "exam2",
+    total_score: 2,
+    evaluation: [
+      {
+        question_id: "df6c03d1-ef63-4a92-99af-2e383e79868f",
+        student_answer: "5",
+        correct_answer: "4",
+        is_correct: false,
+        score: 0,
+        status: "evaluated",
+      },
+      {
+        question_id: "34acee87-8fe1-4abc-b053-372064f21a70",
+        student_answer: "Madrid",
+        correct_answer: "Paris",
+        is_correct: false,
+        score: 0,
+        status: "evaluated",
+      },
+      {
+        question_id: "ac0f891c-3917-405c-929e-a29d77757034",
+        student_answer: "Water",
+        correct_answer: null,
+        is_correct: null,
+        score: null,
+        status: "pending",
+      },
+      {
+        question_id: "cc0c0d3f-d8df-4fa5-aa32-a3d0b5fd746d",
+        student_answer: "Relative",
+        correct_answer: null,
+        is_correct: null,
+        score: null,
+        status: "pending",
+      },
+      {
+        question_id: "90623ec8-6b08-4060-bbe9-004f6645d5dd",
+        student_answer: true,
+        correct_answer: true,
+        is_correct: true,
+        score: 1,
+        status: "evaluated",
+      },
+      {
+        question_id: "feb403b9-e85e-4b77-8f21-d05af4bdf681",
+        student_answer: true,
+        correct_answer: false,
+        is_correct: true,
+        score: 1,
+        status: "evaluated",
+      },
+    ],
+  },
+];
+
+// Exam solutions
+// how can I refrence that exact exam ? and why's everything stupidly complicated
+// why seperate the evaluation from each question?
+export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
+  {
+    id: "solvedexam1",
+    quizname: "Midterm A",
+    quiz_type: "Type B",
+    class_field: "class1",
+    timestamp: new Date("2024-11-01T11:00:00Z"),
+    questions: [
+      {
+        id: "q1",
+        type: "mcq",
+        questionText: "What is the capital of France?",
+        options: ["Berlin", "Madrid", "Paris", "Rome"],
+        correctAnswer: "Paris",
+        studentAnswer: "Paris",
+        points: 2, // question's points
+      },
+      {
+        id: "q2",
+        type: "essay",
+        questionText: "Explain the theory of relativity.",
+        wordLimit: 500,
+        studentAnswer: "Good morning 123",
+        points: 1, // question's points
+      },
+      {
+        id: "q3",
+        type: "true_false",
+        questionText: "The Earth is flat.",
+        correctAnswer: false,
+        studentAnswer: false,
+        points: 2, // question's points
+      },
+    ],
+
+    evaluation: [
+      {
+        question_id: "q1",
+        student_answer: "Paris",
+        correct_answer: "Paris",
+        is_correct: true,
+        score: 2, // student's points
+        status: "evaluated",
+      },
+      {
+        question_id: "q2",
+        student_answer: "Relativity theory is about relativity duh...",
+        correct_answer: "Relativity is relative duh...",
+        is_correct: false,
+        score: 0, // student's points
+        status: "evaluated",
+      },
+      {
+        question_id: "q3",
+        student_answer: true, // yup the earth is actually flat don't let the government trick u
+        correct_answer: false,
+        is_correct: false,
+        score: 0, // student's points
+        status: "evaluated",
+      },
+    ],
+
+    duration: 120,
+    student_id: "123",
+  },
+];

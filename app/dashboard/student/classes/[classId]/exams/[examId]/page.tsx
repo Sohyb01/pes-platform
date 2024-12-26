@@ -2,10 +2,8 @@ import ActiveExam from "@/components/pes-custom/platform-components/ActiveExam";
 import { exampleExams } from "@/lib/data";
 import React from "react";
 
-const ActiveExamPage = ({ params }: { params: { activeExamId: string } }) => {
-  const activeExam = exampleExams.find(
-    (exam) => exam.id == params.activeExamId
-  );
+const ActiveExamPage = ({ params }: { params: { examId: string } }) => {
+  const activeExam = exampleExams.find((exam) => exam.id == params.examId);
 
   return (
     <div className="dashboard-tab-wrapper">

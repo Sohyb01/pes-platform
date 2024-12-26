@@ -465,13 +465,33 @@ const AnswerSchema = z.union([
   TrueFalseAnswerSchema,
 ]);
 
+export const EvaluationSchema = z.object({
+  question_id: z.string(),
+  student_answer: z.string().or(z.boolean()),
+  correct_answer: z.string().or(z.boolean()).nullish(),
+  is_correct: z.boolean().nullish(),
+  score: z.number().nullish(),
+  status: z.enum(["evaluated", "pending"]),
+  comment: z.string().optional(),
+});
+
+export const FormSchemaExamSubmition = z.object({
+  solved_exam_id: z.string(),
+  total_score: z.number(),
+  evaluation: z.array(EvaluationSchema),
+});
+
+export type TFormSchemaExamSubmition = z.infer<typeof FormSchemaExamSubmition>;
+
 // Exam Schema, replaces default questions array with the one that includes student answers
-export const FormSchemaSolvedExam = FormSchemaAddExam.merge(
+export const FormSchemaSolvedExam = FormSchemaAddExam.omit({
+  instructor_id: true,
+}).merge(
   z.object({
     questions: z.array(AnswerSchema),
+    evaluation: z.array(EvaluationSchema),
     student_id: z.string(),
-    max_grade: z.number(),
-    student_grade: z.number().optional(),
+    total_score: z.number().optional(),
   })
 );
 
