@@ -34,7 +34,7 @@ export default async function ExampleDashboardPage() {
             {exampleExams
               .filter((e) => e.timestamp > new Date())
               .map((exam, idx) => {
-                return <PESExamCard exam={exam} key={idx} />;
+                return <PESExamCard exam={exam} key={idx} status="upcoming" />;
               })}
           </div>
         </TabsContent>
