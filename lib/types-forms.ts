@@ -492,6 +492,7 @@ export const FormSchemaSolvedExam = FormSchemaAddExam.omit({
     evaluation: z.array(EvaluationSchema),
     student_id: z.string(),
     total_score: z.number().optional(),
+    max_grade: z.number(),
   })
 );
 

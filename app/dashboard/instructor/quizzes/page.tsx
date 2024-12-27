@@ -1,4 +1,4 @@
-import { exampleExams } from "@/lib/data";
+import { exampleExams, pastExams } from "@/lib/data";
 import { TFormSchemaAddExam } from "@/lib/types-forms";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { buttonVariants } from "@/components/ui/button";
@@ -52,19 +52,17 @@ export default async function ExampleDashboardPage() {
         </TabsContent>
         <TabsContent value="Past Exams">
           <div className="flex gap-4 flex-wrap">
-            {exampleExams
-              .filter((e) => e.timestamp <= new Date())
-              .map((exam, idx) => {
-                return (
-                  <PESExamCard
-                    exam={exam}
-                    key={idx}
-                    status="past"
-                    feedbackLink="#"
-                    grade={{ value: 58, isPending: true }}
-                  />
-                );
-              })}
+            {pastExams.map((exam, idx) => {
+              return (
+                <PESExamCard
+                  exam={exam}
+                  key={idx}
+                  status="past"
+                  feedbackLink="#"
+                  grade={{ value: 58, isPending: true }}
+                />
+              );
+            })}
           </div>
         </TabsContent>
       </Tabs>

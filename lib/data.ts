@@ -1202,6 +1202,8 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
 
     duration: 120,
     student_id: "123",
+    total_score: 25,
+    max_grade: 40,
   },
 ];
 
