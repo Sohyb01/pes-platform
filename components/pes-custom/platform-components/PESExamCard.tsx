@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { VariantSlideInUp } from "@/lib/motion-constants";
-import { TFormSchemaAddExam } from "@/lib/types-forms";
+import { TFormSchemaAddExam, TFormSchemaSolvedExam } from "@/lib/types-forms";
 import { getNameById } from "@/lib/getNameById";
 import { exampleClasses, examplePrograms } from "@/lib/data";
 import { Badge } from "@/components/ui/badge";
@@ -48,7 +48,7 @@ type UpcomingExamProps = BaseExamCardProps & {
 };
 
 // Type for past exam state
-type PastExamProps = BaseExamCardProps & {
+type PastExamProps = { exam: TFormSchemaSolvedExam } & {
   status: "past";
   feedbackLink: string;
   grade: Grade;

@@ -1,8 +1,8 @@
 import {
   exampleAssignments,
   exampleClasses,
-  exampleSolvedExams,
   exampleStudents,
+  pastExams,
 } from "@/lib/data";
 import {} from "@/lib/types-forms";
 import React from "react";
@@ -10,8 +10,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CircleProgress, Progress } from "@/components/ui/progress";
 import PESClassCard from "@/components/pes-custom/platform-components/PESClassCard";
-import PESSolvedExamCard from "@/components/pes-custom/platform-components/PESSolvedExamCard";
 import PESStudentAssignmentCard from "@/components/pes-custom/platform-components/PESStudentAssignmentCard";
+import PESExamCard from "@/components/pes-custom/platform-components/PESExamCard";
 
 const ViewStudentPage = ({ params }: { params: { viewId: string } }) => {
   const student = exampleStudents.find(
@@ -118,8 +118,16 @@ const ViewStudentPage = ({ params }: { params: { viewId: string } }) => {
                 <span className="text-destructive">Failed: 2</span>
               </div>
               <div className="flex gap-4 overflow-x-scroll pt-8 pb-4">
-                {exampleSolvedExams.map((exam, idx) => {
-                  return <PESSolvedExamCard exam={exam} key={idx} />;
+                {pastExams.map((exam, idx) => {
+                  return (
+                    <PESExamCard
+                      feedbackLink={`exams/feedback/${exam.id}`}
+                      status="past"
+                      grade={{ value: 31, isPending: false }}
+                      exam={exam}
+                      key={idx}
+                    />
+                  );
                 })}
               </div>
             </TabsContent>

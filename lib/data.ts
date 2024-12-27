@@ -22,7 +22,7 @@ import {
   TFormSchemaExamSubmition,
 } from "./types-forms";
 
-import { addDays, setHours, setMinutes } from "date-fns";
+import { addDays, compareDesc, setHours, setMinutes } from "date-fns";
 
 export const exampleEmployees: TFormSchemaAddEmployee[] = [
   {
@@ -1204,6 +1204,10 @@ export const exampleSolvedExams: TFormSchemaSolvedExam[] = [
     student_id: "123",
   },
 ];
+
+export const pastExams = exampleSolvedExams.filter(
+  (exam) => compareDesc(new Date(), exam.timestamp) === 1
+);
 
 export const AchievementsData = [
   {
