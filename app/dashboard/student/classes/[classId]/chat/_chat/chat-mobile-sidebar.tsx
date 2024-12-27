@@ -38,7 +38,7 @@ const ClassChatMobileSidebar = ({
                 ? "default"
                 : "ghost"
             }
-            size="xl"
+            size="lg"
             className="justify-start items-center gap-2"
             onClick={() => {
               setSelectedConvo(conv);
