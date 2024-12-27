@@ -20,16 +20,14 @@ import {
   User,
 } from "lucide-react";
 import Link from "next/link";
-import { Dispatch, SetStateAction } from "react";
 
-interface ClassOverviewProps {
-  params: {
-    classId: string;
+const ClassOverview = async ({
+  searchParams,
+}: {
+  searchParams: {
+    classId: string | undefined;
   };
-  setTabValue: Dispatch<SetStateAction<string>>;
-}
-
-const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
+}) => {
   const assignments = await getAssignments();
   const dueAssignments = await getDueAssignments();
   const completedAssignments = await getCompletedAssignments();
@@ -40,7 +38,7 @@ const ClassOverview = async ({ params: { classId } }: ClassOverviewProps) => {
   const exams = await getExams();
   const upcomingExams = await getUpcomingExams();
   const class_name = selectClassExampleData.find(
-    (select_class) => select_class.id === classId
+    (select_class) => select_class.id === searchParams.classId
   )?.name;
   const examsCompletionPercentage = Math.ceil(
     (exampleSolvedExams.length / exams.length) * 100
