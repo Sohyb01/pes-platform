@@ -1,15 +1,15 @@
 import { VariantSlideInUp } from "@/lib/motion-constants";
-import { ACHIEVEMENTS } from "../page";
 import { M_Card } from "@/components/pes-custom/motion/Shadcn-Motion-Components";
 import { CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar } from "lucide-react";
+import { AchievementsData } from "@/lib/data";
 
 const AllAchievements = () => {
   return (
     <section className="dashboard-tab-wrapper">
       <h2 className="text-h2">All Achievements</h2>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {ACHIEVEMENTS.map((achievement, idx) => (
+        {AchievementsData.map((achievement, idx) => (
           <M_Card
             variants={VariantSlideInUp}
             initial="initial"

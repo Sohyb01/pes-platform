@@ -2,28 +2,11 @@ import ArrowLink from "@/components/pes-custom/platform-components/ArrowLink";
 import PESCertificateCard from "@/components/pes-custom/platform-components/PESCertificateCard";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { exampleCertificates } from "@/lib/data";
+import { AchievementsData, exampleCertificates } from "@/lib/data";
 import { Book, Calendar, Medal, Trophy } from "lucide-react";
 
-export const ACHIEVEMENTS = [
-  {
-    id: 1,
-    title: "Perfect Score!",
-    description: "Achieved 100% in Advanced Mathematics Quiz",
-    date: "Dec 10, 2024",
-    subject: "Advanced Mathematics",
-  },
-  {
-    id: 2,
-    title: "Speed Demon",
-    description: "Completed all assignments before deadline",
-    date: "Dec 8, 2024",
-    subject: "Introduction to Computer Science",
-  },
-];
-
 const Achievements = async () => {
-  const recentAchievement = ACHIEVEMENTS[0];
+  const recentAchievement = AchievementsData[0];
 
   return (
     <section className="dashboard-tab-wrapper">

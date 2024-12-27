@@ -11,26 +11,10 @@ import { exampleCertificates } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { Award, Calendar, ChevronRight } from "lucide-react";
 import Link from "next/link";
-
-export const ACHIEVEMENTS = [
-  {
-    id: 1,
-    title: "Perfect Score!",
-    description: "Achieved 100% in Advanced Mathematics Quiz",
-    date: "Dec 10, 2024",
-    subject: "Advanced Mathematics",
-  },
-  {
-    id: 2,
-    title: "Speed Demon",
-    description: "Completed all assignments before deadline",
-    date: "Dec 8, 2024",
-    subject: "Introduction to Computer Science",
-  },
-];
+import { AchievementsData } from "@/lib/data";
 
 const AchievementsPage = async () => {
-  const recentAchievements = ACHIEVEMENTS.splice(0, 6);
+  const recentAchievements = AchievementsData.splice(0, 6);
 
   return (
     <section className="dashboard-tab-wrapper">
