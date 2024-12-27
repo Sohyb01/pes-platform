@@ -56,7 +56,7 @@ export function ClassChatSidebar({ chats }: SidebarProps) {
             key={index}
             href="#"
             className={cn(
-              buttonVariants({ variant: chat.variant, size: "xl" }),
+              buttonVariants({ variant: chat.variant, size: "lg" }),
               chat.variant === "secondary" &&
                 "dark:bg-muted dark:text-white dark:hover:bg-muted dark:hover:text-white shrink",
               "justify-start gap-4"
@@ -75,10 +75,7 @@ export function ClassChatSidebar({ chats }: SidebarProps) {
               <span>{chat.name}</span>
               {chat.messages.length > 0 && (
                 <span className="text-zinc-300 text-xs truncate ">
-                  {chat.messages[chat.messages.length - 1].name.split(" ")[0]}:{" "}
-                  {chat.messages[chat.messages.length - 1].isLoading
-                    ? "Typing..."
-                    : chat.messages[chat.messages.length - 1].message}
+                  Bob: {chat.messages[chat.messages.length - 1].message_text}
                 </span>
               )}
             </div>
