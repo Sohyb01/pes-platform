@@ -29,7 +29,7 @@ export const ACHIEVEMENTS = [
   },
 ];
 
-const Achievements = async () => {
+const AchievementsPage = async () => {
   const recentAchievements = ACHIEVEMENTS.splice(0, 6);
 
   return (
@@ -135,4 +135,4 @@ const Achievements = async () => {
   );
 };
 
-export default Achievements;
+export default AchievementsPage;
