@@ -427,7 +427,7 @@ const TrueFalseQuestionSchema = BaseQuestionSchema.extend({
 });
 
 // Union schema for questions
-const QuestionSchema = z.union([
+export const QuestionSchema = z.union([
   MCQQuestionSchema,
   EssayQuestionSchema,
   TrueFalseQuestionSchema,

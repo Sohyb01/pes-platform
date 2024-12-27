@@ -145,7 +145,7 @@ const ExamFeedback = async ({}: ExamFeedbackProps) => {
           <CardHeader className="flex space-y-0 flex-row items-center gap-2">
             <CardTitle className="text-h3">Question {idx + 1}</CardTitle>
             <p className="text-muted-foreground">
-              ({evaluation[idx].score} / {question.score}) points
+              ({evaluation[idx].score} / {question.points}) points
             </p>
           </CardHeader>
           <CardContent className="space-y-2">
@@ -154,7 +154,7 @@ const ExamFeedback = async ({}: ExamFeedbackProps) => {
             </div>
 
             {/* Answers */}
-            {renderAnswers(question, evaluation[idx], question.type)}
+            {renderAnswers(question, evaluation[idx])}
           </CardContent>
         </Card>
       ))}

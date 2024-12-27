@@ -15,7 +15,6 @@ const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
   const pathname = usePathname();
   return (
     <Link
-      className="flex-1 min-w-[340px] max-w-[480px]"
       href={`/dashboard/${pathname.split("/").filter(Boolean)[1]}/classes/${
         pesClass.id
       }`}
@@ -24,7 +23,7 @@ const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
         variants={VariantSlideInUp}
         initial="initial"
         animate="animate"
-        className="items-center border-primary/50 hover:border-primary duration-100 p-4"
+        className="items-center border-primary/50 hover:border-primary p-4"
       >
         <div>{pesClass.class_name}</div>
         <div className="flex gap-2 items-center stroke-muted-foreground text-muted-foreground pb-2">
@@ -73,8 +72,8 @@ const PESClassCard = ({ pesClass }: { pesClass: TFormSchemaAddClass }) => {
               pesClass.class_level == "Beginner"
                 ? `text-muted-foreground`
                 : pesClass.class_level == "Intermediate"
-                ? `text-secondary`
-                : `text-primary`
+                  ? `text-secondary`
+                  : `text-primary`
             }`}
           >
             Level: {pesClass.class_level}
