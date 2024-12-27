@@ -2,7 +2,6 @@ import { exampleExams, exampleSolvedExams } from "@/lib/data";
 import { TFormSchemaAddExam } from "@/lib/types-forms";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PESExamCard from "@/components/pes-custom/platform-components/PESExamCard";
-import PESSolvedExamCard from "@/components/pes-custom/platform-components/PESSolvedExamCard";
 
 async function getData(): Promise<TFormSchemaAddExam[]> {
   // Fetch data from your API here.
@@ -43,7 +42,15 @@ export default async function ExampleDashboardPage() {
             {exampleSolvedExams
               .filter((e) => e.timestamp <= new Date())
               .map((exam, idx) => {
-                return <PESSolvedExamCard exam={exam} key={idx} />;
+                return (
+                  <PESExamCard
+                    status="past"
+                    feedbackLink="#"
+                    grade={{ value: 31, isPending: false }}
+                    exam={exam}
+                    key={idx}
+                  />
+                );
               })}
           </div>
         </TabsContent>

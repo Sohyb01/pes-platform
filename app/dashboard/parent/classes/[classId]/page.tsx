@@ -7,7 +7,6 @@ import {
 } from "@/lib/data";
 import PESStudentAssignmentCard from "@/components/pes-custom/platform-components/PESStudentAssignmentCard";
 import PESExamCard from "@/components/pes-custom/platform-components/PESExamCard";
-import PESSolvedExamCard from "@/components/pes-custom/platform-components/PESSolvedExamCard";
 
 const page = () => {
   return (
@@ -41,7 +40,15 @@ const page = () => {
                 {exampleSolvedExams
                   .filter((e) => e.timestamp <= new Date())
                   .map((exam, idx) => {
-                    return <PESSolvedExamCard exam={exam} key={idx} />;
+                    return (
+                      <PESExamCard
+                        status="past"
+                        feedbackLink="#"
+                        grade={{ value: 31, isPending: false }}
+                        exam={exam}
+                        key={idx}
+                      />
+                    );
                   })}
               </div>
             </TabsContent>

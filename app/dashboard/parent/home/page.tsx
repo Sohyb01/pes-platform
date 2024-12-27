@@ -1,6 +1,6 @@
 import { GradesAreaChart } from "@/components/pes-custom/platform-components/GradesAreaChart";
 import PESCalendar from "@/components/pes-custom/platform-components/PESCalendar";
-import PESSolvedExamCard from "@/components/pes-custom/platform-components/PESSolvedExamCard";
+import PESExamCard from "@/components/pes-custom/platform-components/PESExamCard";
 import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
@@ -9,7 +9,7 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { CircleProgress } from "@/components/ui/progress";
-import { exampleParents, exampleSolvedExams } from "@/lib/data";
+import { exampleParents, pastExams } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { ChevronRight, Phone } from "lucide-react";
 import Link from "next/link";
@@ -44,17 +44,16 @@ const ParentHome = async () => {
             </Link>
           </div>
           <div className="overflow-y-scroll flex gap-4 overflow-x-scroll pb-4">
-            {exampleSolvedExams.map((exam, idx) => {
-              return <PESSolvedExamCard exam={exam} key={idx} />;
-            })}
-            {exampleSolvedExams.map((exam, idx) => {
-              return <PESSolvedExamCard exam={exam} key={idx} />;
-            })}
-            {exampleSolvedExams.map((exam, idx) => {
-              return <PESSolvedExamCard exam={exam} key={idx} />;
-            })}
-            {exampleSolvedExams.map((exam, idx) => {
-              return <PESSolvedExamCard exam={exam} key={idx} />;
+            {pastExams.map((exam, idx) => {
+              return (
+                <PESExamCard
+                  status="past"
+                  feedbackLink="#"
+                  grade={{ value: 31, isPending: false }}
+                  exam={exam}
+                  key={idx}
+                />
+              );
             })}
           </div>
         </div>
