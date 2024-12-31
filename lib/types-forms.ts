@@ -245,7 +245,7 @@ export const FormSchemaAddParent = z.object({
       "Please upload an image under 5MB (webp, png, jpg)"
     )
     .nullish(),
-  is_active: z.string().min(1, { message: "Required" }).max(50),
+  isactive: z.string().min(1, { message: "Required" }).max(50),
   referral: z.string().max(50).optional(),
   language: z.string().min(1, { message: "Required" }).max(50),
   timezone: z.string().min(1, { message: "Required" }).max(50),
@@ -253,6 +253,7 @@ export const FormSchemaAddParent = z.object({
   promocode: z.string().min(1, { message: "Required" }).max(50),
   num_of_children: z.string().min(1, { message: "Required" }).max(50),
   username: z.string().min(1, { message: "Required" }).max(50),
+  institute_id: z.string().min(1, { message: "Required" }).max(50),
 });
 
 export type TFormSchemaAddParent = z.infer<typeof FormSchemaAddParent>;
@@ -278,36 +279,38 @@ export const FormSchemaAddStudent = z.object({
     )
     .nullish(),
   student_dateofadmission: z.date(),
-  student_prevschool: z.string().max(50).optional(),
-  student_religion: z.string().max(50).optional(),
   student_diseases: z.string().optional(),
   student_laptop: z.string().trim().min(1, "Required").max(50),
   timezone: z.string().max(50).optional(),
   language: z.string().max(50).optional(),
-  orphan: z.string().max(50).optional(),
-  isactive: z.string().trim().min(1, "Required").max(50),
+  student_activation: z.boolean().default(false),
   theme: z.string().max(50).optional(),
   student_bloodgroup: z.string().max(50).optional(),
   student_feediscount: z.string().max(50).optional(),
   student_referralcode: z.string().max(50).optional(),
-  student_totalsibs: z.string().trim().min(1, "Required").max(50),
-  student_additionalnotes: z.string().max(50).optional(),
+  student_totalsibs: z.string().optional(),
+  student_additionalnotes: z.string().max(500).optional(),
   student_email: z.string().email().trim().min(1, "Required").max(50),
-  student_password: z.string().trim().min(1, "Required").max(256),
-  student_familyid: z.string().max(50).optional(),
+  password: z.string().optional(),
+  student_familyid: z.string().optional(),
+  // New
+  linked_in: z.string().optional(),
+  github: z.string().optional(),
+  institute_id: z.string().optional(),
+  about: z.string().optional(),
 });
 
 export type TFormSchemaAddStudent = z.infer<typeof FormSchemaAddStudent>;
 
 const FormSchemaAddEmployee = z.object({
-  user_type: z
+  role: z
     .string()
     .min(1, { message: "Required" })
     .max(50)
     .default("Instructor"), // Represents `user_role`, will be set by the form itself
 
-  id: z.string().nullish(), // National ID (required)
-  nid: z.string().trim().min(1, "Required"), // National ID (required)
+  user: z.string().nullish(), // National ID (required)
+  employee_nid: z.string().trim().min(1, "Required"), // National ID (required)
   employee_name: z.string().trim().min(1, "Required"),
   employee_email: z.string().email("Invalid email address"),
   gender: z.string().trim().min(1, "Required"), // String gender field
@@ -315,7 +318,7 @@ const FormSchemaAddEmployee = z.object({
   homeaddress: z.string().trim().min(1, "Required"),
   employee_salary: z.coerce.number().min(0, "Salary must be a positive number"),
   employee_mobilenum: z.string().trim().min(1, "Required"),
-  joined_date: z.date(),
+  dateofjoin: z.date(),
   employee_pic: z
     .any()
     .refine(
@@ -335,10 +338,13 @@ const FormSchemaAddEmployee = z.object({
     .max(50, "Username must be at most 50 characters"),
   password: z.string().trim().min(1, "Required"),
   //
+  currency: z.string().trim().min(1, { message: "Required" }).max(50),
   timezone: z.string().trim().min(1, { message: "Required" }).max(50),
   language: z.string().trim().min(1, { message: "Required" }).max(50),
-  currency: z.string().trim().min(1, { message: "Required" }).max(50),
   theme: z.string().trim().min(1, { message: "Required" }).max(50),
+  // New
+  institute_id: z.string().trim().min(1, { message: "Required" }).max(50),
+  whatsapp: z.string().min(1, { message: "Required" }).max(50),
 });
 
 export type TFormSchemaAddEmployee = z.infer<typeof FormSchemaAddEmployee>;
@@ -354,8 +360,6 @@ export type TFormSchemaAddAdmin = z.infer<typeof FormSchemaAddAdmin>;
 
 export const FormSchemaAddInstructor = z
   .object({
-    instructor_age: z.string().min(1, { message: "Required" }).max(50), // String to match the model's age field
-    instructor_whatsapp: z.string().min(1, { message: "Required" }).max(50),
     instructor_faculty: z.string().min(1, { message: "Required" }).max(50),
     instructor_cv: z
       .any()
@@ -368,7 +372,8 @@ export const FormSchemaAddInstructor = z
         "Only .pdf, .docx formats are supported."
       ),
     instructor_major: z.string().min(1, { message: "Required" }).max(50),
-    theme: z.string().max(50),
+    linked_in: z.string().optional(),
+    github: z.string().optional(),
   })
   .merge(FormSchemaAddEmployee);
 
