@@ -1,6 +1,6 @@
 import { pgTable, varchar, uuid, text, date } from "drizzle-orm/pg-core";
 // import { v4 } from "uuid";
-import { timestamps } from "./common-schema";
+import { timestamps } from "./common";
 
 export const programs = pgTable("programs", {
   id: uuid("id").primaryKey(),

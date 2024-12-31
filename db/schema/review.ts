@@ -1,6 +1,6 @@
 import { pgTable, varchar, uuid, numeric } from "drizzle-orm/pg-core";
 // import { v4 } from "uuid";
-import { timestamps } from "./common-schema";
+import { timestamps } from "./common";
 
 export const reviews = pgTable("reviews", {
   id: uuid("id").primaryKey(),

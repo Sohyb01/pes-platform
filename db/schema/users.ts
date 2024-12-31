@@ -14,7 +14,7 @@ import {
   themeEnum,
   timestamps,
   timezoneEnum,
-} from "./common-schema";
+} from "./common";
 // import { v4 } from "uuid";
 
 // ---
