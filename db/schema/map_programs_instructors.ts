@@ -12,7 +12,7 @@ export const programsRelations = relations(programs, ({ many }) => ({
 }));
 
 export const map_programs_instructors = pgTable(
-  "instructors_to_programs",
+  "map_programs_instructors",
   {
     instructorId: uuid("instructor_id")
       .notNull()

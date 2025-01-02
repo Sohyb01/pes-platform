@@ -4,6 +4,9 @@ export const timestamps = {
   updated_at: timestamp(),
   created_at: timestamp().defaultNow().notNull(),
   deleted_at: timestamp(),
+  expires_at: timestamp(),
+  redeemed_at: timestamp(),
+  submitted_at: timestamp(),
 };
 
 export const socialMedias = {
@@ -55,4 +58,51 @@ export const timezoneEnum = pgEnum("timezone", [
   "UTC+10:00",
   "UTC+11:00",
   "UTC+12:00",
+]);
+
+//Enum for status of attendance
+export const attendanceStatusEnum = pgEnum("status", [
+  "present",
+  "absent",
+  "late",
+]);
+
+// Enum for promotion waiting list status
+export const classTransferEnum = pgEnum("status", [
+  "pending",
+  "approved",
+  "rejected",
+]);
+
+// Enum for franchise status
+export const franchiseStatusEnum = pgEnum("status", [
+  "pending",
+  "franchise agreement reached",
+  "franchise agreement reached",
+  "rejected",
+]);
+
+// Enum for franchise status
+export const reviewStatusEnum = pgEnum("review_status", [
+  "pending",
+  "approved",
+  "rejected",
+]);
+
+// Enum for franchise status
+export const pendingInstructorStatusEnum = pgEnum("status", [
+  "pending",
+  "interview successful",
+  "interview not successful",
+  "rejected",
+]);
+
+// Enum for fees status
+export const feesStatusEnum = pgEnum("status", ["fixed", "editable"]);
+
+// Enum for rules category
+export const rulesCategoryEnum = pgEnum("category", [
+  "whole place",
+  "students",
+  "employees",
 ]);
