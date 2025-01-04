@@ -1,11 +1,4 @@
-import {
-  pgTable,
-  uuid,
-  varchar,
-  numeric,
-  jsonb,
-  boolean,
-} from "drizzle-orm/pg-core";
+import { pgTable, uuid, varchar, numeric, boolean } from "drizzle-orm/pg-core";
 
 import { students, instructors } from "./users";
 import { classes } from "./classes";
@@ -14,7 +7,7 @@ import { timestamps } from "./common";
 export const exams = pgTable("exams", {
   id: uuid("id").notNull().primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
-  type: varchar("type", { length: 100 }).notNull(),
+  type: varchar("exam_type", { length: 100 }).notNull(),
   // created_at
   id_class: uuid("id_class")
     .notNull()
@@ -31,17 +24,16 @@ export const mcq_questions = pgTable("mcq_questions", {
     .notNull()
     .references(() => exams.id), // Foreign key to exams table
   question_text: varchar("question_text", { length: 255 }).notNull(),
-  options: jsonb("options").notNull(), // Store options as JSON
   points: numeric("points").notNull(),
   ...timestamps,
 });
 
 export const mcq_question_options = pgTable("mcq_question_options", {
   id: uuid("id").notNull().primaryKey(),
-  option: varchar("question_text", { length: 255 }).notNull(),
+  option: varchar("option", { length: 255 }).notNull(),
   id_mcq_question: uuid("id_mcq_question")
     .notNull()
-    .references(() => exams.id),
+    .references(() => mcq_questions.id),
   ...timestamps,
 });
 
@@ -100,7 +92,6 @@ export const exam_submissions = pgTable("exam_submissions", {
   id_exam: uuid("id_exam")
     .notNull()
     .references(() => exams.id),
-
   ...timestamps,
 });
 

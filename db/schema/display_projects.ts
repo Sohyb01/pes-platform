@@ -1,7 +1,7 @@
 import { pgTable, uuid, varchar } from "drizzle-orm/pg-core";
 import { students } from "./users";
-import { tracks } from "./program";
 import { timestamps } from "./common";
+import { tracks } from "./tracks";
 
 export const display_projects = pgTable("display_projects", {
   id: uuid("id").notNull().primaryKey(),

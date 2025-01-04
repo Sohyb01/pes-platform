@@ -1,14 +1,15 @@
-import { pgTable, uuid, varchar, jsonb } from "drizzle-orm/pg-core";
-import { students } from "./users";
-import { institutes } from "./institutes";
+// Revise later
 
-export const cvs = pgTable('cvs', {
-    id: uuid('id').notNull().primaryKey(), // Primary key
-    cv_attachment: jsonb('cv_attachment').default('{}').notNull(), // JSON field for attachment metadata
-    cv_file: varchar('cv_file', { length: 2048 }).notNull(), // File path or URL
+// import { pgTable, uuid, varchar } from "drizzle-orm/pg-core";
+// import { students } from "./users";
 
-    id_student: uuid('id_student').notNull().references(() => students.id), // Foreign key to `students`
-    id_institute: uuid('id_institute').notNull().references(() => institutes.id), // Foreign key to `institutes`
+// export const cvs = pgTable("cvs", {
+//   id: uuid("id").notNull().primaryKey(), // Primary key
+//   attachment: varchar("description", { length: 255 }).notNull(), // JSON field for attachment metadata
+//   file: varchar("description", { length: 255 }).notNull(),
+//   id_student: uuid("id_student")
+//     .notNull()
+//     .references(() => students.id), // Foreign key to `students`
 
-    description: varchar('description', { length: 255 }).notNull(), 
-});
+//   description: varchar("description", { length: 1000 }).notNull(),
+// });

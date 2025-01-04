@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
-export default function Student() {
+export default async function Student() {
   redirect("/dashboard/student/home");
 }

@@ -9,16 +9,15 @@ import {
 
 import { timestamps } from "./common";
 
-export const instituteApplicationEnum = pgEnum("instituteApplication", [
-  "pending",
-  "approved",
-  "rejected",
-]);
+export const instituteApplicationStatusEnum = pgEnum(
+  "institute_application_status",
+  ["pending", "approved", "rejected"]
+);
 
 export const institutes = pgTable("institutes", {
   id: uuid("id").notNull().primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
-  logo: varchar("name", { length: 255 }),
+  logo: varchar("logo", { length: 255 }),
   email: varchar("email", { length: 255 }).notNull(),
   address_line_one: varchar("address_line_one", { length: 255 }).notNull(),
   address_line_two: varchar("address_line_two", {
@@ -48,6 +47,6 @@ export const institute_request = pgTable("institute_request", {
   max_supervisors: integer("max_supervisors").default(0),
   max_classes: integer("max_classes").default(0),
   max_grades: integer("max_grades").default(0),
-  status: text("status"),
+  status: instituteApplicationStatusEnum(),
   ...timestamps,
 });

@@ -1,11 +1,15 @@
 import { pgTable, uuid, varchar, timestamp, pgEnum } from "drizzle-orm/pg-core";
 
 import { classes } from "./classes";
-import { subjects } from "./program";
 import { students, instructors } from "./users";
 import { timestamps } from "./common";
+import { subjects } from "./subjects";
 
-const assignmentStatusEnum = pgEnum("status", ["submitted", "reviewed", "due"]);
+export const assignmentStatusEnum = pgEnum("assignment_status", [
+  "submitted",
+  "reviewed",
+  "due",
+]);
 
 const baseAssignment = {
   id: uuid("id").notNull().primaryKey(),
@@ -43,6 +47,7 @@ export const assignments_handed = pgTable("assignments_handed", {
   id_student: uuid("id_student")
     .notNull()
     .references(() => students.id),
+  ...timestamps,
 });
 
 export const feedback = pgTable("feedback", {

@@ -5,7 +5,7 @@ import { attendanceStatusEnum } from "./common";
 
 export const instructors_attendance = pgTable("instructors_attendance", {
   id: uuid("id").notNull().primaryKey(),
-  status: attendanceStatusEnum("status").notNull(),
+  status: attendanceStatusEnum().notNull(),
   date: timestamp("date", { withTimezone: true }).notNull(),
   check_in: timestamp("check_in"),
   check_out: timestamp("check_out"),
@@ -16,7 +16,7 @@ export const instructors_attendance = pgTable("instructors_attendance", {
 
 export const receptionists_attendance = pgTable("receptionists_attendance", {
   id: uuid("id").notNull().primaryKey(),
-  status: attendanceStatusEnum("status").notNull(),
+  status: attendanceStatusEnum().notNull(),
   date: timestamp("date", { withTimezone: true }).notNull(),
   check_in: timestamp("check_in"),
   check_out: timestamp("check_out"),

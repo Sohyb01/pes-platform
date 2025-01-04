@@ -1,12 +1,12 @@
 import { pgEnum, timestamp, varchar } from "drizzle-orm/pg-core";
 
 export const timestamps = {
-  updated_at: timestamp(),
-  created_at: timestamp().defaultNow().notNull(),
-  deleted_at: timestamp(),
-  expires_at: timestamp(),
-  redeemed_at: timestamp(),
-  submitted_at: timestamp(),
+  updated_at: timestamp("updated_at"),
+  created_at: timestamp("created_at").defaultNow().notNull(),
+  deleted_at: timestamp("deleted_at"),
+  // expires_at: timestamp(),
+  // redeemed_at: timestamp(),
+  // submitted_at: timestamp(),
 };
 
 export const socialMedias = {
@@ -61,26 +61,24 @@ export const timezoneEnum = pgEnum("timezone", [
 ]);
 
 //Enum for status of attendance
-export const attendanceStatusEnum = pgEnum("status", [
+export const attendanceStatusEnum = pgEnum("attendance_status", [
   "present",
   "absent",
   "late",
 ]);
 
 // Enum for promotion waiting list status
-export const classTransferEnum = pgEnum("status", [
+export const classTransferEnum = pgEnum("class_transfer_status", [
   "pending",
   "approved",
   "rejected",
 ]);
 
 // Enum for franchise status
-export const franchiseStatusEnum = pgEnum("status", [
-  "pending",
-  "franchise agreement reached",
-  "franchise agreement reached",
-  "rejected",
-]);
+export const franchiseApplicationStatusEnum = pgEnum(
+  "franchise_application_status",
+  ["pending", "agreement reached", "rejected"]
+);
 
 // Enum for franchise status
 export const reviewStatusEnum = pgEnum("review_status", [
@@ -90,7 +88,7 @@ export const reviewStatusEnum = pgEnum("review_status", [
 ]);
 
 // Enum for franchise status
-export const pendingInstructorStatusEnum = pgEnum("status", [
+export const pendingInstructorStatusEnum = pgEnum("pending_instructor_status", [
   "pending",
   "interview successful",
   "interview not successful",
@@ -98,11 +96,4 @@ export const pendingInstructorStatusEnum = pgEnum("status", [
 ]);
 
 // Enum for fees status
-export const feesStatusEnum = pgEnum("status", ["fixed", "editable"]);
-
-// Enum for rules category
-export const rulesCategoryEnum = pgEnum("category", [
-  "whole place",
-  "students",
-  "employees",
-]);
+export const feesStatusEnum = pgEnum("fee_status", ["fixed", "editable"]);

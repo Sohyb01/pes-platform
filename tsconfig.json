@@ -27,7 +27,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "../FormAddGoop.tsx",
-    "db/schema/map_classes_programsts"
+    "db/schema/map_classes_programsts",
+    "db/schema/combine-schema.js"
   ],
   "exclude": ["node_modules"]
 }

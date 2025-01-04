@@ -22,14 +22,14 @@ export const class_sessions = pgTable("class_sessions", {
 export const map_class_sessions_students = pgTable(
   "students_to_class_sessions",
   {
-    studentId: uuid("student_id")
+    student_id: uuid("student_id")
       .notNull()
       .references(() => students.id),
-    classSessionId: uuid("session_id")
+    class_session_id: uuid("session_id")
       .notNull()
       .references(() => class_sessions.id),
   },
-  (t) => [t.studentId, t.classSessionId]
+  (t) => [t.student_id, t.class_session_id]
 );
 
 export const studentsRelations = relations(students, ({ many }) => ({
@@ -44,11 +44,11 @@ export const studentsToSessionsRelations = relations(
   map_class_sessions_students,
   ({ one }) => ({
     classSession: one(class_sessions, {
-      fields: [map_class_sessions_students.classSessionId],
+      fields: [map_class_sessions_students.class_session_id],
       references: [class_sessions.id],
     }),
     student: one(students, {
-      fields: [map_class_sessions_students.studentId],
+      fields: [map_class_sessions_students.student_id],
       references: [students.id],
     }),
   })

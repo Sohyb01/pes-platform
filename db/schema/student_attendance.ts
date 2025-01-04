@@ -6,7 +6,7 @@ import { students } from "./users";
 
 export const students_attendances = pgTable("attendances", {
   id: uuid("id").notNull().primaryKey(),
-  status: attendanceStatusEnum("status").notNull(),
+  status: attendanceStatusEnum().notNull(),
   date: timestamp("date", { withTimezone: true }).notNull(),
   id_class: uuid("id_class")
     .notNull()

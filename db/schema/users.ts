@@ -26,7 +26,7 @@ import { institutes } from "./institutes";
 const baseUser = {
   id: uuid("id").primaryKey(),
   //
-  role: rolesEnum("role").notNull(),
+  role: rolesEnum().notNull(),
   username: varchar("username", { length: 255 }).notNull(),
   password: varchar("password", { length: 255 }).notNull(),
   first_name: varchar("first_name", { length: 255 }).notNull(),
@@ -48,8 +48,8 @@ const baseUser = {
   //   Customization
   theme: themeEnum().default("light"),
   timezone: timezoneEnum(),
-  language: languageEnum().default("eng"),
-  currency: currencyEnum().default("EGP"),
+  language: languageEnum(),
+  currency: currencyEnum(),
   // Timestamps (created, updated, deleted)
   active: boolean("active").notNull().default(true),
   //

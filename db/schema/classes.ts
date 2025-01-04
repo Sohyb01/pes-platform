@@ -1,8 +1,8 @@
 import { pgTable, uuid, varchar, date } from "drizzle-orm/pg-core";
 
 import { students } from "./users";
-import { programs } from "./program";
 import { classTransferEnum } from "./common";
+import { programs } from "./programs";
 
 export const classes = pgTable("classes", {
   id: uuid("id").notNull().primaryKey(),
@@ -20,7 +20,7 @@ export const transfer_class_applications = pgTable(
   "transfer_class_applications",
   {
     id: uuid("id").notNull().primaryKey(),
-    status: classTransferEnum("status").notNull().default("pending"),
+    status: classTransferEnum().notNull().default("pending"),
     id_desired_class: uuid("id_desired_class").references(() => classes.id),
     id_student: uuid("id_student")
       .notNull()

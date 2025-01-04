@@ -3,36 +3,36 @@ import { pgTable, uuid } from "drizzle-orm/pg-core";
 import { students } from "./users";
 import { exams } from "./exams";
 
-export const studentsRelations = relations(students, ({ many }) => ({
+export const studentsExamsRelations = relations(students, ({ many }) => ({
   map_exams_students: many(map_exams_students),
 }));
 
-export const examsRelations = relations(exams, ({ many }) => ({
+export const examsStudentsRelations = relations(exams, ({ many }) => ({
   map_exams_students: many(map_exams_students),
 }));
 
 export const map_exams_students = pgTable(
   "map_exams_students",
   {
-    studentId: uuid("student_id")
+    student_id: uuid("student_id")
       .notNull()
       .references(() => students.id),
-    examId: uuid("exam_id")
+    exam_id: uuid("exam_id")
       .notNull()
       .references(() => exams.id),
   },
-  (t) => [t.studentId, t.examId]
+  (t) => [t.student_id, t.exam_id]
 );
 
-export const studentsToexamsRelations = relations(
+export const studentsToExamsRelations = relations(
   map_exams_students,
   ({ one }) => ({
     exam: one(exams, {
-      fields: [map_exams_students.examId],
+      fields: [map_exams_students.exam_id],
       references: [exams.id],
     }),
     student: one(students, {
-      fields: [map_exams_students.studentId],
+      fields: [map_exams_students.student_id],
       references: [students.id],
     }),
   })
